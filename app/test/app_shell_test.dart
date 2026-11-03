@@ -4,13 +4,19 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:oman_agri/app.dart';
 import 'package:oman_agri/core/locale_controller.dart';
 import 'package:oman_agri/core/router.dart';
+import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
+import 'package:oman_agri/features/crops/data/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> pumpApp(WidgetTester tester) async {
   final prefs = await SharedPreferences.getInstance();
   await tester.pumpWidget(ProviderScope(
     key: UniqueKey(),
-    overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
+    overrides: [
+      sharedPreferencesProvider.overrideWithValue(prefs),
+      knowledgeProvider.overrideWith((ref) async => KnowledgeSnapshot(
+          generatedAt: DateTime.utc(2026), sources: const {}, crops: const [])),
+    ],
     child: OmanAgriApp(router: buildRouter()),
   ));
   await tester.pumpAndSettle();

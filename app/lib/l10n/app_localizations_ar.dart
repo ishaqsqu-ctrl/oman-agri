@@ -80,4 +80,103 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get categoryTree => 'أشجار';
+
+  @override
+  String get loading => 'جارٍ التحميل…';
+
+  @override
+  String get loadError => 'تعذّر تحميل البيانات. حاول مرة أخرى.';
+
+  @override
+  String get noData => 'لا توجد بيانات';
+
+  @override
+  String get noMatches => 'لا توجد نتائج مطابقة';
+
+  @override
+  String get scientificName => 'الاسم العلمي';
+
+  @override
+  String get categories => 'الفئات';
+
+  @override
+  String get requirements => 'متطلبات المحصول';
+
+  @override
+  String get tMin => 'درجة الحرارة الدنيا (°م)';
+
+  @override
+  String get tOptLow => 'درجة الحرارة المثلى الدنيا (°م)';
+
+  @override
+  String get tOptHigh => 'درجة الحرارة المثلى العليا (°م)';
+
+  @override
+  String get tMax => 'درجة الحرارة العظمى (°م)';
+
+  @override
+  String get chillHours => 'ساعات البرودة';
+
+  @override
+  String get eceThreshold => 'حد تحمّل الملوحة (dS/m)';
+
+  @override
+  String get phRange => 'درجة الحموضة (pH)';
+
+  @override
+  String get soilTexture => 'قوام التربة';
+
+  @override
+  String get textureSand => 'رملية';
+
+  @override
+  String get textureLoam => 'طميية';
+
+  @override
+  String get textureClay => 'طينية';
+
+  @override
+  String get altitude => 'الارتفاع (م)';
+
+  @override
+  String get seasonLength => 'طول الموسم (يوم)';
+
+  @override
+  String get growthStages => 'مراحل النمو';
+
+  @override
+  String get stageName => 'المرحلة';
+
+  @override
+  String get stageDays => 'المدة (يوم)';
+
+  @override
+  String get stageKc => 'معامل المحصول Kc';
+
+  @override
+  String get stageInitial => 'أولية';
+
+  @override
+  String get stageDevelopment => 'نمو خضري';
+
+  @override
+  String get stageMid => 'منتصف الموسم';
+
+  @override
+  String get stageLate => 'نهاية الموسم';
+
+  @override
+  String get sourcePublisher => 'الناشر';
+
+  @override
+  String get sourceYear => 'السنة';
+
+  @override
+  String get sourcePage => 'الصفحة';
+
+  @override
+  String get openLink => 'فتح الرابط';
+
+  @override
+  String get close => 'إغلاق';
 }

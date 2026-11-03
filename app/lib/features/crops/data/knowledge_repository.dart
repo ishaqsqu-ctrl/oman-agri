@@ -186,6 +186,9 @@ class KnowledgeRepository {
 final snapshotCacheProvider = FutureProvider<SnapshotCache>(
     (ref) => createSnapshotCache(ref.watch(sharedPreferencesProvider)));
 
+/// Whether this build shows draft rows (and the draft banner). Tests override.
+final includeDraftsProvider = Provider<bool>((ref) => showDrafts);
+
 final knowledgeProvider = FutureProvider<KnowledgeSnapshot>((ref) async {
   final cache = await ref.watch(snapshotCacheProvider.future);
   final repo = KnowledgeRepository(
@@ -194,7 +197,7 @@ final knowledgeProvider = FutureProvider<KnowledgeSnapshot>((ref) async {
       CachedSnapshotSource(cache),
       BundledSnapshotSource(),
     ],
-    includeDrafts: showDrafts,
+    includeDrafts: ref.watch(includeDraftsProvider),
     cache: cache,
   );
   return repo.load();

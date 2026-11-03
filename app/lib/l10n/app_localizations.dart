@@ -241,6 +241,204 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'أشجار'**
   String get categoryTree;
+
+  /// No description provided for @loading.
+  ///
+  /// In ar, this message translates to:
+  /// **'جارٍ التحميل…'**
+  String get loading;
+
+  /// No description provided for @loadError.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر تحميل البيانات. حاول مرة أخرى.'**
+  String get loadError;
+
+  /// No description provided for @noData.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد بيانات'**
+  String get noData;
+
+  /// No description provided for @noMatches.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد نتائج مطابقة'**
+  String get noMatches;
+
+  /// No description provided for @scientificName.
+  ///
+  /// In ar, this message translates to:
+  /// **'الاسم العلمي'**
+  String get scientificName;
+
+  /// No description provided for @categories.
+  ///
+  /// In ar, this message translates to:
+  /// **'الفئات'**
+  String get categories;
+
+  /// No description provided for @requirements.
+  ///
+  /// In ar, this message translates to:
+  /// **'متطلبات المحصول'**
+  String get requirements;
+
+  /// No description provided for @tMin.
+  ///
+  /// In ar, this message translates to:
+  /// **'درجة الحرارة الدنيا (°م)'**
+  String get tMin;
+
+  /// No description provided for @tOptLow.
+  ///
+  /// In ar, this message translates to:
+  /// **'درجة الحرارة المثلى الدنيا (°م)'**
+  String get tOptLow;
+
+  /// No description provided for @tOptHigh.
+  ///
+  /// In ar, this message translates to:
+  /// **'درجة الحرارة المثلى العليا (°م)'**
+  String get tOptHigh;
+
+  /// No description provided for @tMax.
+  ///
+  /// In ar, this message translates to:
+  /// **'درجة الحرارة العظمى (°م)'**
+  String get tMax;
+
+  /// No description provided for @chillHours.
+  ///
+  /// In ar, this message translates to:
+  /// **'ساعات البرودة'**
+  String get chillHours;
+
+  /// No description provided for @eceThreshold.
+  ///
+  /// In ar, this message translates to:
+  /// **'حد تحمّل الملوحة (dS/m)'**
+  String get eceThreshold;
+
+  /// No description provided for @phRange.
+  ///
+  /// In ar, this message translates to:
+  /// **'درجة الحموضة (pH)'**
+  String get phRange;
+
+  /// No description provided for @soilTexture.
+  ///
+  /// In ar, this message translates to:
+  /// **'قوام التربة'**
+  String get soilTexture;
+
+  /// No description provided for @textureSand.
+  ///
+  /// In ar, this message translates to:
+  /// **'رملية'**
+  String get textureSand;
+
+  /// No description provided for @textureLoam.
+  ///
+  /// In ar, this message translates to:
+  /// **'طميية'**
+  String get textureLoam;
+
+  /// No description provided for @textureClay.
+  ///
+  /// In ar, this message translates to:
+  /// **'طينية'**
+  String get textureClay;
+
+  /// No description provided for @altitude.
+  ///
+  /// In ar, this message translates to:
+  /// **'الارتفاع (م)'**
+  String get altitude;
+
+  /// No description provided for @seasonLength.
+  ///
+  /// In ar, this message translates to:
+  /// **'طول الموسم (يوم)'**
+  String get seasonLength;
+
+  /// No description provided for @growthStages.
+  ///
+  /// In ar, this message translates to:
+  /// **'مراحل النمو'**
+  String get growthStages;
+
+  /// No description provided for @stageName.
+  ///
+  /// In ar, this message translates to:
+  /// **'المرحلة'**
+  String get stageName;
+
+  /// No description provided for @stageDays.
+  ///
+  /// In ar, this message translates to:
+  /// **'المدة (يوم)'**
+  String get stageDays;
+
+  /// No description provided for @stageKc.
+  ///
+  /// In ar, this message translates to:
+  /// **'معامل المحصول Kc'**
+  String get stageKc;
+
+  /// No description provided for @stageInitial.
+  ///
+  /// In ar, this message translates to:
+  /// **'أولية'**
+  String get stageInitial;
+
+  /// No description provided for @stageDevelopment.
+  ///
+  /// In ar, this message translates to:
+  /// **'نمو خضري'**
+  String get stageDevelopment;
+
+  /// No description provided for @stageMid.
+  ///
+  /// In ar, this message translates to:
+  /// **'منتصف الموسم'**
+  String get stageMid;
+
+  /// No description provided for @stageLate.
+  ///
+  /// In ar, this message translates to:
+  /// **'نهاية الموسم'**
+  String get stageLate;
+
+  /// No description provided for @sourcePublisher.
+  ///
+  /// In ar, this message translates to:
+  /// **'الناشر'**
+  String get sourcePublisher;
+
+  /// No description provided for @sourceYear.
+  ///
+  /// In ar, this message translates to:
+  /// **'السنة'**
+  String get sourceYear;
+
+  /// No description provided for @sourcePage.
+  ///
+  /// In ar, this message translates to:
+  /// **'الصفحة'**
+  String get sourcePage;
+
+  /// No description provided for @openLink.
+  ///
+  /// In ar, this message translates to:
+  /// **'فتح الرابط'**
+  String get openLink;
+
+  /// No description provided for @close.
+  ///
+  /// In ar, this message translates to:
+  /// **'إغلاق'**
+  String get close;
 }
 
 class _AppLocalizationsDelegate

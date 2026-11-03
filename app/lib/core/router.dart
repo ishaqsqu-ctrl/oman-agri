@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:oman_agri/features/crops/ui/home_screen.dart';
+import 'package:oman_agri/features/crops/ui/crop_detail_screen.dart';
+import 'package:oman_agri/features/crops/ui/crops_list_screen.dart';
 import 'package:oman_agri/features/settings/settings_screen.dart';
 import 'package:oman_agri/features/shell/coming_soon_screen.dart';
 import 'package:oman_agri/features/shell/app_shell.dart';
@@ -15,7 +16,7 @@ GoRouter buildRouter() => GoRouter(
           builder: (context, state, shell) => AppShell(shell: shell),
           branches: [
             StatefulShellBranch(routes: [
-              GoRoute(path: '/', builder: (c, s) => const HomeScreen()),
+              GoRoute(path: '/', builder: (c, s) => const CropsListScreen()),
             ]),
             StatefulShellBranch(routes: [
               GoRoute(
@@ -47,7 +48,7 @@ GoRouter buildRouter() => GoRouter(
         GoRoute(
           path: '/crops/:id',
           parentNavigatorKey: _rootKey,
-          builder: (c, s) => ComingSoonScreen('crop-${s.pathParameters['id']}'),
+          builder: (c, s) => CropDetailScreen(cropId: s.pathParameters['id']!),
         ),
         GoRoute(
           path: '/admin',
