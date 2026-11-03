@@ -1,15 +1,17 @@
 """Bilingual validator for the CSV knowledge files. Usage: python -m data.validate data/"""
-import math
 import re
 import sys
 from datetime import date, datetime
+from decimal import Decimal
 from pathlib import Path
 from typing import NamedTuple
 
 from .csvio import read_table
+from .values import parse_int, parse_num
 from .schema import COLUMNS, ENUMS, FILES
 
 ARABIC_LETTER = re.compile(r"[ؠ-يٮ-ۓ]")
+INT_RANGES = {"int": (-2147483648, 2147483647), "smallint": (-32768, 32767)}
 ARABIC_ANY = re.compile(r"[؀-ۿ]")
 
 
@@ -19,22 +21,6 @@ class Issue(NamedTuple):
     column: str
     message_ar: str
     message_en: str
-
-
-def _num(v: str):
-    try:
-        x = float(v)
-    except ValueError:
-        return None
-    return x if math.isfinite(x) else None
-
-
-def _int(v: str):
-    try:
-        return int(v)
-    except ValueError:
-        x = _num(v)
-        return int(x) if x is not None and x == int(x) and re.fullmatch(r"-?\d+\.0*", v) else None
 
 
 def _valid_date(v: str) -> bool:
@@ -54,6 +40,7 @@ def validate_dir(path: Path) -> list[Issue]:
     path = Path(path)
     issues: list[Issue] = []
     tables: dict[str, list[tuple[int, dict[str, str]]]] = {}
+    unusable: set[str] = set()  # files that could not be read: skip FK checks against them
     parsed: dict[tuple[str, int, str], object] = {}  # numeric values keyed by cell
 
     def add(f, r, c, ar, en):
@@ -64,11 +51,24 @@ def validate_dir(path: Path) -> list[Issue]:
         if not p.is_file():
             add(fname, 0, "", f"الملف مفقود: {fname}", f"Missing file: {fname}")
             tables[fname] = []
+            unusable.add(fname)
             continue
-        header, rows = read_table(p)
+        try:
+            header, rows, problems = read_table(p)
+        except UnicodeDecodeError:
+            add(fname, 0, "", "يجب حفظ الملف بصيغة CSV UTF-8", "File must be saved as CSV UTF-8")
+            tables[fname] = []
+            unusable.add(fname)
+            continue
         spec = COLUMNS[fname]
         names = [c for c, _, _ in spec]
         bad_header = False
+        for r_, c_, kind in problems:
+            bad_header = bad_header or kind == "duplicate_header"
+            if kind == "duplicate_header":
+                add(fname, r_, c_, f"اسم العمود مكرر: {c_}", f"Duplicate column: {c_}")
+            else:
+                add(fname, r_, c_, "عدد الخلايا في الصف أكبر من عدد الأعمدة", "Row has more cells than header columns")
         for c in names:
             if c not in header:
                 bad_header = True
@@ -79,6 +79,8 @@ def validate_dir(path: Path) -> list[Issue]:
                 add(fname, 1, c, f"عمود غير معروف: {c}", f"Unknown column: {c}")
         if bad_header:
             tables[fname] = []
+            unusable.add(fname)
+            unusable.add(fname)
             continue
         tables[fname] = rows
         for n, row in rows:
@@ -88,18 +90,22 @@ def validate_dir(path: Path) -> list[Issue]:
                     if required:
                         add(fname, n, col, f"قيمة مطلوبة: {col}", f"Required value: {col}")
                     continue
-                if kind == "int":
-                    x = _int(v)
-                    if x is None:
+                if kind in INT_RANGES:
+                    lo_, hi_ = INT_RANGES[kind]
+                    try:
+                        x = parse_int(v)
+                    except ValueError:
                         add(fname, n, col, f"يجب أن يكون عددًا صحيحًا: {v}", f"Not a whole number: {v}")
                     else:
-                        parsed[(fname, n, col)] = x
+                        if lo_ <= x <= hi_:
+                            parsed[(fname, n, col)] = x
+                        else:
+                            add(fname, n, col, f"القيمة خارج النطاق ({lo_} إلى {hi_}): {v}", f"Value out of range ({lo_} to {hi_}): {v}")
                 elif kind == "num":
-                    x = _num(v)
-                    if x is None:
+                    try:
+                        parsed[(fname, n, col)] = parse_num(v)
+                    except ValueError:
                         add(fname, n, col, f"يجب أن يكون رقمًا: {v}", f"Not a number: {v}")
-                    else:
-                        parsed[(fname, n, col)] = x
                 elif kind.startswith("enum:"):
                     allowed = ENUMS[kind[5:]]
                     if v not in allowed:
@@ -128,7 +134,7 @@ def validate_dir(path: Path) -> list[Issue]:
             seen.add(r["id"])
     seen = set()
     for n, r in tables["crop_requirements.csv"]:
-        if r["crop_id"] in seen:
+        if r["crop_id"] and r["crop_id"] in seen:
             add("crop_requirements.csv", n, "crop_id", f"المحصول مكرر: {r['crop_id']}", f"Duplicate crop: {r['crop_id']}")
         seen.add(r["crop_id"])
     seen = set()
@@ -142,14 +148,14 @@ def validate_dir(path: Path) -> list[Issue]:
     src, gov, crops = ids("sources.csv"), ids("governorates.csv"), ids("crops.csv")
     for f in FILES[1:]:
         for n, r in tables[f]:
-            if r["source_id"] and r["source_id"] not in src:
+            if r["source_id"] and r["source_id"] not in src and "sources.csv" not in unusable:
                 add(f, n, "source_id", f"المصدر غير موجود: {r['source_id']}", f"Unknown source: {r['source_id']}")
     for n, r in tables["wilayats.csv"]:
-        if r["governorate_id"] and r["governorate_id"] not in gov:
+        if r["governorate_id"] and r["governorate_id"] not in gov and "governorates.csv" not in unusable:
             add("wilayats.csv", n, "governorate_id", f"المحافظة غير موجودة: {r['governorate_id']}", f"Unknown governorate: {r['governorate_id']}")
     for f in ("crop_requirements.csv", "crop_stages.csv"):
         for n, r in tables[f]:
-            if r["crop_id"] and r["crop_id"] not in crops:
+            if r["crop_id"] and r["crop_id"] not in crops and "crops.csv" not in unusable:
                 add(f, n, "crop_id", f"المحصول غير موجود: {r['crop_id']}", f"Unknown crop: {r['crop_id']}")
 
     # names
@@ -181,6 +187,8 @@ def validate_dir(path: Path) -> list[Issue]:
     # requirements
     f = "crop_requirements.csv"
     for n, r in tables[f]:
+        # Intentionally stricter than the DB CHECK: any two non-null temperatures
+        # must be in order (the DB only constrains rows where all four are set).
         temps = [(c, val(f, n, c)) for c in ("t_min", "t_opt_low", "t_opt_high", "t_max") if val(f, n, c) is not None]
         for (c1, a), (c2, b) in zip(temps, temps[1:]):
             if a > b:
@@ -202,7 +210,7 @@ def validate_dir(path: Path) -> list[Issue]:
         if d is not None and d <= 0:
             add(f, n, "duration_days", f"المدة يجب أن تكون أكبر من صفر: {d}", f"duration_days must be > 0: {d}")
         k = val(f, n, "kc")
-        if k is not None and not 0 <= k <= 1.5:
+        if k is not None and not 0 <= k <= Decimal("1.5"):
             add(f, n, "kc", f"قيمة kc يجب أن تكون بين 0 و1.5: {k:g}", f"kc must be within 0..1.5: {k:g}")
         s = val(f, n, "seq")
         if s is not None and r["crop_id"] in crops:

@@ -160,3 +160,95 @@ def test_cli_exit_codes(tmp_path):
     bad = run_cli(d)
     assert bad.returncode == 1
     assert "المصدر غير موجود: fao99" in bad.stdout and "Unknown source: fao99" in bad.stdout
+
+
+# --- fix round 1 ---
+from decimal import Decimal  # noqa: E402
+
+from data.values import parse_int, parse_num  # noqa: E402
+
+
+def test_parsers_accept_arabic_digits():
+    assert parse_int("١٢") == 12
+    assert parse_int("۱۲") == 12
+    assert parse_int("-5") == -5
+    assert parse_num("٣٫٥") == Decimal("3.5")
+    assert parse_num(".5") == Decimal("0.5")
+    assert parse_num("7") == Decimal("7")
+
+
+@pytest.mark.parametrize("s", ["1_000", "+5", "1.", "1.0", "1e3", "", "-", "1,5", "NaN"])
+def test_parse_int_rejects(s):
+    with pytest.raises(ValueError):
+        parse_int(s)
+
+
+@pytest.mark.parametrize("s", ["1_000", "+5", "1.", "1e3", "", ".", "inf", "1,5"])
+def test_parse_num_rejects(s):
+    with pytest.raises(ValueError):
+        parse_num(s)
+
+
+def test_arabic_digits_in_csv_ok(tmp_path):
+    assert validate_dir(broken(tmp_path, "crop_requirements.csv", 2, "ph_max", "٧٫٥")) == []
+
+
+def test_float_formatted_int_rejected(tmp_path):
+    one_issue(broken(tmp_path, "crop_requirements.csv", 2, "alt_max", "1500.0"), "crop_requirements.csv", 2, "alt_max")
+
+
+@pytest.mark.parametrize("file,row,col,val", [
+    ("crop_requirements.csv", 2, "alt_max", "99999999999"),
+    ("crop_stages.csv", 4, "seq", "40000"),
+    ("crop_stages.csv", 3, "duration_days", "2147483648"),
+])
+def test_int_width(tmp_path, file, row, col, val):
+    one_issue(broken(tmp_path, file, row, col, val), file, row, col)
+
+
+def test_non_utf8_file(tmp_path):
+    d = tmp_path / "set"
+    shutil.copytree(FIX / "valid", d)
+    (d / "crops.csv").write_bytes(
+        "id,name_ar\nx,طماطم\n".encode("cp1256"))
+    i = one_issue(d, "crops.csv", 0, "")
+    assert i.message_en == "File must be saved as CSV UTF-8"
+    assert i.message_ar == "يجب حفظ الملف بصيغة CSV UTF-8"
+    r = run_cli(d)
+    assert r.returncode == 1 and "Traceback" not in r.stderr
+    assert "File must be saved as CSV UTF-8" in r.stdout
+
+
+def test_invisible_chars_stripped(tmp_path):
+    d = broken(tmp_path, "crops.csv", 2, "name_en", "‎Tomato ​")
+    assert validate_dir(d) == []
+    assert read_rows(d / "crops.csv")[0]["name_en"] == "Tomato"
+
+
+def test_duplicate_header(tmp_path):
+    d = tmp_path / "set"
+    shutil.copytree(FIX / "valid", d)
+    p = d / "governorates.csv"
+    p.write_text(p.read_text(encoding="utf-8").replace("name_en", "name_ar", 1), encoding="utf-8")
+    assert any(i.column == "name_ar" and i.row == 1 and "Duplicate" in i.message_en for i in validate_dir(d))
+
+
+def test_extra_cells(tmp_path):
+    d = tmp_path / "set"
+    shutil.copytree(FIX / "valid", d)
+    p = d / "governorates.csv"
+    lines = p.read_text(encoding="utf-8").splitlines()
+    lines[2] += ",oops"
+    p.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    one_issue(d, "governorates.csv", 3, "")
+
+
+def test_empty_id_no_duplicate_noise(tmp_path):
+    d = tmp_path / "set"
+    shutil.copytree(FIX / "valid", d)
+    p = d / "governorates.csv"
+    lines = p.read_text(encoding="utf-8").splitlines()
+    blank = ",x,y,draft,moa1,,,"
+    p.write_text("\n".join(lines + [blank.replace("x", "غ").replace("y", "Y"), blank.replace("x", "ف").replace("y", "Z")]) + "\n", encoding="utf-8")
+    issues = validate_dir(d)
+    assert all("Duplicate" not in i.message_en for i in issues) and len(issues) == 2

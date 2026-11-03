@@ -10,14 +10,14 @@ TEXTURES = ("sand", "loam", "clay")
 
 META = ["status", "source_id", "source_page", "reviewed_by", "reviewed_at"]
 
-# kind: text | int | num | enum:<NAME> | enums:<NAME> (pipe-separated array)
+# kind: text | int (int4) | smallint (int2) | num | enum:<NAME> | enums:<NAME> (pipe-separated array)
 # A column is required when its DB column is NOT NULL.
 # (column, kind, required)
 COLUMNS: dict[str, list[tuple[str, str, bool]]] = {
     "sources.csv": [
         ("id", "text", True), ("title", "text", True), ("publisher", "text", True),
         ("year", "int", False), ("url", "text", False),
-        ("type", "enum:SOURCE_TYPES", True), ("reliability", "int", False),
+        ("type", "enum:SOURCE_TYPES", True), ("reliability", "smallint", False),
     ],
     "governorates.csv": [("id", "text", True), ("name_ar", "text", True), ("name_en", "text", True)],
     "wilayats.csv": [
@@ -38,7 +38,7 @@ COLUMNS: dict[str, list[tuple[str, str, bool]]] = {
         ("season_days_min", "int", False), ("season_days_max", "int", False),
     ],
     "crop_stages.csv": [
-        ("crop_id", "text", True), ("seq", "int", True), ("stage", "enum:STAGES", True),
+        ("crop_id", "text", True), ("seq", "smallint", True), ("stage", "enum:STAGES", True),
         ("duration_days", "int", True), ("kc", "num", True),
     ],
 }
