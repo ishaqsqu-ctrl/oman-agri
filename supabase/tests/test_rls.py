@@ -136,3 +136,20 @@ def test_knowledge_status_counts_non_admin(db):
     with as_role(db, "authenticated", FARMER):
         with pytest.raises(psycopg.errors.InsufficientPrivilege):
             db.execute("select * from public.knowledge_status_counts()")
+
+
+def test_admin_can_change_other_users_role(db):
+    _seed_users(db)
+    with as_role(db, "authenticated", ADMIN):
+        n = db.execute("update profiles set role = 'shop' where id = %s", [FARMER]).rowcount
+        assert n == 1
+    assert db.execute(
+        "select role from profiles where id = %s", [FARMER]
+    ).fetchone() == ("shop",)
+
+
+def test_anon_cannot_write_knowledge(db):
+    _source(db)
+    with as_role(db, "anon"):
+        with pytest.raises(psycopg.errors.InsufficientPrivilege):
+            _crop(db, "x")

@@ -10,8 +10,13 @@ as $$
   );
 $$;
 
+-- Policies of anon and authenticated call it, so both keep execute.
 revoke execute on function public.is_admin() from public;
 grant execute on function public.is_admin() to anon, authenticated;
+
+-- NOTE: Supabase already grants all privileges on public objects to anon and
+-- authenticated via default privileges, so the grants below are redundant there
+-- (kept for plain Postgres). RLS is the security boundary, never the grants.
 
 -- Knowledge tables: published rows readable by everyone, admin does everything.
 do $$
@@ -27,7 +32,7 @@ begin
       'create policy %I on public.%I for select to anon, authenticated using (status = ''published'')',
       t || '_read_published', t);
     execute format(
-      'create policy %I on public.%I for all to authenticated using (public.is_admin()) with check (public.is_admin())',
+      'create policy %I on public.%I for all to authenticated using ((select public.is_admin())) with check ((select public.is_admin()))',
       t || '_admin_all', t);
   end loop;
 end;
@@ -39,17 +44,39 @@ grant select on public.sources to anon, authenticated;
 grant insert, update, delete on public.sources to authenticated;
 create policy sources_read on public.sources for select to anon, authenticated using (true);
 create policy sources_admin_all on public.sources for all to authenticated
-  using (public.is_admin()) with check (public.is_admin());
+  using ((select public.is_admin())) with check ((select public.is_admin()));
 
--- Profiles: own row only; the column grant (display_name only) is what stops
--- role self-promotion. Role changes go through the service role / SQL.
+-- Profiles: users read/update their own row; admin everything. Role/id
+-- changes by non-admins are stopped by a trigger (grants are not a guard).
 alter table public.profiles enable row level security;
-grant select on public.profiles to authenticated;
-grant update (display_name) on public.profiles to authenticated;
+grant select, update on public.profiles to authenticated;
 create policy profiles_select_own on public.profiles for select to authenticated
-  using (id = auth.uid() or public.is_admin());
+  using (id = (select auth.uid()));
 create policy profiles_update_own on public.profiles for update to authenticated
-  using (id = auth.uid()) with check (id = auth.uid());
+  using (id = (select auth.uid())) with check (id = (select auth.uid()));
+create policy profiles_admin_all on public.profiles for all to authenticated
+  using ((select public.is_admin())) with check ((select public.is_admin()));
+
+-- Deliberately SECURITY INVOKER: current_user must be the calling API role
+-- (inside SECURITY DEFINER it would be the owner). It only guards the API
+-- roles anon/authenticated, so owner/service_role/migrations (direct SQL) pass.
+create function public.guard_profile_privileged_columns() returns trigger
+language plpgsql set search_path = ''
+as $$
+begin
+  if current_user in ('anon', 'authenticated')
+     and (new.role is distinct from old.role or new.id is distinct from old.id)
+     and not public.is_admin() then
+    raise exception 'role and id can only be changed by an admin'
+      using errcode = 'insufficient_privilege';
+  end if;
+  return new;
+end;
+$$;
+
+create trigger profiles_guard_privileged_columns
+  before update on public.profiles
+  for each row execute function public.guard_profile_privileged_columns();
 
 -- Admin RPCs.
 create function public.publish_reviewed(p_table text) returns integer
@@ -89,7 +116,7 @@ begin
 end;
 $$;
 
-revoke execute on function public.publish_reviewed(text) from public;
-revoke execute on function public.knowledge_status_counts() from public;
+revoke execute on function public.publish_reviewed(text) from public, anon;
+revoke execute on function public.knowledge_status_counts() from public, anon;
 grant execute on function public.publish_reviewed(text) to authenticated;
 grant execute on function public.knowledge_status_counts() to authenticated;
