@@ -1,5 +1,6 @@
 import psycopg
 import pytest
+from conftest import as_role
 
 
 def _source(db):
@@ -62,3 +63,39 @@ def test_profile_created_on_signup(db):
     db.execute("insert into auth.users(id, email) values (%s, 'a@b.om')", [uid])
     row = db.execute("select role from public.profiles where id = %s", [uid]).fetchone()
     assert row == ("farmer",)
+
+
+UID = "22222222-2222-2222-2222-222222222222"
+
+
+def test_as_role_sets_uid_and_role(db):
+    with as_role(db, "authenticated", UID):
+        assert db.execute("select current_user, auth.uid()::text").fetchone() == (
+            "authenticated",
+            UID,
+        )
+    assert db.execute("select current_user, auth.uid()").fetchone() == ("postgres", None)
+
+
+def test_as_role_restores_after_failed_statement(db):
+    _source(db)
+    with as_role(db, "authenticated", UID):
+        with pytest.raises(psycopg.errors.InsufficientPrivilege):
+            db.execute(
+                "insert into sources(id, title, publisher, type) "
+                "values ('bad', 'T', 'P', 'other')"
+            )
+    assert db.execute("select current_user, auth.uid()").fetchone() == ("postgres", None)
+    assert db.execute("select count(*) from sources").fetchone() == (1,)
+
+
+def test_committed_db_is_isolated_and_commits(committed_db):
+    committed_db.execute(
+        "insert into sources(id, title, publisher, type) values ('c', 'T', 'P', 'other')"
+    )
+    committed_db.commit()
+    assert committed_db.execute("select count(*) from sources").fetchone() == (1,)
+
+
+def test_committed_db_fresh_per_test(committed_db):
+    assert committed_db.execute("select count(*) from sources").fetchone() == (0,)
