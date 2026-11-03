@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Needed in release builds to reach Supabase and open source links. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:label="oman_agri"
+        android:label="مزارع عُمان"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

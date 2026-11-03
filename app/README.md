@@ -1,17 +1,13 @@
-# oman_agri
+# مزارع عُمان (Oman Farmer) — تطبيق Flutter
 
-A new Flutter project.
+هذا مجلد تطبيق Flutter لمشروع «مزارع عُمان». التوثيق الكامل (الإعداد، وتشغيل التطبيق، ومراجعة البيانات) في [README الرئيسي](../README.md).
 
-## Getting Started
+- تشغيل الاختبارات: `flutter test` ثم `flutter analyze`
+- تشغيل التطبيق على الويب مع عرض المسودات: `flutter run -d chrome --dart-define=SHOW_DRAFTS=true`
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+This is the Flutter app of Oman Farmer. Full documentation (setup, running, data review) is in the [root README](../README.md).
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Tests: `flutter test` then `flutter analyze`
+- Run on web showing drafts: `flutter run -d chrome --dart-define=SHOW_DRAFTS=true`
