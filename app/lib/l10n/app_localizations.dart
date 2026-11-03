@@ -434,6 +434,12 @@ abstract class AppLocalizations {
   /// **'فتح الرابط'**
   String get openLink;
 
+  /// No description provided for @linkOpenFailed.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر فتح الرابط'**
+  String get linkOpenFailed;
+
   /// No description provided for @close.
   ///
   /// In ar, this message translates to:

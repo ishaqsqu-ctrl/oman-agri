@@ -56,6 +56,7 @@
   "sourceYear": "Year",
   "sourcePage": "Page",
   "openLink": "Open link",
+  "linkOpenFailed": "Could not open the link",
   "close": "Close",
   "admin": "Admin",
   "adminNeedsBackend": "The admin panel requires a server connection",

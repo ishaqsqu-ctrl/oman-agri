@@ -178,6 +178,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get openLink => 'فتح الرابط';
 
   @override
+  String get linkOpenFailed => 'تعذّر فتح الرابط';
+
+  @override
   String get close => 'إغلاق';
 
   @override

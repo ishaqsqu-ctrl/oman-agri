@@ -68,20 +68,35 @@ class _Body extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
-        Text(crop.nameAr, style: theme.textTheme.headlineSmall),
+        // Crop-level facts (names, categories, notes) cite the crop row's source.
+        Row(children: [
+          Expanded(
+            child: Text(crop.nameAr, style: theme.textTheme.headlineSmall),
+          ),
+          SourceButton(
+              key: const ValueKey('crop-source'),
+              sourceId: crop.meta.sourceId,
+              page: crop.meta.sourcePage),
+        ]),
         const SizedBox(height: 4),
-        Directionality(
-          textDirection: TextDirection.ltr,
-          child: Text(crop.nameEn, style: theme.textTheme.titleMedium),
+        // Start-aligned like the rest of the screen, but laid out LTR.
+        Align(
+          alignment: AlignmentDirectional.centerStart,
+          child: Directionality(
+            textDirection: TextDirection.ltr,
+            child: Text(crop.nameEn, style: theme.textTheme.titleMedium),
+          ),
         ),
         if (crop.scientificName != null && crop.scientificName!.isNotEmpty) ...[
           const SizedBox(height: 4),
-          Row(children: [
+          Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text('${l10n.scientificName}: '),
-            Directionality(
-              textDirection: TextDirection.ltr,
-              child: Text(crop.scientificName!,
-                  style: const TextStyle(fontStyle: FontStyle.italic)),
+            Flexible(
+              child: Directionality(
+                textDirection: TextDirection.ltr,
+                child: Text(crop.scientificName!,
+                    style: const TextStyle(fontStyle: FontStyle.italic)),
+              ),
             ),
           ]),
         ],
@@ -98,7 +113,7 @@ class _Body extends StatelessWidget {
         const SizedBox(height: 24),
         Text(l10n.requirements, style: theme.textTheme.titleLarge),
         const SizedBox(height: 8),
-        ..._requirementRows(l10n, crop.requirements),
+        ..._requirementRows(l10n, crop.requirements, isAr),
         const SizedBox(height: 24),
         Text(l10n.growthStages, style: theme.textTheme.titleLarge),
         const SizedBox(height: 8),
@@ -107,7 +122,8 @@ class _Body extends StatelessWidget {
     );
   }
 
-  List<Widget> _requirementRows(AppLocalizations l10n, CropRequirements? r) {
+  List<Widget> _requirementRows(
+      AppLocalizations l10n, CropRequirements? r, bool isAr) {
     if (r == null) return [_NoData(l10n.noData)];
     final m = r.meta;
     Widget row(String label, String? value) =>
@@ -121,7 +137,9 @@ class _Body extends StatelessWidget {
       row(l10n.eceThreshold, r.eceThreshold == null ? null : _n(r.eceThreshold)),
       row(l10n.phRange, _range(r.phMin, r.phMax)),
       row(l10n.soilTexture,
-          r.textures.isEmpty ? null : r.textures.map((t) => textureLabel(l10n, t)).join('، ')),
+          r.textures.isEmpty ? null : r.textures
+              .map((t) => textureLabel(l10n, t))
+              .join(isAr ? '، ' : ', ')),
       row(l10n.altitude, _range(r.altMin, r.altMax)),
       row(l10n.seasonLength, _range(r.seasonDaysMin, r.seasonDaysMax)),
     ];

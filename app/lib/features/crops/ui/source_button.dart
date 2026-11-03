@@ -5,6 +5,27 @@ import 'package:oman_agri/features/crops/data/models.dart';
 import 'package:oman_agri/l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+final _firstStrong = RegExp('[A-Za-z\u00C0-\u024F\u0590-\u08FF]');
+final _rtlLetter = RegExp('[\u0590-\u08FF]');
+
+/// Direction of [text] taken from its first strong (letter) character, so an
+/// Arabic title renders RTL and a Latin one LTR whatever the app locale.
+TextDirection textDirectionOf(String text) {
+  final m = _firstStrong.firstMatch(text);
+  return m != null && _rtlLetter.hasMatch(m[0]!)
+      ? TextDirection.rtl
+      : TextDirection.ltr;
+}
+
+/// The parsed [url] when it is an absolute http(s) link, else null. Anything
+/// else (javascript:, file:, scheme-less text) is never offered as a link.
+Uri? safeSourceUri(String? url) {
+  if (url == null || url.isEmpty) return null;
+  final uri = Uri.tryParse(url);
+  if (uri == null || !uri.hasScheme) return null;
+  return uri.scheme == 'http' || uri.scheme == 'https' ? uri : null;
+}
+
 /// Icon button that opens a bottom sheet describing where a fact came from.
 class SourceButton extends ConsumerWidget {
   const SourceButton({super.key, required this.sourceId, this.page});
@@ -43,7 +64,8 @@ class _SourceSheet extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final s = source;
-    final url = s?.url;
+    final uri = safeSourceUri(s?.url);
+    final title = s?.title ?? sourceId;
     Widget line(String label, String value) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 4),
           child: Text.rich(TextSpan(children: [
@@ -62,37 +84,50 @@ class _SourceSheet extends StatelessWidget {
           children: [
             Text(l10n.source, style: theme.textTheme.labelLarge),
             const SizedBox(height: 4),
-            Directionality(
-              textDirection: TextDirection.ltr,
-              child: Text(s?.title ?? sourceId, style: theme.textTheme.titleMedium),
-            ),
+            Text(title,
+                textDirection: textDirectionOf(title),
+                style: theme.textTheme.titleMedium),
             const SizedBox(height: 8),
             if (s != null && s.publisher.isNotEmpty)
               line(l10n.sourcePublisher, s.publisher),
             if (s?.year != null) line(l10n.sourceYear, '${s!.year}'),
             if (page != null && page!.isNotEmpty) line(l10n.sourcePage, page!),
-            if (url != null && url.isNotEmpty)
+            if (uri != null)
               ListTile(
                 contentPadding: EdgeInsets.zero,
                 leading: const Icon(Icons.open_in_new),
                 title: Directionality(
                   textDirection: TextDirection.ltr,
-                  child: Text(url,
+                  child: Text(s!.url!,
                       style: TextStyle(
                           color: theme.colorScheme.primary,
                           decoration: TextDecoration.underline)),
                 ),
                 subtitle: Text(l10n.openLink),
-                onTap: () {
-                  final uri = Uri.tryParse(url);
-                  if (uri != null) {
-                    launchUrl(uri, mode: LaunchMode.externalApplication);
-                  }
-                },
+                onTap: () => _open(context, uri),
               ),
           ],
         ),
       ),
     );
+  }
+
+  /// Opens [uri] externally. On failure the sheet closes (a snackbar would be
+  /// hidden behind it) and a snackbar explains the problem.
+  Future<void> _open(BuildContext context, Uri uri) async {
+    final messenger = ScaffoldMessenger.maybeOf(context);
+    final navigator = Navigator.of(context);
+    final message = AppLocalizations.of(context).linkOpenFailed;
+    bool ok;
+    try {
+      ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } catch (_) {
+      ok = false;
+    }
+    if (ok) return;
+    if (navigator.mounted) navigator.maybePop();
+    messenger
+      ?..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text(message)));
   }
 }

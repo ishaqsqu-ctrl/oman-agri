@@ -178,6 +178,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get openLink => 'Open link';
 
   @override
+  String get linkOpenFailed => 'Could not open the link';
+
+  @override
   String get close => 'Close';
 
   @override
