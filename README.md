@@ -41,6 +41,31 @@ oman-agri/
 ### ملاحظة تقنية: التخزين دون إنترنت
 في هذه المرحلة يُحفظ نسخة البيانات للعمل دون إنترنت كـ **لقطة JSON** (ملف على الأجهزة، و`shared_preferences` على الويب) بدلاً من Drift/SQLite المذكور في التصميم. هذا انحراف مقصود ومحدود؛ يصل Drift في المرحلة 4 مع بيانات المزرعة.
 
+### عرض النسخة التجريبية (ويب)
+```
+cd app
+flutter build web --dart-define=SHOW_DRAFTS=true --no-web-resources-cdn
+cd ..
+python3 -m http.server 8099 -d app/build/web
+```
+ثم افتح `http://localhost:8099` في المتصفح. الخيار `--no-web-resources-cdn` يضمّن محرك الرسم مع التطبيق فيعمل دون الاتصال بخوادم Google. لاختبار آلي سريع للواجهة (بعد التشغيل أعلاه): `node tools/smoke_web.mjs http://localhost:8099/ ./screens` — يفتح التطبيق ويبحث عن «طماطم» ويفتح المصدر ويبدّل اللغة ويحفظ لقطات الشاشة.
+
+### إنشاء مشروع Supabase وتطبيق قاعدة البيانات
+1. أنشئ مشروعاً جديداً من لوحة Supabase (supabase.com) واحفظ كلمة مرور قاعدة البيانات.
+2. من مجلد المشروع: `supabase link --project-ref <معرّف المشروع>` ثم `supabase db push` لتطبيق ملفات `supabase/migrations/`.
+3. استورد المعرفة الزراعية (بعد اجتياز التحقق): `python -m data.import_db data/ --dsn "postgresql://postgres:<كلمة المرور>@db.<معرّف المشروع>.supabase.co:5432/postgres"` (أو ضع الرابط في المتغير `DATABASE_URL`).
+4. لتشغيل التطبيق على Supabase: `flutter run -d chrome --dart-define=SUPABASE_URL=... --dart-define=SUPABASE_ANON_KEY=...`
+
+### تعيين مشرف (admin)
+سجّل الدخول مرة واحدة بحسابك أولاً، ثم في محرر SQL داخل Supabase نفّذ:
+```
+update public.profiles set role = 'admin' where id = '<معرّف المستخدم UUID>';
+```
+تجد المعرّف في Authentication ← Users.
+
+### حالة البيانات
+بيانات المحاصيل الحقيقية (٣٢ محصولاً) تصل في **المهمة ١٠**. حالياً يحتوي التطبيق على عيّنة صغيرة (الطماطم والليمون العماني) بحالة `draft` لأغراض العرض فقط؛ لذلك يلزم `SHOW_DRAFTS=true` لرؤيتها.
+
 ---
 
 ## English
@@ -83,3 +108,28 @@ No value may be entered without a source; all seed rows ship as `draft`.
 
 ### Deliberate deviation: offline cache
 In phase 1 the offline cache is a **JSON snapshot** (a file on native platforms, `shared_preferences` on web) instead of the Drift/SQLite store named in design spec §4. This is a deliberate, scoped deviation; Drift arrives in phase 4 together with farm data.
+
+### Viewing the demo (web)
+```
+cd app
+flutter build web --dart-define=SHOW_DRAFTS=true --no-web-resources-cdn
+cd ..
+python3 -m http.server 8099 -d app/build/web
+```
+Then open `http://localhost:8099`. `--no-web-resources-cdn` bundles the CanvasKit renderer so the build works without reaching Google's CDN. For an automated UI check (with the server above running): `node tools/smoke_web.mjs http://localhost:8099/ ./screens` — it opens the app, searches Arabic "tomato", opens a source sheet, switches to English and saves screenshots.
+
+### Creating the Supabase project and applying the schema
+1. Create a new project in the Supabase dashboard and keep the database password.
+2. From the repo root: `supabase link --project-ref <project-ref>` then `supabase db push` to apply `supabase/migrations/`.
+3. Import the knowledge data (it must pass validation): `python -m data.import_db data/ --dsn "postgresql://postgres:<password>@db.<project-ref>.supabase.co:5432/postgres"` (or set `DATABASE_URL`).
+4. Run the app against Supabase: `flutter run -d chrome --dart-define=SUPABASE_URL=... --dart-define=SUPABASE_ANON_KEY=...`
+
+### Making a user an admin
+Sign in once with your account first, then run in the Supabase SQL editor:
+```
+update public.profiles set role = 'admin' where id = '<user uuid>';
+```
+Find the id under Authentication → Users.
+
+### Data status
+The real crop data (32 crops) arrives in **Task 10**. For now the bundled snapshot is a small fixture (tomato, Omani lime), all `draft`, for demo only — hence `SHOW_DRAFTS=true`.
