@@ -62,11 +62,19 @@ def validate_dir(path: Path) -> list[Issue]:
             continue
         spec = COLUMNS[fname]
         names = [c for c, _, _ in spec]
+        if any(kind == "semicolon" for _, _, kind in problems):
+            add(fname, 1, "", "يبدو أن الملف محفوظ بفاصلة منقوطة؛ احفظه بصيغة CSV UTF-8 (فاصلة)",
+                "File appears to use semicolons; save as CSV UTF-8 (comma-delimited)")
+            tables[fname] = []
+            unusable.add(fname)
+            continue
         bad_header = False
         for r_, c_, kind in problems:
-            bad_header = bad_header or kind == "duplicate_header"
+            bad_header = bad_header or kind in ("duplicate_header", "unnamed_header")
             if kind == "duplicate_header":
                 add(fname, r_, c_, f"اسم العمود مكرر: {c_}", f"Duplicate column: {c_}")
+            elif kind == "unnamed_header":
+                add(fname, r_, "", f"عمود بلا اسم في الموضع {c_}", f"Unnamed column at position {c_}")
             else:
                 add(fname, r_, c_, "عدد الخلايا في الصف أكبر من عدد الأعمدة", "Row has more cells than header columns")
         for c in names:
@@ -74,12 +82,11 @@ def validate_dir(path: Path) -> list[Issue]:
                 bad_header = True
                 add(fname, 1, c, f"العمود مفقود: {c}", f"Missing column: {c}")
         for c in header:
-            if c not in names:
+            if c and c not in names:
                 bad_header = True
                 add(fname, 1, c, f"عمود غير معروف: {c}", f"Unknown column: {c}")
         if bad_header:
             tables[fname] = []
-            unusable.add(fname)
             unusable.add(fname)
             continue
         tables[fname] = rows

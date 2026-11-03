@@ -15,25 +15,36 @@ def read_table(path: Path):
 
     rows is [(spreadsheet_row, row_dict)] with header = row 1. Every cell is
     cleaned (invisible characters removed, NBSP -> space, stripped); rows whose
-    cells are all empty are dropped. problems is [(row, column, kind)] with kind
-    "duplicate_header" or "extra_cells". Raises UnicodeDecodeError for non-UTF-8.
+    cells are all empty are dropped. Trailing header cells that are empty, and
+    whose column is empty in every row (Excel's ",," artefact), are dropped.
+    problems is [(row, column, kind)] with kind "duplicate_header",
+    "extra_cells", "unnamed_header" (column = 1-based position as text) or
+    "semicolon" (the header is one cell containing ';': wrong delimiter; no rows
+    are returned). Raises UnicodeDecodeError for non-UTF-8.
     """
     with Path(path).open(encoding="utf-8-sig", newline="") as f:
         records = list(csv.reader(f))
     if not records:
         return [], [], []
     header = [_clean(h) for h in records[0]]
+    if len(header) == 1 and ";" in header[0]:
+        return header, [], [(1, "", "semicolon")]
+    body = [(n, [_clean(c) for c in rec]) for n, rec in enumerate(records[1:], start=2)]
+    body = [(n, cells) for n, cells in body if any(cells)]
+    while header and header[-1] == "" and not any(
+            len(cells) >= len(header) and cells[len(header) - 1] for _, cells in body):
+        header.pop()
     problems = []
     seen = set()
-    for h in header:
+    for pos, h in enumerate(header, start=1):
+        if h == "":
+            problems.append((1, str(pos), "unnamed_header"))
+            continue
         if h in seen:
             problems.append((1, h, "duplicate_header"))
         seen.add(h)
     out = []
-    for n, rec in enumerate(records[1:], start=2):
-        cells = [_clean(c) for c in rec]
-        if not any(cells):
-            continue
+    for n, cells in body:
         if any(cells[len(header):]):
             problems.append((n, "", "extra_cells"))
         cells = (cells + [""] * len(header))[: len(header)]

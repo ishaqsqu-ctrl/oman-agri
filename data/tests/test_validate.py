@@ -252,3 +252,47 @@ def test_empty_id_no_duplicate_noise(tmp_path):
     p.write_text("\n".join(lines + [blank.replace("x", "غ").replace("y", "Y"), blank.replace("x", "ف").replace("y", "Z")]) + "\n", encoding="utf-8")
     issues = validate_dir(d)
     assert all("Duplicate" not in i.message_en for i in issues) and len(issues) == 2
+
+
+# --- final review: Excel trailing columns, unnamed columns, semicolons ---
+def _rewrite_lines(d, filename, fn):
+    p = d / filename
+    lines = p.read_text(encoding="utf-8").splitlines()
+    p.write_text("\n".join(fn(lines)) + "\n", encoding="utf-8")
+
+
+def test_trailing_empty_columns_ignored(tmp_path):
+    d = tmp_path / "set"
+    shutil.copytree(FIX / "valid", d)
+    for f in d.glob("*.csv"):
+        _rewrite_lines(d, f.name, lambda ls: [l + ",," for l in ls])
+    assert validate_dir(d) == []
+    assert read_rows(d / "crops.csv") == read_rows(FIX / "valid" / "crops.csv")
+
+
+def test_trailing_unnamed_column_with_data(tmp_path):
+    d = tmp_path / "set"
+    shutil.copytree(FIX / "valid", d)
+    _rewrite_lines(d, "governorates.csv", lambda ls: [ls[0] + ",", ls[1] + ",note", *ls[2:]])
+    i = one_issue(d, "governorates.csv", 1, "")
+    assert i.message_en == "Unnamed column at position 9"
+    assert i.message_ar == "عمود بلا اسم في الموضع 9"
+
+
+def test_unnamed_column_in_middle(tmp_path):
+    d = tmp_path / "set"
+    shutil.copytree(FIX / "valid", d)
+    _rewrite_lines(d, "governorates.csv",
+                   lambda ls: [l.replace(",", ",,", 1) for l in ls])
+    i = one_issue(d, "governorates.csv", 1, "")
+    assert i.message_en == "Unnamed column at position 2"
+    assert i.message_ar == "عمود بلا اسم في الموضع 2"
+
+
+def test_semicolon_delimited_file(tmp_path):
+    d = tmp_path / "set"
+    shutil.copytree(FIX / "valid", d)
+    _rewrite_lines(d, "governorates.csv", lambda ls: [l.replace(",", ";") for l in ls])
+    i = one_issue(d, "governorates.csv", 1, "")
+    assert i.message_en == "File appears to use semicolons; save as CSV UTF-8 (comma-delimited)"
+    assert i.message_ar == "يبدو أن الملف محفوظ بفاصلة منقوطة؛ احفظه بصيغة CSV UTF-8 (فاصلة)"
