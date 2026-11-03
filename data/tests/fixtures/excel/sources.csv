@@ -1,5 +1,5 @@
 ﻿id,title,publisher,year,url,type,reliability
-fao56 ,Crop evapotranspiration,FAO,1998,https://www.fao.org,fao,3
-moa1,Guide,Ministry of Agriculture,2020,,ministry,2
+src_a ,Test fixture source A,Test publisher,1998,https://example.invalid,other,3
+src_b,Test fixture source B,Test publisher,2020,,dataset,2
 ,,,,
 

@@ -248,7 +248,7 @@ def test_empty_id_no_duplicate_noise(tmp_path):
     shutil.copytree(FIX / "valid", d)
     p = d / "governorates.csv"
     lines = p.read_text(encoding="utf-8").splitlines()
-    blank = ",x,y,draft,moa1,,,"
+    blank = ",x,y,draft,src_b,,,"
     p.write_text("\n".join(lines + [blank.replace("x", "غ").replace("y", "Y"), blank.replace("x", "ف").replace("y", "Z")]) + "\n", encoding="utf-8")
     issues = validate_dir(d)
     assert all("Duplicate" not in i.message_en for i in issues) and len(issues) == 2

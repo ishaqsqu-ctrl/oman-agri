@@ -6,7 +6,7 @@ from supabase.tests.conftest import as_role
 
 FARMER = str(uuid.uuid4())
 ADMIN = str(uuid.uuid4())
-REVIEWER = {"reviewed_by": "dr-x", "reviewed_at": "2026-11-01T00:00:00Z"}
+REVIEWER = {"reviewed_by": "test-reviewer", "reviewed_at": "2026-11-01T00:00:00Z"}
 
 
 def _seed_users(db):

@@ -69,9 +69,9 @@ void main() {
       expect(tomato.requirements!.textures, ['sand', 'loam']);
       expect(tomato.categories, [CropCategory.vegetable]);
       expect(tomato.meta.status, KnowledgeStatus.published);
-      expect(tomato.meta.sourceId, 'fao56');
+      expect(tomato.meta.sourceId, 'src_a');
       expect(tomato.meta.sourcePage, 'Table 12');
-      expect(s.sources['fao56']!.publisher, 'FAO');
+      expect(s.sources['src_a']!.publisher, 'Test publisher');
       expect(tomato.localizedName(const Locale('ar')), 'طماطم');
       expect(tomato.localizedName(const Locale('en')), 'Tomato');
     });
@@ -212,10 +212,10 @@ void main() {
   group('assembleSnapshot', () {
     test('joins requirements and stages by crop and sorts stages by seq', () {
       Map<String, dynamic> m(Map<String, dynamic> x) =>
-          {'status': 'published', 'source_id': 'fao56', ...x};
+          {'status': 'published', 'source_id': 'src_a', ...x};
       final s = assembleSnapshot(
         sources: [
-          {'id': 'fao56', 'title': 't', 'publisher': 'FAO', 'type': 'fao'}
+          {'id': 'src_a', 'title': 't', 'publisher': 'Test publisher', 'type': 'other'}
         ],
         governorates: [],
         wilayats: [],

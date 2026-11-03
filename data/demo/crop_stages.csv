@@ -1,0 +1,4 @@
+crop_id,seq,stage,duration_days,kc,status,source_id,source_page,reviewed_by,reviewed_at
+tomato,1,initial,30,0.6,draft,demo,,,
+tomato,2,development,40,0.8,draft,demo,,,
+tomato,3,mid,40,1.15,draft,demo,,,

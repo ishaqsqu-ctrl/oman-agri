@@ -1,5 +1,5 @@
 ﻿id,governorate_id,name_ar,name_en,status,source_id,source_page,reviewed_by,reviewed_at
-seeb ,muscat,السيب,Seeb,draft,moa1,,,
-sohar,batinah_north,صحار,Sohar,draft,moa1,,,
+seeb ,muscat,السيب,Seeb,draft,src_b,,,
+sohar,batinah_north,صحار,Sohar,draft,src_b,,,
 ,,,,
 

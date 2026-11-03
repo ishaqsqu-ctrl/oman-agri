@@ -1,6 +1,6 @@
 ﻿crop_id,seq,stage,duration_days,kc,status,source_id,source_page,reviewed_by,reviewed_at
-tomato ,1,initial,30,0.6,draft,fao56,Table 12,,
-tomato,2,development,40,0.8,draft,fao56,Table 12,,
-tomato,3,mid,40,1.15,draft,fao56,Table 12,,
+tomato ,1,initial,30,0.6,draft,src_a,Table 12,,
+tomato,2,development,40,0.8,draft,src_a,Table 12,,
+tomato,3,mid,40,1.15,draft,src_a,Table 12,,
 ,,,,
 

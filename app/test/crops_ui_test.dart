@@ -12,9 +12,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 KnowledgeMeta _m(KnowledgeStatus s, [String page = 'Table 12']) => KnowledgeMeta(
     status: s,
-    sourceId: 'fao56',
+    sourceId: 'src_a',
     sourcePage: page,
-    reviewedBy: s == KnowledgeStatus.published ? 'Dr Ali' : null,
+    reviewedBy: s == KnowledgeStatus.published ? 'test-reviewer' : null,
     reviewedAt: s == KnowledgeStatus.published ? '2026-10-01' : null);
 
 KnowledgeSnapshot snapshot({KnowledgeStatus status = KnowledgeStatus.published}) {
@@ -22,12 +22,12 @@ KnowledgeSnapshot snapshot({KnowledgeStatus status = KnowledgeStatus.published})
   return KnowledgeSnapshot(
     generatedAt: DateTime.utc(2026, 11, 3),
     sources: const {
-      'fao56': Source(
-          id: 'fao56',
-          title: 'Crop evapotranspiration',
-          publisher: 'FAO',
+      'src_a': Source(
+          id: 'src_a',
+          title: 'Test fixture source',
+          publisher: 'Test publisher',
           year: 1998,
-          url: 'https://www.fao.org/x'),
+          url: 'https://example.invalid/x'),
     },
     crops: [
       Crop(
@@ -147,10 +147,10 @@ void main() {
     expect(find.byType(SourceButton), findsWidgets);
     await tester.tap(find.byType(SourceButton).first);
     await tester.pumpAndSettle();
-    expect(find.text('Crop evapotranspiration'), findsOneWidget);
-    expect(find.textContaining('FAO'), findsWidgets);
+    expect(find.text('Test fixture source'), findsOneWidget);
+    expect(find.textContaining('Test publisher'), findsWidgets);
     expect(find.textContaining('1998'), findsWidgets);
-    expect(find.textContaining('https://www.fao.org/x'), findsOneWidget);
+    expect(find.textContaining('https://example.invalid/x'), findsOneWidget);
   });
 
   testWidgets('detail with no requirements/stages shows no data', (tester) async {

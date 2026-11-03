@@ -2,33 +2,33 @@
   "schema_version": 1,
   "generated_at": "2026-11-03T00:00:00+00:00",
   "sources": [
-    {"id": "fao56", "title": "Crop evapotranspiration", "publisher": "FAO", "year": 1998, "url": "https://www.fao.org", "type": "fao", "reliability": 3}
+    {"id": "src_a", "title": "Test fixture source", "publisher": "Test publisher", "year": 1998, "url": "https://example.invalid", "type": "other", "reliability": 3}
   ],
   "governorates": [
-    {"id": "muscat", "name_ar": "مسقط", "name_en": "Muscat", "status": "published", "source_id": "fao56", "source_page": "p1", "reviewed_by": "Dr Ali", "reviewed_at": "2026-10-01"}
+    {"id": "muscat", "name_ar": "مسقط", "name_en": "Muscat", "status": "published", "source_id": "src_a", "source_page": "p1", "reviewed_by": "test-reviewer", "reviewed_at": "2026-10-01"}
   ],
   "wilayats": [],
   "crops": [
     {"id": "tomato", "name_ar": "طماطم", "name_en": "Tomato", "scientific_name": "Solanum lycopersicum",
      "categories": ["vegetable"], "lifecycle": "annual", "notes_ar": null, "notes_en": null,
-     "status": "published", "source_id": "fao56", "source_page": "Table 12", "reviewed_by": "Dr Ali", "reviewed_at": "2026-10-01",
+     "status": "published", "source_id": "src_a", "source_page": "Table 12", "reviewed_by": "test-reviewer", "reviewed_at": "2026-10-01",
      "requirements": {"t_min": 10, "t_opt_low": 18, "t_opt_high": 27.5, "t_max": 35, "chill_hours_min": null,
        "ece_threshold": 2.5, "ece_slope": 9.9, "ph_min": 5.5, "ph_max": 7.5, "textures": ["sand", "loam"],
        "alt_min": 0, "alt_max": 1500, "season_days_min": 90, "season_days_max": 150,
-       "status": "published", "source_id": "fao56", "source_page": "p5", "reviewed_by": "Dr Ali", "reviewed_at": "2026-10-01"},
+       "status": "published", "source_id": "src_a", "source_page": "p5", "reviewed_by": "test-reviewer", "reviewed_at": "2026-10-01"},
      "stages": [
-       {"seq": 1, "stage": "initial", "duration_days": 30, "kc": 1, "status": "published", "source_id": "fao56", "source_page": "Table 12", "reviewed_by": "Dr Ali", "reviewed_at": "2026-10-01"},
-       {"seq": 2, "stage": "development", "duration_days": 40, "kc": 0.8, "status": "published", "source_id": "fao56", "source_page": "Table 12", "reviewed_by": "Dr Ali", "reviewed_at": "2026-10-01"},
-       {"seq": 3, "stage": "mid", "duration_days": 40, "kc": 1.15, "status": "published", "source_id": "fao56", "source_page": "Table 12", "reviewed_by": "Dr Ali", "reviewed_at": "2026-10-01"},
-       {"seq": 4, "stage": "late", "duration_days": 25, "kc": 0.8, "status": "published", "source_id": "fao56", "source_page": "Table 12", "reviewed_by": "Dr Ali", "reviewed_at": "2026-10-01"}
+       {"seq": 1, "stage": "initial", "duration_days": 30, "kc": 1, "status": "published", "source_id": "src_a", "source_page": "Table 12", "reviewed_by": "test-reviewer", "reviewed_at": "2026-10-01"},
+       {"seq": 2, "stage": "development", "duration_days": 40, "kc": 0.8, "status": "published", "source_id": "src_a", "source_page": "Table 12", "reviewed_by": "test-reviewer", "reviewed_at": "2026-10-01"},
+       {"seq": 3, "stage": "mid", "duration_days": 40, "kc": 1.15, "status": "published", "source_id": "src_a", "source_page": "Table 12", "reviewed_by": "test-reviewer", "reviewed_at": "2026-10-01"},
+       {"seq": 4, "stage": "late", "duration_days": 25, "kc": 0.8, "status": "published", "source_id": "src_a", "source_page": "Table 12", "reviewed_by": "test-reviewer", "reviewed_at": "2026-10-01"}
      ]},
     {"id": "lime", "name_ar": "ليمون عماني", "name_en": "Omani lime", "scientific_name": "Citrus aurantiifolia",
      "categories": ["fruit", "tree", "future_category"], "lifecycle": "tree",
-     "status": "draft", "source_id": "fao56", "source_page": null, "reviewed_by": null, "reviewed_at": null,
+     "status": "draft", "source_id": "src_a", "source_page": null, "reviewed_by": null, "reviewed_at": null,
      "requirements": null, "stages": []},
     {"id": "okra", "name_ar": "بامية", "name_en": "Okra", "scientific_name": null,
      "categories": ["vegetable"], "lifecycle": "annual",
-     "status": "archived_in_future", "source_id": "fao56", "source_page": null, "reviewed_by": null, "reviewed_at": null,
+     "status": "archived_in_future", "source_id": "src_a", "source_page": null, "reviewed_by": null, "reviewed_at": null,
      "requirements": null, "stages": []}
   ]
 }

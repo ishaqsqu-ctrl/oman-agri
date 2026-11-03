@@ -1,4 +1,4 @@
 ﻿crop_id,t_min,t_opt_low,t_opt_high,t_max,chill_hours_min,ece_threshold,ece_slope,ph_min,ph_max,textures,alt_min,alt_max,season_days_min,season_days_max,status,source_id,source_page,reviewed_by,reviewed_at
-tomato ,10,18,27,35,,2.5,9.9,5.5,7.5,sand|loam,0,1500,90,150,draft,fao56,p5,,
+tomato ,10,18,27,35,,2.5,9.9,5.5,7.5,sand|loam,0,1500,90,150,draft,src_a,p5,,
 ,,,,
 

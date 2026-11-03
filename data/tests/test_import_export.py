@@ -114,7 +114,7 @@ def test_snapshot_shape():
     assert "crop_id" not in tomato["requirements"]
     assert tomato["requirements"]["t_min"] == 10 and tomato["requirements"]["textures"] == ["sand", "loam"]
     assert tomato["requirements"]["chill_hours_min"] is None
-    assert tomato["requirements"]["status"] == "draft" and tomato["requirements"]["source_id"] == "fao56"
+    assert tomato["requirements"]["status"] == "draft" and tomato["requirements"]["source_id"] == "src_a"
     seqs = [st["seq"] for st in tomato["stages"]]
     assert seqs == sorted(seqs) and len(seqs) >= 2
     assert all("crop_id" not in st for st in tomato["stages"])
@@ -194,3 +194,29 @@ def test_import_csv_published_publishes(committed_db, tmp_path):
     import_dir(d, committed_db)
     committed_db.commit()
     assert _status(committed_db, "crops", "id='tomato'") == "published"
+
+
+# --- final review: demo set (ruling F2) ---
+DEMO = ROOT / "data" / "demo"
+
+
+def test_demo_set_is_valid_marked_and_all_draft():
+    s = build_snapshot(DEMO, now="x")
+    assert [src["id"] for src in s["sources"]] == ["demo"]
+    src = s["sources"][0]
+    assert src["title"] == "بيانات تجريبية — ليست حقيقية / SAMPLE DATA — not real"
+    assert src["url"] is None and src["type"] == "other" and src["reliability"] == 1
+    rows = s["governorates"] + s["wilayats"] + s["crops"]
+    rows += [c["requirements"] for c in s["crops"] if c["requirements"]]
+    rows += [st for c in s["crops"] for st in c["stages"]]
+    assert rows and all(r["status"] == "draft" and r["source_id"] == "demo" for r in rows)
+    assert {c["id"] for c in s["crops"]} == {"tomato", "lime"}
+    for c in s["crops"]:
+        assert "قيم تجريبية للعرض فقط" in c["notes_ar"]
+        assert "Demo values for display only" in c["notes_en"]
+
+
+def test_bundled_asset_matches_demo_set():
+    asset = json.loads((ROOT / "app" / "assets" / "seed" / "knowledge.json").read_text(encoding="utf-8"))
+    expected = json.loads(json.dumps(build_snapshot(DEMO, now=asset["generated_at"]), default=str))
+    assert asset == expected
