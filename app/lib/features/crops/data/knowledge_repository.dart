@@ -40,6 +40,8 @@ class SupabaseSnapshotSource implements SnapshotSource {
   SupabaseSnapshotSource(this.client);
   final SupabaseClient client;
 
+  // TODO: PostgREST returns at most 1000 rows per request by default; page
+  // with .range() once any table can exceed that.
   Future<List<Map<String, dynamic>>> _all(String table) async =>
       List<Map<String, dynamic>>.from(await client.from(table).select());
 
@@ -53,53 +55,112 @@ class SupabaseSnapshotSource implements SnapshotSource {
       _all('crop_requirements'),
       _all('crop_stages'),
     ]);
-    final reqs = {for (final r in results[4]) r['crop_id'] as String: r};
-    final stages = <String, List<Map<String, dynamic>>>{};
-    for (final s in results[5]) {
-      stages.putIfAbsent(s['crop_id'] as String, () => []).add(s);
-    }
-    for (final l in stages.values) {
-      l.sort((a, b) => (a['seq'] as num).compareTo(b['seq'] as num));
-    }
-    return KnowledgeSnapshot.fromJson({
-      'schema_version': 1,
-      'generated_at': DateTime.now().toUtc().toIso8601String(),
-      'sources': results[0],
-      'governorates': results[1],
-      'wilayats': results[2],
-      'crops': [
-        for (final c in results[3])
-          {...c, 'requirements': reqs[c['id']], 'stages': stages[c['id']] ?? const []}
-      ],
-    });
+    return assembleSnapshot(
+      sources: results[0],
+      governorates: results[1],
+      wilayats: results[2],
+      crops: results[3],
+      cropRequirements: results[4],
+      cropStages: results[5],
+    );
   }
 }
 
+/// Joins the six table row-sets into a snapshot (stages sorted by seq).
+/// generatedAt is the fetch time: server data is authoritative at that moment.
+KnowledgeSnapshot assembleSnapshot({
+  required List<Map<String, dynamic>> sources,
+  required List<Map<String, dynamic>> governorates,
+  required List<Map<String, dynamic>> wilayats,
+  required List<Map<String, dynamic>> crops,
+  required List<Map<String, dynamic>> cropRequirements,
+  required List<Map<String, dynamic>> cropStages,
+  DateTime? now,
+}) {
+  final reqs = {for (final r in cropRequirements) r['crop_id'] as String: r};
+  final stages = <String, List<Map<String, dynamic>>>{};
+  for (final s in cropStages) {
+    stages.putIfAbsent(s['crop_id'] as String, () => []).add(s);
+  }
+  for (final l in stages.values) {
+    l.sort((a, b) => (a['seq'] as num).compareTo(b['seq'] as num));
+  }
+  return KnowledgeSnapshot.fromJson({
+    'schema_version': 1,
+    'generated_at': (now ?? DateTime.now()).toUtc().toIso8601String(),
+    'sources': sources,
+    'governorates': governorates,
+    'wilayats': wilayats,
+    'crops': [
+      for (final c in crops)
+        {...c, 'requirements': reqs[c['id']], 'stages': stages[c['id']] ?? const []}
+    ],
+  });
+}
+
 class KnowledgeRepository {
-  KnowledgeRepository({required this.chain, required this.includeDrafts, this.cache});
+  KnowledgeRepository({
+    required this.chain,
+    required this.includeDrafts,
+    this.cache,
+    this.networkTimeout = const Duration(seconds: 8),
+  });
 
   final List<SnapshotSource> chain;
   final bool includeDrafts;
   final SnapshotCache? cache;
+  final Duration networkTimeout;
 
+  static bool _isLocal(SnapshotSource s) =>
+      s is CachedSnapshotSource || s is BundledSnapshotSource;
+
+  /// Network sources are tried first (with a timeout). If they all fail, the
+  /// cached and bundled snapshots are both loaded and the later generatedAt
+  /// wins (tie goes to the cache), so an app update's newer bundle beats a
+  /// stale cache.
   Future<KnowledgeSnapshot> load() async {
     Object? lastError;
-    for (final source in chain) {
+    for (final source in chain.where((s) => !_isLocal(s))) {
       try {
-        final snap = await source.load();
-        if (cache != null && source is! CachedSnapshotSource && source is! BundledSnapshotSource) {
-          try {
-            await cache!.write(snap);
-          } catch (_) {
-            // A failing cache must not break loading.
-          }
-        }
+        final snap = await source.load().timeout(networkTimeout);
+        await _maybeWriteCache(snap);
         return _filter(snap);
       } catch (e) {
         lastError = e;
       }
     }
-    throw Exception('No knowledge source available: $lastError');
+    KnowledgeSnapshot? cached, bundled;
+    for (final source in chain.where(_isLocal)) {
+      try {
+        final snap = await source.load();
+        if (source is CachedSnapshotSource) {
+          cached ??= snap;
+        } else {
+          bundled ??= snap;
+        }
+      } catch (e) {
+        lastError = e;
+      }
+    }
+    final best = (cached != null && bundled != null)
+        ? (bundled.generatedAt.isAfter(cached.generatedAt) ? bundled : cached)
+        : (cached ?? bundled);
+    if (best == null) throw Exception('No knowledge source available: $lastError');
+    return _filter(best);
+  }
+
+  Future<void> _maybeWriteCache(KnowledgeSnapshot snap) async {
+    final c = cache;
+    if (c == null) return;
+    try {
+      if (snap.crops.isEmpty) {
+        final existing = await c.read();
+        if (existing != null && existing.crops.isNotEmpty) return;
+      }
+      await c.write(snap);
+    } catch (_) {
+      // A failing cache must not break loading.
+    }
   }
 
   KnowledgeSnapshot _filter(KnowledgeSnapshot s) {
@@ -112,7 +173,8 @@ class KnowledgeRepository {
             c.copyWith(
               requirements: () =>
                   c.requirements != null && ok(c.requirements!.meta) ? c.requirements : null,
-              stages: c.stages.where((x) => ok(x.meta)).toList(),
+              // A partial Kc curve misstates water needs: all or nothing.
+              stages: c.stages.every((x) => ok(x.meta)) ? c.stages : const [],
             )
       ],
       governorates: s.governorates.where((r) => ok(r.meta)).toList(),

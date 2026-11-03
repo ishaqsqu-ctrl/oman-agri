@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -22,6 +23,18 @@ class FakeSource implements SnapshotSource {
     if (fail) throw Exception('network down');
     return snap;
   }
+}
+
+class FakeBundled extends BundledSnapshotSource {
+  FakeBundled(this.snap);
+  final KnowledgeSnapshot snap;
+  @override
+  Future<KnowledgeSnapshot> load() async => snap;
+}
+
+class HangingSource implements SnapshotSource {
+  @override
+  Future<KnowledgeSnapshot> load() => Completer<KnowledgeSnapshot>().future;
 }
 
 class MemCache implements SnapshotCache {
@@ -84,7 +97,7 @@ void main() {
     test('falls back to bundled when network fails and no cache', () async {
       final bundled = snapWith(['bundled_crop']);
       final repo = KnowledgeRepository(
-        chain: [FakeSource(bundled, fail: true), CachedSnapshotSource(MemCache()), FakeSource(bundled)],
+        chain: [FakeSource(bundled, fail: true), CachedSnapshotSource(MemCache()), FakeBundled(bundled)],
         includeDrafts: false,
       );
       final s = await repo.load();
@@ -97,7 +110,7 @@ void main() {
         chain: [
           FakeSource(snapWith([]), fail: true),
           CachedSnapshotSource(cache),
-          FakeSource(snapWith(['bundled_crop'])),
+          FakeBundled(snapWith(['bundled_crop'], stamp: '2020-01-01T00:00:00+00:00')),
         ],
         includeDrafts: false,
       );
@@ -120,6 +133,42 @@ void main() {
           cache: cache2);
       expect((await repo2.load()).crops.single.id, 'c');
       expect(cache2.writes, 0);
+    });
+
+    test('cache older than bundle -> bundle wins; newer -> cache wins; tie -> cache', () async {
+      Future<String> run(String cacheStamp, String bundleStamp) async {
+        final repo = KnowledgeRepository(
+          chain: [
+            FakeSource(snapWith([]), fail: true),
+            CachedSnapshotSource(MemCache()..stored = snapWith(['cached'], stamp: cacheStamp)),
+            FakeBundled(snapWith(['bundled'], stamp: bundleStamp)),
+          ],
+          includeDrafts: false,
+        );
+        return (await repo.load()).crops.single.id;
+      }
+
+      expect(await run('2026-01-01T00:00:00Z', '2026-06-01T00:00:00Z'), 'bundled');
+      expect(await run('2026-06-01T00:00:00Z', '2026-01-01T00:00:00Z'), 'cached');
+      expect(await run('2026-06-01T00:00:00Z', '2026-06-01T00:00:00Z'), 'cached');
+    });
+
+    test('hung network times out and falls through', () async {
+      final repo = KnowledgeRepository(
+        chain: [HangingSource(), FakeBundled(snapWith(['bundled']))],
+        includeDrafts: false,
+        networkTimeout: const Duration(milliseconds: 50),
+      );
+      expect((await repo.load()).crops.single.id, 'bundled');
+    });
+
+    test('empty network snapshot does not overwrite non-empty cache', () async {
+      final cache = MemCache()..stored = snapWith(['cached']);
+      final repo = KnowledgeRepository(
+          chain: [FakeSource(snapWith([]))], includeDrafts: false, cache: cache);
+      expect((await repo.load()).crops, isEmpty);
+      expect(cache.writes, 0);
+      expect(cache.stored!.crops.single.id, 'cached');
     });
 
     test('hides drafts by default', () async {
@@ -145,18 +194,50 @@ void main() {
       expect((await repo.load()).crops, isEmpty);
     });
 
-    test('draft stages of a published crop are hidden', () async {
+    test('partial stages: any draft stage drops the whole curve', () async {
       final j = fixtureJson();
       (((j['crops'] as List).first as Map)['stages'] as List).last['status'] = 'draft';
       final repo = KnowledgeRepository(
           chain: [FakeSource(KnowledgeSnapshot.fromJson(j))], includeDrafts: false);
-      expect((await repo.load()).crops.single.stages, hasLength(3));
+      expect((await repo.load()).crops.single.stages, isEmpty);
     });
 
     test('throws when every source fails', () async {
       final repo = KnowledgeRepository(
           chain: [FakeSource(snapWith([]), fail: true)], includeDrafts: false);
       expect(repo.load(), throwsA(isA<Exception>()));
+    });
+  });
+
+  group('assembleSnapshot', () {
+    test('joins requirements and stages by crop and sorts stages by seq', () {
+      Map<String, dynamic> m(Map<String, dynamic> x) =>
+          {'status': 'published', 'source_id': 'fao56', ...x};
+      final s = assembleSnapshot(
+        sources: [
+          {'id': 'fao56', 'title': 't', 'publisher': 'FAO', 'type': 'fao'}
+        ],
+        governorates: [],
+        wilayats: [],
+        crops: [
+          m({'id': 'a', 'name_ar': 'أ', 'name_en': 'A', 'categories': ['fruit']}),
+          m({'id': 'b', 'name_ar': 'ب', 'name_en': 'B', 'categories': ['fruit']}),
+        ],
+        cropRequirements: [m({'crop_id': 'b', 't_min': 5})],
+        cropStages: [
+          m({'crop_id': 'a', 'seq': 2, 'stage': 'mid', 'duration_days': 5, 'kc': 1}),
+          m({'crop_id': 'a', 'seq': 1, 'stage': 'initial', 'duration_days': 5, 'kc': 0.4}),
+          m({'crop_id': 'b', 'seq': 1, 'stage': 'initial', 'duration_days': 5, 'kc': 0.5}),
+        ],
+        now: DateTime.utc(2026, 11, 3),
+      );
+      final a = s.crops.firstWhere((c) => c.id == 'a');
+      final b = s.crops.firstWhere((c) => c.id == 'b');
+      expect(a.stages.map((x) => x.seq), [1, 2]);
+      expect(a.requirements, isNull);
+      expect(b.requirements!.tMin, 5.0);
+      expect(b.stages, hasLength(1));
+      expect(s.generatedAt, DateTime.utc(2026, 11, 3));
     });
   });
 
