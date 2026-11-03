@@ -179,4 +179,88 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get close => 'Close';
+
+  @override
+  String get admin => 'Admin';
+
+  @override
+  String get adminNeedsBackend =>
+      'The admin panel requires a server connection';
+
+  @override
+  String get adminNotAuthorized =>
+      'This account does not have admin permission';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get signIn => 'Sign in';
+
+  @override
+  String get signInFailed => 'Sign-in failed';
+
+  @override
+  String get signOut => 'Sign out';
+
+  @override
+  String get publishReviewed => 'Publish reviewed';
+
+  @override
+  String get publishConfirmTitle => 'Confirm publish';
+
+  @override
+  String publishConfirmBody(String table) {
+    return 'All reviewed rows in \"$table\" will be published. Continue?';
+  }
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String publishedRows(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Published $count rows',
+      one: 'Published 1 row',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get operationFailed => 'Operation failed. Please try again.';
+
+  @override
+  String get statusDraft => 'Draft';
+
+  @override
+  String get statusReviewed => 'Reviewed';
+
+  @override
+  String get statusPublished => 'Published';
+
+  @override
+  String get tableGovernorates => 'Governorates';
+
+  @override
+  String get tableWilayats => 'Wilayats';
+
+  @override
+  String get tableCrops => 'Crops';
+
+  @override
+  String get tableCropRequirements => 'Crop requirements';
+
+  @override
+  String get tableCropStages => 'Growth stages';
+
+  @override
+  String get tableLabel => 'Table';
 }

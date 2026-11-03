@@ -439,6 +439,150 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'إغلاق'**
   String get close;
+
+  /// No description provided for @admin.
+  ///
+  /// In ar, this message translates to:
+  /// **'المدير'**
+  String get admin;
+
+  /// No description provided for @adminNeedsBackend.
+  ///
+  /// In ar, this message translates to:
+  /// **'لوحة المدير تتطلب الاتصال بالخادم'**
+  String get adminNeedsBackend;
+
+  /// No description provided for @adminNotAuthorized.
+  ///
+  /// In ar, this message translates to:
+  /// **'هذا الحساب ليس لديه صلاحية المدير'**
+  String get adminNotAuthorized;
+
+  /// No description provided for @email.
+  ///
+  /// In ar, this message translates to:
+  /// **'البريد الإلكتروني'**
+  String get email;
+
+  /// No description provided for @password.
+  ///
+  /// In ar, this message translates to:
+  /// **'كلمة المرور'**
+  String get password;
+
+  /// No description provided for @signIn.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسجيل الدخول'**
+  String get signIn;
+
+  /// No description provided for @signInFailed.
+  ///
+  /// In ar, this message translates to:
+  /// **'فشل تسجيل الدخول'**
+  String get signInFailed;
+
+  /// No description provided for @signOut.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسجيل الخروج'**
+  String get signOut;
+
+  /// No description provided for @publishReviewed.
+  ///
+  /// In ar, this message translates to:
+  /// **'نشر المراجَع'**
+  String get publishReviewed;
+
+  /// No description provided for @publishConfirmTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد النشر'**
+  String get publishConfirmTitle;
+
+  /// No description provided for @publishConfirmBody.
+  ///
+  /// In ar, this message translates to:
+  /// **'سيتم نشر جميع الصفوف التي تمت مراجعتها في «{table}». هل تريد المتابعة؟'**
+  String publishConfirmBody(String table);
+
+  /// No description provided for @cancel.
+  ///
+  /// In ar, this message translates to:
+  /// **'إلغاء'**
+  String get cancel;
+
+  /// No description provided for @confirm.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد'**
+  String get confirm;
+
+  /// No description provided for @publishedRows.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم نشر {count} صفاً'**
+  String publishedRows(int count);
+
+  /// No description provided for @operationFailed.
+  ///
+  /// In ar, this message translates to:
+  /// **'فشلت العملية. حاول مرة أخرى.'**
+  String get operationFailed;
+
+  /// No description provided for @statusDraft.
+  ///
+  /// In ar, this message translates to:
+  /// **'مسودة'**
+  String get statusDraft;
+
+  /// No description provided for @statusReviewed.
+  ///
+  /// In ar, this message translates to:
+  /// **'تمت المراجعة'**
+  String get statusReviewed;
+
+  /// No description provided for @statusPublished.
+  ///
+  /// In ar, this message translates to:
+  /// **'منشور'**
+  String get statusPublished;
+
+  /// No description provided for @tableGovernorates.
+  ///
+  /// In ar, this message translates to:
+  /// **'المحافظات'**
+  String get tableGovernorates;
+
+  /// No description provided for @tableWilayats.
+  ///
+  /// In ar, this message translates to:
+  /// **'الولايات'**
+  String get tableWilayats;
+
+  /// No description provided for @tableCrops.
+  ///
+  /// In ar, this message translates to:
+  /// **'المحاصيل'**
+  String get tableCrops;
+
+  /// No description provided for @tableCropRequirements.
+  ///
+  /// In ar, this message translates to:
+  /// **'متطلبات المحاصيل'**
+  String get tableCropRequirements;
+
+  /// No description provided for @tableCropStages.
+  ///
+  /// In ar, this message translates to:
+  /// **'مراحل النمو'**
+  String get tableCropStages;
+
+  /// No description provided for @tableLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'الجدول'**
+  String get tableLabel;
 }
 
 class _AppLocalizationsDelegate

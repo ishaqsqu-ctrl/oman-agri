@@ -56,5 +56,43 @@
   "sourceYear": "Year",
   "sourcePage": "Page",
   "openLink": "Open link",
-  "close": "Close"
+  "close": "Close",
+  "admin": "Admin",
+  "adminNeedsBackend": "The admin panel requires a server connection",
+  "adminNotAuthorized": "This account does not have admin permission",
+  "email": "Email",
+  "password": "Password",
+  "signIn": "Sign in",
+  "signInFailed": "Sign-in failed",
+  "signOut": "Sign out",
+  "publishReviewed": "Publish reviewed",
+  "publishConfirmTitle": "Confirm publish",
+  "publishConfirmBody": "All reviewed rows in \"{table}\" will be published. Continue?",
+  "@publishConfirmBody": {
+    "placeholders": {
+      "table": {
+        "type": "String"
+      }
+    }
+  },
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "publishedRows": "{count, plural, =1{Published 1 row} other{Published {count} rows}}",
+  "@publishedRows": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "operationFailed": "Operation failed. Please try again.",
+  "statusDraft": "Draft",
+  "statusReviewed": "Reviewed",
+  "statusPublished": "Published",
+  "tableGovernorates": "Governorates",
+  "tableWilayats": "Wilayats",
+  "tableCrops": "Crops",
+  "tableCropRequirements": "Crop requirements",
+  "tableCropStages": "Growth stages",
+  "tableLabel": "Table"
 }

@@ -179,4 +179,80 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get close => 'إغلاق';
+
+  @override
+  String get admin => 'المدير';
+
+  @override
+  String get adminNeedsBackend => 'لوحة المدير تتطلب الاتصال بالخادم';
+
+  @override
+  String get adminNotAuthorized => 'هذا الحساب ليس لديه صلاحية المدير';
+
+  @override
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get password => 'كلمة المرور';
+
+  @override
+  String get signIn => 'تسجيل الدخول';
+
+  @override
+  String get signInFailed => 'فشل تسجيل الدخول';
+
+  @override
+  String get signOut => 'تسجيل الخروج';
+
+  @override
+  String get publishReviewed => 'نشر المراجَع';
+
+  @override
+  String get publishConfirmTitle => 'تأكيد النشر';
+
+  @override
+  String publishConfirmBody(String table) {
+    return 'سيتم نشر جميع الصفوف التي تمت مراجعتها في «$table». هل تريد المتابعة؟';
+  }
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String publishedRows(int count) {
+    return 'تم نشر $count صفاً';
+  }
+
+  @override
+  String get operationFailed => 'فشلت العملية. حاول مرة أخرى.';
+
+  @override
+  String get statusDraft => 'مسودة';
+
+  @override
+  String get statusReviewed => 'تمت المراجعة';
+
+  @override
+  String get statusPublished => 'منشور';
+
+  @override
+  String get tableGovernorates => 'المحافظات';
+
+  @override
+  String get tableWilayats => 'الولايات';
+
+  @override
+  String get tableCrops => 'المحاصيل';
+
+  @override
+  String get tableCropRequirements => 'متطلبات المحاصيل';
+
+  @override
+  String get tableCropStages => 'مراحل النمو';
+
+  @override
+  String get tableLabel => 'الجدول';
 }

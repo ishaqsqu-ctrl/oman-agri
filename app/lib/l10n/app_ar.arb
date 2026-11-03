@@ -56,5 +56,43 @@
   "sourceYear": "السنة",
   "sourcePage": "الصفحة",
   "openLink": "فتح الرابط",
-  "close": "إغلاق"
+  "close": "إغلاق",
+  "admin": "المدير",
+  "adminNeedsBackend": "لوحة المدير تتطلب الاتصال بالخادم",
+  "adminNotAuthorized": "هذا الحساب ليس لديه صلاحية المدير",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "signIn": "تسجيل الدخول",
+  "signInFailed": "فشل تسجيل الدخول",
+  "signOut": "تسجيل الخروج",
+  "publishReviewed": "نشر المراجَع",
+  "publishConfirmTitle": "تأكيد النشر",
+  "publishConfirmBody": "سيتم نشر جميع الصفوف التي تمت مراجعتها في «{table}». هل تريد المتابعة؟",
+  "@publishConfirmBody": {
+    "placeholders": {
+      "table": {
+        "type": "String"
+      }
+    }
+  },
+  "cancel": "إلغاء",
+  "confirm": "تأكيد",
+  "publishedRows": "تم نشر {count} صفاً",
+  "@publishedRows": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "operationFailed": "فشلت العملية. حاول مرة أخرى.",
+  "statusDraft": "مسودة",
+  "statusReviewed": "تمت المراجعة",
+  "statusPublished": "منشور",
+  "tableGovernorates": "المحافظات",
+  "tableWilayats": "الولايات",
+  "tableCrops": "المحاصيل",
+  "tableCropRequirements": "متطلبات المحاصيل",
+  "tableCropStages": "مراحل النمو",
+  "tableLabel": "الجدول"
 }

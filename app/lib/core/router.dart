@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:oman_agri/features/admin/admin_screen.dart';
 import 'package:oman_agri/features/crops/ui/crop_detail_screen.dart';
 import 'package:oman_agri/features/crops/ui/crops_list_screen.dart';
 import 'package:oman_agri/features/settings/settings_screen.dart';
@@ -53,7 +54,7 @@ GoRouter buildRouter() => GoRouter(
         GoRoute(
           path: '/admin',
           parentNavigatorKey: _rootKey,
-          builder: (c, s) => const ComingSoonScreen('admin'),
+          builder: (c, s) => const AdminScreen(),
         ),
       ],
     );
