@@ -48,7 +48,7 @@ flutter build web --dart-define=SHOW_DRAFTS=true --no-web-resources-cdn
 cd ..
 python3 -m http.server 8099 -d app/build/web
 ```
-ثم افتح `http://localhost:8099` في المتصفح. الخيار `--no-web-resources-cdn` يضمّن محرك الرسم مع التطبيق فيعمل دون الاتصال بخوادم Google. لاختبار آلي سريع للواجهة (بعد التشغيل أعلاه): `node tools/smoke_web.mjs http://localhost:8099/ ./screens` — يفتح التطبيق ويبحث عن «طماطم» ويفتح المصدر ويبدّل اللغة ويحفظ لقطات الشاشة.
+ثم افتح `http://localhost:8099` في المتصفح. لإيقاف الخادم اضغط Ctrl+C (أو شغّله في الخلفية بـ `&` وأوقفه بـ `kill %1`). الخيار `--no-web-resources-cdn` يضمّن محرك الرسم مع التطبيق فيعمل دون الاتصال بخوادم Google. لاختبار آلي سريع للواجهة (يلزم توفّر Playwright مع Chromium، والخادم يعمل): `node tools/smoke_web.mjs http://localhost:8099/ /tmp/screens` (المسار الثاني اختياري، وافتراضيه مجلد مؤقت خارج المشروع) — يفتح التطبيق ويبحث عن «طماطم» ويفتح المصدر ويبدّل اللغة ويحفظ لقطات الشاشة.
 
 ### إنشاء مشروع Supabase وتطبيق قاعدة البيانات
 1. أنشئ مشروعاً جديداً من لوحة Supabase (supabase.com) واحفظ كلمة مرور قاعدة البيانات.
@@ -116,7 +116,7 @@ flutter build web --dart-define=SHOW_DRAFTS=true --no-web-resources-cdn
 cd ..
 python3 -m http.server 8099 -d app/build/web
 ```
-Then open `http://localhost:8099`. `--no-web-resources-cdn` bundles the CanvasKit renderer so the build works without reaching Google's CDN. For an automated UI check (with the server above running): `node tools/smoke_web.mjs http://localhost:8099/ ./screens` — it opens the app, searches Arabic "tomato", opens a source sheet, switches to English and saves screenshots.
+Then open `http://localhost:8099`. Stop the server with Ctrl+C (or start it in the background with `&` and stop it with `kill %1`). `--no-web-resources-cdn` bundles the CanvasKit renderer so the build works without reaching Google's CDN. For an automated UI check (needs Playwright with Chromium available, and the server running): `node tools/smoke_web.mjs http://localhost:8099/ /tmp/screens` (the second argument is optional; the default is a temp dir outside the repo) — it opens the app, searches Arabic "tomato", opens a source sheet, switches to English and saves screenshots.
 
 ### Creating the Supabase project and applying the schema
 1. Create a new project in the Supabase dashboard and keep the database password.

@@ -7,18 +7,21 @@ import { createRequire } from 'node:module';
 import { readFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import os from 'node:os';
 
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
 
 const base = process.argv[2] ?? 'http://localhost:8099/';
-const outDir = process.argv[3] ?? 'screens';
+const outDir = process.argv[3] ?? path.join(os.tmpdir(), 'oman-agri-smoke-screens');
 mkdirSync(outDir, { recursive: true });
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const snap = JSON.parse(readFileSync(path.join(here, '../app/assets/seed/knowledge.json'), 'utf8'));
 const crop = snap.crops.find((c) => c.id === 'tomato') ?? snap.crops[0];
-if (!crop) throw new Error('bundled snapshot has no crops');
+const other = snap.crops.find((c) => c.id !== crop?.id);
+if (!crop || !other) throw new Error('bundled snapshot needs at least 2 crops');
+console.log(`Other crop (must be filtered out by search): ${other.id} (${other.name_ar})`);
 console.log(`Using crop ${crop.id} (${crop.name_ar} / ${crop.name_en})`);
 
 const T = 20000;
@@ -55,16 +58,21 @@ try {
   });
   await shot('home-ar.png');
 
-  await step(`search "${crop.name_ar}" and open detail`, async () => {
-    const field = page.getByRole('textbox').first();
-    await field.click();
+  await step(`search "${crop.name_ar}" filters the list, then open detail`, async () => {
+    const name = (c) => page.getByRole('button', { name: c.name_ar }); // list tiles
+    await name(other).first().waitFor({ timeout: T }); // visible before searching
+    await name(crop).first().waitFor({ timeout: T });
+    await page.getByRole('textbox').first().click();
     await page.keyboard.type(crop.name_ar);
-    await text(crop.name_ar).waitFor({ timeout: T });
-    await page.waitForTimeout(500);
+    await name(other).first().waitFor({ state: 'detached', timeout: T }); // filtered out
+    await name(crop).first().waitFor({ timeout: T }); // still there
     await shot('search.png');
-    await text(crop.name_ar).click();
+    await name(crop).first().click();
+    // go_router push() does not update the web URL, so prove navigation by content:
+    // the list's search field is gone and a detail-only section title is shown.
+    await page.getByRole('textbox').first().waitFor({ state: 'detached', timeout: T });
+    await text('متطلبات المحصول').waitFor({ timeout: T }); // detail-only section title
     if (crop.scientific_name) await text(crop.scientific_name).waitFor({ timeout: T });
-    await page.waitForTimeout(500);
   });
   await shot('detail.png');
 
@@ -76,8 +84,9 @@ try {
 
   await step('switch to English', async () => {
     await page.keyboard.press('Escape');
-    await page.waitForTimeout(500);
+    await text('الناشر').waitFor({ state: 'hidden', timeout: T });
     await page.evaluate(() => { location.hash = '#/settings'; });
+    await page.waitForFunction(() => location.hash.endsWith('/settings'), null, { timeout: T });
     await page.getByRole('radio', { name: 'English' }).click();
     await text('Language').waitFor({ timeout: T });
     await page.evaluate(() => { location.hash = '#/'; });
@@ -88,8 +97,12 @@ try {
 } catch (e) {
   failed = true;
   await shot('failure.png').catch(() => {});
+} finally {
+  await browser.close();
 }
-if (errors.length) console.log('page errors:', errors.slice(0, 3));
-await browser.close();
+if (errors.length) {
+  failed = true;
+  console.log('FAIL: uncaught page errors:', errors.slice(0, 3));
+}
 console.log(failed ? 'SMOKE FAILED' : 'SMOKE OK');
 process.exit(failed ? 1 : 0);
