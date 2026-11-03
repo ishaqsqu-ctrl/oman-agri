@@ -2,7 +2,7 @@ import uuid
 
 import psycopg
 import pytest
-from conftest import as_role
+from supabase.tests.conftest import as_role
 
 FARMER = str(uuid.uuid4())
 ADMIN = str(uuid.uuid4())
