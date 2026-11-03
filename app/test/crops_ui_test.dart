@@ -120,6 +120,10 @@ void main() {
     await tester.enterText(find.byType(TextField), 'ليمون');
     await tester.pumpAndSettle();
     expect(find.widgetWithText(ListTile, 'ليمون عُماني'), findsOneWidget);
+    await tester.enterText(find.byType(TextField), 'الطماطم');
+    await tester.pumpAndSettle();
+    expect(find.widgetWithText(ListTile, 'طماطم'), findsOneWidget);
+    expect(find.widgetWithText(ListTile, 'ليمون عُماني'), findsNothing);
   });
 
   testWidgets('category chip filters; no results shows empty text', (tester) async {
