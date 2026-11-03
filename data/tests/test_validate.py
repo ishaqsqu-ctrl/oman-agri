@@ -296,3 +296,14 @@ def test_semicolon_delimited_file(tmp_path):
     i = one_issue(d, "governorates.csv", 1, "")
     assert i.message_en == "File appears to use semicolons; save as CSV UTF-8 (comma-delimited)"
     assert i.message_ar == "يبدو أن الملف محفوظ بفاصلة منقوطة؛ احفظه بصيغة CSV UTF-8 (فاصلة)"
+
+
+@pytest.mark.parametrize("url", ["javascript:alert(1)", "www.example.invalid", "ftp://example.invalid/x"])
+def test_source_url_must_be_http(tmp_path, url):
+    i = one_issue(broken(tmp_path, "sources.csv", 2, "url", url), "sources.csv", 2, "url")
+    assert "http" in i.message_en and "http" in i.message_ar
+
+
+@pytest.mark.parametrize("url", ["", "http://example.invalid", "HTTPS://example.invalid/a"])
+def test_source_url_http_ok(tmp_path, url):
+    assert validate_dir(broken(tmp_path, "sources.csv", 2, "url", url)) == []

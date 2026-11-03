@@ -187,6 +187,10 @@ def validate_dir(path: Path) -> list[Issue]:
 
     # sources
     for n, r in tables["sources.csv"]:
+        u = r["url"]
+        if u and not u.lower().startswith(("http://", "https://")):
+            add("sources.csv", n, "url", f"الرابط يجب أن يبدأ بـ http:// أو https://: {u}",
+                f"url must start with http:// or https://: {u}")
         x = val("sources.csv", n, "reliability")
         if x is not None and not 1 <= x <= 3:
             add("sources.csv", n, "reliability", f"الموثوقية يجب أن تكون بين 1 و3: {x}", f"reliability must be 1..3: {x}")
