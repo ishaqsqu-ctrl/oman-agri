@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:oman_agri/core/config.dart';
 import 'package:oman_agri/features/admin/admin_repository.dart';
+import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
 import 'package:oman_agri/features/crops/data/models.dart';
 import 'package:oman_agri/l10n/app_localizations.dart';
 
@@ -127,6 +128,8 @@ class _AdminScreenState extends ConsumerState<AdminScreen> {
     setState(() => _busy = true);
     try {
       final n = await _repo.publishReviewed(table);
+      // Newly published rows should appear in the crop screens right away.
+      ref.invalidate(knowledgeProvider);
       await _loadCounts();
       _snack(l10n.publishedRows(n));
     } catch (_) {

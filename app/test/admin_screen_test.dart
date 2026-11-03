@@ -7,6 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:oman_agri/features/admin/admin_repository.dart';
 import 'package:oman_agri/features/admin/admin_screen.dart';
 import 'package:oman_agri/core/config.dart';
+import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
 import 'package:oman_agri/features/crops/data/models.dart';
 import 'package:oman_agri/l10n/app_localizations.dart';
 
@@ -48,12 +49,20 @@ class FakeAdminRepository implements AdminRepository {
   }
 }
 
+int knowledgeBuilds = 0;
+
 Future<void> pump(WidgetTester tester, AdminRepository repo,
     {bool backend = true, Locale locale = const Locale('en')}) async {
+  knowledgeBuilds = 0;
   await tester.pumpWidget(ProviderScope(
     overrides: [
       adminRepositoryProvider.overrideWithValue(repo),
       hasBackendProvider.overrideWithValue(backend),
+      knowledgeProvider.overrideWith((ref) async {
+        knowledgeBuilds++;
+        return KnowledgeSnapshot(
+            generatedAt: DateTime.utc(2026), sources: const {}, crops: const []);
+      }),
     ],
     child: MaterialApp(
       locale: locale,
@@ -186,5 +195,37 @@ void main() {
             .widget<FilledButton>(find.byKey(const ValueKey('publish-wilayats')))
             .onPressed,
         isNotNull);
+  });
+
+  testWidgets('successful publish refreshes the knowledge snapshot',
+      (tester) async {
+    final repo = FakeAdminRepository();
+    await pump(tester, repo);
+    await signIn(tester);
+    final container =
+        ProviderScope.containerOf(tester.element(find.byType(AdminScreen)));
+    await container.read(knowledgeProvider.future);
+    expect(knowledgeBuilds, 1);
+    await tester.tap(find.byKey(const ValueKey('publish-crops')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('publish-confirm')));
+    await tester.pumpAndSettle();
+    await container.read(knowledgeProvider.future);
+    expect(knowledgeBuilds, 2);
+  });
+
+  testWidgets('failed publish does not refresh the snapshot', (tester) async {
+    final repo = FakeAdminRepository(publishError: Exception('boom'));
+    await pump(tester, repo);
+    await signIn(tester);
+    final container =
+        ProviderScope.containerOf(tester.element(find.byType(AdminScreen)));
+    await container.read(knowledgeProvider.future);
+    await tester.tap(find.byKey(const ValueKey('publish-crops')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('publish-confirm')));
+    await tester.pumpAndSettle();
+    await container.read(knowledgeProvider.future);
+    expect(knowledgeBuilds, 1);
   });
 }
