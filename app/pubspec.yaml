@@ -40,6 +40,8 @@ dependencies:
   intl: ^0.20.3
   flutter_localizations:
     sdk: flutter
+  supabase_flutter: ^2.18.3
+  path_provider: ^2.1.6
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +70,9 @@ flutter:
     - family: NotoKufiArabic
       fonts:
         - asset: assets/fonts/NotoKufiArabic.ttf
+
+  assets:
+    - assets/seed/knowledge.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:

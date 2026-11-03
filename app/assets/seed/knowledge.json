@@ -1,0 +1,168 @@
+{
+  "crops": [
+    {
+      "categories": [
+        "vegetable"
+      ],
+      "id": "tomato",
+      "lifecycle": "annual",
+      "name_ar": "طماطم",
+      "name_en": "Tomato",
+      "notes_ar": null,
+      "notes_en": null,
+      "requirements": {
+        "alt_max": 1500,
+        "alt_min": 0,
+        "chill_hours_min": null,
+        "ece_slope": 9.9,
+        "ece_threshold": 2.5,
+        "ph_max": 7.5,
+        "ph_min": 5.5,
+        "reviewed_at": null,
+        "reviewed_by": null,
+        "season_days_max": 150,
+        "season_days_min": 90,
+        "source_id": "fao56",
+        "source_page": "p5",
+        "status": "draft",
+        "t_max": 35,
+        "t_min": 10,
+        "t_opt_high": 27,
+        "t_opt_low": 18,
+        "textures": [
+          "sand",
+          "loam"
+        ]
+      },
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "scientific_name": "Solanum lycopersicum",
+      "source_id": "fao56",
+      "source_page": "Table 12",
+      "stages": [
+        {
+          "duration_days": 30,
+          "kc": 0.6,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 1,
+          "source_id": "fao56",
+          "source_page": "Table 12",
+          "stage": "initial",
+          "status": "draft"
+        },
+        {
+          "duration_days": 40,
+          "kc": 0.8,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 2,
+          "source_id": "fao56",
+          "source_page": "Table 12",
+          "stage": "development",
+          "status": "draft"
+        },
+        {
+          "duration_days": 40,
+          "kc": 1.15,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 3,
+          "source_id": "fao56",
+          "source_page": "Table 12",
+          "stage": "mid",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "categories": [
+        "fruit",
+        "tree"
+      ],
+      "id": "lime",
+      "lifecycle": "tree",
+      "name_ar": "ليمون عماني",
+      "name_en": "Omani lime",
+      "notes_ar": null,
+      "notes_en": null,
+      "requirements": null,
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "scientific_name": "Citrus aurantiifolia",
+      "source_id": "fao56",
+      "source_page": "Table 12",
+      "stages": [],
+      "status": "draft"
+    }
+  ],
+  "generated_at": "2026-11-03T20:59:13+00:00",
+  "governorates": [
+    {
+      "id": "muscat",
+      "name_ar": "مسقط",
+      "name_en": "Muscat",
+      "reviewed_at": "2026-10-01",
+      "reviewed_by": "Dr Ali",
+      "source_id": "moa1",
+      "source_page": "p1",
+      "status": "published"
+    },
+    {
+      "id": "batinah_north",
+      "name_ar": "شمال الباطنة",
+      "name_en": "North Al Batinah",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "source_id": "moa1",
+      "source_page": null,
+      "status": "draft"
+    }
+  ],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "fao56",
+      "publisher": "FAO",
+      "reliability": 3,
+      "title": "Crop evapotranspiration",
+      "type": "fao",
+      "url": "https://www.fao.org",
+      "year": 1998
+    },
+    {
+      "id": "moa1",
+      "publisher": "Ministry of Agriculture",
+      "reliability": 2,
+      "title": "Guide",
+      "type": "ministry",
+      "url": null,
+      "year": 2020
+    }
+  ],
+  "wilayats": [
+    {
+      "governorate_id": "muscat",
+      "id": "seeb",
+      "name_ar": "السيب",
+      "name_en": "Seeb",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "source_id": "moa1",
+      "source_page": null,
+      "status": "draft"
+    },
+    {
+      "governorate_id": "batinah_north",
+      "id": "sohar",
+      "name_ar": "صحار",
+      "name_en": "Sohar",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "source_id": "moa1",
+      "source_page": null,
+      "status": "draft"
+    }
+  ]
+}
