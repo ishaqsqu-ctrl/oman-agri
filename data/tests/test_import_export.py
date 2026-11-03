@@ -150,3 +150,47 @@ def test_snapshot_cli_writes_unescaped_arabic(tmp_path):
     text = out.read_text(encoding="utf-8")
     assert "طماطم" in text and "\\u0637" not in text
     assert json.loads(text)["schema_version"] == 1
+
+
+# --- final review: CSV is the source of truth for status (ruling F1) ---
+def _status(conn, table, where):
+    return conn.execute(f"select status::text from {table} where {where}").fetchone()[0]
+
+
+def test_import_keeps_published_when_csv_says_reviewed(committed_db, tmp_path):
+    d = copy_valid(tmp_path)
+    set_cell(d, "crops.csv", 2, "status", "reviewed")
+    set_cell(d, "crops.csv", 2, "reviewed_by", "test-reviewer")
+    set_cell(d, "crops.csv", 2, "reviewed_at", "2026-10-01")
+    import_dir(d, committed_db)
+    committed_db.commit()
+    # Admin publishes in the DB (admin-panel shortcut), CSV still says reviewed.
+    committed_db.execute("update crops set status='published' where id='tomato'")
+    committed_db.commit()
+    import_dir(d, committed_db)
+    committed_db.commit()
+    assert _status(committed_db, "crops", "id='tomato'") == "published"
+    assert _status(committed_db, "crops", "id='lime'") == "draft"
+
+
+def test_import_draft_in_csv_unpublishes(committed_db, tmp_path):
+    d = copy_valid(tmp_path)
+    import_dir(d, committed_db)
+    committed_db.commit()
+    assert _status(committed_db, "governorates", "id='muscat'") == "published"
+    set_cell(d, "governorates.csv", 2, "status", "draft")
+    import_dir(d, committed_db)
+    committed_db.commit()
+    assert _status(committed_db, "governorates", "id='muscat'") == "draft"
+
+
+def test_import_csv_published_publishes(committed_db, tmp_path):
+    d = copy_valid(tmp_path)
+    import_dir(d, committed_db)
+    committed_db.commit()
+    set_cell(d, "crops.csv", 2, "status", "published")
+    set_cell(d, "crops.csv", 2, "reviewed_by", "test-reviewer")
+    set_cell(d, "crops.csv", 2, "reviewed_at", "2026-10-01")
+    import_dir(d, committed_db)
+    committed_db.commit()
+    assert _status(committed_db, "crops", "id='tomato'") == "published"
