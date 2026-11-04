@@ -24,7 +24,7 @@
         "season_days_min": 70,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 1379 (Lycopersicon esculentum): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential; ece_slope from FAO-61 Annex 1 (Maas & Grattan 1999), owner review 2026-11-04 decision 7",
-        "status": "reviewed",
+        "status": "published",
         "t_max": 35,
         "t_min": 7,
         "t_opt_high": 27,
@@ -41,7 +41,7 @@
       "source_id": "fao29",
       "source_page": "Table 4 (Lycopersicon esculentum, older synonym); modern name per owner review 2026-11-04 decision 9; EcoCrop EcoPortCode 1379 (LIFO/LISPA → lifecycle)",
       "stages": [],
-      "status": "reviewed"
+      "status": "published"
     },
     {
       "categories": [
@@ -155,7 +155,7 @@
         "season_days_min": 85,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 364 (Allium cepa): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX (TEXTR 'wide, organic'; organic not in schema); ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
-        "status": "reviewed",
+        "status": "published",
         "t_max": 30,
         "t_min": 4,
         "t_opt_high": 25,
@@ -217,7 +217,7 @@
           "status": "published"
         }
       ],
-      "status": "reviewed"
+      "status": "published"
     },
     {
       "categories": [
@@ -417,7 +417,7 @@
         "season_days_min": 90,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 367 (Allium sativum): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold/ece_slope from FAO-61 (Tanji & Kielen 2002) Annex 1, Tables A1.1/A1.2 (Maas & Grattan 1999)",
-        "status": "reviewed",
+        "status": "published",
         "t_max": 35,
         "t_min": 7,
         "t_opt_high": 30,
@@ -434,7 +434,7 @@
       "source_id": "ecocrop_openclim",
       "source_page": "EcoCrop EcoPortCode 367 (ScientificName; biennial, grown as annual — owner review 2026-11-04 decision 8); crop list §5.3",
       "stages": [],
-      "status": "reviewed"
+      "status": "published"
     },
     {
       "categories": [
@@ -503,7 +503,7 @@
         "season_days_min": 90,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 2114 (Triticum aestivum, owner review 2026-11-04 decision 2): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold FAO-29 Table 4 (wheat 6.0); ece_slope FAO-61 Annex 1 (Maas & Grattan 1999)",
-        "status": "reviewed",
+        "status": "published",
         "t_max": 27,
         "t_min": 5,
         "t_opt_high": 23,
@@ -519,7 +519,7 @@
       "source_id": "alkhanjari2005",
       "source_page": "Main species of Omani landraces (T. durum and T. dicoccon less common); also Filatenko & Hammer 2014 — owner review 2026-11-04 decision 2",
       "stages": [],
-      "status": "reviewed"
+      "status": "published"
     },
     {
       "categories": [
@@ -561,7 +561,7 @@
       "source_id": "fao29",
       "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 1428 (LIFO/LISPA → lifecycle)",
       "stages": [],
-      "status": "reviewed"
+      "status": "published"
     },
     {
       "categories": [
@@ -587,7 +587,7 @@
         "season_days_min": 365,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 1673 (Phoenix dactylifera): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential; ece_slope from FAO-61 Annex 1 (Maas & Grattan 1999), owner review 2026-11-04 decision 7",
-        "status": "reviewed",
+        "status": "published",
         "t_max": 52,
         "t_min": 10,
         "t_opt_high": 45,
@@ -718,7 +718,7 @@
         "season_days_min": 180,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 7849 (Musa acuminata × balbisiana, owner review 2026-11-04 decision 1): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ECe empty (FAO-61 rates banana sensitive, no threshold)",
-        "status": "reviewed",
+        "status": "published",
         "t_max": 40,
         "t_min": 15,
         "t_opt_high": 35,
@@ -780,7 +780,7 @@
           "status": "published"
         }
       ],
-      "status": "reviewed"
+      "status": "published"
     },
     {
       "categories": [
@@ -905,7 +905,7 @@
       "source_id": "project_spec",
       "source_page": "§5.3 #15; scientific name and lifecycle per owner review 2026-11-04 decision 4",
       "stages": [],
-      "status": "reviewed"
+      "status": "published"
     },
     {
       "categories": [
@@ -974,7 +974,7 @@
         "season_days_min": 70,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 1965 (Solanum melongena): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX except ALTMX (50 m, rejected by owner review 2026-11-04 — grown in the highlands); ece_threshold/ece_slope from FAO-61 (Tanji & Kielen 2002) Annex 1, Tables A1.1/A1.2 (Maas & Grattan 1999)",
-        "status": "reviewed",
+        "status": "published",
         "t_max": 40,
         "t_min": 9,
         "t_opt_high": 35,
@@ -1036,7 +1036,7 @@
           "status": "published"
         }
       ],
-      "status": "reviewed"
+      "status": "published"
     },
     {
       "categories": [
@@ -1211,7 +1211,7 @@
           "status": "published"
         }
       ],
-      "status": "reviewed"
+      "status": "published"
     },
     {
       "categories": [
@@ -1237,7 +1237,7 @@
         "season_days_min": 50,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 815 (Cucumis melo): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold/ece_slope from FAO-61 (Tanji & Kielen 2002) Annex 1, Tables A1.1/A1.2 (Maas & Grattan 1999) (muskmelon/cantaloupe)",
-        "status": "reviewed",
+        "status": "published",
         "t_max": 35,
         "t_min": 9,
         "t_opt_high": 30,
@@ -1457,7 +1457,7 @@
         "season_days_min": 90,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 48747 (Sorghum bicolor): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX (TEXTR 'wide'); ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
-        "status": "reviewed",
+        "status": "published",
         "t_max": 40,
         "t_min": 8,
         "t_opt_high": 35,
@@ -1517,7 +1517,7 @@
       "source_id": "fao29",
       "source_page": "Table 5 (scientific_name); EcoCrop EcoPortCode 681 (annual, perennial → perennial per owner review 2026-11-04 decision 8)",
       "stages": [],
-      "status": "reviewed"
+      "status": "published"
     },
     {
       "categories": [
@@ -1734,7 +1734,7 @@
           "status": "published"
         }
       ],
-      "status": "reviewed"
+      "status": "published"
     },
     {
       "categories": [
@@ -1862,7 +1862,7 @@
       "source_id": "project_spec",
       "source_page": "§5.3 #30; scientific name and lifecycle per owner review 2026-11-04 decision 4 (not EcoCrop's Boswellia serrata)",
       "stages": [],
-      "status": "reviewed"
+      "status": "published"
     },
     {
       "categories": [
@@ -1932,7 +1932,7 @@
         "season_days_min": null,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 3795 (Bougainvillea glabra, owner review 2026-11-04 decision 3): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX; GMIN/GMAX empty",
-        "status": "reviewed",
+        "status": "published",
         "t_max": 38,
         "t_min": 10,
         "t_opt_high": 25,
@@ -1948,10 +1948,10 @@
       "source_id": "ecocrop_openclim",
       "source_page": "EcoCrop EcoPortCode 3795 (Bougainvillea glabra; garden hybrids B. × buttiana also occur) — owner review 2026-11-04 decision 3",
       "stages": [],
-      "status": "reviewed"
+      "status": "published"
     }
   ],
-  "generated_at": "2026-11-04T11:50:47+00:00",
+  "generated_at": "2026-11-04T11:58:38+00:00",
   "governorates": [
     {
       "id": "muscat",
@@ -2389,7 +2389,7 @@
       "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38 prints «محظة»; the same yearbook prints «محضة» in later tables (PDF pp. 65, 81) — owner review 2026-11-04 adopts «محضة»",
-      "status": "reviewed"
+      "status": "published"
     },
     {
       "governorate_id": "buraymi",

@@ -1,8 +1,8 @@
 # ملاحظات المصادر / Source notes — seed set (Task 10)
 
-**Owner review 2026-11-04** (`reviewed_by = Project owner`): rows the owner marked correct are
-`published`; rows the owner corrected carry the correction and are `reviewed`, waiting for one
-"Publish reviewed" click in the admin panel (and `published` in the CSV). Every correction cites
+**Owner review 2026-11-04** (`reviewed_by = Project owner`): rows the owner marked correct were
+published at once; rows the owner corrected carry the correction and were published the same day
+at the owner's request. All rows are now `published`. Every correction cites
 its source in `source_page`; see "Owner review outcome" at the end. The sections below describe
 the original transcription.
 No value was typed from memory: each value was transcribed from the sources
@@ -98,7 +98,7 @@ Table 12 values are for a sub-humid climate (RHmin ≈ 45 %, u2 ≈ 2 m/s). The 
 Status after the review: crops 19 published / 13 reviewed; crop_requirements 22 / 10; crop_stages 52 / 0;
 governorates 11 / 0; wilayats 62 / 1 (Mahdah).
 
-Corrections applied (all `reviewed`):
+Corrections applied (published 2026-11-04):
 - **Scientific names** (decision 9): tomato *Solanum lycopersicum*, eggplant *Solanum melongena*, grape *Vitis vinifera* (FAO-29 lists grape in Table 4, not 5). Older FAO-29 names are kept in `source_page`; a synonym field for search is a later schema change.
 - **Species** (decisions 1–5): Omani wheat *Triticum aestivum* (`alkhanjari2005`), banana *Musa spp.* (`opara2010`), bougainvillea *Bougainvillea glabra* (EcoCrop 3795), damask rose *Rosa × damascena*, frankincense *Boswellia sacra* (not EcoCrop's *B. serrata*), walnut *Juglans regia* confirmed.
 - **Lifecycle** (decision 8): onion, garlic, carrot → `annual`; Rhodes grass → `perennial`; wheat `annual`; banana, damask rose, bougainvillea `perennial`; frankincense `tree`.

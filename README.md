@@ -83,7 +83,7 @@ update public.profiles set role = 'admin' where id = '<معرّف المستخد
 تجد المعرّف في Authentication ← Users.
 
 ### حالة البيانات
-يحتوي التطبيق على مسودة بيانات الـ٣٢ محصولاً و١١ محافظة و٦٣ ولاية من `data/`، منقولة من FAO-56 وFAO-29 وقاعدة EcoCrop والكتاب الإحصائي السنوي 2026 (المركز الوطني للإحصاء والمعلومات). راجعها المالك في 2026-11-04: ما أكّده منشور ويظهر في التطبيق العادي، وما صحّحه بحالة `reviewed` ينتظر زر «نشر المراجَع» في لوحة المدير. ما بقي فارغاً وأسبابه، والقرارات المطلوبة من المالك، في `data/SOURCES_NOTES.md`.
+يحتوي التطبيق على مسودة بيانات الـ٣٢ محصولاً و١١ محافظة و٦٣ ولاية من `data/`، منقولة من FAO-56 وFAO-29 وقاعدة EcoCrop والكتاب الإحصائي السنوي 2026 (المركز الوطني للإحصاء والمعلومات). راجعها المالك في 2026-11-04 وكلها منشورة وتظهر في التطبيق العادي. ما بقي فارغاً وأسبابه، والقرارات المطلوبة من المالك، في `data/SOURCES_NOTES.md`.
 
 ---
 
@@ -162,4 +162,4 @@ update public.profiles set role = 'admin' where id = '<user uuid>';
 Find the id under Authentication → Users.
 
 ### Data status
-The bundled snapshot is built from `data/`: draft data for the 32 crops, 11 governorates and 63 wilayats, transcribed from FAO-56, FAO-29, the EcoCrop database and the NCSI Statistical Year Book 2026. The owner reviewed it on 2026-11-04: confirmed rows are `published` and show in a normal build; corrected rows are `reviewed` and wait for "Publish reviewed" in the admin panel. What is still empty, why, and the owner decisions pending are listed in `data/SOURCES_NOTES.md`.
+The bundled snapshot is built from `data/`: draft data for the 32 crops, 11 governorates and 63 wilayats, transcribed from FAO-56, FAO-29, the EcoCrop database and the NCSI Statistical Year Book 2026. The owner reviewed it on 2026-11-04; every row is `published` and shows in a normal build. What is still empty, why, and the owner decisions pending are listed in `data/SOURCES_NOTES.md`.
