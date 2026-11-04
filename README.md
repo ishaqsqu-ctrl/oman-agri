@@ -10,7 +10,7 @@
 oman-agri/
 ├── app/         تطبيق Flutter (أندرويد / آيفون / ويب / كمبيوتر)
 ├── supabase/    قاعدة البيانات: migrations/ (موجود الآن)؛ functions/ وseed/ في مراحل لاحقة
-├── data/        سكربتات التحقق والاستيراد والتصدير؛ جداول المعرفة (CSV) تصل في المهمة ١٠، و data/demo/ عيّنة تجريبية مؤقتة
+├── data/        سكربتات التحقق والاستيراد والتصدير، وجداول المعرفة (CSV، مسودة)، وملف SOURCES_NOTES.md؛ و data/demo/ عيّنة تجريبية للاختبار
 ├── pipeline/    (مرحلة لاحقة) خط معالجة Python لطبقات البيئة ونموذج الملاءمة
 ├── tools/       سكربتات مساعدة (مثل إعداد البيئة)
 └── docs/        التوثيق والتصميم
@@ -31,7 +31,7 @@ oman-agri/
 ### مراجعة البيانات الزراعية ونشرها (دورك كصاحب المشروع)
 **ملفات CSV هي المرجع الوحيد للبيانات ولحالتها.** ما تكتبه فيها هو ما يصل إلى قاعدة البيانات وإلى التطبيق.
 
-ستة ملفات: `sources.csv` و`governorates.csv` و`wilayats.csv` و`crops.csv` و`crop_requirements.csv` و`crop_stages.csv`. تصل الملفات الحقيقية إلى `data/` في **المهمة ١٠**؛ وحتى ذلك الحين توجد عيّنة تجريبية في `data/demo/` (استبدل `data/` بـ `data/demo/` في الأوامر أدناه لتجربتها).
+ستة ملفات: `sources.csv` و`governorates.csv` و`wilayats.csv` و`crops.csv` و`crop_requirements.csv` و`crop_stages.csv`. الملفات الحقيقية (مسودة) في `data/`، وما نُقل من كل مصدر وما بقي فارغاً موثّق في `data/SOURCES_NOTES.md`. وتبقى عيّنة تجريبية في `data/demo/` للاختبار.
 
 **الخطوات:**
 1. افتح ملف CSV في Excel، وصحّح القيم، وتأكد من المصدر (`source_id`) ورقم الصفحة (`source_page`) لكل صف. لا تُكتب أي قيمة بدون مصدر.
@@ -83,7 +83,7 @@ update public.profiles set role = 'admin' where id = '<معرّف المستخد
 تجد المعرّف في Authentication ← Users.
 
 ### حالة البيانات
-بيانات المحاصيل الحقيقية (٣٢ محصولاً) تصل في **المهمة ١٠**. حالياً يحتوي التطبيق على **عيّنة تجريبية غير حقيقية** من `data/demo/` (الطماطم والليمون العماني): مصدرها الوحيد «بيانات تجريبية — ليست حقيقية»، وكل صفوفها بحالة `draft`، وأرقامها للعرض فقط ولا يجوز الاعتماد عليها. لذلك لا تظهر إلا في نسخة مبنية بـ `SHOW_DRAFTS=true` مع شريط «مسودة — قيد المراجعة».
+يحتوي التطبيق على مسودة بيانات الـ٣٢ محصولاً من `data/`، منقولة من FAO-56 وFAO-29 فقط، وكل صفوفها بحالة `draft`، لذلك لا تظهر إلا في نسخة مبنية بـ `SHOW_DRAFTS=true` مع شريط «مسودة — قيد المراجعة». الحقول التي مصدرها EcoCrop، والمحافظات والولايات (من المركز الوطني للإحصاء)، ما زالت فارغة لأن تلك المواقع لم تكن متاحة؛ التفاصيل في `data/SOURCES_NOTES.md`.
 
 ---
 
@@ -99,7 +99,7 @@ Stack: Flutter + Supabase (Postgres/PostGIS, RLS) + Python data tools.
 oman-agri/
 ├── app/         Flutter app (Android / iOS / web / desktop)
 ├── supabase/    migrations/ (now); functions/ (Edge Functions) and seed/ in later phases
-├── data/        validate/import/export scripts; knowledge CSVs arrive with Task 10, data/demo/ holds a temporary sample set
+├── data/        validate/import/export scripts, the (draft) knowledge CSVs and SOURCES_NOTES.md; data/demo/ holds a sample set used by tests
 ├── pipeline/    (later phase) Python pipeline for environmental layers and suitability model
 ├── tools/       helper scripts (environment setup)
 └── docs/        documentation and design spec
@@ -118,7 +118,7 @@ oman-agri/
 ### Data review and publishing workflow
 **The CSV files are the single source of truth for the data and its `status`.**
 
-Six files: `sources.csv`, `governorates.csv`, `wilayats.csv`, `crops.csv`, `crop_requirements.csv`, `crop_stages.csv`. The real files arrive in `data/` with **Task 10**; until then a demo set lives in `data/demo/` (use `data/demo/` instead of `data/` below to try it).
+Six files: `sources.csv`, `governorates.csv`, `wilayats.csv`, `crops.csv`, `crop_requirements.csv`, `crop_stages.csv`. The real (draft) files live in `data/`; what was taken from each source, and what is still empty, is recorded in `data/SOURCES_NOTES.md`. A sample set stays in `data/demo/` for tests.
 
 1. Open the CSV in Excel, correct values, and verify `source_id` and `source_page` for every row. No value without a source.
 2. For each row you reviewed fill `reviewed_by` and `reviewed_at` (`2026-11-03`) and set `status`: `reviewed` (checked, not yet public), `published` (**publish** it to farmers) or `draft` (draft, or hide a previously published row).
@@ -162,4 +162,4 @@ update public.profiles set role = 'admin' where id = '<user uuid>';
 Find the id under Authentication → Users.
 
 ### Data status
-The real crop data (32 crops) arrives in **Task 10**. For now the bundled snapshot is built from `data/demo/` — **sample data that is not real** (tomato, Omani lime) under a single source titled "SAMPLE DATA — not real", every row `draft`, values for display only. It is visible only in a `SHOW_DRAFTS=true` build, under the "Draft — under review" banner.
+The bundled snapshot is built from `data/`: draft data for the 32 crops, transcribed from FAO-56 and FAO-29 only, every row `draft`, so it is visible only in a `SHOW_DRAFTS=true` build under the "Draft — under review" banner. EcoCrop-derived fields and the governorates/wilayats (NCSI) are still empty because those sites were not reachable; see `data/SOURCES_NOTES.md`.

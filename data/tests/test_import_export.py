@@ -216,7 +216,8 @@ def test_demo_set_is_valid_marked_and_all_draft():
         assert "Demo values for display only" in c["notes_en"]
 
 
-def test_bundled_asset_matches_demo_set():
+def test_bundled_asset_matches_seed_set():
+    # Task 10: the bundled snapshot is built from the real (draft) seed set in data/.
     asset = json.loads((ROOT / "app" / "assets" / "seed" / "knowledge.json").read_text(encoding="utf-8"))
-    expected = json.loads(json.dumps(build_snapshot(DEMO, now=asset["generated_at"]), default=str))
+    expected = json.loads(json.dumps(build_snapshot(ROOT / "data", now=asset["generated_at"]), default=str))
     assert asset == expected
