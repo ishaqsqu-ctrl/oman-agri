@@ -87,9 +87,12 @@ Table 12 values are for a sub-humid climate (RHmin ≈ 45 %, u2 ≈ 2 m/s). The 
 | banana | Banana 1st yr, Mar, Mediterranean (120/90/120/60) | 1st year 0.50, 1.10, 1.00 |
 | grape | Low Latitudes, April (20/40/120/60) | Table or Raisin 0.30, 0.85, 0.45 |
 | walnut | Walnuts, April, Utah (20/10/130/30) | Walnut Orchard 0.50, 1.10, 0.65 |
+| tomato | January, Arid Region (30/40/40/25) | 0.6 (group b), 1.15, **0.80** (range 0.70–0.90; mean, owner decision 6) |
+| cowpea | Green gram, cowpeas, March, Mediterranean (20/30/30/20) — only row | Green Gram and Cowpeas 0.4 (group e), 1.05, **0.60** (fresh harvest, fn 6; owner choice) |
+| wheat_omani | Barley/Oats/Wheat, Dec, Calif. Desert, USA (20/50/60/30) — no arid row | Spring Wheat 0.3 (group i), 1.15, **0.4** (hand-harvested, fn 10; owner choice) |
+| sorghum | Mar/April, Arid Region (20/35/45/30) | Sorghum – grain 0.3 (group i), **1.05** (range 1.00–1.10; mean, owner decision 6), 0.55 |
 
 **No stages, with the reason** (the app shows a crop's stages only when all four exist):
-- **Range in Table 12** (owner to choose a value): tomato (Kc end 0.70–0.90), cowpea (Kc end 0.60–0.35: fresh vs dry harvest), wheat (Kc end 0.25–0.4), sorghum grain (Kc mid 1.00–1.10).
 - **Not a four-stage crop:** alfalfa. FAO-56 describes it as a series of cutting cycles (Table 11 fn 4, Table 12 fn 13–14).
 - **In Table 12 but not in Table 11:** garlic, date palm.
 - **In neither table:** pomegranate, turmeric, damask rose, okra, fenugreek, Rhodes grass, mango, coconut ("Palm Trees" is not coconut-specific), papaya, frankincense, henna, bougainvillea.
@@ -108,7 +111,7 @@ Corrections applied (published 2026-11-04):
 - **Mahdah:** the Year Book's Governorate and Wilayat table (pp. 37–38) prints «محظة», but the same Year Book prints «محضة» in later tables (PDF pp. 65, 81); the owner adopted «محضة».
 
 Still open (not data edits):
-- **Decision 6 — stage rows for tomato, cowpea, wheat, sorghum** do not exist yet: the chosen Kc values (tomato end 0.80; cowpea 0.60 fresh / 0.35 dry; wheat end 0.25; sorghum mid 1.05) still need the stage lengths from FAO-56 Table 11. Cowpea needs a fresh-or-dry choice, or two crop entries.
+- **Decision 6 — stage rows for tomato, cowpea, wheat, sorghum** transcribed 2026-11-04 (table above) and left `draft` for the owner to check. The owner then chose cowpea fresh (0.60) and wheat Kc end 0.4 (hand harvest, FAO-56 fn 10) instead of 0.25.
 - **Decision 10:** the app should interpolate Kc linearly day by day across development and late stages (FAO-56 ch. 6); stored values stay the end-of-stage points.
 - **Decision 11:** adjust Kc mid/end per wilayat with FAO-56 Eq. 62 once climate data (RHmin, u2) is in the pipeline.
 - Damask rose and frankincense requirements stay empty until a ministry or SQU source is found (decision 4).

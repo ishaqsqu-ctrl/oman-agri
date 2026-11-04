@@ -40,7 +40,52 @@
       "scientific_name": "Solanum lycopersicum",
       "source_id": "fao29",
       "source_page": "Table 4 (Lycopersicon esculentum, older synonym); modern name per owner review 2026-11-04 decision 9; EcoCrop EcoPortCode 1379 (LIFO/LISPA → lifecycle)",
-      "stages": [],
+      "stages": [
+        {
+          "duration_days": 30,
+          "kc": 0.6,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 1,
+          "source_id": "fao56",
+          "source_page": "Table 11: Tomato, January, Arid Region; Table 12: Tomato (Kc ini, from group b header row)",
+          "stage": "initial",
+          "status": "draft"
+        },
+        {
+          "duration_days": 40,
+          "kc": 1.15,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 2,
+          "source_id": "fao56",
+          "source_page": "Table 11: Tomato, January, Arid Region; Table 12: Tomato (Kc mid (end of development))",
+          "stage": "development",
+          "status": "draft"
+        },
+        {
+          "duration_days": 40,
+          "kc": 1.15,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 3,
+          "source_id": "fao56",
+          "source_page": "Table 11: Tomato, January, Arid Region; Table 12: Tomato (Kc mid)",
+          "stage": "mid",
+          "status": "draft"
+        },
+        {
+          "duration_days": 25,
+          "kc": 0.8,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 4,
+          "source_id": "fao56",
+          "source_page": "Table 11: Tomato, January, Arid Region; Table 12: Tomato (Kc end, range 0.70-0.90; 0.80 = mean for fresh market, owner decision 6, 2026-11-04)",
+          "stage": "late",
+          "status": "draft"
+        }
+      ],
       "status": "published"
     },
     {
@@ -476,7 +521,52 @@
       "scientific_name": "Vigna unguiculata",
       "source_id": "fao29",
       "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 2153 (LIFO/LISPA → lifecycle)",
-      "stages": [],
+      "stages": [
+        {
+          "duration_days": 20,
+          "kc": 0.4,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 1,
+          "source_id": "fao56",
+          "source_page": "Table 11: Green gram, cowpeas, March, Mediterranean; Table 12: Green Gram and Cowpeas (Kc ini, from group e header row)",
+          "stage": "initial",
+          "status": "draft"
+        },
+        {
+          "duration_days": 30,
+          "kc": 1.05,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 2,
+          "source_id": "fao56",
+          "source_page": "Table 11: Green gram, cowpeas, March, Mediterranean; Table 12: Green Gram and Cowpeas (Kc mid (end of development))",
+          "stage": "development",
+          "status": "draft"
+        },
+        {
+          "duration_days": 30,
+          "kc": 1.05,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 3,
+          "source_id": "fao56",
+          "source_page": "Table 11: Green gram, cowpeas, March, Mediterranean; Table 12: Green Gram and Cowpeas (Kc mid)",
+          "stage": "mid",
+          "status": "draft"
+        },
+        {
+          "duration_days": 20,
+          "kc": 0.6,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 4,
+          "source_id": "fao56",
+          "source_page": "Table 11: Green gram, cowpeas, March, Mediterranean; Table 12: Green Gram and Cowpeas (Kc end, first value of 0.60-0.35 = harvested fresh (fn 6); fresh harvest chosen by owner 2026-11-04)",
+          "stage": "late",
+          "status": "draft"
+        }
+      ],
       "status": "published"
     },
     {
@@ -518,7 +608,52 @@
       "scientific_name": "Triticum aestivum",
       "source_id": "alkhanjari2005",
       "source_page": "Main species of Omani landraces (T. durum and T. dicoccon less common); also Filatenko & Hammer 2014 — owner review 2026-11-04 decision 2",
-      "stages": [],
+      "stages": [
+        {
+          "duration_days": 20,
+          "kc": 0.3,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 1,
+          "source_id": "fao56",
+          "source_page": "Table 11: Barley/Oats/Wheat, Dec, Calif. Desert, USA; Table 12: Spring Wheat (Kc ini, from group i header row)",
+          "stage": "initial",
+          "status": "draft"
+        },
+        {
+          "duration_days": 50,
+          "kc": 1.15,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 2,
+          "source_id": "fao56",
+          "source_page": "Table 11: Barley/Oats/Wheat, Dec, Calif. Desert, USA; Table 12: Spring Wheat (Kc mid (end of development))",
+          "stage": "development",
+          "status": "draft"
+        },
+        {
+          "duration_days": 60,
+          "kc": 1.15,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 3,
+          "source_id": "fao56",
+          "source_page": "Table 11: Barley/Oats/Wheat, Dec, Calif. Desert, USA; Table 12: Spring Wheat (Kc mid)",
+          "stage": "mid",
+          "status": "draft"
+        },
+        {
+          "duration_days": 30,
+          "kc": 0.4,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 4,
+          "source_id": "fao56",
+          "source_page": "Table 11: Barley/Oats/Wheat, Dec, Calif. Desert, USA; Table 12: Spring Wheat (Kc end, higher value of 0.25-0.4 = hand-harvested (fn 10); chosen by owner 2026-11-04)",
+          "stage": "late",
+          "status": "draft"
+        }
+      ],
       "status": "published"
     },
     {
@@ -1473,7 +1608,52 @@
       "scientific_name": "Sorghum bicolor",
       "source_id": "fao29",
       "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 48747 (LIFO/LISPA → lifecycle)",
-      "stages": [],
+      "stages": [
+        {
+          "duration_days": 20,
+          "kc": 0.3,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 1,
+          "source_id": "fao56",
+          "source_page": "Table 11: Sorghum, Mar/April, Arid Region; Table 12: Sorghum - grain (Kc ini, from group i header row)",
+          "stage": "initial",
+          "status": "draft"
+        },
+        {
+          "duration_days": 35,
+          "kc": 1.05,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 2,
+          "source_id": "fao56",
+          "source_page": "Table 11: Sorghum, Mar/April, Arid Region; Table 12: Sorghum - grain (Kc mid, range 1.00-1.10; 1.05 = mean, owner decision 6, 2026-11-04 (end of development))",
+          "stage": "development",
+          "status": "draft"
+        },
+        {
+          "duration_days": 45,
+          "kc": 1.05,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 3,
+          "source_id": "fao56",
+          "source_page": "Table 11: Sorghum, Mar/April, Arid Region; Table 12: Sorghum - grain (Kc mid, range 1.00-1.10; 1.05 = mean, owner decision 6, 2026-11-04)",
+          "stage": "mid",
+          "status": "draft"
+        },
+        {
+          "duration_days": 30,
+          "kc": 0.55,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 4,
+          "source_id": "fao56",
+          "source_page": "Table 11: Sorghum, Mar/April, Arid Region; Table 12: Sorghum - grain (Kc end)",
+          "stage": "late",
+          "status": "draft"
+        }
+      ],
       "status": "published"
     },
     {
@@ -1951,7 +2131,7 @@
       "status": "published"
     }
   ],
-  "generated_at": "2026-11-04T11:58:38+00:00",
+  "generated_at": "2026-11-04T12:13:02+00:00",
   "governorates": [
     {
       "id": "muscat",
