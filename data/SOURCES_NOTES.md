@@ -111,7 +111,7 @@ Corrections applied (published 2026-11-04):
 - **Mahdah:** the Year Book's Governorate and Wilayat table (pp. 37–38) prints «محظة», but the same Year Book prints «محضة» in later tables (PDF pp. 65, 81); the owner adopted «محضة».
 
 Still open (not data edits):
-- **Decision 6 — stage rows for tomato, cowpea, wheat, sorghum** transcribed 2026-11-04 (table above) and left `draft` for the owner to check. The owner then chose cowpea fresh (0.60) and wheat Kc end 0.4 (hand harvest, FAO-56 fn 10) instead of 0.25.
+- **Decision 6 — stage rows for tomato, cowpea, wheat, sorghum** transcribed 2026-11-04 (table above), checked and published by the owner the same day. The owner then chose cowpea fresh (0.60) and wheat Kc end 0.4 (hand harvest, FAO-56 fn 10) instead of 0.25.
 - **Decision 10:** the app should interpolate Kc linearly day by day across development and late stages (FAO-56 ch. 6); stored values stay the end-of-stage points.
 - **Decision 11:** adjust Kc mid/end per wilayat with FAO-56 Eq. 62 once climate data (RHmin, u2) is in the pipeline.
 - Damask rose and frankincense requirements stay empty until a ministry or SQU source is found (decision 4).
