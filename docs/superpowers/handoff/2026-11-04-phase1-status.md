@@ -3,6 +3,7 @@
 Branch: phase1-foundation (do NOT merge to main until Task 10 is done — owner chose option A).
 
 ## Status
+- **Update 2026-11-04 (later):** Task 10 data transcribed and owner-reviewed; schema migrations applied to Supabase project `zljqdydelxuzrunipwwg` (recorded in supabase_migrations.schema_migrations) and the reviewed seed loaded. Remaining: owner presses "Publish reviewed"; then merge phase1-foundation into main.
 - Tasks 1–9 and 11 of docs/superpowers/plans/2026-11-03-phase1-foundation.md: complete, each task-reviewed; final whole-branch review done and its fix wave applied and re-reviewed.
 - Task 10 (seed data: sources, 11 governorates, 63 wilayats, 32 crops + requirements + stages, all draft): NOT started — blocked because the session network policy denied fao.org, openknowledge.fao.org, gaez.fao.org, ncsi.gov.om, mafwr.gov.om. Owner has since allowed these domains; a NEW session is required for them to take effect.
 - Values must be transcribed from the sources (FAO-56 Tables 11–12, FAO-29 Table 4, FAO EcoCrop, NCSI), never from memory; leave a field empty if the source lacks it.

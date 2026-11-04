@@ -1,53 +1,53 @@
 crop_id,seq,stage,duration_days,kc,status,source_id,source_page,reviewed_by,reviewed_at
-cucumber,1,initial,20,0.60,draft,fao56,"Table 11: Cucumber, June/Aug, Arid Region; Table 12: Cucumber - Fresh Market (Kc ini)",,
-cucumber,2,development,30,1.00,draft,fao56,"Table 11: Cucumber, June/Aug, Arid Region; Table 12: Cucumber - Fresh Market (Kc mid (end of development))",,
-cucumber,3,mid,40,1.00,draft,fao56,"Table 11: Cucumber, June/Aug, Arid Region; Table 12: Cucumber - Fresh Market (Kc mid)",,
-cucumber,4,late,15,0.75,draft,fao56,"Table 11: Cucumber, June/Aug, Arid Region; Table 12: Cucumber - Fresh Market (Kc end)",,
-onion,1,initial,20,0.70,draft,fao56,"Table 11: Onion (dry), Oct; Jan., Arid Region; Calif.; Table 12: Onions - dry (Kc ini, from group a header row)",,
-onion,2,development,35,1.05,draft,fao56,"Table 11: Onion (dry), Oct; Jan., Arid Region; Calif.; Table 12: Onions - dry (Kc mid (end of development))",,
-onion,3,mid,110,1.05,draft,fao56,"Table 11: Onion (dry), Oct; Jan., Arid Region; Calif.; Table 12: Onions - dry (Kc mid)",,
-onion,4,late,45,0.75,draft,fao56,"Table 11: Onion (dry), Oct; Jan., Arid Region; Calif.; Table 12: Onions - dry (Kc end)",,
-potato,1,initial,30,0.50,draft,fao56,"Table 11: Potato, Dec, Calif. Desert, USA; Table 12: Potato (Kc ini, from group d header row)",,
-potato,2,development,35,1.15,draft,fao56,"Table 11: Potato, Dec, Calif. Desert, USA; Table 12: Potato (Kc mid (end of development))",,
-potato,3,mid,50,1.15,draft,fao56,"Table 11: Potato, Dec, Calif. Desert, USA; Table 12: Potato (Kc mid)",,
-potato,4,late,25,0.75,draft,fao56,"Table 11: Potato, Dec, Calif. Desert, USA; Table 12: Potato (Kc end)",,
-watermelon,1,initial,10,0.40,draft,fao56,"Table 11: Water melons, Mat/Aug, Near East (desert); Table 12: Watermelon (Kc ini)",,
-watermelon,2,development,20,1.00,draft,fao56,"Table 11: Water melons, Mat/Aug, Near East (desert); Table 12: Watermelon (Kc mid (end of development))",,
-watermelon,3,mid,20,1.00,draft,fao56,"Table 11: Water melons, Mat/Aug, Near East (desert); Table 12: Watermelon (Kc mid)",,
-watermelon,4,late,30,0.75,draft,fao56,"Table 11: Water melons, Mat/Aug, Near East (desert); Table 12: Watermelon (Kc end)",,
-eggplant,1,initial,30,0.60,draft,fao56,"Table 11: Egg plant, October, Arid Region; Table 12: Egg Plant (Kc ini, from group b header row)",,
-eggplant,2,development,40,1.05,draft,fao56,"Table 11: Egg plant, October, Arid Region; Table 12: Egg Plant (Kc mid (end of development))",,
-eggplant,3,mid,40,1.05,draft,fao56,"Table 11: Egg plant, October, Arid Region; Table 12: Egg Plant (Kc mid)",,
-eggplant,4,late,20,0.90,draft,fao56,"Table 11: Egg plant, October, Arid Region; Table 12: Egg Plant (Kc end)",,
-pepper,1,initial,30,0.60,draft,fao56,"Table 11: Sweet peppers (bell), October, Arid Region; Table 12: Sweet Peppers (bell) (Kc ini, from group b header row)",,
-pepper,2,development,40,1.05,draft,fao56,"Table 11: Sweet peppers (bell), October, Arid Region; Table 12: Sweet Peppers (bell) (Kc mid (end of development))",,
-pepper,3,mid,110,1.05,draft,fao56,"Table 11: Sweet peppers (bell), October, Arid Region; Table 12: Sweet Peppers (bell) (Kc mid)",,
-pepper,4,late,30,0.90,draft,fao56,"Table 11: Sweet peppers (bell), October, Arid Region; Table 12: Sweet Peppers (bell) (Kc end)",,
-carrot,1,initial,30,0.70,draft,fao56,"Table 11: Carrots, Oct, Calif. Desert, USA; Table 12: Carrots (Kc ini, from group a header row)",,
-carrot,2,development,50,1.05,draft,fao56,"Table 11: Carrots, Oct, Calif. Desert, USA; Table 12: Carrots (Kc mid (end of development))",,
-carrot,3,mid,90,1.05,draft,fao56,"Table 11: Carrots, Oct, Calif. Desert, USA; Table 12: Carrots (Kc mid)",,
-carrot,4,late,30,0.95,draft,fao56,"Table 11: Carrots, Oct, Calif. Desert, USA; Table 12: Carrots (Kc end)",,
-muskmelon,1,initial,30,0.50,draft,fao56,"Table 11: Sweet melons, Dec/Jan, Arid Region; Table 12: Sweet Melons (Kc ini, from group c header row)",,
-muskmelon,2,development,45,1.05,draft,fao56,"Table 11: Sweet melons, Dec/Jan, Arid Region; Table 12: Sweet Melons (Kc mid (end of development))",,
-muskmelon,3,mid,65,1.05,draft,fao56,"Table 11: Sweet melons, Dec/Jan, Arid Region; Table 12: Sweet Melons (Kc mid)",,
-muskmelon,4,late,20,0.75,draft,fao56,"Table 11: Sweet melons, Dec/Jan, Arid Region; Table 12: Sweet Melons (Kc end)",,
-faba_bean,1,initial,20,0.50,draft,fao56,"Table 11: Faba bean, broad bean, Mar/Apr, Mediterranean; Table 12: Fababean - Fresh (Kc ini)",,
-faba_bean,2,development,30,1.15,draft,fao56,"Table 11: Faba bean, broad bean, Mar/Apr, Mediterranean; Table 12: Fababean - Fresh (Kc mid (end of development))",,
-faba_bean,3,mid,35,1.15,draft,fao56,"Table 11: Faba bean, broad bean, Mar/Apr, Mediterranean; Table 12: Fababean - Fresh (Kc mid)",,
-faba_bean,4,late,15,1.10,draft,fao56,"Table 11: Faba bean, broad bean, Mar/Apr, Mediterranean; Table 12: Fababean - Fresh (Kc end)",,
-lime_omani,1,initial,60,0.70,draft,fao56,"Table 11: Citrus, Jan, Mediterranean; Table 12: Citrus, no ground cover - 70% canopy (Kc ini)",,
-lime_omani,2,development,90,0.65,draft,fao56,"Table 11: Citrus, Jan, Mediterranean; Table 12: Citrus, no ground cover - 70% canopy (Kc mid (end of development))",,
-lime_omani,3,mid,120,0.65,draft,fao56,"Table 11: Citrus, Jan, Mediterranean; Table 12: Citrus, no ground cover - 70% canopy (Kc mid)",,
-lime_omani,4,late,95,0.70,draft,fao56,"Table 11: Citrus, Jan, Mediterranean; Table 12: Citrus, no ground cover - 70% canopy (Kc end)",,
-banana,1,initial,120,0.50,draft,fao56,"Table 11: Banana, 1st yr, Mar, Mediterranean; Table 12: Banana - 1st year (Kc ini)",,
-banana,2,development,90,1.10,draft,fao56,"Table 11: Banana, 1st yr, Mar, Mediterranean; Table 12: Banana - 1st year (Kc mid (end of development))",,
-banana,3,mid,120,1.10,draft,fao56,"Table 11: Banana, 1st yr, Mar, Mediterranean; Table 12: Banana - 1st year (Kc mid)",,
-banana,4,late,60,1.00,draft,fao56,"Table 11: Banana, 1st yr, Mar, Mediterranean; Table 12: Banana - 1st year (Kc end)",,
-grape,1,initial,20,0.30,draft,fao56,"Table 11: Grapes, April, Low Latitudes; Table 12: Grapes - Table or Raisin (Kc ini)",,
-grape,2,development,40,0.85,draft,fao56,"Table 11: Grapes, April, Low Latitudes; Table 12: Grapes - Table or Raisin (Kc mid (end of development))",,
-grape,3,mid,120,0.85,draft,fao56,"Table 11: Grapes, April, Low Latitudes; Table 12: Grapes - Table or Raisin (Kc mid)",,
-grape,4,late,60,0.45,draft,fao56,"Table 11: Grapes, April, Low Latitudes; Table 12: Grapes - Table or Raisin (Kc end)",,
-walnut,1,initial,20,0.50,draft,fao56,"Table 11: Walnuts, April, Utah, USA; Table 12: Walnut Orchard (Kc ini)",,
-walnut,2,development,10,1.10,draft,fao56,"Table 11: Walnuts, April, Utah, USA; Table 12: Walnut Orchard (Kc mid (end of development))",,
-walnut,3,mid,130,1.10,draft,fao56,"Table 11: Walnuts, April, Utah, USA; Table 12: Walnut Orchard (Kc mid)",,
-walnut,4,late,30,0.65,draft,fao56,"Table 11: Walnuts, April, Utah, USA; Table 12: Walnut Orchard (Kc end)",,
+cucumber,1,initial,20,0.60,published,fao56,"Table 11: Cucumber, June/Aug, Arid Region; Table 12: Cucumber - Fresh Market (Kc ini)",Project owner,2026-11-04
+cucumber,2,development,30,1.00,published,fao56,"Table 11: Cucumber, June/Aug, Arid Region; Table 12: Cucumber - Fresh Market (Kc mid (end of development))",Project owner,2026-11-04
+cucumber,3,mid,40,1.00,published,fao56,"Table 11: Cucumber, June/Aug, Arid Region; Table 12: Cucumber - Fresh Market (Kc mid)",Project owner,2026-11-04
+cucumber,4,late,15,0.75,published,fao56,"Table 11: Cucumber, June/Aug, Arid Region; Table 12: Cucumber - Fresh Market (Kc end)",Project owner,2026-11-04
+onion,1,initial,20,0.70,published,fao56,"Table 11: Onion (dry), Oct; Jan., Arid Region; Calif.; Table 12: Onions - dry (Kc ini, from group a header row)",Project owner,2026-11-04
+onion,2,development,35,1.05,published,fao56,"Table 11: Onion (dry), Oct; Jan., Arid Region; Calif.; Table 12: Onions - dry (Kc mid (end of development))",Project owner,2026-11-04
+onion,3,mid,110,1.05,published,fao56,"Table 11: Onion (dry), Oct; Jan., Arid Region; Calif.; Table 12: Onions - dry (Kc mid)",Project owner,2026-11-04
+onion,4,late,45,0.75,published,fao56,"Table 11: Onion (dry), Oct; Jan., Arid Region; Calif.; Table 12: Onions - dry (Kc end)",Project owner,2026-11-04
+potato,1,initial,30,0.50,published,fao56,"Table 11: Potato, Dec, Calif. Desert, USA; Table 12: Potato (Kc ini, from group d header row)",Project owner,2026-11-04
+potato,2,development,35,1.15,published,fao56,"Table 11: Potato, Dec, Calif. Desert, USA; Table 12: Potato (Kc mid (end of development))",Project owner,2026-11-04
+potato,3,mid,50,1.15,published,fao56,"Table 11: Potato, Dec, Calif. Desert, USA; Table 12: Potato (Kc mid)",Project owner,2026-11-04
+potato,4,late,25,0.75,published,fao56,"Table 11: Potato, Dec, Calif. Desert, USA; Table 12: Potato (Kc end)",Project owner,2026-11-04
+watermelon,1,initial,10,0.40,published,fao56,"Table 11: Water melons, Mat/Aug, Near East (desert); Table 12: Watermelon (Kc ini)",Project owner,2026-11-04
+watermelon,2,development,20,1.00,published,fao56,"Table 11: Water melons, Mat/Aug, Near East (desert); Table 12: Watermelon (Kc mid (end of development))",Project owner,2026-11-04
+watermelon,3,mid,20,1.00,published,fao56,"Table 11: Water melons, Mat/Aug, Near East (desert); Table 12: Watermelon (Kc mid)",Project owner,2026-11-04
+watermelon,4,late,30,0.75,published,fao56,"Table 11: Water melons, Mat/Aug, Near East (desert); Table 12: Watermelon (Kc end)",Project owner,2026-11-04
+eggplant,1,initial,30,0.60,published,fao56,"Table 11: Egg plant, October, Arid Region; Table 12: Egg Plant (Kc ini, from group b header row)",Project owner,2026-11-04
+eggplant,2,development,40,1.05,published,fao56,"Table 11: Egg plant, October, Arid Region; Table 12: Egg Plant (Kc mid (end of development))",Project owner,2026-11-04
+eggplant,3,mid,40,1.05,published,fao56,"Table 11: Egg plant, October, Arid Region; Table 12: Egg Plant (Kc mid)",Project owner,2026-11-04
+eggplant,4,late,20,0.90,published,fao56,"Table 11: Egg plant, October, Arid Region; Table 12: Egg Plant (Kc end)",Project owner,2026-11-04
+pepper,1,initial,30,0.60,published,fao56,"Table 11: Sweet peppers (bell), October, Arid Region; Table 12: Sweet Peppers (bell) (Kc ini, from group b header row)",Project owner,2026-11-04
+pepper,2,development,40,1.05,published,fao56,"Table 11: Sweet peppers (bell), October, Arid Region; Table 12: Sweet Peppers (bell) (Kc mid (end of development))",Project owner,2026-11-04
+pepper,3,mid,110,1.05,published,fao56,"Table 11: Sweet peppers (bell), October, Arid Region; Table 12: Sweet Peppers (bell) (Kc mid)",Project owner,2026-11-04
+pepper,4,late,30,0.90,published,fao56,"Table 11: Sweet peppers (bell), October, Arid Region; Table 12: Sweet Peppers (bell) (Kc end)",Project owner,2026-11-04
+carrot,1,initial,30,0.70,published,fao56,"Table 11: Carrots, Oct, Calif. Desert, USA; Table 12: Carrots (Kc ini, from group a header row)",Project owner,2026-11-04
+carrot,2,development,50,1.05,published,fao56,"Table 11: Carrots, Oct, Calif. Desert, USA; Table 12: Carrots (Kc mid (end of development))",Project owner,2026-11-04
+carrot,3,mid,90,1.05,published,fao56,"Table 11: Carrots, Oct, Calif. Desert, USA; Table 12: Carrots (Kc mid)",Project owner,2026-11-04
+carrot,4,late,30,0.95,published,fao56,"Table 11: Carrots, Oct, Calif. Desert, USA; Table 12: Carrots (Kc end)",Project owner,2026-11-04
+muskmelon,1,initial,30,0.50,published,fao56,"Table 11: Sweet melons, Dec/Jan, Arid Region; Table 12: Sweet Melons (Kc ini, from group c header row)",Project owner,2026-11-04
+muskmelon,2,development,45,1.05,published,fao56,"Table 11: Sweet melons, Dec/Jan, Arid Region; Table 12: Sweet Melons (Kc mid (end of development))",Project owner,2026-11-04
+muskmelon,3,mid,65,1.05,published,fao56,"Table 11: Sweet melons, Dec/Jan, Arid Region; Table 12: Sweet Melons (Kc mid)",Project owner,2026-11-04
+muskmelon,4,late,20,0.75,published,fao56,"Table 11: Sweet melons, Dec/Jan, Arid Region; Table 12: Sweet Melons (Kc end)",Project owner,2026-11-04
+faba_bean,1,initial,20,0.50,published,fao56,"Table 11: Faba bean, broad bean, Mar/Apr, Mediterranean; Table 12: Fababean - Fresh (Kc ini)",Project owner,2026-11-04
+faba_bean,2,development,30,1.15,published,fao56,"Table 11: Faba bean, broad bean, Mar/Apr, Mediterranean; Table 12: Fababean - Fresh (Kc mid (end of development))",Project owner,2026-11-04
+faba_bean,3,mid,35,1.15,published,fao56,"Table 11: Faba bean, broad bean, Mar/Apr, Mediterranean; Table 12: Fababean - Fresh (Kc mid)",Project owner,2026-11-04
+faba_bean,4,late,15,1.10,published,fao56,"Table 11: Faba bean, broad bean, Mar/Apr, Mediterranean; Table 12: Fababean - Fresh (Kc end)",Project owner,2026-11-04
+lime_omani,1,initial,60,0.70,published,fao56,"Table 11: Citrus, Jan, Mediterranean; Table 12: Citrus, no ground cover - 70% canopy (Kc ini)",Project owner,2026-11-04
+lime_omani,2,development,90,0.65,published,fao56,"Table 11: Citrus, Jan, Mediterranean; Table 12: Citrus, no ground cover - 70% canopy (Kc mid (end of development))",Project owner,2026-11-04
+lime_omani,3,mid,120,0.65,published,fao56,"Table 11: Citrus, Jan, Mediterranean; Table 12: Citrus, no ground cover - 70% canopy (Kc mid)",Project owner,2026-11-04
+lime_omani,4,late,95,0.70,published,fao56,"Table 11: Citrus, Jan, Mediterranean; Table 12: Citrus, no ground cover - 70% canopy (Kc end)",Project owner,2026-11-04
+banana,1,initial,120,0.50,published,fao56,"Table 11: Banana, 1st yr, Mar, Mediterranean; Table 12: Banana - 1st year (Kc ini)",Project owner,2026-11-04
+banana,2,development,90,1.10,published,fao56,"Table 11: Banana, 1st yr, Mar, Mediterranean; Table 12: Banana - 1st year (Kc mid (end of development))",Project owner,2026-11-04
+banana,3,mid,120,1.10,published,fao56,"Table 11: Banana, 1st yr, Mar, Mediterranean; Table 12: Banana - 1st year (Kc mid)",Project owner,2026-11-04
+banana,4,late,60,1.00,published,fao56,"Table 11: Banana, 1st yr, Mar, Mediterranean; Table 12: Banana - 1st year (Kc end)",Project owner,2026-11-04
+grape,1,initial,20,0.30,published,fao56,"Table 11: Grapes, April, Low Latitudes; Table 12: Grapes - Table or Raisin (Kc ini)",Project owner,2026-11-04
+grape,2,development,40,0.85,published,fao56,"Table 11: Grapes, April, Low Latitudes; Table 12: Grapes - Table or Raisin (Kc mid (end of development))",Project owner,2026-11-04
+grape,3,mid,120,0.85,published,fao56,"Table 11: Grapes, April, Low Latitudes; Table 12: Grapes - Table or Raisin (Kc mid)",Project owner,2026-11-04
+grape,4,late,60,0.45,published,fao56,"Table 11: Grapes, April, Low Latitudes; Table 12: Grapes - Table or Raisin (Kc end)",Project owner,2026-11-04
+walnut,1,initial,20,0.50,published,fao56,"Table 11: Walnuts, April, Utah, USA; Table 12: Walnut Orchard (Kc ini)",Project owner,2026-11-04
+walnut,2,development,10,1.10,published,fao56,"Table 11: Walnuts, April, Utah, USA; Table 12: Walnut Orchard (Kc mid (end of development))",Project owner,2026-11-04
+walnut,3,mid,130,1.10,published,fao56,"Table 11: Walnuts, April, Utah, USA; Table 12: Walnut Orchard (Kc mid)",Project owner,2026-11-04
+walnut,4,late,30,0.65,published,fao56,"Table 11: Walnuts, April, Utah, USA; Table 12: Walnut Orchard (Kc end)",Project owner,2026-11-04

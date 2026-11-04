@@ -14,17 +14,17 @@
         "alt_max": 2400,
         "alt_min": null,
         "chill_hours_min": null,
-        "ece_slope": null,
+        "ece_slope": 9.9,
         "ece_threshold": 2.5,
         "ph_max": 7.5,
         "ph_min": 5,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 150,
         "season_days_min": 70,
         "source_id": "ecocrop_openclim",
-        "source_page": "EcoCrop EcoPortCode 1379 (Lycopersicon esculentum): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
-        "status": "draft",
+        "source_page": "EcoCrop EcoPortCode 1379 (Lycopersicon esculentum): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential; ece_slope from FAO-61 Annex 1 (Maas & Grattan 1999), owner review 2026-11-04 decision 7",
+        "status": "reviewed",
         "t_max": 35,
         "t_min": 7,
         "t_opt_high": 27,
@@ -35,13 +35,13 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
-      "scientific_name": "Lycopersicon esculentum",
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
+      "scientific_name": "Solanum lycopersicum",
       "source_id": "fao29",
-      "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 1379 (LIFO/LISPA → lifecycle)",
+      "source_page": "Table 4 (Lycopersicon esculentum, older synonym); modern name per owner review 2026-11-04 decision 9; EcoCrop EcoPortCode 1379 (LIFO/LISPA → lifecycle)",
       "stages": [],
-      "status": "draft"
+      "status": "reviewed"
     },
     {
       "categories": [
@@ -61,13 +61,13 @@
         "ece_threshold": 2.5,
         "ph_max": 8.7,
         "ph_min": 4.5,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 180,
         "season_days_min": 40,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 817 (Cucumis sativus): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
-        "status": "draft",
+        "status": "published",
         "t_max": 38,
         "t_min": 6,
         "t_opt_high": 32,
@@ -78,8 +78,8 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Cucumis sativus",
       "source_id": "fao29",
       "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 817 (LIFO/LISPA → lifecycle)",
@@ -87,56 +87,56 @@
         {
           "duration_days": 20,
           "kc": 0.6,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 1,
           "source_id": "fao56",
           "source_page": "Table 11: Cucumber, June/Aug, Arid Region; Table 12: Cucumber - Fresh Market (Kc ini)",
           "stage": "initial",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 30,
           "kc": 1,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 2,
           "source_id": "fao56",
           "source_page": "Table 11: Cucumber, June/Aug, Arid Region; Table 12: Cucumber - Fresh Market (Kc mid (end of development))",
           "stage": "development",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 40,
           "kc": 1,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 3,
           "source_id": "fao56",
           "source_page": "Table 11: Cucumber, June/Aug, Arid Region; Table 12: Cucumber - Fresh Market (Kc mid)",
           "stage": "mid",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 15,
           "kc": 0.75,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 4,
           "source_id": "fao56",
           "source_page": "Table 11: Cucumber, June/Aug, Arid Region; Table 12: Cucumber - Fresh Market (Kc end)",
           "stage": "late",
-          "status": "draft"
+          "status": "published"
         }
       ],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
         "vegetable"
       ],
       "id": "onion",
-      "lifecycle": null,
+      "lifecycle": "annual",
       "name_ar": "بصل",
       "name_en": "Onion",
       "notes_ar": null,
@@ -149,71 +149,75 @@
         "ece_threshold": 1.2,
         "ph_max": 8.3,
         "ph_min": 4.3,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 175,
         "season_days_min": 85,
         "source_id": "ecocrop_openclim",
-        "source_page": "EcoCrop EcoPortCode 364 (Allium cepa): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
-        "status": "draft",
+        "source_page": "EcoCrop EcoPortCode 364 (Allium cepa): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX (TEXTR 'wide, organic'; organic not in schema); ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
+        "status": "reviewed",
         "t_max": 30,
         "t_min": 4,
         "t_opt_high": 25,
         "t_opt_low": 12,
-        "textures": null
+        "textures": [
+          "sand",
+          "loam",
+          "clay"
+        ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Allium cepa",
       "source_id": "fao29",
-      "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 364 (LIFO/LISPA → lifecycle)",
+      "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 364 (biennial, grown as annual — owner review 2026-11-04 decision 8)",
       "stages": [
         {
           "duration_days": 20,
           "kc": 0.7,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 1,
           "source_id": "fao56",
           "source_page": "Table 11: Onion (dry), Oct; Jan., Arid Region; Calif.; Table 12: Onions - dry (Kc ini, from group a header row)",
           "stage": "initial",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 35,
           "kc": 1.05,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 2,
           "source_id": "fao56",
           "source_page": "Table 11: Onion (dry), Oct; Jan., Arid Region; Calif.; Table 12: Onions - dry (Kc mid (end of development))",
           "stage": "development",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 110,
           "kc": 1.05,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 3,
           "source_id": "fao56",
           "source_page": "Table 11: Onion (dry), Oct; Jan., Arid Region; Calif.; Table 12: Onions - dry (Kc mid)",
           "stage": "mid",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 45,
           "kc": 0.75,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 4,
           "source_id": "fao56",
           "source_page": "Table 11: Onion (dry), Oct; Jan., Arid Region; Calif.; Table 12: Onions - dry (Kc end)",
           "stage": "late",
-          "status": "draft"
+          "status": "published"
         }
       ],
-      "status": "draft"
+      "status": "reviewed"
     },
     {
       "categories": [
@@ -233,13 +237,13 @@
         "ece_threshold": 1.7,
         "ph_max": 8.5,
         "ph_min": 4.2,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 160,
         "season_days_min": 90,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 1971 (Solanum tuberosum): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
-        "status": "draft",
+        "status": "published",
         "t_max": 30,
         "t_min": 7,
         "t_opt_high": 25,
@@ -250,8 +254,8 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Solanum tuberosum",
       "source_id": "fao29",
       "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 1971 (LIFO/LISPA → lifecycle)",
@@ -259,49 +263,49 @@
         {
           "duration_days": 30,
           "kc": 0.5,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 1,
           "source_id": "fao56",
           "source_page": "Table 11: Potato, Dec, Calif. Desert, USA; Table 12: Potato (Kc ini, from group d header row)",
           "stage": "initial",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 35,
           "kc": 1.15,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 2,
           "source_id": "fao56",
           "source_page": "Table 11: Potato, Dec, Calif. Desert, USA; Table 12: Potato (Kc mid (end of development))",
           "stage": "development",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 50,
           "kc": 1.15,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 3,
           "source_id": "fao56",
           "source_page": "Table 11: Potato, Dec, Calif. Desert, USA; Table 12: Potato (Kc mid)",
           "stage": "mid",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 25,
           "kc": 0.75,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 4,
           "source_id": "fao56",
           "source_page": "Table 11: Potato, Dec, Calif. Desert, USA; Table 12: Potato (Kc end)",
           "stage": "late",
-          "status": "draft"
+          "status": "published"
         }
       ],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
@@ -321,13 +325,13 @@
         "ece_threshold": null,
         "ph_max": 7.5,
         "ph_min": 5.5,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": null,
         "season_days_min": null,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 708 (Citrullus lanatus): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold: crop not listed in FAO-29 Table 4",
-        "status": "draft",
+        "status": "published",
         "t_max": 40,
         "t_min": 15,
         "t_opt_high": 35,
@@ -336,8 +340,8 @@
           "sand"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Citrullus lanatus",
       "source_id": "fao29",
       "source_page": "Table 5 (scientific_name); EcoCrop EcoPortCode 708 (LIFO/LISPA → lifecycle)",
@@ -345,56 +349,56 @@
         {
           "duration_days": 10,
           "kc": 0.4,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 1,
           "source_id": "fao56",
           "source_page": "Table 11: Water melons, Mat/Aug, Near East (desert); Table 12: Watermelon (Kc ini)",
           "stage": "initial",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 20,
           "kc": 1,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 2,
           "source_id": "fao56",
           "source_page": "Table 11: Water melons, Mat/Aug, Near East (desert); Table 12: Watermelon (Kc mid (end of development))",
           "stage": "development",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 20,
           "kc": 1,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 3,
           "source_id": "fao56",
           "source_page": "Table 11: Water melons, Mat/Aug, Near East (desert); Table 12: Watermelon (Kc mid)",
           "stage": "mid",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 30,
           "kc": 0.75,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 4,
           "source_id": "fao56",
           "source_page": "Table 11: Water melons, Mat/Aug, Near East (desert); Table 12: Watermelon (Kc end)",
           "stage": "late",
-          "status": "draft"
+          "status": "published"
         }
       ],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
         "vegetable"
       ],
       "id": "garlic",
-      "lifecycle": null,
+      "lifecycle": "annual",
       "name_ar": "ثوم",
       "name_en": "Garlic",
       "notes_ar": null,
@@ -403,17 +407,17 @@
         "alt_max": 2200,
         "alt_min": null,
         "chill_hours_min": null,
-        "ece_slope": null,
-        "ece_threshold": null,
+        "ece_slope": 14.3,
+        "ece_threshold": 3.9,
         "ph_max": 8.5,
         "ph_min": 5,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 120,
         "season_days_min": 90,
         "source_id": "ecocrop_openclim",
-        "source_page": "EcoCrop EcoPortCode 367 (Allium sativum): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold: crop not listed in FAO-29 Table 4",
-        "status": "draft",
+        "source_page": "EcoCrop EcoPortCode 367 (Allium sativum): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold/ece_slope from FAO-61 (Tanji & Kielen 2002) Annex 1, Tables A1.1/A1.2 (Maas & Grattan 1999)",
+        "status": "reviewed",
         "t_max": 35,
         "t_min": 7,
         "t_opt_high": 30,
@@ -424,13 +428,13 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Allium sativum",
       "source_id": "ecocrop_openclim",
-      "source_page": "EcoCrop EcoPortCode 367 (ScientificName, LIFO/LISPA); crop list §5.3",
+      "source_page": "EcoCrop EcoPortCode 367 (ScientificName; biennial, grown as annual — owner review 2026-11-04 decision 8); crop list §5.3",
       "stages": [],
-      "status": "draft"
+      "status": "reviewed"
     },
     {
       "categories": [
@@ -450,13 +454,13 @@
         "ece_threshold": 4.9,
         "ph_max": 8.8,
         "ph_min": 4,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 240,
         "season_days_min": 30,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 2153 (Vigna unguiculata): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
-        "status": "draft",
+        "status": "published",
         "t_max": 40,
         "t_min": 15,
         "t_opt_high": 35,
@@ -467,52 +471,55 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Vigna unguiculata",
       "source_id": "fao29",
       "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 2153 (LIFO/LISPA → lifecycle)",
       "stages": [],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
         "cereal"
       ],
       "id": "wheat_omani",
-      "lifecycle": null,
+      "lifecycle": "annual",
       "name_ar": "قمح عُماني",
       "name_en": "Omani wheat",
       "notes_ar": null,
       "notes_en": null,
       "requirements": {
-        "alt_max": null,
+        "alt_max": 4500,
         "alt_min": null,
         "chill_hours_min": null,
-        "ece_slope": null,
-        "ece_threshold": null,
-        "ph_max": null,
-        "ph_min": null,
-        "reviewed_at": null,
-        "reviewed_by": null,
-        "season_days_max": null,
-        "season_days_min": null,
-        "source_id": "fao29",
-        "source_page": "Table 4 — crop not listed",
-        "status": "draft",
-        "t_max": null,
-        "t_min": null,
-        "t_opt_high": null,
-        "t_opt_low": null,
-        "textures": null
+        "ece_slope": 7.1,
+        "ece_threshold": 6,
+        "ph_max": 8.5,
+        "ph_min": 5.5,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
+        "season_days_max": 250,
+        "season_days_min": 90,
+        "source_id": "ecocrop_openclim",
+        "source_page": "EcoCrop EcoPortCode 2114 (Triticum aestivum, owner review 2026-11-04 decision 2): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold FAO-29 Table 4 (wheat 6.0); ece_slope FAO-61 Annex 1 (Maas & Grattan 1999)",
+        "status": "reviewed",
+        "t_max": 27,
+        "t_min": 5,
+        "t_opt_high": 23,
+        "t_opt_low": 15,
+        "textures": [
+          "loam",
+          "clay"
+        ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
-      "scientific_name": null,
-      "source_id": "project_spec",
-      "source_page": "§5.3 #8",
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
+      "scientific_name": "Triticum aestivum",
+      "source_id": "alkhanjari2005",
+      "source_page": "Main species of Omani landraces (T. durum and T. dicoccon less common); also Filatenko & Hammer 2014 — owner review 2026-11-04 decision 2",
       "stages": [],
-      "status": "draft"
+      "status": "reviewed"
     },
     {
       "categories": [
@@ -521,7 +528,7 @@
       "id": "alfalfa",
       "lifecycle": "perennial",
       "name_ar": "برسيم (قت)",
-      "name_en": "Alfalfa (qat)",
+      "name_en": "Alfalfa (lucerne)",
       "notes_ar": null,
       "notes_en": null,
       "requirements": {
@@ -532,13 +539,13 @@
         "ece_threshold": 2,
         "ph_max": 8.7,
         "ph_min": 4.3,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 210,
         "season_days_min": 100,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 1428 (Medicago sativa): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
-        "status": "draft",
+        "status": "published",
         "t_max": 45,
         "t_min": 5,
         "t_opt_high": 27,
@@ -548,13 +555,13 @@
           "loam"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Medicago sativa",
       "source_id": "fao29",
       "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 1428 (LIFO/LISPA → lifecycle)",
       "stages": [],
-      "status": "draft"
+      "status": "reviewed"
     },
     {
       "categories": [
@@ -570,17 +577,17 @@
         "alt_max": 1500,
         "alt_min": null,
         "chill_hours_min": null,
-        "ece_slope": null,
+        "ece_slope": 3.6,
         "ece_threshold": 4,
         "ph_max": 8.5,
         "ph_min": 6,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 365,
         "season_days_min": 365,
         "source_id": "ecocrop_openclim",
-        "source_page": "EcoCrop EcoPortCode 1673 (Phoenix dactylifera): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
-        "status": "draft",
+        "source_page": "EcoCrop EcoPortCode 1673 (Phoenix dactylifera): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential; ece_slope from FAO-61 Annex 1 (Maas & Grattan 1999), owner review 2026-11-04 decision 7",
+        "status": "reviewed",
         "t_max": 52,
         "t_min": 10,
         "t_opt_high": 45,
@@ -591,13 +598,13 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Phoenix dactylifera",
       "source_id": "fao29",
       "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 1673 (LIFO/LISPA → lifecycle)",
       "stages": [],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
@@ -617,13 +624,13 @@
         "ece_threshold": null,
         "ph_max": 8.3,
         "ph_min": 4.8,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 365,
         "season_days_min": 180,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 2242 (Citrus aurantifolia): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold: crop not listed in FAO-29 Table 4",
-        "status": "draft",
+        "status": "published",
         "t_max": 38,
         "t_min": 13,
         "t_opt_high": 32,
@@ -634,8 +641,8 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Citrus aurantiifolia",
       "source_id": "fao29",
       "source_page": "Table 5 (scientific_name); EcoCrop EcoPortCode 2242 (LIFO/LISPA → lifecycle)",
@@ -643,133 +650,137 @@
         {
           "duration_days": 60,
           "kc": 0.7,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 1,
           "source_id": "fao56",
           "source_page": "Table 11: Citrus, Jan, Mediterranean; Table 12: Citrus, no ground cover - 70% canopy (Kc ini)",
           "stage": "initial",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 90,
           "kc": 0.65,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 2,
           "source_id": "fao56",
           "source_page": "Table 11: Citrus, Jan, Mediterranean; Table 12: Citrus, no ground cover - 70% canopy (Kc mid (end of development))",
           "stage": "development",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 120,
           "kc": 0.65,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 3,
           "source_id": "fao56",
           "source_page": "Table 11: Citrus, Jan, Mediterranean; Table 12: Citrus, no ground cover - 70% canopy (Kc mid)",
           "stage": "mid",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 95,
           "kc": 0.7,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 4,
           "source_id": "fao56",
           "source_page": "Table 11: Citrus, Jan, Mediterranean; Table 12: Citrus, no ground cover - 70% canopy (Kc end)",
           "stage": "late",
-          "status": "draft"
+          "status": "published"
         }
       ],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
         "fruit"
       ],
       "id": "banana",
-      "lifecycle": null,
+      "lifecycle": "perennial",
       "name_ar": "موز",
       "name_en": "Banana",
       "notes_ar": null,
       "notes_en": null,
       "requirements": {
-        "alt_max": null,
+        "alt_max": 2400,
         "alt_min": null,
         "chill_hours_min": null,
         "ece_slope": null,
         "ece_threshold": null,
-        "ph_max": null,
-        "ph_min": null,
-        "reviewed_at": null,
-        "reviewed_by": null,
-        "season_days_max": null,
-        "season_days_min": null,
-        "source_id": "fao29",
-        "source_page": "Table 4 — crop not listed",
-        "status": "draft",
-        "t_max": null,
-        "t_min": null,
-        "t_opt_high": null,
-        "t_opt_low": null,
-        "textures": null
+        "ph_max": 8,
+        "ph_min": 4.5,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
+        "season_days_max": 365,
+        "season_days_min": 180,
+        "source_id": "ecocrop_openclim",
+        "source_page": "EcoCrop EcoPortCode 7849 (Musa acuminata × balbisiana, owner review 2026-11-04 decision 1): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ECe empty (FAO-61 rates banana sensitive, no threshold)",
+        "status": "reviewed",
+        "t_max": 40,
+        "t_min": 15,
+        "t_opt_high": 35,
+        "t_opt_low": 25,
+        "textures": [
+          "sand",
+          "loam",
+          "clay"
+        ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
-      "scientific_name": null,
-      "source_id": "project_spec",
-      "source_page": "§5.3 #12",
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
+      "scientific_name": "Musa spp.",
+      "source_id": "opara2010",
+      "source_page": "Omani banana cultivars: AAA, AAB and ABB groups — owner review 2026-11-04 decision 1",
       "stages": [
         {
           "duration_days": 120,
           "kc": 0.5,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 1,
           "source_id": "fao56",
           "source_page": "Table 11: Banana, 1st yr, Mar, Mediterranean; Table 12: Banana - 1st year (Kc ini)",
           "stage": "initial",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 90,
           "kc": 1.1,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 2,
           "source_id": "fao56",
           "source_page": "Table 11: Banana, 1st yr, Mar, Mediterranean; Table 12: Banana - 1st year (Kc mid (end of development))",
           "stage": "development",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 120,
           "kc": 1.1,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 3,
           "source_id": "fao56",
           "source_page": "Table 11: Banana, 1st yr, Mar, Mediterranean; Table 12: Banana - 1st year (Kc mid)",
           "stage": "mid",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 60,
           "kc": 1,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 4,
           "source_id": "fao56",
           "source_page": "Table 11: Banana, 1st yr, Mar, Mediterranean; Table 12: Banana - 1st year (Kc end)",
           "stage": "late",
-          "status": "draft"
+          "status": "published"
         }
       ],
-      "status": "draft"
+      "status": "reviewed"
     },
     {
       "categories": [
@@ -789,13 +800,13 @@
         "ece_threshold": null,
         "ph_max": 8.5,
         "ph_min": 5.8,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 365,
         "season_days_min": 180,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 1829 (Punica granatum): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold: crop not listed in FAO-29 Table 4",
-        "status": "draft",
+        "status": "published",
         "t_max": 40,
         "t_min": 8,
         "t_opt_high": 32,
@@ -806,13 +817,13 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Punica granatum",
       "source_id": "fao29",
       "source_page": "Table 5 (scientific_name); EcoCrop EcoPortCode 1829 (LIFO/LISPA → lifecycle)",
       "stages": [],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
@@ -832,13 +843,13 @@
         "ece_threshold": null,
         "ph_max": 7.5,
         "ph_min": 5.5,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 300,
         "season_days_min": 270,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 828 (Curcuma longa): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold: crop not listed in FAO-29 Table 4",
-        "status": "draft",
+        "status": "published",
         "t_max": 32,
         "t_min": 18,
         "t_opt_high": 28,
@@ -848,13 +859,13 @@
           "loam"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Curcuma longa",
       "source_id": "ecocrop_openclim",
       "source_page": "EcoCrop EcoPortCode 828 (ScientificName, LIFO/LISPA); crop list §5.3",
       "stages": [],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
@@ -862,7 +873,7 @@
         "medicinal_aromatic"
       ],
       "id": "damask_rose",
-      "lifecycle": null,
+      "lifecycle": "perennial",
       "name_ar": "الورد الجبلي (الدمشقي)",
       "name_en": "Damask rose",
       "notes_ar": null,
@@ -875,26 +886,26 @@
         "ece_threshold": null,
         "ph_max": null,
         "ph_min": null,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": null,
         "season_days_min": null,
         "source_id": "fao29",
         "source_page": "Table 4 — crop not listed",
-        "status": "draft",
+        "status": "published",
         "t_max": null,
         "t_min": null,
         "t_opt_high": null,
         "t_opt_low": null,
         "textures": null
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
-      "scientific_name": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
+      "scientific_name": "Rosa × damascena",
       "source_id": "project_spec",
-      "source_page": "§5.3 #15",
+      "source_page": "§5.3 #15; scientific name and lifecycle per owner review 2026-11-04 decision 4",
       "stages": [],
-      "status": "draft"
+      "status": "reviewed"
     },
     {
       "categories": [
@@ -914,13 +925,13 @@
         "ece_threshold": null,
         "ph_max": 8.7,
         "ph_min": 4.5,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 180,
         "season_days_min": 50,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 289 (Abelmoschus esculentus): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold: crop not listed in FAO-29 Table 4",
-        "status": "draft",
+        "status": "published",
         "t_max": 35,
         "t_min": 12,
         "t_opt_high": 30,
@@ -931,13 +942,13 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Abelmoschus esculentus",
       "source_id": "fao29",
       "source_page": "Table 5 (scientific_name); EcoCrop EcoPortCode 289 (LIFO/LISPA → lifecycle)",
       "stages": [],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
@@ -950,20 +961,20 @@
       "notes_ar": null,
       "notes_en": null,
       "requirements": {
-        "alt_max": 50,
+        "alt_max": null,
         "alt_min": null,
         "chill_hours_min": null,
-        "ece_slope": null,
-        "ece_threshold": null,
+        "ece_slope": 6.9,
+        "ece_threshold": 1.1,
         "ph_max": 8.5,
         "ph_min": 4.3,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 120,
         "season_days_min": 70,
         "source_id": "ecocrop_openclim",
-        "source_page": "EcoCrop EcoPortCode 1965 (Solanum melongena): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold: crop not listed in FAO-29 Table 4",
-        "status": "draft",
+        "source_page": "EcoCrop EcoPortCode 1965 (Solanum melongena): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX except ALTMX (50 m, rejected by owner review 2026-11-04 — grown in the highlands); ece_threshold/ece_slope from FAO-61 (Tanji & Kielen 2002) Annex 1, Tables A1.1/A1.2 (Maas & Grattan 1999)",
+        "status": "reviewed",
         "t_max": 40,
         "t_min": 9,
         "t_opt_high": 35,
@@ -974,58 +985,58 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
-      "scientific_name": "Solanum melongena esculentum",
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
+      "scientific_name": "Solanum melongena",
       "source_id": "fao29",
-      "source_page": "Table 5 (scientific_name); EcoCrop EcoPortCode 1965 (LIFO/LISPA → lifecycle)",
+      "source_page": "Table 5 (Solanum melongena esculentum, older varietal name); species name per owner review 2026-11-04 decision 9; EcoCrop EcoPortCode 1965 (LIFO/LISPA → lifecycle)",
       "stages": [
         {
           "duration_days": 30,
           "kc": 0.6,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 1,
           "source_id": "fao56",
           "source_page": "Table 11: Egg plant, October, Arid Region; Table 12: Egg Plant (Kc ini, from group b header row)",
           "stage": "initial",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 40,
           "kc": 1.05,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 2,
           "source_id": "fao56",
           "source_page": "Table 11: Egg plant, October, Arid Region; Table 12: Egg Plant (Kc mid (end of development))",
           "stage": "development",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 40,
           "kc": 1.05,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 3,
           "source_id": "fao56",
           "source_page": "Table 11: Egg plant, October, Arid Region; Table 12: Egg Plant (Kc mid)",
           "stage": "mid",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 20,
           "kc": 0.9,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 4,
           "source_id": "fao56",
           "source_page": "Table 11: Egg plant, October, Arid Region; Table 12: Egg Plant (Kc end)",
           "stage": "late",
-          "status": "draft"
+          "status": "published"
         }
       ],
-      "status": "draft"
+      "status": "reviewed"
     },
     {
       "categories": [
@@ -1045,13 +1056,13 @@
         "ece_threshold": 1.5,
         "ph_max": 7,
         "ph_min": 4.5,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 180,
         "season_days_min": 60,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 618 (Capsicum annuum): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
-        "status": "draft",
+        "status": "published",
         "t_max": 35,
         "t_min": 8,
         "t_opt_high": 30,
@@ -1061,8 +1072,8 @@
           "loam"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Capsicum annuum",
       "source_id": "fao29",
       "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 618 (LIFO/LISPA → lifecycle)",
@@ -1070,56 +1081,56 @@
         {
           "duration_days": 30,
           "kc": 0.6,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 1,
           "source_id": "fao56",
           "source_page": "Table 11: Sweet peppers (bell), October, Arid Region; Table 12: Sweet Peppers (bell) (Kc ini, from group b header row)",
           "stage": "initial",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 40,
           "kc": 1.05,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 2,
           "source_id": "fao56",
           "source_page": "Table 11: Sweet peppers (bell), October, Arid Region; Table 12: Sweet Peppers (bell) (Kc mid (end of development))",
           "stage": "development",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 110,
           "kc": 1.05,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 3,
           "source_id": "fao56",
           "source_page": "Table 11: Sweet peppers (bell), October, Arid Region; Table 12: Sweet Peppers (bell) (Kc mid)",
           "stage": "mid",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 30,
           "kc": 0.9,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 4,
           "source_id": "fao56",
           "source_page": "Table 11: Sweet peppers (bell), October, Arid Region; Table 12: Sweet Peppers (bell) (Kc end)",
           "stage": "late",
-          "status": "draft"
+          "status": "published"
         }
       ],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
         "vegetable"
       ],
       "id": "carrot",
-      "lifecycle": null,
+      "lifecycle": "annual",
       "name_ar": "جزر",
       "name_en": "Carrot",
       "notes_ar": null,
@@ -1132,13 +1143,13 @@
         "ece_threshold": 1,
         "ph_max": 8.7,
         "ph_min": 4.2,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 150,
         "season_days_min": 40,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 871 (Daucus carota): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
-        "status": "draft",
+        "status": "published",
         "t_max": 30,
         "t_min": 3,
         "t_opt_high": 24,
@@ -1149,58 +1160,58 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Daucus carota",
       "source_id": "fao29",
-      "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 871 (LIFO/LISPA → lifecycle)",
+      "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 871 (biennial, grown for roots as annual — owner review 2026-11-04 decision 8)",
       "stages": [
         {
           "duration_days": 30,
           "kc": 0.7,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 1,
           "source_id": "fao56",
           "source_page": "Table 11: Carrots, Oct, Calif. Desert, USA; Table 12: Carrots (Kc ini, from group a header row)",
           "stage": "initial",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 50,
           "kc": 1.05,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 2,
           "source_id": "fao56",
           "source_page": "Table 11: Carrots, Oct, Calif. Desert, USA; Table 12: Carrots (Kc mid (end of development))",
           "stage": "development",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 90,
           "kc": 1.05,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 3,
           "source_id": "fao56",
           "source_page": "Table 11: Carrots, Oct, Calif. Desert, USA; Table 12: Carrots (Kc mid)",
           "stage": "mid",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 30,
           "kc": 0.95,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 4,
           "source_id": "fao56",
           "source_page": "Table 11: Carrots, Oct, Calif. Desert, USA; Table 12: Carrots (Kc end)",
           "stage": "late",
-          "status": "draft"
+          "status": "published"
         }
       ],
-      "status": "draft"
+      "status": "reviewed"
     },
     {
       "categories": [
@@ -1216,17 +1227,17 @@
         "alt_max": 1000,
         "alt_min": null,
         "chill_hours_min": null,
-        "ece_slope": null,
-        "ece_threshold": null,
+        "ece_slope": 8.4,
+        "ece_threshold": 1,
         "ph_max": 8.7,
         "ph_min": 5,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 120,
         "season_days_min": 50,
         "source_id": "ecocrop_openclim",
-        "source_page": "EcoCrop EcoPortCode 815 (Cucumis melo): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold: crop not listed in FAO-29 Table 4",
-        "status": "draft",
+        "source_page": "EcoCrop EcoPortCode 815 (Cucumis melo): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold/ece_slope from FAO-61 (Tanji & Kielen 2002) Annex 1, Tables A1.1/A1.2 (Maas & Grattan 1999) (muskmelon/cantaloupe)",
+        "status": "reviewed",
         "t_max": 35,
         "t_min": 9,
         "t_opt_high": 30,
@@ -1237,8 +1248,8 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Cucumis melo",
       "source_id": "fao29",
       "source_page": "Table 5 (scientific_name); EcoCrop EcoPortCode 815 (LIFO/LISPA → lifecycle)",
@@ -1246,49 +1257,49 @@
         {
           "duration_days": 30,
           "kc": 0.5,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 1,
           "source_id": "fao56",
           "source_page": "Table 11: Sweet melons, Dec/Jan, Arid Region; Table 12: Sweet Melons (Kc ini, from group c header row)",
           "stage": "initial",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 45,
           "kc": 1.05,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 2,
           "source_id": "fao56",
           "source_page": "Table 11: Sweet melons, Dec/Jan, Arid Region; Table 12: Sweet Melons (Kc mid (end of development))",
           "stage": "development",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 65,
           "kc": 1.05,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 3,
           "source_id": "fao56",
           "source_page": "Table 11: Sweet melons, Dec/Jan, Arid Region; Table 12: Sweet Melons (Kc mid)",
           "stage": "mid",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 20,
           "kc": 0.75,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 4,
           "source_id": "fao56",
           "source_page": "Table 11: Sweet melons, Dec/Jan, Arid Region; Table 12: Sweet Melons (Kc end)",
           "stage": "late",
-          "status": "draft"
+          "status": "published"
         }
       ],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
@@ -1308,13 +1319,13 @@
         "ece_threshold": 1.5,
         "ph_max": 8.6,
         "ph_min": 4.5,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 150,
         "season_days_min": 100,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 2146 (Vicia faba): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
-        "status": "draft",
+        "status": "published",
         "t_max": 32,
         "t_min": 5,
         "t_opt_high": 28,
@@ -1325,8 +1336,8 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Vicia faba",
       "source_id": "fao29",
       "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 2146 (LIFO/LISPA → lifecycle)",
@@ -1334,49 +1345,49 @@
         {
           "duration_days": 20,
           "kc": 0.5,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 1,
           "source_id": "fao56",
           "source_page": "Table 11: Faba bean, broad bean, Mar/Apr, Mediterranean; Table 12: Fababean - Fresh (Kc ini)",
           "stage": "initial",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 30,
           "kc": 1.15,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 2,
           "source_id": "fao56",
           "source_page": "Table 11: Faba bean, broad bean, Mar/Apr, Mediterranean; Table 12: Fababean - Fresh (Kc mid (end of development))",
           "stage": "development",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 35,
           "kc": 1.15,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 3,
           "source_id": "fao56",
           "source_page": "Table 11: Faba bean, broad bean, Mar/Apr, Mediterranean; Table 12: Fababean - Fresh (Kc mid)",
           "stage": "mid",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 15,
           "kc": 1.1,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 4,
           "source_id": "fao56",
           "source_page": "Table 11: Faba bean, broad bean, Mar/Apr, Mediterranean; Table 12: Fababean - Fresh (Kc end)",
           "stage": "late",
-          "status": "draft"
+          "status": "published"
         }
       ],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
@@ -1397,13 +1408,13 @@
         "ece_threshold": null,
         "ph_max": 8.2,
         "ph_min": 5.3,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 120,
         "season_days_min": 60,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 10554 (Trigonella foenum-graecum): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold: crop not listed in FAO-29 Table 4",
-        "status": "draft",
+        "status": "published",
         "t_max": 32,
         "t_min": 5,
         "t_opt_high": 27,
@@ -1413,13 +1424,13 @@
           "loam"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Trigonella foenum-graecum",
       "source_id": "ecocrop_openclim",
       "source_page": "EcoCrop EcoPortCode 10554 (ScientificName, LIFO/LISPA); crop list §5.3",
       "stages": [],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
@@ -1440,33 +1451,37 @@
         "ece_threshold": 6.8,
         "ph_max": 8,
         "ph_min": 5,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 300,
         "season_days_min": 90,
         "source_id": "ecocrop_openclim",
-        "source_page": "EcoCrop EcoPortCode 48747 (Sorghum bicolor): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
-        "status": "draft",
+        "source_page": "EcoCrop EcoPortCode 48747 (Sorghum bicolor): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX (TEXTR 'wide'); ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
+        "status": "reviewed",
         "t_max": 40,
         "t_min": 8,
         "t_opt_high": 35,
         "t_opt_low": 22,
-        "textures": null
+        "textures": [
+          "sand",
+          "loam",
+          "clay"
+        ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Sorghum bicolor",
       "source_id": "fao29",
       "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 48747 (LIFO/LISPA → lifecycle)",
       "stages": [],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
         "forage"
       ],
       "id": "rhodes_grass",
-      "lifecycle": null,
+      "lifecycle": "perennial",
       "name_ar": "حشيشة رودس",
       "name_en": "Rhodes grass",
       "notes_ar": null,
@@ -1479,13 +1494,13 @@
         "ece_threshold": null,
         "ph_max": 8.5,
         "ph_min": 4,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 210,
         "season_days_min": 150,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 681 (Chloris gayana): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold: crop not listed in FAO-29 Table 4",
-        "status": "draft",
+        "status": "published",
         "t_max": 50,
         "t_min": 5,
         "t_opt_high": 37,
@@ -1496,13 +1511,13 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Chloris gayana",
       "source_id": "fao29",
-      "source_page": "Table 5 (scientific_name); EcoCrop EcoPortCode 681 (LIFO/LISPA → lifecycle)",
+      "source_page": "Table 5 (scientific_name); EcoCrop EcoPortCode 681 (annual, perennial → perennial per owner review 2026-11-04 decision 8)",
       "stages": [],
-      "status": "draft"
+      "status": "reviewed"
     },
     {
       "categories": [
@@ -1522,13 +1537,13 @@
         "ece_threshold": null,
         "ph_max": 8.5,
         "ph_min": 4.3,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 365,
         "season_days_min": 150,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 1416 (Mangifera indica): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold: crop not listed in FAO-29 Table 4",
-        "status": "draft",
+        "status": "published",
         "t_max": 48,
         "t_min": 8,
         "t_opt_high": 30,
@@ -1539,13 +1554,13 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Mangifera indica",
       "source_id": "fao29",
       "source_page": "Table 5 (scientific_name); EcoCrop EcoPortCode 1416 (LIFO/LISPA → lifecycle)",
       "stages": [],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
@@ -1565,13 +1580,13 @@
         "ece_threshold": null,
         "ph_max": 8.7,
         "ph_min": 4.3,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 365,
         "season_days_min": 270,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 744 (Cocos nucifera): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold: crop not listed in FAO-29 Table 4",
-        "status": "draft",
+        "status": "published",
         "t_max": 38,
         "t_min": 14,
         "t_opt_high": 34,
@@ -1582,13 +1597,13 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Cocos nucifera",
       "source_id": "ecocrop_openclim",
       "source_page": "EcoCrop EcoPortCode 744 (ScientificName, LIFO/LISPA); crop list §5.3",
       "stages": [],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
@@ -1608,13 +1623,13 @@
         "ece_threshold": null,
         "ph_max": 8,
         "ph_min": 4.5,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 365,
         "season_days_min": 330,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 630 (Carica papaya): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold: crop not listed in FAO-29 Table 4",
-        "status": "draft",
+        "status": "published",
         "t_max": 44,
         "t_min": 12,
         "t_opt_high": 30,
@@ -1625,13 +1640,13 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Carica papaya",
       "source_id": "fao29",
       "source_page": "Table 5 (scientific_name); EcoCrop EcoPortCode 630 (LIFO/LISPA → lifecycle)",
       "stages": [],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
@@ -1651,13 +1666,13 @@
         "ece_threshold": 1.5,
         "ph_max": 8.5,
         "ph_min": 4.5,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 270,
         "season_days_min": 160,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 2160 (Vitis vinifera): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold from FAO-29 Table 4, ECe at 100% yield potential",
-        "status": "draft",
+        "status": "published",
         "t_max": 38,
         "t_min": 10,
         "t_opt_high": 30,
@@ -1668,58 +1683,58 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
-      "scientific_name": "Vitis sp.",
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
+      "scientific_name": "Vitis vinifera",
       "source_id": "fao29",
-      "source_page": "Table 5 (scientific_name); EcoCrop EcoPortCode 2160 (LIFO/LISPA → lifecycle)",
+      "source_page": "Table 4 (Vitis sp.); species per owner review 2026-11-04 decisions 5 and 9; EcoCrop EcoPortCode 2160 (LIFO/LISPA → lifecycle)",
       "stages": [
         {
           "duration_days": 20,
           "kc": 0.3,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 1,
           "source_id": "fao56",
           "source_page": "Table 11: Grapes, April, Low Latitudes; Table 12: Grapes - Table or Raisin (Kc ini)",
           "stage": "initial",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 40,
           "kc": 0.85,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 2,
           "source_id": "fao56",
           "source_page": "Table 11: Grapes, April, Low Latitudes; Table 12: Grapes - Table or Raisin (Kc mid (end of development))",
           "stage": "development",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 120,
           "kc": 0.85,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 3,
           "source_id": "fao56",
           "source_page": "Table 11: Grapes, April, Low Latitudes; Table 12: Grapes - Table or Raisin (Kc mid)",
           "stage": "mid",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 60,
           "kc": 0.45,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 4,
           "source_id": "fao56",
           "source_page": "Table 11: Grapes, April, Low Latitudes; Table 12: Grapes - Table or Raisin (Kc end)",
           "stage": "late",
-          "status": "draft"
+          "status": "published"
         }
       ],
-      "status": "draft"
+      "status": "reviewed"
     },
     {
       "categories": [
@@ -1739,13 +1754,13 @@
         "ece_threshold": null,
         "ph_max": 8.3,
         "ph_min": 4.5,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 180,
         "season_days_min": 150,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 2315 (Juglans regia): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold: crop not listed in FAO-29 Table 4",
-        "status": "draft",
+        "status": "published",
         "t_max": 40,
         "t_min": 7,
         "t_opt_high": 30,
@@ -1756,8 +1771,8 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Juglans regia",
       "source_id": "ecocrop_openclim",
       "source_page": "EcoCrop EcoPortCode 2315 (ScientificName, LIFO/LISPA); crop list §5.3",
@@ -1765,49 +1780,49 @@
         {
           "duration_days": 20,
           "kc": 0.5,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 1,
           "source_id": "fao56",
           "source_page": "Table 11: Walnuts, April, Utah, USA; Table 12: Walnut Orchard (Kc ini)",
           "stage": "initial",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 10,
           "kc": 1.1,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 2,
           "source_id": "fao56",
           "source_page": "Table 11: Walnuts, April, Utah, USA; Table 12: Walnut Orchard (Kc mid (end of development))",
           "stage": "development",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 130,
           "kc": 1.1,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 3,
           "source_id": "fao56",
           "source_page": "Table 11: Walnuts, April, Utah, USA; Table 12: Walnut Orchard (Kc mid)",
           "stage": "mid",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 30,
           "kc": 0.65,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 4,
           "source_id": "fao56",
           "source_page": "Table 11: Walnuts, April, Utah, USA; Table 12: Walnut Orchard (Kc end)",
           "stage": "late",
-          "status": "draft"
+          "status": "published"
         }
       ],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
@@ -1815,7 +1830,7 @@
         "medicinal_aromatic"
       ],
       "id": "frankincense",
-      "lifecycle": null,
+      "lifecycle": "tree",
       "name_ar": "لبان (اللبان الحوجري)",
       "name_en": "Frankincense",
       "notes_ar": null,
@@ -1828,26 +1843,26 @@
         "ece_threshold": null,
         "ph_max": null,
         "ph_min": null,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": null,
         "season_days_min": null,
         "source_id": "fao29",
         "source_page": "Table 4 — crop not listed",
-        "status": "draft",
+        "status": "published",
         "t_max": null,
         "t_min": null,
         "t_opt_high": null,
         "t_opt_low": null,
         "textures": null
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
-      "scientific_name": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
+      "scientific_name": "Boswellia sacra",
       "source_id": "project_spec",
-      "source_page": "§5.3 #30",
+      "source_page": "§5.3 #30; scientific name and lifecycle per owner review 2026-11-04 decision 4 (not EcoCrop's Boswellia serrata)",
       "stages": [],
-      "status": "draft"
+      "status": "reviewed"
     },
     {
       "categories": [
@@ -1868,13 +1883,13 @@
         "ece_threshold": null,
         "ph_max": 8,
         "ph_min": 4.3,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": 365,
         "season_days_min": 100,
         "source_id": "ecocrop_openclim",
         "source_page": "EcoCrop EcoPortCode 1334 (Lawsonia inermis): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX, GMIN/GMAX; ece_threshold: crop not listed in FAO-29 Table 4",
-        "status": "draft",
+        "status": "published",
         "t_max": 33,
         "t_min": 13,
         "t_opt_high": 27,
@@ -1885,165 +1900,168 @@
           "clay"
         ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "scientific_name": "Lawsonia inermis",
       "source_id": "ecocrop_openclim",
       "source_page": "EcoCrop EcoPortCode 1334 (ScientificName, LIFO/LISPA); crop list §5.3",
       "stages": [],
-      "status": "draft"
+      "status": "published"
     },
     {
       "categories": [
         "ornamental"
       ],
       "id": "bougainvillea",
-      "lifecycle": null,
+      "lifecycle": "perennial",
       "name_ar": "بوغنفيليا",
       "name_en": "Bougainvillea",
       "notes_ar": null,
       "notes_en": null,
       "requirements": {
-        "alt_max": null,
+        "alt_max": 1500,
         "alt_min": null,
         "chill_hours_min": null,
         "ece_slope": null,
         "ece_threshold": null,
-        "ph_max": null,
-        "ph_min": null,
-        "reviewed_at": null,
-        "reviewed_by": null,
+        "ph_max": 7.5,
+        "ph_min": 5.5,
+        "reviewed_at": "2026-11-04",
+        "reviewed_by": "Project owner",
         "season_days_max": null,
         "season_days_min": null,
-        "source_id": "fao29",
-        "source_page": "Table 4 — crop not listed",
-        "status": "draft",
-        "t_max": null,
-        "t_min": null,
-        "t_opt_high": null,
-        "t_opt_low": null,
-        "textures": null
+        "source_id": "ecocrop_openclim",
+        "source_page": "EcoCrop EcoPortCode 3795 (Bougainvillea glabra, owner review 2026-11-04 decision 3): TMIN/TOPMN/TOPMX/TMAX, PHMIN/PHMAX, TEXTR, ALTMX; GMIN/GMAX empty",
+        "status": "reviewed",
+        "t_max": 38,
+        "t_min": 10,
+        "t_opt_high": 25,
+        "t_opt_low": 18,
+        "textures": [
+          "sand",
+          "loam"
+        ]
       },
-      "reviewed_at": null,
-      "reviewed_by": null,
-      "scientific_name": null,
-      "source_id": "project_spec",
-      "source_page": "§5.3 #32",
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
+      "scientific_name": "Bougainvillea glabra",
+      "source_id": "ecocrop_openclim",
+      "source_page": "EcoCrop EcoPortCode 3795 (Bougainvillea glabra; garden hybrids B. × buttiana also occur) — owner review 2026-11-04 decision 3",
       "stages": [],
-      "status": "draft"
+      "status": "reviewed"
     }
   ],
-  "generated_at": "2026-11-04T04:13:30+00:00",
+  "generated_at": "2026-11-04T11:50:47+00:00",
   "governorates": [
     {
       "id": "muscat",
       "name_ar": "مسقط",
       "name_en": "Muscat",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "id": "dhofar",
       "name_ar": "ظفار",
       "name_en": "Dhofar",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "id": "musandam",
       "name_ar": "مسندم",
       "name_en": "Musandam",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "id": "buraymi",
       "name_ar": "البريمي",
       "name_en": "Al-Buraymi",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "id": "dakhiliyah",
       "name_ar": "الداخلية",
       "name_en": "Ad Dakhiliyah",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "id": "batinah_north",
       "name_ar": "شمال الباطنة",
       "name_en": "Al Batinah North",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "id": "batinah_south",
       "name_ar": "جنوب الباطنة",
       "name_en": "Al Batinah South",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "id": "sharqiyah_south",
       "name_ar": "جنوب الشرقية",
       "name_en": "Ash Sharqiyah South",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "id": "sharqiyah_north",
       "name_ar": "شمال الشرقية",
       "name_en": "Ash Sharqiyah North",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "id": "dhahirah",
       "name_ar": "الظاهرة",
       "name_en": "Adh Dhahirah",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "id": "wusta",
       "name_ar": "الوسطى",
       "name_en": "Al Wusta",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     }
   ],
   "schema_version": 1,
@@ -2101,6 +2119,33 @@
       "type": "dataset",
       "url": "https://github.com/OpenCLIM/ecocrop/blob/main/EcoCrop_DB.csv",
       "year": 2024
+    },
+    {
+      "id": "fao61",
+      "publisher": "FAO",
+      "reliability": 3,
+      "title": "Agricultural drainage water management in arid and semi-arid areas (Tanji & Kielen), FAO Irrigation and Drainage Paper 61 — Annex 1: crop salt tolerance data (Maas & Grattan 1999)",
+      "type": "fao",
+      "url": "https://www.fao.org/3/Y4263E/y4263e0e.htm",
+      "year": 2002
+    },
+    {
+      "id": "alkhanjari2005",
+      "publisher": "Bioversity International / FAO",
+      "reliability": 2,
+      "title": "Al-Khanjari et al. (2005), Plant Genetic Resources Newsletter 141: 7–10 — Omani wheat landraces",
+      "type": "peer_reviewed",
+      "url": "https://kobra.uni-kassel.de/handle/123456789/2007052418336",
+      "year": 2005
+    },
+    {
+      "id": "opara2010",
+      "publisher": "Zhejiang University Press",
+      "reliability": 2,
+      "title": "Opara et al. (2010), Journal of Zhejiang University Science B 11(5) — banana cultivars in Oman",
+      "type": "peer_reviewed",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2865835",
+      "year": 2010
     }
   ],
   "wilayats": [
@@ -2109,693 +2154,693 @@
       "id": "muscat",
       "name_ar": "مسقط",
       "name_en": "Muscat",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "muscat",
       "id": "mutrah",
       "name_ar": "مطرح",
       "name_en": "Mutrah",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "muscat",
       "id": "al_amrat",
       "name_ar": "العامرات",
       "name_en": "Al Amrat",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "muscat",
       "id": "bawshar",
       "name_ar": "بوشر",
       "name_en": "Bawshar",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "muscat",
       "id": "as_seeb",
       "name_ar": "السيب",
       "name_en": "As Seeb",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "muscat",
       "id": "qurayyat",
       "name_ar": "قريات",
       "name_en": "Qurayyat",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dhofar",
       "id": "salalah",
       "name_ar": "صلالة",
       "name_en": "Salalah",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dhofar",
       "id": "taqah",
       "name_ar": "طاقة",
       "name_en": "Taqah",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dhofar",
       "id": "mirbat",
       "name_ar": "مرباط",
       "name_en": "Mirbat",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dhofar",
       "id": "rakhyut",
       "name_ar": "رخيوت",
       "name_en": "Rakhyut",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dhofar",
       "id": "thumrayt",
       "name_ar": "ثمريت",
       "name_en": "Thumrayt",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dhofar",
       "id": "dalkut",
       "name_ar": "ضلكوت",
       "name_en": "Dalkut",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dhofar",
       "id": "al_mazuna",
       "name_ar": "المزيونة",
       "name_en": "Al Mazuna",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dhofar",
       "id": "muqshin",
       "name_ar": "مقشن",
       "name_en": "Muqshin",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dhofar",
       "id": "shalim_wa_juzur_al_hallaniyat",
       "name_ar": "شليم وجزر الحلانيات",
       "name_en": "Shalim Wa Juzur Al Hallaniyat",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dhofar",
       "id": "sadh",
       "name_ar": "سدح",
       "name_en": "Sadh",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "musandam",
       "id": "khasab",
       "name_ar": "خصب",
       "name_en": "Khasab",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "musandam",
       "id": "daba",
       "name_ar": "دبا",
       "name_en": "Daba",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "musandam",
       "id": "bukha",
       "name_ar": "بخاء",
       "name_en": "Bukha",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "musandam",
       "id": "madha",
       "name_ar": "مدحاء",
       "name_en": "Madha",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "buraymi",
       "id": "al_buraymi",
       "name_ar": "البريمي",
       "name_en": "Al Buraymi",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "buraymi",
       "id": "mahdah",
-      "name_ar": "محظة",
+      "name_ar": "محضة",
       "name_en": "Mahdah",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
-      "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38 prints «محظة»; the same yearbook prints «محضة» in later tables (PDF pp. 65, 81) — owner review 2026-11-04 adopts «محضة»",
+      "status": "reviewed"
     },
     {
       "governorate_id": "buraymi",
       "id": "al_sinainah",
       "name_ar": "السنينة",
       "name_en": "Al Sinainah",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dakhiliyah",
       "id": "nizwa",
       "name_ar": "نزوى",
       "name_en": "Nizwa",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dakhiliyah",
       "id": "jabal_al_akhdhar",
       "name_ar": "الجبل الأخضر",
       "name_en": "Jabal Al-Akhdhar",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dakhiliyah",
       "id": "bahla",
       "name_ar": "بهلاء",
       "name_en": "Bahla",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dakhiliyah",
       "id": "manah",
       "name_ar": "منح",
       "name_en": "Manah",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dakhiliyah",
       "id": "al_hamra",
       "name_ar": "الحمراء",
       "name_en": "Al Hamra",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dakhiliyah",
       "id": "adam",
       "name_ar": "ادم",
       "name_en": "Adam",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dakhiliyah",
       "id": "izki",
       "name_ar": "ازكي",
       "name_en": "Izki",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dakhiliyah",
       "id": "samail",
       "name_ar": "سمائل",
       "name_en": "Samail",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dakhiliyah",
       "id": "bid_bid",
       "name_ar": "بدبد",
       "name_en": "Bid Bid",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "batinah_north",
       "id": "sohar",
       "name_ar": "صحار",
       "name_en": "Sohar",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "batinah_north",
       "id": "shinas",
       "name_ar": "شناص",
       "name_en": "Shinas",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "batinah_north",
       "id": "liwa",
       "name_ar": "لوى",
       "name_en": "Liwa",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "batinah_north",
       "id": "saham",
       "name_ar": "صحم",
       "name_en": "Saham",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "batinah_north",
       "id": "al_khaburah",
       "name_ar": "الخابورة",
       "name_en": "Al Khaburah",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "batinah_north",
       "id": "as_suwayq",
       "name_ar": "السويق",
       "name_en": "As Suwayq",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "batinah_south",
       "id": "ar_rustaq",
       "name_ar": "الرستاق",
       "name_en": "Ar Rustaq",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "batinah_south",
       "id": "al_awabi",
       "name_ar": "العوابي",
       "name_en": "Al Awabi",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "batinah_south",
       "id": "nakhal",
       "name_ar": "نخل",
       "name_en": "Nakhal",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "batinah_south",
       "id": "wadi_al_maawil",
       "name_ar": "وادي المعاول",
       "name_en": "Wadi Al Maawil",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "batinah_south",
       "id": "barka",
       "name_ar": "بركاء",
       "name_en": "Barka",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "batinah_south",
       "id": "al_musanaah",
       "name_ar": "المصنعة",
       "name_en": "Al Musanaah",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "sharqiyah_south",
       "id": "sur",
       "name_ar": "صور",
       "name_en": "Sur",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "sharqiyah_south",
       "id": "al_kamil_wa_al_wafi",
       "name_ar": "الكامل والوافي",
       "name_en": "Al Kamil Wa Al Wafi",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "sharqiyah_south",
       "id": "jaalan_bani_bu_hasan",
       "name_ar": "جعلان بني بو حسن",
       "name_en": "Jaalan Bani Bu Hasan",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "sharqiyah_south",
       "id": "jaalan_bani_bu_ali",
       "name_ar": "جعلان بني بو علي",
       "name_en": "Jaalan Bani Bu Ali",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "sharqiyah_south",
       "id": "masirah",
       "name_ar": "مصيرة",
       "name_en": "Masirah",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "sharqiyah_north",
       "id": "ibra",
       "name_ar": "ابراء",
       "name_en": "Ibra",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "sharqiyah_north",
       "id": "al_mudaybi",
       "name_ar": "المضيبي",
       "name_en": "Al Mudaybi",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "sharqiyah_north",
       "id": "bidiyah",
       "name_ar": "بدية",
       "name_en": "Bidiyah",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "sharqiyah_north",
       "id": "al_qabil",
       "name_ar": "القابل",
       "name_en": "Al Qabil",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "sharqiyah_north",
       "id": "wadi_bani_khalid",
       "name_ar": "وادي بني خالد",
       "name_en": "Wadi Bani Khalid",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "sharqiyah_north",
       "id": "dima_wa_at_taiyyin",
       "name_ar": "دماء والطائيين",
       "name_en": "Dima Wa At Taiyyin",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "sharqiyah_north",
       "id": "sinaw",
       "name_ar": "سناو",
       "name_en": "Sinaw",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dhahirah",
       "id": "ibri",
       "name_ar": "عبري",
       "name_en": "Ibri",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dhahirah",
       "id": "yanqul",
       "name_ar": "ينقل",
       "name_en": "Yanqul",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "dhahirah",
       "id": "dank",
       "name_ar": "ضنك",
       "name_en": "Dank",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "wusta",
       "id": "hayma",
       "name_ar": "هيماء",
       "name_en": "Hayma",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "wusta",
       "id": "muhut",
       "name_ar": "محوت",
       "name_en": "Muhut",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "wusta",
       "id": "ad_duqm",
       "name_ar": "الدقم",
       "name_en": "Ad Duqm",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     },
     {
       "governorate_id": "wusta",
       "id": "al_jazer",
       "name_ar": "الجازر",
       "name_en": "Al Jazer",
-      "reviewed_at": null,
-      "reviewed_by": null,
+      "reviewed_at": "2026-11-04",
+      "reviewed_by": "Project owner",
       "source_id": "ncsi_admin",
       "source_page": "Statistical Year Book 2026 (Issue 54), Governorate And Wilayat table, pp. 37-38",
-      "status": "draft"
+      "status": "published"
     }
   ]
 }

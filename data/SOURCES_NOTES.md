@@ -1,13 +1,16 @@
 # ملاحظات المصادر / Source notes — seed set (Task 10)
 
-All rows are `status=draft`. Nothing here is shown in a default build until the
-owner reviews it and marks it `reviewed`/`published` in the CSV (README §review).
+**Owner review 2026-11-04** (`reviewed_by = Project owner`): rows the owner marked correct are
+`published`; rows the owner corrected carry the correction and are `reviewed`, waiting for one
+"Publish reviewed" click in the admin panel (and `published` in the CSV). Every correction cites
+its source in `source_page`; see "Owner review outcome" at the end. The sections below describe
+the original transcription.
 No value was typed from memory: each value was transcribed from the sources
 listed below (retrieved 2026-11-04). Where a source has no value for a crop, or
 gives only a range or several alternatives that the schema cannot hold as one
 number, the field or row is left **empty**.
 
-> **ملخص بالعربية:** كل الصفوف مسودة. القيم منقولة من FAO-56 (الجدولان 11 و12) وFAO-29 (الجدولان 4 و5) وقاعدة EcoCrop
+> **ملخص بالعربية:** راجع المالك كل الصفوف في 2026-11-04: ما أكّده منشور، وما صحّحه بحالة «مراجَع» بانتظار النشر. فيما يلي وصف النقل الأصلي. القيم منقولة من FAO-56 (الجدولان 11 و12) وFAO-29 (الجدولان 4 و5) وقاعدة EcoCrop
 > (نسخة كاملة منشورة من OpenCLIM لأن موقع FAO الحالي يتطلب تسجيل دخول)، وأسماء المحافظات الـ11 والولايات الـ63 بالعربية
 > والإنجليزية من الكتاب الإحصائي السنوي 2026 (الإصدار 54) للمركز الوطني للإحصاء والمعلومات، ص 37–38، كما طُبعت.
 > بقيت فارغة: متطلبات الموز والقمح العُماني والورد الدمشقي واللبان والبوغنفيليا (النوع غير محدد أو غير موجود في EcoCrop)،
@@ -91,12 +94,22 @@ Table 12 values are for a sub-humid climate (RHmin ≈ 45 %, u2 ≈ 2 m/s). The 
 - **In Table 12 but not in Table 11:** garlic, date palm.
 - **In neither table:** pomegranate, turmeric, damask rose, okra, fenugreek, Rhodes grass, mango, coconut ("Palm Trees" is not coconut-specific), papaya, frankincense, henna, bougainvillea.
 
-## Review items and owner decisions
-1. **EcoCrop copy.** Values come from the OpenCLIM redistribution, not the FAO site (sign-in required). When a reviewer has FAO access, spot-check a few crops and, if they match, the rows may be re-pointed to `ecocrop`.
-2. **Suspicious source value to check before publishing:** eggplant `alt_max = 50` m (EcoCrop ALTMX as stored; it would exclude almost every inland wilayat).
-3. **Species choices made** (only main cultivated species): walnut → *Juglans regia* (EcoCrop also has *J. nigra*, *J. hindsii*, *J. sieboldiana*); grape → *Vitis vinifera* (FAO-29 says only *Vitis sp.*).
-4. **Species still to choose** (fields empty until then): banana (*Musa*), Omani wheat (*T. aestivum* vs *T. durum*), bougainvillea. Damask rose and Omani frankincense (*Boswellia sacra*) need another source.
-5. `ece_slope`: allow the derivation b = 100 / (ECe₀ − a) from FAO-29 Table 4, or wait for the original Maas (1984) values.
-6. Where FAO-56 Table 12 gives a range (tomato, cowpea, wheat, sorghum), choose a value.
-7. Scientific-name updates (older FAO-29 names).
-8. Lifecycle for biennials (onion, garlic, carrot) and Rhodes grass: the schema has no "biennial"; decide whether they are stored as `annual`.
+## Owner review outcome (2026-11-04)
+Status after the review: crops 19 published / 13 reviewed; crop_requirements 22 / 10; crop_stages 52 / 0;
+governorates 11 / 0; wilayats 62 / 1 (Mahdah).
+
+Corrections applied (all `reviewed`):
+- **Scientific names** (decision 9): tomato *Solanum lycopersicum*, eggplant *Solanum melongena*, grape *Vitis vinifera* (FAO-29 lists grape in Table 4, not 5). Older FAO-29 names are kept in `source_page`; a synonym field for search is a later schema change.
+- **Species** (decisions 1–5): Omani wheat *Triticum aestivum* (`alkhanjari2005`), banana *Musa spp.* (`opara2010`), bougainvillea *Bougainvillea glabra* (EcoCrop 3795), damask rose *Rosa × damascena*, frankincense *Boswellia sacra* (not EcoCrop's *B. serrata*), walnut *Juglans regia* confirmed.
+- **Lifecycle** (decision 8): onion, garlic, carrot → `annual`; Rhodes grass → `perennial`; wheat `annual`; banana, damask rose, bougainvillea `perennial`; frankincense `tree`.
+- **English name:** alfalfa → "Alfalfa (lucerne)" ("qat" means *Catha edulis* in English).
+- **Requirements:** wheat from EcoCrop 2114 + FAO-29 ECe 6.0; banana from EcoCrop 7849 (*Musa acuminata × balbisiana*), ECe empty (FAO-61: sensitive, no number); bougainvillea from EcoCrop 3795, season empty; onion and sorghum textures `sand|loam|clay` (EcoCrop "wide"; "organic" has no schema value); eggplant `alt_max` emptied (EcoCrop's 50 m rejected).
+- **Salinity** (decision 7, new source `fao61`, Maas & Grattan 1999): ECe/slope garlic 3.9/14.3, eggplant 1.1/6.9, muskmelon 1.0/8.4; slopes wheat 7.1, tomato 9.9, date palm 3.6. Other slopes stay empty until transcribed from FAO-61 Annex 1.
+- **Mahdah:** the Year Book's Governorate and Wilayat table (pp. 37–38) prints «محظة», but the same Year Book prints «محضة» in later tables (PDF pp. 65, 81); the owner adopted «محضة».
+
+Still open (not data edits):
+- **Decision 6 — stage rows for tomato, cowpea, wheat, sorghum** do not exist yet: the chosen Kc values (tomato end 0.80; cowpea 0.60 fresh / 0.35 dry; wheat end 0.25; sorghum mid 1.05) still need the stage lengths from FAO-56 Table 11. Cowpea needs a fresh-or-dry choice, or two crop entries.
+- **Decision 10:** the app should interpolate Kc linearly day by day across development and late stages (FAO-56 ch. 6); stored values stay the end-of-stage points.
+- **Decision 11:** adjust Kc mid/end per wilayat with FAO-56 Eq. 62 once climate data (RHmin, u2) is in the pipeline.
+- Damask rose and frankincense requirements stay empty until a ministry or SQU source is found (decision 4).
+- EcoCrop spot-check against FAO's own site (the owner checked every value against the OpenCLIM copy).
