@@ -83,7 +83,7 @@ update public.profiles set role = 'admin' where id = '<معرّف المستخد
 تجد المعرّف في Authentication ← Users.
 
 ### حالة البيانات
-يحتوي التطبيق على مسودة بيانات الـ٣٢ محصولاً من `data/`، منقولة من FAO-56 وFAO-29 فقط، وكل صفوفها بحالة `draft`، لذلك لا تظهر إلا في نسخة مبنية بـ `SHOW_DRAFTS=true` مع شريط «مسودة — قيد المراجعة». الحقول التي مصدرها EcoCrop، والمحافظات والولايات (من المركز الوطني للإحصاء)، ما زالت فارغة لأن تلك المواقع لم تكن متاحة؛ التفاصيل في `data/SOURCES_NOTES.md`.
+يحتوي التطبيق على مسودة بيانات الـ٣٢ محصولاً و١١ محافظة و٦٣ ولاية من `data/`، منقولة من FAO-56 وFAO-29 وقاعدة EcoCrop والكتاب الإحصائي السنوي 2026 (المركز الوطني للإحصاء والمعلومات). كل صفوفها بحالة `draft`، لذلك لا تظهر إلا في نسخة مبنية بـ `SHOW_DRAFTS=true` مع شريط «مسودة — قيد المراجعة». ما بقي فارغاً وأسبابه، والقرارات المطلوبة من المالك، في `data/SOURCES_NOTES.md`.
 
 ---
 
@@ -162,4 +162,4 @@ update public.profiles set role = 'admin' where id = '<user uuid>';
 Find the id under Authentication → Users.
 
 ### Data status
-The bundled snapshot is built from `data/`: draft data for the 32 crops, transcribed from FAO-56 and FAO-29 only, every row `draft`, so it is visible only in a `SHOW_DRAFTS=true` build under the "Draft — under review" banner. EcoCrop-derived fields and the governorates/wilayats (NCSI) are still empty because those sites were not reachable; see `data/SOURCES_NOTES.md`.
+The bundled snapshot is built from `data/`: draft data for the 32 crops, 11 governorates and 63 wilayats, transcribed from FAO-56, FAO-29, the EcoCrop database and the NCSI Statistical Year Book 2026. Every row is `draft`, so it is visible only in a `SHOW_DRAFTS=true` build under the "Draft — under review" banner. What is still empty, why, and the owner decisions pending are listed in `data/SOURCES_NOTES.md`.

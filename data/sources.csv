@@ -2,5 +2,6 @@ id,title,publisher,year,url,type,reliability
 fao56,"Crop evapotranspiration — Guidelines for computing crop water requirements (Allen, Pereira, Raes & Smith), FAO Irrigation and Drainage Paper 56",FAO,1998,https://www.fao.org/4/x0490e/x0490e00.htm,fao,3
 fao29,"Water quality for agriculture (Ayers & Westcot), FAO Irrigation and Drainage Paper 29 Rev.1",FAO,1985,https://www.fao.org/4/t0234e/t0234e00.htm,fao,3
 ecocrop,ECOCROP database — crop environmental requirements,FAO,,https://ecocrop.review.fao.org/ecocrop/srv/en/home,dataset,2
-ncsi_admin,التقسيمات الإدارية — المركز الوطني للإحصاء والمعلومات / Administrative divisions — National Centre for Statistics and Information,NCSI Oman,,https://www.ncsi.gov.om/publications,other,3
+ncsi_admin,الكتاب الإحصائي السنوي 2026 (الإصدار 54): المحافظات والولايات — المركز الوطني للإحصاء والمعلومات / Statistical Year Book 2026 (Issue 54): Governorates and Wilayats — National Centre for Statistics and Information,NCSI Oman,2026,https://api.ncsi.gov.om/uploads/pdfs/statistical_year_book_2026___issue_54_1792484794.pdf,other,3
 project_spec,قائمة المحاصيل وفئاتها — وثيقة تصميم المشروع §5.3 / Crop list and categories — project design spec §5.3,Oman Farmer project,2026,,other,
+ecocrop_openclim,"ECOCROP database, full export (EcoCrop_DB.csv) — FAO data redistributed by OpenCLIM / UK Centre for Ecology & Hydrology (Zenodo DOI 10.5281/zenodo.10843625)",OpenCLIM (UKCEH); data FAO,2024,https://github.com/OpenCLIM/ecocrop/blob/main/EcoCrop_DB.csv,dataset,2

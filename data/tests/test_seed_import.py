@@ -1,8 +1,6 @@
 """Task 10: the real seed set in data/ imports cleanly and is all draft."""
 from pathlib import Path
 
-import pytest
-
 from data.export_snapshot import build_snapshot
 from data.import_db import import_dir
 from data.validate import validate_dir
@@ -31,12 +29,14 @@ def test_seed_import_crops_and_requirements(db):
     assert missing == []
 
 
-@pytest.mark.xfail(strict=True, reason="NCSI administrative-division files (api.ncsi.gov.om) not yet "
-                   "reachable; governorates.csv / wilayats.csv are header-only until transcribed")
 def test_seed_import_admin_divisions(db):
     counts = import_dir(DATA, db)
     assert counts["governorates"] == 11
     assert counts["wilayats"] == 63
+    orphans = db.execute(
+        "select id from wilayats w where not exists "
+        "(select 1 from governorates g where g.id = w.governorate_id)").fetchall()
+    assert orphans == []
 
 
 def test_seed_is_all_draft_with_known_sources():

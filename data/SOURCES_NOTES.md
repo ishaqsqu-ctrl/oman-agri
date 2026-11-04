@@ -2,14 +2,16 @@
 
 All rows are `status=draft`. Nothing here is shown in a default build until the
 owner reviews it and marks it `reviewed`/`published` in the CSV (README §review).
-No value was typed from memory: each value was transcribed from the online FAO
-editions listed below (retrieved 2026-11-04). Where a source has no value for a
-crop, or gives only a range or several alternatives that the schema cannot hold
-as one number, the field or row is left **empty**.
+No value was typed from memory: each value was transcribed from the sources
+listed below (retrieved 2026-11-04). Where a source has no value for a crop, or
+gives only a range or several alternatives that the schema cannot hold as one
+number, the field or row is left **empty**.
 
-> **ملخص بالعربية:** كل الصفوف مسودة. القيم منقولة حرفياً من FAO-56 (الجدولان 11 و12) وFAO-29 (الجدولان 4 و5).
-> لم يُتح الوصول إلى قاعدة EcoCrop ولا إلى ملفات المركز الوطني للإحصاء (api.ncsi.gov.om) في جلسة الإعداد،
-> لذلك بقيت حقول الحرارة وpH والقوام والارتفاع وطول الموسم فارغة، وملفا المحافظات والولايات بلا صفوف حتى تُنقل من المصدر.
+> **ملخص بالعربية:** كل الصفوف مسودة. القيم منقولة من FAO-56 (الجدولان 11 و12) وFAO-29 (الجدولان 4 و5) وقاعدة EcoCrop
+> (نسخة كاملة منشورة من OpenCLIM لأن موقع FAO الحالي يتطلب تسجيل دخول)، وأسماء المحافظات الـ11 والولايات الـ63 بالعربية
+> والإنجليزية من الكتاب الإحصائي السنوي 2026 (الإصدار 54) للمركز الوطني للإحصاء والمعلومات، ص 37–38، كما طُبعت.
+> بقيت فارغة: متطلبات الموز والقمح العُماني والورد الدمشقي واللبان والبوغنفيليا (النوع غير محدد أو غير موجود في EcoCrop)،
+> وساعات البرودة والارتفاع الأدنى (لا توجد في EcoCrop)، و`ece_slope`. القرارات المطلوبة من المالك في آخر الملف.
 
 ## Sources (`sources.csv`)
 
@@ -17,22 +19,39 @@ as one number, the field or row is left **empty**.
 |---|---|---|
 | `fao56` | `crop_stages.csv` — stage lengths (Table 11) and Kc (Table 12), Chapter 6, https://www.fao.org/4/x0490e/x0490e0b.htm | transcribed |
 | `fao29` | `crop_requirements.csv` — `ece_threshold` (Table 4); `crops.csv` — scientific names (Tables 4–5), §2.4.3, https://www.fao.org/4/t0234e/T0234E03.htm | transcribed |
-| `ecocrop` | intended for temperature, pH, texture, altitude, season length, life form | **not accessible** — ecocrop.review.fao.org denied by the session network policy; fields left empty |
-| `ncsi_admin` | intended for the 11 governorates and 63 wilayats (AR/EN names) | **not accessible** — www.ncsi.gov.om loads, but every NCSI publication file is served from api.ncsi.gov.om, which the policy denies; `governorates.csv` and `wilayats.csv` are header-only |
-| `project_spec` | crop list, Arabic names and categories (design spec §5.3) for crops that have no row in FAO-29 | project taxonomy, not an agronomic fact |
+| `ecocrop` | the FAO EcoCrop database itself (https://ecocrop.review.fao.org) | **kept for reference, not cited by any row** — the site now redirects to a Google sign-in (IAP), so it could not be read |
+| `ecocrop_openclim` | temperature, pH, texture, altitude, season length (`crop_requirements.csv`); `lifecycle` and six scientific names (`crops.csv`) | transcribed from `EcoCrop_DB.csv`, the full EcoCrop export redistributed by OpenCLIM / UKCEH (https://github.com/OpenCLIM/ecocrop, Zenodo DOI 10.5281/zenodo.10843625; the repo README calls it "the full FAO EcoCrop database"). It is a secondary copy, so reliability is 2; spot-checking against FAO's own site is a review item |
+| `ncsi_admin` | the 11 governorates and 63 wilayats, AR/EN names | transcribed from NCSI *Statistical Year Book 2026, Issue 54*, table "المحافظات والولايات / Governorate And Wilayat", printed pp. 37–38 (PDF pages 38–39). The PDF's Arabic text layer is scrambled, so the Arabic names were read off the rendered page images |
+| `project_spec` | crop list, Arabic names and categories (design spec §5.3) for crops with no name in a source | project taxonomy, not an agronomic fact |
+
+## `governorates.csv`, `wilayats.csv` (NCSI)
+- Names are as printed in the Year Book, in both languages, including its spellings (e.g. `محظة` / Mahdah, `ادم`, `ازكي`, `ابراء` without hamza, English `Al-Buraymi`, `Jabal Al-Akhdhar`). Governorate names drop the words «محافظة» / "Governorate".
+- Governorate English names follow the Year Book order of words ("Al Batinah North", not "North Al Batinah" as in `data/demo/`).
+- ids are ASCII snake case of the English name (`as_seeb`, `jaalan_bani_bu_ali`); governorate ids are short forms (`batinah_north`, `sharqiyah_south`). A wilayat may share an id with its governorate (`muscat`) — they are separate tables.
+- Counts per governorate (Year Book): Muscat 6, Dhofar 10, Musandam 4, Al-Buraymi 3, Ad Dakhiliyah 9, Al Batinah North 6, Al Batinah South 6, Ash Sharqiyah South 5, Ash Sharqiyah North 7, Adh Dhahirah 3, Al Wusta 4 = **63**.
 
 ## `crops.csv`
 - The 32 crops, Arabic names and categories come from spec §5.3; English names are plain translations of those labels.
-- `scientific_name` is copied verbatim from FAO-29 Table 4 (preferred) or Table 5, so `source_id=fao29`. Note that FAO-29 uses older names in places (e.g. tomato *Lycopersicon esculentum*, now usually *Solanum lycopersicum*; eggplant *Solanum melongena esculentum*). These are left as the source prints them, for the reviewer to decide.
-- Crops not in FAO-29 (garlic, banana, turmeric, damask rose, fenugreek, coconut, walnut, frankincense, henna, bougainvillea) and **Omani wheat** have an empty `scientific_name` and `source_id=project_spec`. Omani wheat is left empty because FAO-29 lists both *T. aestivum* and *T. turgidum*, and picking one would be a guess.
-- `lifecycle` is empty for every crop: EcoCrop's "life form" field was meant to supply it.
+- `scientific_name` is copied verbatim from FAO-29 Table 4 (preferred) or Table 5, so `source_id=fao29`. FAO-29 uses older names in places (tomato *Lycopersicon esculentum*, now usually *Solanum lycopersicum*; eggplant *Solanum melongena esculentum*). They are left as printed, for the reviewer to decide.
+- Six crops absent from FAO-29 now take their name from the EcoCrop record (`source_id=ecocrop_openclim`): garlic *Allium sativum*, turmeric *Curcuma longa*, fenugreek *Trigonella foenum-graecum*, coconut *Cocos nucifera*, walnut *Juglans regia*, henna *Lawsonia inermis*. Each is the only EcoCrop species for that crop name, except walnut (see review items).
+- Still no scientific name, `source_id=project_spec`: Omani wheat (FAO-29 and EcoCrop both list *T. aestivum* and *T. durum/turgidum*), banana (many *Musa* records, no single cultivated one), damask rose (no *Rosa damascena* in EcoCrop), frankincense (EcoCrop has *Boswellia serrata* only, not the Omani *B. sacra*), bougainvillea (only *B. glabra*; the species grown is not specified).
+- `lifecycle` from EcoCrop: `tree` when life form (LIFO) includes "tree"; otherwise `annual`/`perennial` when the life span (LISPA) is exactly that. Left **empty** when LISPA is `biennial` (onion, garlic, carrot) or `annual, perennial` (Rhodes grass), since the schema has no such value.
 
 ## `crop_requirements.csv` (one row per crop; the importer test requires it)
-- `ece_threshold` = FAO-29 Table 4, soil-salinity ECe (dS/m) at **100 % yield potential** (the "a" value of Eq. 10). Filled for tomato 2.5, cucumber 2.5, onion 1.2, potato 1.7, cowpea 4.9 (field-crop row, not forage), alfalfa 2.0, date palm 4.0, pepper 1.5, carrot 1.0, faba bean (Broadbean) 1.5, sorghum 6.8, grape 1.5.
-- Not listed in Table 4, so left empty: every other crop. Watermelon, muskmelon, okra, mango, lime, papaya, pomegranate and Rhodes grass have only a qualitative class in Table 5, and the schema has no column for that.
-- `ece_slope` is **empty**. Table 4 does not print b. FAO-29 says b "can be determined from Table 4" (from the 0–100 % columns), but that is a derived value, not a transcribed one. **Owner decision:** allow the derivation b = 100 / (ECe₀ − a) from Table 4, or wait for the original Maas (1984) values.
-- All other columns (temperatures, chill hours, pH, texture, altitude, season days) are empty, pending EcoCrop.
-- Every row has `source_id=fao29`. Rows with no value have `source_page = "Table 4 — crop not listed"`.
+**EcoCrop fields** (27 crops; EcoPortCode in each row's `source_page`). Matching was by the crop's scientific name — the FAO-29 name where there is one (eggplant via EcoCrop's synonym list, lime *aurantiifolia* = EcoCrop *aurantifolia*). Column mapping:
+
+| schema | EcoCrop | note |
+|---|---|---|
+| `t_min`, `t_opt_low`, `t_opt_high`, `t_max` | TMIN, TOPMN, TOPMX, TMAX | absolute and optimal temperature, °C |
+| `ph_min`, `ph_max` | PHMIN, PHMAX | **absolute** range (EcoCrop also has an optimal range PHOPMN/PHOPMX, not stored) |
+| `textures` | TEXTR | **absolute** range; light→sand, medium→loam, heavy→clay (EcoCrop's own glossary). "organic" and "wide" have no schema value and are dropped, so onion (`wide, organic`) and sorghum (`wide`) have empty textures |
+| `alt_max` | ALTMX | EcoCrop gives no minimum altitude, so `alt_min` is empty |
+| `season_days_min`, `season_days_max` | GMIN, GMAX | `0 0` in EcoCrop means "no value" (watermelon) and is left empty |
+| `chill_hours_min` | — | not in EcoCrop; empty |
+
+- `ece_threshold` = FAO-29 Table 4, soil-salinity ECe (dS/m) at **100 % yield potential**. Filled for tomato 2.5, cucumber 2.5, onion 1.2, potato 1.7, cowpea 4.9, alfalfa 2.0, date palm 4.0, pepper 1.5, carrot 1.0, faba bean 1.5, sorghum 6.8, grape 1.5. Not in Table 4 → empty. EcoCrop's own salinity class (SAL) is not stored.
+- `ece_slope` is **empty**: Table 4 does not print b (see owner decisions).
+- One row has one `source_id`. Rows with EcoCrop values cite `ecocrop_openclim`, and their `source_page` states which fields came from FAO-29 Table 4. The five crops with no EcoCrop match (banana, Omani wheat, damask rose, frankincense, bougainvillea) keep `source_id=fao29` and are otherwise empty.
 
 ## `crop_stages.csv` (FAO-56)
 **How a row was chosen in Table 11:** the first row whose region mentions an arid climate ("Arid Region", "Arid climate", "(Semi) Arid") was taken. A row with an ambiguous slash value such as `50/30` was skipped. Fallbacks, in order: "desert" or "Near East", then "Mediterranean", then the first row listed. **In Table 12:** the first listed sub-entry was taken. Where a crop row has no Kc ini, the group header row's Kc ini was used, as FAO-56 lays the table out.
@@ -72,6 +91,12 @@ Table 12 values are for a sub-humid climate (RHmin ≈ 45 %, u2 ≈ 2 m/s). The 
 - **In Table 12 but not in Table 11:** garlic, date palm.
 - **In neither table:** pomegranate, turmeric, damask rose, okra, fenugreek, Rhodes grass, mango, coconut ("Palm Trees" is not coconut-specific), papaya, frankincense, henna, bougainvillea.
 
-## To finish this set
-1. Allow `ecocrop.review.fao.org` and `api.ncsi.gov.om` in the environment's network policy. Then transcribe the EcoCrop fields and the NCSI governorate/wilayat names. When 63 wilayats import, the strict xfail in `data/tests/test_seed_import.py::test_seed_import_admin_divisions` will start failing; remove the marker then.
-2. Owner decisions listed above: `ece_slope` derivation; which value to use where Table 12 gives a range; scientific-name updates.
+## Review items and owner decisions
+1. **EcoCrop copy.** Values come from the OpenCLIM redistribution, not the FAO site (sign-in required). When a reviewer has FAO access, spot-check a few crops and, if they match, the rows may be re-pointed to `ecocrop`.
+2. **Suspicious source value to check before publishing:** eggplant `alt_max = 50` m (EcoCrop ALTMX as stored; it would exclude almost every inland wilayat).
+3. **Species choices made** (only main cultivated species): walnut → *Juglans regia* (EcoCrop also has *J. nigra*, *J. hindsii*, *J. sieboldiana*); grape → *Vitis vinifera* (FAO-29 says only *Vitis sp.*).
+4. **Species still to choose** (fields empty until then): banana (*Musa*), Omani wheat (*T. aestivum* vs *T. durum*), bougainvillea. Damask rose and Omani frankincense (*Boswellia sacra*) need another source.
+5. `ece_slope`: allow the derivation b = 100 / (ECe₀ − a) from FAO-29 Table 4, or wait for the original Maas (1984) values.
+6. Where FAO-56 Table 12 gives a range (tomato, cowpea, wheat, sorghum), choose a value.
+7. Scientific-name updates (older FAO-29 names).
+8. Lifecycle for biennials (onion, garlic, carrot) and Rhodes grass: the schema has no "biennial"; decide whether they are stored as `annual`.
