@@ -151,6 +151,13 @@ def validate_dir(path: Path) -> list[Issue]:
             add("crop_stages.csv", n, "seq", f"المرحلة مكررة: {r['crop_id']} #{r['seq']}", f"Duplicate stage: {r['crop_id']} #{r['seq']}")
         seen.add(k)
 
+    seen = set()
+    for n, r in tables["crop_kc_monthly.csv"]:
+        k = (r["crop_id"], r["month"])
+        if r["crop_id"] and r["month"] and k in seen:
+            add("crop_kc_monthly.csv", n, "month", f"الشهر مكرر: {r['crop_id']} #{r['month']}", f"Duplicate month: {r['crop_id']} #{r['month']}")
+        seen.add(k)
+
     # foreign keys
     src, gov, crops = ids("sources.csv"), ids("governorates.csv"), ids("crops.csv")
     for f in FILES[1:]:
@@ -160,7 +167,7 @@ def validate_dir(path: Path) -> list[Issue]:
     for n, r in tables["wilayats.csv"]:
         if r["governorate_id"] and r["governorate_id"] not in gov and "governorates.csv" not in unusable:
             add("wilayats.csv", n, "governorate_id", f"المحافظة غير موجودة: {r['governorate_id']}", f"Unknown governorate: {r['governorate_id']}")
-    for f in ("crop_requirements.csv", "crop_stages.csv"):
+    for f in ("crop_requirements.csv", "crop_stages.csv", "crop_kc_monthly.csv"):
         for n, r in tables[f]:
             if r["crop_id"] and r["crop_id"] not in crops and "crops.csv" not in unusable:
                 add(f, n, "crop_id", f"المحصول غير موجود: {r['crop_id']}", f"Unknown crop: {r['crop_id']}")
@@ -232,6 +239,15 @@ def validate_dir(path: Path) -> list[Issue]:
                 add(f, n, "seq", f"تسلسل المراحل للمحصول {crop} يجب أن يكون متصلاً من 1 (المتوقع {i}، الموجود {s})",
                     f"Stage seq for {crop} must be contiguous from 1 (expected {i}, found {s})")
                 break
+    # monthly kc
+    f = "crop_kc_monthly.csv"
+    for n, r in tables[f]:
+        m = val(f, n, "month")
+        if m is not None and not 1 <= m <= 12:
+            add(f, n, "month", f"الشهر يجب أن يكون بين 1 و12: {m}", f"month must be within 1..12: {m}")
+        k = val(f, n, "kc")
+        if k is not None and not 0 <= k <= Decimal("1.5"):
+            add(f, n, "kc", f"قيمة kc يجب أن تكون بين 0 و1.5: {k:g}", f"kc must be within 0..1.5: {k:g}")
     return issues
 
 
@@ -243,7 +259,7 @@ def main(argv: list[str]) -> int:
             where = f"{i.file}:{i.row}:{i.column}"
             print(f"{where}\n  {i.message_ar}\n  {i.message_en}")
         return 1
-    total = sum(len(read_table(path / f)[1]) for f in ("sources.csv", "governorates.csv", "wilayats.csv", "crops.csv", "crop_requirements.csv", "crop_stages.csv"))
+    total = sum(len(read_table(path / f)[1]) for f in FILES)
     print(f"OK: {total} rows")
     return 0
 

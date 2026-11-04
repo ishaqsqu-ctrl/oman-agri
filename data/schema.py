@@ -1,5 +1,5 @@
 """Column specs per CSV file. Headers equal DB column names
-(supabase/migrations/20261103000001_core_knowledge.sql)."""
+(supabase/migrations/20261103000001_core_knowledge.sql, 20261104000003_crop_kc_monthly.sql)."""
 
 STATUSES = ("draft", "reviewed", "published")
 CATEGORIES = ("vegetable", "fruit", "legume", "cereal", "forage", "ornamental", "medicinal_aromatic", "tree")
@@ -41,9 +41,13 @@ COLUMNS: dict[str, list[tuple[str, str, bool]]] = {
         ("crop_id", "text", True), ("seq", "smallint", True), ("stage", "enum:STAGES", True),
         ("duration_days", "int", True), ("kc", "num", True),
     ],
+    "crop_kc_monthly.csv": [
+        ("crop_id", "text", True), ("month", "smallint", True), ("kc", "num", True),
+    ],
 }
 
-FILES = ["sources.csv", "governorates.csv", "wilayats.csv", "crops.csv", "crop_requirements.csv", "crop_stages.csv"]
+FILES = ["sources.csv", "governorates.csv", "wilayats.csv", "crops.csv", "crop_requirements.csv", "crop_stages.csv",
+         "crop_kc_monthly.csv"]
 
 META_SPEC = [
     ("status", "enum:STATUSES", True), ("source_id", "text", True), ("source_page", "text", False),

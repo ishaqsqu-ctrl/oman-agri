@@ -99,3 +99,22 @@ def test_committed_db_is_isolated_and_commits(committed_db):
 
 def test_committed_db_fresh_per_test(committed_db):
     assert committed_db.execute("select count(*) from sources").fetchone() == (0,)
+
+
+def test_kc_monthly_bounds(db):
+    _source(db)
+    _crop(db)
+    for month, kc in ((13, 0.8), (0, 0.8), (6, 1.6)):
+        with pytest.raises(psycopg.errors.CheckViolation):
+            with db.transaction():
+                db.execute(
+                    "insert into crop_kc_monthly(crop_id, month, kc, source_id) "
+                    "values ('tomato', %s, %s, 's1')", [month, kc])
+
+
+def test_kc_monthly_one_row_per_month(db):
+    _source(db)
+    _crop(db)
+    db.execute("insert into crop_kc_monthly(crop_id, month, kc, source_id) values ('tomato', 1, 0.7, 's1')")
+    with pytest.raises(psycopg.errors.UniqueViolation):
+        db.execute("insert into crop_kc_monthly(crop_id, month, kc, source_id) values ('tomato', 1, 0.8, 's1')")

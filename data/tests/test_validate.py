@@ -107,6 +107,12 @@ CASES = [
     ("stage_seq_gap", "crop_stages.csv", 4, "seq", "5"),
     ("stage_seq_not_from_1", None, None, None, None),
     ("seq_not_int", "crop_stages.csv", 4, "seq", "x"),
+    ("kcm_month_high", "crop_kc_monthly.csv", 2, "month", "13"),
+    ("kcm_month_zero", "crop_kc_monthly.csv", 2, "month", "0"),
+    ("kcm_kc_high", "crop_kc_monthly.csv", 2, "kc", "1.6"),
+    ("kcm_kc_missing", "crop_kc_monthly.csv", 2, "kc", ""),
+    ("kcm_unknown_crop", "crop_kc_monthly.csv", 2, "crop_id", "ghost"),
+    ("kcm_dup_month", "crop_kc_monthly.csv", 3, "month", "1"),
 ]
 
 

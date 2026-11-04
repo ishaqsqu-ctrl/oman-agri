@@ -14,7 +14,7 @@ from data.import_db import import_dir
 
 FIX = Path(__file__).parent / "fixtures"
 ROOT = Path(__file__).resolve().parents[2]
-TABLES = ["sources", "governorates", "wilayats", "crops", "crop_requirements", "crop_stages"]
+TABLES = ["sources", "governorates", "wilayats", "crops", "crop_requirements", "crop_stages", "crop_kc_monthly"]
 
 
 def copy_valid(tmp_path):
@@ -221,3 +221,13 @@ def test_bundled_asset_matches_seed_set():
     asset = json.loads((ROOT / "app" / "assets" / "seed" / "knowledge.json").read_text(encoding="utf-8"))
     expected = json.loads(json.dumps(build_snapshot(ROOT / "data", now=asset["generated_at"]), default=str))
     assert asset == expected
+
+
+def test_snapshot_kc_monthly_nested_sorted():
+    s = build_snapshot(FIX / "valid", now="x")
+    by_id = {c["id"]: c for c in s["crops"]}
+    months = by_id["tomato"]["kc_monthly"]
+    assert [m["month"] for m in months] == [1, 2, 3]
+    assert all("crop_id" not in m for m in months)
+    assert months[1]["kc"] == 0.72 and months[0]["status"] == "draft"
+    assert by_id["lime"]["kc_monthly"] == []

@@ -15,6 +15,7 @@ from .typed import load_all
 PKS = {
     "sources": ["id"], "governorates": ["id"], "wilayats": ["id"], "crops": ["id"],
     "crop_requirements": ["crop_id"], "crop_stages": ["crop_id", "seq"],
+    "crop_kc_monthly": ["crop_id", "month"],
 }
 ENUM_TYPES = {
     "enum:STATUSES": "knowledge_status", "enum:SOURCE_TYPES": "source_type",

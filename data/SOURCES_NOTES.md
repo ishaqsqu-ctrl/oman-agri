@@ -116,3 +116,24 @@ Still open (not data edits):
 - **Decision 11:** adjust Kc mid/end per wilayat with FAO-56 Eq. 62 once climate data (RHmin, u2) is in the pipeline.
 - Damask rose and frankincense requirements stay empty until a ministry or SQU source is found (decision 4).
 - EcoCrop spot-check against FAO's own site (the owner checked every value against the OpenCLIM copy).
+
+## Owner research 2026-11-04: remaining crops (all rows `draft`)
+Collected by the owner in the research workbook; loaded unchanged.
+
+**`crop_stages.csv` — alfalfa** (FAO-56, checked against the tables): one cutting cycle, Table 11 "Alfalfa, other cutting cycles, Mar, Calif., USA" 5/10/10/5 days; Table 12 "Alfalfa Hay – individual cutting periods" 0.40 / 1.20 / 1.15. The cycle repeats after each cut; cuts per year in Oman have no peer-reviewed source yet (owner suggests the ministry). The first cycle after sowing is longer (10/20/20/10, Calif.).
+
+**`crop_kc_monthly.csv`** (new table, migration `20261104000003_crop_kc_monthly.sql`): one kc per crop and calendar month, for perennials where the four-stage curve does not fit.
+
+| crop | source | what is stored |
+|---|---|---|
+| mango | `mohammad2015` Table 4, p. 1013 — Jazan, Saudi Arabia (soil-water balance) | 12 measured monthly values, 0.71–0.77 |
+| pomegranate | `noory2021` Table 2, p. 1082 — Saveh, Iran (mature trees, soil-water balance) | May–Oct only (deciduous; Nov–Apr not measured). Monthly value = owner's mean of the 10-day values over three seasons; October includes end-of-season decline (0.57, 0.35, 0.29 → 0.40) |
+| date palm | `fao56` Table 12 | 0.95 in every month — one annual value, not monthly data. Arid-climate measurements are lower, especially in winter (Montazar et al. 2020, Water 12(8):2253, 0.63 Dec – 0.90 Jun; Alihouri, Ahvaz, 0.47–1.01), but their monthly tables were not available |
+| coconut | `miranda2007` abstract — coastal Ceará, Brazil | 1.02 in every month — mean for flowering/fruiting palms, not monthly data |
+| papaya | `posse2008` abstract — Rio de Janeiro, Brazil (weighing lysimeter) | 0.87 in every month — mean from transplant to ~16 months (young plants), not monthly data |
+
+The app does not read `kc_monthly` yet (the snapshot carries it; the Supabase source and the UI ignore it).
+
+**Still no data** (owner found no usable peer-reviewed value):
+- **garlic, okra:** Kc found (garlic FAO-56 0.7 / 1.00 / 0.70; okra Awari et al. 2023, Parbhani, 0.64 / 1.07 / 1.33 / 0.86) but no stage lengths, and the app needs all four stages.
+- **fenugreek, turmeric, Rhodes grass, frankincense, henna, bougainvillea, damask rose:** no measured Kc. For Rhodes grass in Oman, Mazahrih et al. (Grassland Science, DOI 10.1111/grs.12120) report 12 cuts in 514 days (≈43 days per cycle) without Kc.

@@ -5,6 +5,7 @@
         "vegetable"
       ],
       "id": "tomato",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "طماطم",
       "name_en": "Tomato",
@@ -93,6 +94,7 @@
         "vegetable"
       ],
       "id": "cucumber",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "خيار",
       "name_en": "Cucumber",
@@ -181,6 +183,7 @@
         "vegetable"
       ],
       "id": "onion",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "بصل",
       "name_en": "Onion",
@@ -269,6 +272,7 @@
         "vegetable"
       ],
       "id": "potato",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "بطاطس",
       "name_en": "Potato",
@@ -357,6 +361,7 @@
         "vegetable"
       ],
       "id": "watermelon",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "بطيخ",
       "name_en": "Watermelon",
@@ -443,6 +448,7 @@
         "vegetable"
       ],
       "id": "garlic",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "ثوم",
       "name_en": "Garlic",
@@ -486,6 +492,7 @@
         "legume"
       ],
       "id": "cowpea",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "لوبيا",
       "name_en": "Cowpea",
@@ -574,6 +581,7 @@
         "cereal"
       ],
       "id": "wheat_omani",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "قمح عُماني",
       "name_en": "Omani wheat",
@@ -661,6 +669,7 @@
         "forage"
       ],
       "id": "alfalfa",
+      "kc_monthly": [],
       "lifecycle": "perennial",
       "name_ar": "برسيم (قت)",
       "name_en": "Alfalfa (lucerne)",
@@ -695,7 +704,52 @@
       "scientific_name": "Medicago sativa",
       "source_id": "fao29",
       "source_page": "Table 4 (scientific_name); EcoCrop EcoPortCode 1428 (LIFO/LISPA → lifecycle)",
-      "stages": [],
+      "stages": [
+        {
+          "duration_days": 5,
+          "kc": 0.4,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 1,
+          "source_id": "fao56",
+          "source_page": "Table 11: Alfalfa, other cutting cycles, Mar, Calif., USA (one cutting cycle, repeated after each cut); Table 12: Alfalfa Hay - individual cutting periods (fn 14) (Kc ini)",
+          "stage": "initial",
+          "status": "draft"
+        },
+        {
+          "duration_days": 10,
+          "kc": 1.2,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 2,
+          "source_id": "fao56",
+          "source_page": "Table 11: Alfalfa, other cutting cycles, Mar, Calif., USA (one cutting cycle, repeated after each cut); Table 12: Alfalfa Hay - individual cutting periods (fn 14) (Kc mid (end of development))",
+          "stage": "development",
+          "status": "draft"
+        },
+        {
+          "duration_days": 10,
+          "kc": 1.2,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 3,
+          "source_id": "fao56",
+          "source_page": "Table 11: Alfalfa, other cutting cycles, Mar, Calif., USA (one cutting cycle, repeated after each cut); Table 12: Alfalfa Hay - individual cutting periods (fn 14) (Kc mid)",
+          "stage": "mid",
+          "status": "draft"
+        },
+        {
+          "duration_days": 5,
+          "kc": 1.15,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "seq": 4,
+          "source_id": "fao56",
+          "source_page": "Table 11: Alfalfa, other cutting cycles, Mar, Calif., USA (one cutting cycle, repeated after each cut); Table 12: Alfalfa Hay - individual cutting periods (fn 14) (Kc end)",
+          "stage": "late",
+          "status": "draft"
+        }
+      ],
       "status": "published"
     },
     {
@@ -703,6 +757,116 @@
         "tree"
       ],
       "id": "date_palm",
+      "kc_monthly": [
+        {
+          "kc": 0.95,
+          "month": 1,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "fao56",
+          "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.95,
+          "month": 2,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "fao56",
+          "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.95,
+          "month": 3,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "fao56",
+          "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.95,
+          "month": 4,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "fao56",
+          "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.95,
+          "month": 5,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "fao56",
+          "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.95,
+          "month": 6,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "fao56",
+          "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.95,
+          "month": 7,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "fao56",
+          "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.95,
+          "month": 8,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "fao56",
+          "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.95,
+          "month": 9,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "fao56",
+          "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.95,
+          "month": 10,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "fao56",
+          "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.95,
+          "month": 11,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "fao56",
+          "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.95,
+          "month": 12,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "fao56",
+          "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        }
+      ],
       "lifecycle": "tree",
       "name_ar": "نخيل التمر",
       "name_en": "Date palm",
@@ -746,6 +910,7 @@
         "fruit"
       ],
       "id": "lime_omani",
+      "kc_monthly": [],
       "lifecycle": "tree",
       "name_ar": "ليمون عُماني",
       "name_en": "Omani lime",
@@ -834,6 +999,7 @@
         "fruit"
       ],
       "id": "banana",
+      "kc_monthly": [],
       "lifecycle": "perennial",
       "name_ar": "موز",
       "name_en": "Banana",
@@ -922,6 +1088,62 @@
         "fruit"
       ],
       "id": "pomegranate",
+      "kc_monthly": [
+        {
+          "kc": 0.86,
+          "month": 5,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "noory2021",
+          "source_page": "Table 2, p. 1082: 10-day Kc of mature trees (15–18 yr, cv. Malas Saveh), Saveh, Iran; monthly value = owner's mean of the 10-day values (3 seasons); May from 11 May; Nov–Apr not measured (deciduous)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.97,
+          "month": 6,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "noory2021",
+          "source_page": "Table 2, p. 1082: 10-day Kc of mature trees (15–18 yr, cv. Malas Saveh), Saveh, Iran; monthly value = owner's mean of the 10-day values (3 seasons); May from 11 May; Nov–Apr not measured (deciduous)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.96,
+          "month": 7,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "noory2021",
+          "source_page": "Table 2, p. 1082: 10-day Kc of mature trees (15–18 yr, cv. Malas Saveh), Saveh, Iran; monthly value = owner's mean of the 10-day values (3 seasons); May from 11 May; Nov–Apr not measured (deciduous)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.98,
+          "month": 8,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "noory2021",
+          "source_page": "Table 2, p. 1082: 10-day Kc of mature trees (15–18 yr, cv. Malas Saveh), Saveh, Iran; monthly value = owner's mean of the 10-day values (3 seasons); May from 11 May; Nov–Apr not measured (deciduous)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.97,
+          "month": 9,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "noory2021",
+          "source_page": "Table 2, p. 1082: 10-day Kc of mature trees (15–18 yr, cv. Malas Saveh), Saveh, Iran; monthly value = owner's mean of the 10-day values (3 seasons); May from 11 May; Nov–Apr not measured (deciduous)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.4,
+          "month": 10,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "noory2021",
+          "source_page": "Table 2, p. 1082: 10-day Kc of mature trees (15–18 yr, cv. Malas Saveh), Saveh, Iran; monthly value = owner's mean of the 10-day values (3 seasons); May from 11 May; Nov–Apr not measured (deciduous)",
+          "status": "draft"
+        }
+      ],
       "lifecycle": "tree",
       "name_ar": "رمان",
       "name_en": "Pomegranate",
@@ -965,6 +1187,7 @@
         "medicinal_aromatic"
       ],
       "id": "turmeric",
+      "kc_monthly": [],
       "lifecycle": "perennial",
       "name_ar": "كركم",
       "name_en": "Turmeric",
@@ -1008,6 +1231,7 @@
         "medicinal_aromatic"
       ],
       "id": "damask_rose",
+      "kc_monthly": [],
       "lifecycle": "perennial",
       "name_ar": "الورد الجبلي (الدمشقي)",
       "name_en": "Damask rose",
@@ -1047,6 +1271,7 @@
         "vegetable"
       ],
       "id": "okra",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "بامية",
       "name_en": "Okra",
@@ -1090,6 +1315,7 @@
         "vegetable"
       ],
       "id": "eggplant",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "باذنجان",
       "name_en": "Eggplant",
@@ -1178,6 +1404,7 @@
         "vegetable"
       ],
       "id": "pepper",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "فلفل (حلو وحار)",
       "name_en": "Pepper (sweet and hot)",
@@ -1265,6 +1492,7 @@
         "vegetable"
       ],
       "id": "carrot",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "جزر",
       "name_en": "Carrot",
@@ -1353,6 +1581,7 @@
         "vegetable"
       ],
       "id": "muskmelon",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "شمام",
       "name_en": "Muskmelon",
@@ -1441,6 +1670,7 @@
         "legume"
       ],
       "id": "faba_bean",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "فول بلدي",
       "name_en": "Faba bean",
@@ -1530,6 +1760,7 @@
         "medicinal_aromatic"
       ],
       "id": "fenugreek",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "حلبة",
       "name_en": "Fenugreek",
@@ -1573,6 +1804,7 @@
         "forage"
       ],
       "id": "sorghum",
+      "kc_monthly": [],
       "lifecycle": "annual",
       "name_ar": "ذرة رفيعة",
       "name_en": "Sorghum",
@@ -1661,6 +1893,7 @@
         "forage"
       ],
       "id": "rhodes_grass",
+      "kc_monthly": [],
       "lifecycle": "perennial",
       "name_ar": "حشيشة رودس",
       "name_en": "Rhodes grass",
@@ -1704,6 +1937,116 @@
         "fruit"
       ],
       "id": "mango",
+      "kc_monthly": [
+        {
+          "kc": 0.71,
+          "month": 1,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "mohammad2015",
+          "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.73,
+          "month": 2,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "mohammad2015",
+          "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.74,
+          "month": 3,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "mohammad2015",
+          "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.75,
+          "month": 4,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "mohammad2015",
+          "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.76,
+          "month": 5,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "mohammad2015",
+          "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.77,
+          "month": 6,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "mohammad2015",
+          "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.77,
+          "month": 7,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "mohammad2015",
+          "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.75,
+          "month": 8,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "mohammad2015",
+          "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.75,
+          "month": 9,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "mohammad2015",
+          "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.76,
+          "month": 10,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "mohammad2015",
+          "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.73,
+          "month": 11,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "mohammad2015",
+          "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
+          "status": "draft"
+        },
+        {
+          "kc": 0.71,
+          "month": 12,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "mohammad2015",
+          "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
+          "status": "draft"
+        }
+      ],
       "lifecycle": "tree",
       "name_ar": "مانجو",
       "name_en": "Mango",
@@ -1747,6 +2090,116 @@
         "tree"
       ],
       "id": "coconut",
+      "kc_monthly": [
+        {
+          "kc": 1.02,
+          "month": 1,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "miranda2007",
+          "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 1.02,
+          "month": 2,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "miranda2007",
+          "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 1.02,
+          "month": 3,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "miranda2007",
+          "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 1.02,
+          "month": 4,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "miranda2007",
+          "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 1.02,
+          "month": 5,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "miranda2007",
+          "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 1.02,
+          "month": 6,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "miranda2007",
+          "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 1.02,
+          "month": 7,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "miranda2007",
+          "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 1.02,
+          "month": 8,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "miranda2007",
+          "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 1.02,
+          "month": 9,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "miranda2007",
+          "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 1.02,
+          "month": 10,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "miranda2007",
+          "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 1.02,
+          "month": 11,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "miranda2007",
+          "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 1.02,
+          "month": 12,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "miranda2007",
+          "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        }
+      ],
       "lifecycle": "tree",
       "name_ar": "نارجيل (جوز الهند)",
       "name_en": "Coconut",
@@ -1790,6 +2243,116 @@
         "fruit"
       ],
       "id": "papaya",
+      "kc_monthly": [
+        {
+          "kc": 0.87,
+          "month": 1,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "posse2008",
+          "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.87,
+          "month": 2,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "posse2008",
+          "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.87,
+          "month": 3,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "posse2008",
+          "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.87,
+          "month": 4,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "posse2008",
+          "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.87,
+          "month": 5,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "posse2008",
+          "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.87,
+          "month": 6,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "posse2008",
+          "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.87,
+          "month": 7,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "posse2008",
+          "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.87,
+          "month": 8,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "posse2008",
+          "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.87,
+          "month": 9,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "posse2008",
+          "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.87,
+          "month": 10,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "posse2008",
+          "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.87,
+          "month": 11,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "posse2008",
+          "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        },
+        {
+          "kc": 0.87,
+          "month": 12,
+          "reviewed_at": null,
+          "reviewed_by": null,
+          "source_id": "posse2008",
+          "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
+          "status": "draft"
+        }
+      ],
       "lifecycle": "perennial",
       "name_ar": "بابايا (فافاي)",
       "name_en": "Papaya",
@@ -1833,6 +2396,7 @@
         "fruit"
       ],
       "id": "grape",
+      "kc_monthly": [],
       "lifecycle": "perennial",
       "name_ar": "عنب",
       "name_en": "Grape",
@@ -1921,6 +2485,7 @@
         "tree"
       ],
       "id": "walnut",
+      "kc_monthly": [],
       "lifecycle": "tree",
       "name_ar": "جوز",
       "name_en": "Walnut",
@@ -2010,6 +2575,7 @@
         "medicinal_aromatic"
       ],
       "id": "frankincense",
+      "kc_monthly": [],
       "lifecycle": "tree",
       "name_ar": "لبان (اللبان الحوجري)",
       "name_en": "Frankincense",
@@ -2050,6 +2616,7 @@
         "medicinal_aromatic"
       ],
       "id": "henna",
+      "kc_monthly": [],
       "lifecycle": "tree",
       "name_ar": "حناء",
       "name_en": "Henna",
@@ -2093,6 +2660,7 @@
         "ornamental"
       ],
       "id": "bougainvillea",
+      "kc_monthly": [],
       "lifecycle": "perennial",
       "name_ar": "بوغنفيليا",
       "name_en": "Bougainvillea",
@@ -2131,7 +2699,7 @@
       "status": "published"
     }
   ],
-  "generated_at": "2026-11-04T12:16:59+00:00",
+  "generated_at": "2026-11-04T12:39:43+00:00",
   "governorates": [
     {
       "id": "muscat",
@@ -2326,6 +2894,42 @@
       "type": "peer_reviewed",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2865835",
       "year": 2010
+    },
+    {
+      "id": "mohammad2015",
+      "publisher": "Pakistan Agricultural Scientists Forum",
+      "reliability": 2,
+      "title": "Mohammad, Alamoud & Mahmoud (2015), Water requirements and water use of mango orchards in Jazan region, Saudi Arabia. Journal of Animal & Plant Sciences 25(4): 1008–1015",
+      "type": "peer_reviewed",
+      "url": "https://thejaps.org.pk/manuscript/2015-japs-135.pdf",
+      "year": 2015
+    },
+    {
+      "id": "noory2021",
+      "publisher": "Wiley / ICID",
+      "reliability": 2,
+      "title": "Noory, Abbasnejad, Ebrahimian & Azadi (2021), Determining evapotranspiration and crop coefficients of young and mature pomegranate trees under drip irrigation. Irrigation and Drainage 70(5): 1073–1084",
+      "type": "peer_reviewed",
+      "url": "https://doi.org/10.1002/ird.2607",
+      "year": 2021
+    },
+    {
+      "id": "miranda2007",
+      "publisher": "Universidade Federal do Ceará",
+      "reliability": 2,
+      "title": "Miranda, Gomes, Oliveira, Montenegro & Bezerra (2007), Evapotranspiration and crop coefficients for green-dwarf coconut in the coastal area of Ceará State, Brazil. Revista Ciência Agronômica 38: 129–135",
+      "type": "peer_reviewed",
+      "url": "https://www.periodicos.ufc.br/revistacienciaagronomica/article/view/83857",
+      "year": 2007
+    },
+    {
+      "id": "posse2008",
+      "publisher": "SBEA",
+      "reliability": 2,
+      "title": "Posse, Bernardo, Sousa & Gottardo (2008), Evapotranspiração e coeficiente da cultura do mamoeiro [Evapotranspiration and crop coefficient of papaya]. Engenharia Agrícola",
+      "type": "peer_reviewed",
+      "url": "https://scielo.br/j/eagri/a/yRZcnMN5jtW7tWYTV9773kk/abstract/?lang=en",
+      "year": 2008
     }
   ],
   "wilayats": [

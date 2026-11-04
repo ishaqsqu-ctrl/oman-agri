@@ -153,3 +153,41 @@ def test_anon_cannot_write_knowledge(db):
     with as_role(db, "anon"):
         with pytest.raises(psycopg.errors.InsufficientPrivilege):
             _crop(db, "x")
+
+
+def _kc_month(db, crop_id, month, **over):
+    cols = {"crop_id": crop_id, "month": month, "kc": 0.8, "source_id": "s1", **over}
+    db.execute(f"insert into crop_kc_monthly({', '.join(cols)}) values ({', '.join(['%s'] * len(cols))})",
+               list(cols.values()))
+
+
+def test_kc_monthly_anon_sees_only_published(db):
+    _source(db)
+    _crop(db, "c1")
+    _kc_month(db, "c1", 1)
+    _kc_month(db, "c1", 2, status="published", **REVIEWER)
+    with as_role(db, "anon"):
+        assert db.execute("select month from crop_kc_monthly").fetchall() == [(2,)]
+
+
+def test_kc_monthly_farmer_cannot_write(db):
+    _seed_users(db)
+    _source(db)
+    _crop(db, "c1")
+    with as_role(db, "authenticated", FARMER):
+        with pytest.raises(psycopg.errors.InsufficientPrivilege):
+            _kc_month(db, "c1", 1)
+
+
+def test_kc_monthly_publish_and_counts(db):
+    _seed_users(db)
+    _source(db)
+    _crop(db, "c1")
+    _kc_month(db, "c1", 1, status="reviewed", **REVIEWER)
+    _kc_month(db, "c1", 2)
+    with as_role(db, "authenticated", ADMIN):
+        assert db.execute("select public.publish_reviewed('crop_kc_monthly')").fetchone() == (1,)
+        rows = db.execute(
+            "select status, n from public.knowledge_status_counts() "
+            "where table_name = 'crop_kc_monthly' and n > 0").fetchall()
+    assert sorted(rows) == [("draft", 1), ("published", 1)]

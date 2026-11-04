@@ -30,7 +30,11 @@ def build_snapshot(path: Path, now: str | None = None) -> dict:
     stages: dict[str, list] = {}
     for s in sorted(d["crop_stages"], key=lambda s: s["seq"]):
         stages.setdefault(s["crop_id"], []).append(_row(s, "crop_id"))
-    crops = [{**_row(c), "requirements": reqs.get(c["id"]), "stages": stages.get(c["id"], [])}
+    kc_monthly: dict[str, list] = {}
+    for m in sorted(d["crop_kc_monthly"], key=lambda m: m["month"]):
+        kc_monthly.setdefault(m["crop_id"], []).append(_row(m, "crop_id"))
+    crops = [{**_row(c), "requirements": reqs.get(c["id"]), "stages": stages.get(c["id"], []),
+              "kc_monthly": kc_monthly.get(c["id"], [])}
              for c in d["crops"]]
     return {
         "schema_version": 1,
