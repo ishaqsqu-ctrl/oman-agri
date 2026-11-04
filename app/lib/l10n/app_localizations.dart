@@ -619,6 +619,114 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'معامل المحصول الشهري'**
   String get tableCropKcMonthly;
+
+  /// No description provided for @homeTagline.
+  ///
+  /// In ar, this message translates to:
+  /// **'دليل المحاصيل لمزارع عُمان، وكل معلومة بمصدرها'**
+  String get homeTagline;
+
+  /// No description provided for @glanceOptTemp.
+  ///
+  /// In ar, this message translates to:
+  /// **'الحرارة المثلى'**
+  String get glanceOptTemp;
+
+  /// No description provided for @glanceSeason.
+  ///
+  /// In ar, this message translates to:
+  /// **'طول الموسم'**
+  String get glanceSeason;
+
+  /// No description provided for @glanceSalinity.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحمّل ملوحة التربة'**
+  String get glanceSalinity;
+
+  /// No description provided for @unitDays.
+  ///
+  /// In ar, this message translates to:
+  /// **'يوم'**
+  String get unitDays;
+
+  /// No description provided for @unitCelsius.
+  ///
+  /// In ar, this message translates to:
+  /// **'°م'**
+  String get unitCelsius;
+
+  /// No description provided for @unitSalinity.
+  ///
+  /// In ar, this message translates to:
+  /// **'dS/m'**
+  String get unitSalinity;
+
+  /// No description provided for @waterNeedTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'احتياج الماء خلال الموسم'**
+  String get waterNeedTitle;
+
+  /// No description provided for @waterNeedHelp.
+  ///
+  /// In ar, this message translates to:
+  /// **'معامل المحصول Kc يبيّن كم يحتاج المحصول من الماء مقارنةً بعشب مرجعي: 1 يعني مثله، وأقل من 1 يعني أقل منه.'**
+  String get waterNeedHelp;
+
+  /// No description provided for @seasonTotal.
+  ///
+  /// In ar, this message translates to:
+  /// **'مدة الموسم {days} يوم'**
+  String seasonTotal(int days);
+
+  /// No description provided for @groupTemperature.
+  ///
+  /// In ar, this message translates to:
+  /// **'الحرارة'**
+  String get groupTemperature;
+
+  /// No description provided for @groupSoil.
+  ///
+  /// In ar, this message translates to:
+  /// **'التربة والماء'**
+  String get groupSoil;
+
+  /// No description provided for @groupPlace.
+  ///
+  /// In ar, this message translates to:
+  /// **'الموقع والموسم'**
+  String get groupPlace;
+
+  /// No description provided for @comingMap.
+  ///
+  /// In ar, this message translates to:
+  /// **'أي المحاصيل تناسب ولايتك وأرضك.'**
+  String get comingMap;
+
+  /// No description provided for @comingCalendar.
+  ///
+  /// In ar, this message translates to:
+  /// **'مواعيد الزراعة والري لكل محصول على مدار السنة.'**
+  String get comingCalendar;
+
+  /// No description provided for @comingFarm.
+  ///
+  /// In ar, this message translates to:
+  /// **'سجّل محاصيلك واحصل على تذكير بمواعيد العناية بها.'**
+  String get comingFarm;
+
+  /// No description provided for @comingStore.
+  ///
+  /// In ar, this message translates to:
+  /// **'محلات البذور والأسمدة والمستلزمات القريبة منك.'**
+  String get comingStore;
+
+  /// No description provided for @salinityShort.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملوحة'**
+  String get salinityShort;
 }
 
 class _AppLocalizationsDelegate

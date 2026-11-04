@@ -108,5 +108,30 @@
         "type": "String"
       }
     }
-  }
+  },
+  "homeTagline": "دليل المحاصيل لمزارع عُمان، وكل معلومة بمصدرها",
+  "glanceOptTemp": "الحرارة المثلى",
+  "glanceSeason": "طول الموسم",
+  "glanceSalinity": "تحمّل ملوحة التربة",
+  "unitDays": "يوم",
+  "unitCelsius": "°م",
+  "unitSalinity": "dS/m",
+  "waterNeedTitle": "احتياج الماء خلال الموسم",
+  "waterNeedHelp": "معامل المحصول Kc يبيّن كم يحتاج المحصول من الماء مقارنةً بعشب مرجعي: 1 يعني مثله، وأقل من 1 يعني أقل منه.",
+  "seasonTotal": "مدة الموسم {days} يوم",
+  "groupTemperature": "الحرارة",
+  "groupSoil": "التربة والماء",
+  "groupPlace": "الموقع والموسم",
+  "comingMap": "أي المحاصيل تناسب ولايتك وأرضك.",
+  "comingCalendar": "مواعيد الزراعة والري لكل محصول على مدار السنة.",
+  "comingFarm": "سجّل محاصيلك واحصل على تذكير بمواعيد العناية بها.",
+  "comingStore": "محلات البذور والأسمدة والمستلزمات القريبة منك.",
+  "@seasonTotal": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "salinityShort": "ملوحة"
 }

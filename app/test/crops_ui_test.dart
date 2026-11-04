@@ -332,7 +332,9 @@ void main() {
     await pumpApp(tester, snap: snapshot(lemonKcMonths: [for (var i = 1; i <= 12; i++) i]));
     await tester.tap(find.text('ليمون عُماني'));
     await tester.pumpAndSettle();
-    expect(find.text('معامل المحصول الشهري'), findsOneWidget);
+    // No growth stages: the monthly values fill the water-need section.
+    expect(find.text('احتياج الماء خلال الموسم'), findsOneWidget);
+    expect(find.text('معامل المحصول الشهري'), findsNothing);
     expect(find.text('يناير'), findsOneWidget);
     expect(find.text('ديسمبر'), findsOneWidget);
     expect(find.text('0.71'), findsOneWidget);
@@ -345,7 +347,7 @@ void main() {
     await pumpApp(tester, snap: snapshot(lemonKcMonths: [5, 6]), locale: 'en');
     await tester.tap(find.text('Omani lime'));
     await tester.pumpAndSettle();
-    expect(find.text('Monthly crop coefficient'), findsOneWidget);
+    expect(find.text('Water need through the season'), findsOneWidget);
     expect(find.text('May'), findsOneWidget);
     expect(find.text('June'), findsOneWidget);
     expect(find.text('July'), findsNothing);

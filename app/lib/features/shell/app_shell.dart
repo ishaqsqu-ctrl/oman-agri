@@ -16,7 +16,7 @@ class AppShell extends StatelessWidget {
         actions: [
           IconButton(
             tooltip: l10n.settings,
-            icon: const Icon(Icons.settings),
+            icon: const Icon(Icons.settings_outlined),
             onPressed: () => context.push('/settings'),
           ),
         ],
@@ -27,14 +27,14 @@ class AppShell extends StatelessWidget {
         onDestinationSelected: (i) =>
             shell.goBranch(i, initialLocation: i == shell.currentIndex),
         destinations: [
-          NavigationDestination(icon: const Icon(Icons.home), label: l10n.tabHome),
-          NavigationDestination(icon: const Icon(Icons.map), label: l10n.tabMap),
+          NavigationDestination(icon: const Icon(Icons.eco_outlined), selectedIcon: const Icon(Icons.eco), label: l10n.tabHome),
+          NavigationDestination(icon: const Icon(Icons.map_outlined), selectedIcon: const Icon(Icons.map), label: l10n.tabMap),
           NavigationDestination(
-              icon: const Icon(Icons.calendar_month), label: l10n.tabCalendar),
+              icon: const Icon(Icons.calendar_month_outlined), selectedIcon: const Icon(Icons.calendar_month), label: l10n.tabCalendar),
           NavigationDestination(
-              icon: const Icon(Icons.agriculture), label: l10n.tabFarm),
+              icon: const Icon(Icons.agriculture_outlined), selectedIcon: const Icon(Icons.agriculture), label: l10n.tabFarm),
           NavigationDestination(
-              icon: const Icon(Icons.storefront), label: l10n.tabStore),
+              icon: const Icon(Icons.storefront_outlined), selectedIcon: const Icon(Icons.storefront), label: l10n.tabStore),
         ],
       ),
     );

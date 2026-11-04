@@ -298,4 +298,64 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tableCropKcMonthly => 'Monthly crop coefficient';
+
+  @override
+  String get homeTagline =>
+      'A crop guide for Omani farmers, with a source for every fact';
+
+  @override
+  String get glanceOptTemp => 'Best temperature';
+
+  @override
+  String get glanceSeason => 'Season length';
+
+  @override
+  String get glanceSalinity => 'Soil salinity tolerance';
+
+  @override
+  String get unitDays => 'days';
+
+  @override
+  String get unitCelsius => '°C';
+
+  @override
+  String get unitSalinity => 'dS/m';
+
+  @override
+  String get waterNeedTitle => 'Water need through the season';
+
+  @override
+  String get waterNeedHelp =>
+      'The crop coefficient Kc shows how much water the crop uses compared with a reference grass: 1 means the same, below 1 means less.';
+
+  @override
+  String seasonTotal(int days) {
+    return 'Season of $days days';
+  }
+
+  @override
+  String get groupTemperature => 'Temperature';
+
+  @override
+  String get groupSoil => 'Soil and water';
+
+  @override
+  String get groupPlace => 'Place and season';
+
+  @override
+  String get comingMap => 'Which crops suit your wilayat and your land.';
+
+  @override
+  String get comingCalendar =>
+      'Planting and watering dates for each crop through the year.';
+
+  @override
+  String get comingFarm =>
+      'Record your crops and get reminders when they need care.';
+
+  @override
+  String get comingStore => 'Seed, fertiliser and supply shops near you.';
+
+  @override
+  String get salinityShort => 'Salinity';
 }

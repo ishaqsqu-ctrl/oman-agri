@@ -290,4 +290,61 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get tableCropKcMonthly => 'معامل المحصول الشهري';
+
+  @override
+  String get homeTagline => 'دليل المحاصيل لمزارع عُمان، وكل معلومة بمصدرها';
+
+  @override
+  String get glanceOptTemp => 'الحرارة المثلى';
+
+  @override
+  String get glanceSeason => 'طول الموسم';
+
+  @override
+  String get glanceSalinity => 'تحمّل ملوحة التربة';
+
+  @override
+  String get unitDays => 'يوم';
+
+  @override
+  String get unitCelsius => '°م';
+
+  @override
+  String get unitSalinity => 'dS/m';
+
+  @override
+  String get waterNeedTitle => 'احتياج الماء خلال الموسم';
+
+  @override
+  String get waterNeedHelp =>
+      'معامل المحصول Kc يبيّن كم يحتاج المحصول من الماء مقارنةً بعشب مرجعي: 1 يعني مثله، وأقل من 1 يعني أقل منه.';
+
+  @override
+  String seasonTotal(int days) {
+    return 'مدة الموسم $days يوم';
+  }
+
+  @override
+  String get groupTemperature => 'الحرارة';
+
+  @override
+  String get groupSoil => 'التربة والماء';
+
+  @override
+  String get groupPlace => 'الموقع والموسم';
+
+  @override
+  String get comingMap => 'أي المحاصيل تناسب ولايتك وأرضك.';
+
+  @override
+  String get comingCalendar => 'مواعيد الزراعة والري لكل محصول على مدار السنة.';
+
+  @override
+  String get comingFarm => 'سجّل محاصيلك واحصل على تذكير بمواعيد العناية بها.';
+
+  @override
+  String get comingStore => 'محلات البذور والأسمدة والمستلزمات القريبة منك.';
+
+  @override
+  String get salinityShort => 'ملوحة';
 }

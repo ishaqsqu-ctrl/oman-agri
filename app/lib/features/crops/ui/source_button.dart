@@ -28,16 +28,23 @@ Uri? safeSourceUri(String? url) {
 
 /// Icon button that opens a bottom sheet describing where a fact came from.
 class SourceButton extends ConsumerWidget {
-  const SourceButton({super.key, required this.sourceId, this.page});
+  const SourceButton({super.key, required this.sourceId, this.page, this.color});
 
   final String sourceId;
   final String? page;
+
+  /// Icon colour; defaults to the theme's.
+  final Color? color;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     return IconButton(
       tooltip: l10n.source,
+      // Quiet by default: present on every fact, so it must not shout.
+      color: color ?? Theme.of(context).colorScheme.outline,
+      iconSize: 20,
+      visualDensity: VisualDensity.compact,
       icon: const Icon(Icons.menu_book_outlined),
       onPressed: () {
         final source = ref.read(knowledgeProvider).asData?.value.sources[sourceId];

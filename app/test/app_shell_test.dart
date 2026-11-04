@@ -34,7 +34,7 @@ void main() {
 
   testWidgets('switching to English persists', (tester) async {
     await pumpApp(tester);
-    await tester.tap(find.byIcon(Icons.settings));
+    await tester.tap(find.byIcon(Icons.settings_outlined));
     await tester.pumpAndSettle();
     await tester.tap(find.text('English'));
     await tester.pumpAndSettle();

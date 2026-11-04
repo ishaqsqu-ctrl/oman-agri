@@ -73,6 +73,9 @@ flutter:
     - family: NotoKufiArabic
       fonts:
         - asset: assets/fonts/NotoKufiArabic.ttf
+    - family: NotoNaskhArabic
+      fonts:
+        - asset: assets/fonts/NotoNaskhArabic.ttf
 
   assets:
     - assets/seed/knowledge.json
