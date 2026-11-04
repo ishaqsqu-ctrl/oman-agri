@@ -708,46 +708,46 @@
         {
           "duration_days": 5,
           "kc": 0.4,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 1,
           "source_id": "fao56",
           "source_page": "Table 11: Alfalfa, other cutting cycles, Mar, Calif., USA (one cutting cycle, repeated after each cut); Table 12: Alfalfa Hay - individual cutting periods (fn 14) (Kc ini)",
           "stage": "initial",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 10,
           "kc": 1.2,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 2,
           "source_id": "fao56",
           "source_page": "Table 11: Alfalfa, other cutting cycles, Mar, Calif., USA (one cutting cycle, repeated after each cut); Table 12: Alfalfa Hay - individual cutting periods (fn 14) (Kc mid (end of development))",
           "stage": "development",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 10,
           "kc": 1.2,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 3,
           "source_id": "fao56",
           "source_page": "Table 11: Alfalfa, other cutting cycles, Mar, Calif., USA (one cutting cycle, repeated after each cut); Table 12: Alfalfa Hay - individual cutting periods (fn 14) (Kc mid)",
           "stage": "mid",
-          "status": "draft"
+          "status": "published"
         },
         {
           "duration_days": 5,
           "kc": 1.15,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "seq": 4,
           "source_id": "fao56",
           "source_page": "Table 11: Alfalfa, other cutting cycles, Mar, Calif., USA (one cutting cycle, repeated after each cut); Table 12: Alfalfa Hay - individual cutting periods (fn 14) (Kc end)",
           "stage": "late",
-          "status": "draft"
+          "status": "published"
         }
       ],
       "status": "published"
@@ -761,110 +761,110 @@
         {
           "kc": 0.95,
           "month": 1,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "fao56",
           "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.95,
           "month": 2,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "fao56",
           "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.95,
           "month": 3,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "fao56",
           "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.95,
           "month": 4,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "fao56",
           "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.95,
           "month": 5,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "fao56",
           "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.95,
           "month": 6,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "fao56",
           "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.95,
           "month": 7,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "fao56",
           "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.95,
           "month": 8,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "fao56",
           "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.95,
           "month": 9,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "fao56",
           "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.95,
           "month": 10,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "fao56",
           "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.95,
           "month": 11,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "fao56",
           "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.95,
           "month": 12,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "fao56",
           "source_page": "Table 12: Date Palms Kc mid/end 0.95 (Kc ini 0.90); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         }
       ],
       "lifecycle": "tree",
@@ -1092,56 +1092,56 @@
         {
           "kc": 0.86,
           "month": 5,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "noory2021",
           "source_page": "Table 2, p. 1082: 10-day Kc of mature trees (15–18 yr, cv. Malas Saveh), Saveh, Iran; monthly value = owner's mean of the 10-day values (3 seasons); May from 11 May; Nov–Apr not measured (deciduous)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.97,
           "month": 6,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "noory2021",
           "source_page": "Table 2, p. 1082: 10-day Kc of mature trees (15–18 yr, cv. Malas Saveh), Saveh, Iran; monthly value = owner's mean of the 10-day values (3 seasons); May from 11 May; Nov–Apr not measured (deciduous)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.96,
           "month": 7,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "noory2021",
           "source_page": "Table 2, p. 1082: 10-day Kc of mature trees (15–18 yr, cv. Malas Saveh), Saveh, Iran; monthly value = owner's mean of the 10-day values (3 seasons); May from 11 May; Nov–Apr not measured (deciduous)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.98,
           "month": 8,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "noory2021",
           "source_page": "Table 2, p. 1082: 10-day Kc of mature trees (15–18 yr, cv. Malas Saveh), Saveh, Iran; monthly value = owner's mean of the 10-day values (3 seasons); May from 11 May; Nov–Apr not measured (deciduous)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.97,
           "month": 9,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "noory2021",
           "source_page": "Table 2, p. 1082: 10-day Kc of mature trees (15–18 yr, cv. Malas Saveh), Saveh, Iran; monthly value = owner's mean of the 10-day values (3 seasons); May from 11 May; Nov–Apr not measured (deciduous)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.4,
           "month": 10,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "noory2021",
           "source_page": "Table 2, p. 1082: 10-day Kc of mature trees (15–18 yr, cv. Malas Saveh), Saveh, Iran; monthly value = owner's mean of the 10-day values (3 seasons); May from 11 May; Nov–Apr not measured (deciduous)",
-          "status": "draft"
+          "status": "published"
         }
       ],
       "lifecycle": "tree",
@@ -1941,110 +1941,110 @@
         {
           "kc": 0.71,
           "month": 1,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "mohammad2015",
           "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.73,
           "month": 2,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "mohammad2015",
           "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.74,
           "month": 3,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "mohammad2015",
           "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.75,
           "month": 4,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "mohammad2015",
           "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.76,
           "month": 5,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "mohammad2015",
           "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.77,
           "month": 6,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "mohammad2015",
           "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.77,
           "month": 7,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "mohammad2015",
           "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.75,
           "month": 8,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "mohammad2015",
           "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.75,
           "month": 9,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "mohammad2015",
           "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.76,
           "month": 10,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "mohammad2015",
           "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.73,
           "month": 11,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "mohammad2015",
           "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.71,
           "month": 12,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "mohammad2015",
           "source_page": "Table 4, p. 1013: monthly Kc of mature mango, Jazan (soil-water balance, drip irrigation 2008–2011)",
-          "status": "draft"
+          "status": "published"
         }
       ],
       "lifecycle": "tree",
@@ -2094,110 +2094,110 @@
         {
           "kc": 1.02,
           "month": 1,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "miranda2007",
           "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 1.02,
           "month": 2,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "miranda2007",
           "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 1.02,
           "month": 3,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "miranda2007",
           "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 1.02,
           "month": 4,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "miranda2007",
           "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 1.02,
           "month": 5,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "miranda2007",
           "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 1.02,
           "month": 6,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "miranda2007",
           "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 1.02,
           "month": 7,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "miranda2007",
           "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 1.02,
           "month": 8,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "miranda2007",
           "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 1.02,
           "month": 9,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "miranda2007",
           "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 1.02,
           "month": 10,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "miranda2007",
           "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 1.02,
           "month": 11,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "miranda2007",
           "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 1.02,
           "month": 12,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "miranda2007",
           "source_page": "Abstract: mean Kc 1.02 for flowering/fruiting green-dwarf palms (after month 23); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         }
       ],
       "lifecycle": "tree",
@@ -2247,110 +2247,110 @@
         {
           "kc": 0.87,
           "month": 1,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "posse2008",
           "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.87,
           "month": 2,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "posse2008",
           "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.87,
           "month": 3,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "posse2008",
           "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.87,
           "month": 4,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "posse2008",
           "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.87,
           "month": 5,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "posse2008",
           "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.87,
           "month": 6,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "posse2008",
           "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.87,
           "month": 7,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "posse2008",
           "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.87,
           "month": 8,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "posse2008",
           "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.87,
           "month": 9,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "posse2008",
           "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.87,
           "month": 10,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "posse2008",
           "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.87,
           "month": 11,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "posse2008",
           "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         },
         {
           "kc": 0.87,
           "month": 12,
-          "reviewed_at": null,
-          "reviewed_by": null,
+          "reviewed_at": "2026-11-04",
+          "reviewed_by": "Project owner",
           "source_id": "posse2008",
           "source_page": "Abstract: mean Kc 0.87 over transplant to ~16 months (0.63 → 1.05 at day 206 → ~0.81 at day 300); one annual value applied to every month, not monthly data",
-          "status": "draft"
+          "status": "published"
         }
       ],
       "lifecycle": "perennial",
@@ -2699,7 +2699,7 @@
       "status": "published"
     }
   ],
-  "generated_at": "2026-11-04T12:39:43+00:00",
+  "generated_at": "2026-11-04T12:45:46+00:00",
   "governorates": [
     {
       "id": "muscat",

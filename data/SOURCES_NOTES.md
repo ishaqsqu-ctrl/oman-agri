@@ -117,7 +117,7 @@ Still open (not data edits):
 - Damask rose and frankincense requirements stay empty until a ministry or SQU source is found (decision 4).
 - EcoCrop spot-check against FAO's own site (the owner checked every value against the OpenCLIM copy).
 
-## Owner research 2026-11-04: remaining crops (all rows `draft`)
+## Owner research 2026-11-04: remaining crops (published by the owner the same day)
 Collected by the owner in the research workbook; loaded unchanged.
 
 **`crop_stages.csv` — alfalfa** (FAO-56, checked against the tables): one cutting cycle, Table 11 "Alfalfa, other cutting cycles, Mar, Calif., USA" 5/10/10/5 days; Table 12 "Alfalfa Hay – individual cutting periods" 0.40 / 1.20 / 1.15. The cycle repeats after each cut; cuts per year in Oman have no peer-reviewed source yet (owner suggests the ministry). The first cycle after sowing is longer (10/20/20/10, Calif.).
