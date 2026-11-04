@@ -132,7 +132,7 @@ Collected by the owner in the research workbook; loaded unchanged.
 | coconut | `miranda2007` abstract — coastal Ceará, Brazil | 1.02 in every month — mean for flowering/fruiting palms, not monthly data |
 | papaya | `posse2008` abstract — Rio de Janeiro, Brazil (weighing lysimeter) | 0.87 in every month — mean from transplant to ~16 months (young plants), not monthly data |
 
-The app does not read `kc_monthly` yet (the snapshot carries it; the Supabase source and the UI ignore it).
+The app shows these on the crop detail screen ("Monthly crop coefficient"), month by month with a source button each; only published months appear, and a note says when a crop has values for some months only.
 
 **Still no data** (owner found no usable peer-reviewed value):
 - **garlic, okra:** Kc found (garlic FAO-56 0.7 / 1.00 / 0.70; okra Awari et al. 2023, Parbhani, 0.64 / 1.07 / 1.33 / 0.86) but no stage lengths, and the app needs all four stages.

@@ -589,6 +589,36 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'الجدول'**
   String get tableLabel;
+
+  /// No description provided for @monthlyKc.
+  ///
+  /// In ar, this message translates to:
+  /// **'معامل المحصول الشهري'**
+  String get monthlyKc;
+
+  /// Calendar month name; month is m1..m12
+  ///
+  /// In ar, this message translates to:
+  /// **'{month, select, m1{يناير} m2{فبراير} m3{مارس} m4{أبريل} m5{مايو} m6{يونيو} m7{يوليو} m8{أغسطس} m9{سبتمبر} m10{أكتوبر} m11{نوفمبر} m12{ديسمبر} other{}}'**
+  String monthName(String month);
+
+  /// No description provided for @monthColumn.
+  ///
+  /// In ar, this message translates to:
+  /// **'الشهر'**
+  String get monthColumn;
+
+  /// No description provided for @kcMonthlyPartial.
+  ///
+  /// In ar, this message translates to:
+  /// **'القيم متاحة لبعض الأشهر فقط'**
+  String get kcMonthlyPartial;
+
+  /// No description provided for @tableCropKcMonthly.
+  ///
+  /// In ar, this message translates to:
+  /// **'معامل المحصول الشهري'**
+  String get tableCropKcMonthly;
 }
 
 class _AppLocalizationsDelegate

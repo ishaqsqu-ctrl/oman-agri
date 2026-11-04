@@ -54,6 +54,7 @@ class SupabaseSnapshotSource implements SnapshotSource {
       _all('crops'),
       _all('crop_requirements'),
       _all('crop_stages'),
+      _all('crop_kc_monthly'),
     ]);
     return assembleSnapshot(
       sources: results[0],
@@ -62,11 +63,13 @@ class SupabaseSnapshotSource implements SnapshotSource {
       crops: results[3],
       cropRequirements: results[4],
       cropStages: results[5],
+      cropKcMonthly: results[6],
     );
   }
 }
 
-/// Joins the six table row-sets into a snapshot (stages sorted by seq).
+/// Joins the knowledge table row-sets into a snapshot (stages sorted by seq,
+/// monthly kc sorted by month).
 /// generatedAt is the fetch time: server data is authoritative at that moment.
 KnowledgeSnapshot assembleSnapshot({
   required List<Map<String, dynamic>> sources,
@@ -75,6 +78,7 @@ KnowledgeSnapshot assembleSnapshot({
   required List<Map<String, dynamic>> crops,
   required List<Map<String, dynamic>> cropRequirements,
   required List<Map<String, dynamic>> cropStages,
+  List<Map<String, dynamic>> cropKcMonthly = const [],
   DateTime? now,
 }) {
   final reqs = {for (final r in cropRequirements) r['crop_id'] as String: r};
@@ -85,6 +89,10 @@ KnowledgeSnapshot assembleSnapshot({
   for (final l in stages.values) {
     l.sort((a, b) => (a['seq'] as num).compareTo(b['seq'] as num));
   }
+  final months = <String, List<Map<String, dynamic>>>{};
+  for (final m in cropKcMonthly) {
+    months.putIfAbsent(m['crop_id'] as String, () => []).add(m);
+  }
   return KnowledgeSnapshot.fromJson({
     'schema_version': 1,
     'generated_at': (now ?? DateTime.now()).toUtc().toIso8601String(),
@@ -93,7 +101,12 @@ KnowledgeSnapshot assembleSnapshot({
     'wilayats': wilayats,
     'crops': [
       for (final c in crops)
-        {...c, 'requirements': reqs[c['id']], 'stages': stages[c['id']] ?? const []}
+        {
+          ...c,
+          'requirements': reqs[c['id']],
+          'stages': stages[c['id']] ?? const [],
+          'kc_monthly': months[c['id']] ?? const [],
+        }
     ],
   });
 }
@@ -175,6 +188,8 @@ class KnowledgeRepository {
                   c.requirements != null && ok(c.requirements!.meta) ? c.requirements : null,
               // A partial Kc curve misstates water needs: all or nothing.
               stages: c.stages.every((x) => ok(x.meta)) ? c.stages : const [],
+              // Each month stands alone (a source may cover only some months).
+              kcMonthly: [for (final m in c.kcMonthly) if (ok(m.meta)) m],
             )
       ],
       governorates: s.governorates.where((r) => ok(r.meta)).toList(),

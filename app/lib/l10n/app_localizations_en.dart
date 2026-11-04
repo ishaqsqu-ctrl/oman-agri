@@ -266,4 +266,36 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tableLabel => 'Table';
+
+  @override
+  String get monthlyKc => 'Monthly crop coefficient';
+
+  @override
+  String monthName(String month) {
+    String _temp0 = intl.Intl.selectLogic(month, {
+      'm1': 'January',
+      'm2': 'February',
+      'm3': 'March',
+      'm4': 'April',
+      'm5': 'May',
+      'm6': 'June',
+      'm7': 'July',
+      'm8': 'August',
+      'm9': 'September',
+      'm10': 'October',
+      'm11': 'November',
+      'm12': 'December',
+      'other': '',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String get monthColumn => 'Month';
+
+  @override
+  String get kcMonthlyPartial => 'Values are available for some months only';
+
+  @override
+  String get tableCropKcMonthly => 'Monthly crop coefficient';
 }

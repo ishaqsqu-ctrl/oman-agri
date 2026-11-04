@@ -191,6 +191,23 @@ class CropStage {
       );
 }
 
+/// Crop coefficient for one calendar month (perennials; see crop_kc_monthly).
+@immutable
+class CropKcMonth {
+  const CropKcMonth({required this.month, required this.kc, required this.meta});
+
+  /// 1 = January … 12 = December.
+  final int month;
+  final double kc;
+  final KnowledgeMeta meta;
+
+  factory CropKcMonth.fromJson(Map<String, dynamic> j) => CropKcMonth(
+        month: _i(j['month']) ?? 0,
+        kc: _d(j['kc']) ?? 0,
+        meta: KnowledgeMeta.fromJson(j),
+      );
+}
+
 @immutable
 class Crop {
   const Crop({
@@ -204,6 +221,7 @@ class Crop {
     this.notesEn,
     this.requirements,
     this.stages = const [],
+    this.kcMonthly = const [],
     required this.meta,
   });
 
@@ -217,6 +235,9 @@ class Crop {
   final String? notesEn;
   final CropRequirements? requirements;
   final List<CropStage> stages;
+
+  /// Sorted by month; may cover only some months.
+  final List<CropKcMonth> kcMonthly;
   final KnowledgeMeta meta;
 
   String localizedName(Locale l) => l.languageCode == 'ar' ? nameAr : nameEn;
@@ -240,11 +261,19 @@ class Crop {
         for (final s in (j['stages'] as List? ?? const []))
           CropStage.fromJson(s as Map<String, dynamic>)
       ]..sort((a, b) => a.seq.compareTo(b.seq)),
+      kcMonthly: [
+        for (final m in (j['kc_monthly'] as List? ?? const []))
+          CropKcMonth.fromJson(m as Map<String, dynamic>)
+      ]..sort((a, b) => a.month.compareTo(b.month)),
       meta: KnowledgeMeta.fromJson(j),
     );
   }
 
-  Crop copyWith({CropRequirements? Function()? requirements, List<CropStage>? stages}) => Crop(
+  Crop copyWith(
+          {CropRequirements? Function()? requirements,
+          List<CropStage>? stages,
+          List<CropKcMonth>? kcMonthly}) =>
+      Crop(
         id: id,
         nameAr: nameAr,
         nameEn: nameEn,
@@ -255,6 +284,7 @@ class Crop {
         notesEn: notesEn,
         requirements: requirements != null ? requirements() : this.requirements,
         stages: stages ?? this.stages,
+        kcMonthly: kcMonthly ?? this.kcMonthly,
         meta: meta,
       );
 }

@@ -95,5 +95,18 @@
   "tableCrops": "المحاصيل",
   "tableCropRequirements": "متطلبات المحاصيل",
   "tableCropStages": "مراحل النمو",
-  "tableLabel": "الجدول"
+  "tableLabel": "الجدول",
+  "monthlyKc": "معامل المحصول الشهري",
+  "monthName": "{month, select, m1{يناير} m2{فبراير} m3{مارس} m4{أبريل} m5{مايو} m6{يونيو} m7{يوليو} m8{أغسطس} m9{سبتمبر} m10{أكتوبر} m11{نوفمبر} m12{ديسمبر} other{}}",
+  "monthColumn": "الشهر",
+  "kcMonthlyPartial": "القيم متاحة لبعض الأشهر فقط",
+  "tableCropKcMonthly": "معامل المحصول الشهري",
+  "@monthName": {
+    "description": "Calendar month name; month is m1..m12",
+    "placeholders": {
+      "month": {
+        "type": "String"
+      }
+    }
+  }
 }

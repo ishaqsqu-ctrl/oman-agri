@@ -16,6 +16,7 @@ const adminTables = [
   'crops',
   'crop_requirements',
   'crop_stages',
+  'crop_kc_monthly',
 ];
 
 abstract class AdminRepository {

@@ -95,5 +95,10 @@
   "tableCrops": "Crops",
   "tableCropRequirements": "Crop requirements",
   "tableCropStages": "Growth stages",
-  "tableLabel": "Table"
+  "tableLabel": "Table",
+  "monthlyKc": "Monthly crop coefficient",
+  "monthName": "{month, select, m1{January} m2{February} m3{March} m4{April} m5{May} m6{June} m7{July} m8{August} m9{September} m10{October} m11{November} m12{December} other{}}",
+  "monthColumn": "Month",
+  "kcMonthlyPartial": "Values are available for some months only",
+  "tableCropKcMonthly": "Monthly crop coefficient"
 }

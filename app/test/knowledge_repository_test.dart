@@ -202,6 +202,25 @@ void main() {
       expect((await repo.load()).crops.single.stages, isEmpty);
     });
 
+    test('monthly kc: drafts are dropped month by month, published kept', () async {
+      final j = fixtureJson();
+      final crop = (j['crops'] as List).first as Map<String, dynamic>;
+      Map<String, dynamic> month(int m, String status) => {
+            'month': m, 'kc': 0.7, 'status': status, 'source_id': crop['source_id'],
+            'reviewed_by': status == 'published' ? 'r' : null,
+            'reviewed_at': status == 'published' ? '2026-11-04' : null,
+          };
+      crop['kc_monthly'] = [month(6, 'published'), month(5, 'published'), month(7, 'draft')];
+      final hidden = KnowledgeRepository(
+          chain: [FakeSource(KnowledgeSnapshot.fromJson(j))], includeDrafts: false);
+      expect((await hidden.load()).crops.single.kcMonthly.map((m) => m.month), [5, 6]);
+      final shown = KnowledgeRepository(
+          chain: [FakeSource(KnowledgeSnapshot.fromJson(j))], includeDrafts: true);
+      expect(
+          (await shown.load()).crops.firstWhere((c) => c.id == crop['id']).kcMonthly.map((m) => m.month),
+          [5, 6, 7]);
+    });
+
     test('throws when every source fails', () async {
       final repo = KnowledgeRepository(
           chain: [FakeSource(snapWith([]), fail: true)], includeDrafts: false);
@@ -229,6 +248,10 @@ void main() {
           m({'crop_id': 'a', 'seq': 1, 'stage': 'initial', 'duration_days': 5, 'kc': 0.4}),
           m({'crop_id': 'b', 'seq': 1, 'stage': 'initial', 'duration_days': 5, 'kc': 0.5}),
         ],
+        cropKcMonthly: [
+          m({'crop_id': 'b', 'month': 2, 'kc': 0.8}),
+          m({'crop_id': 'b', 'month': 1, 'kc': 0.75}),
+        ],
         now: DateTime.utc(2026, 11, 3),
       );
       final a = s.crops.firstWhere((c) => c.id == 'a');
@@ -237,6 +260,9 @@ void main() {
       expect(a.requirements, isNull);
       expect(b.requirements!.tMin, 5.0);
       expect(b.stages, hasLength(1));
+      expect(a.kcMonthly, isEmpty);
+      expect(b.kcMonthly.map((x) => x.month), [1, 2]);
+      expect(b.kcMonthly.first.kc, 0.75);
       expect(s.generatedAt, DateTime.utc(2026, 11, 3));
     });
   });

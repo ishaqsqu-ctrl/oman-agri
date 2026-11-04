@@ -24,7 +24,8 @@ KnowledgeSnapshot snapshot(
     {KnowledgeStatus status = KnowledgeStatus.published,
     String sourceTitle = 'Test fixture source',
     String? sourceUrl = 'https://example.invalid/x',
-    String? scientificName = 'Solanum lycopersicum'}) {
+    String? scientificName = 'Solanum lycopersicum',
+    List<int> lemonKcMonths = const []}) {
   final m = _m(status);
   return KnowledgeSnapshot(
     generatedAt: DateTime.utc(2026, 11, 3),
@@ -69,6 +70,10 @@ KnowledgeSnapshot snapshot(
           nameEn: 'Omani lime',
           scientificName: 'Citrus aurantiifolia',
           categories: const [CropCategory.fruit, CropCategory.tree],
+          kcMonthly: [
+            for (final mo in lemonKcMonths)
+              CropKcMonth(month: mo, kc: 0.7 + mo / 100, meta: _m(status, 'Table 4'))
+          ],
           meta: m),
       Crop(
           id: 'lentil',
@@ -321,5 +326,36 @@ void main() {
     await tester.tap(find.text('Tomato'));
     await tester.pumpAndSettle();
     expect(find.text('Sandy, Loamy'), findsOneWidget);
+  });
+
+  testWidgets('detail shows monthly Kc with month names and sources', (tester) async {
+    await pumpApp(tester, snap: snapshot(lemonKcMonths: [for (var i = 1; i <= 12; i++) i]));
+    await tester.tap(find.text('ليمون عُماني'));
+    await tester.pumpAndSettle();
+    expect(find.text('معامل المحصول الشهري'), findsOneWidget);
+    expect(find.text('يناير'), findsOneWidget);
+    expect(find.text('ديسمبر'), findsOneWidget);
+    expect(find.text('0.71'), findsOneWidget);
+    expect(find.text('0.82'), findsOneWidget);
+    expect(find.byKey(const ValueKey('kc-month-12-source')), findsOneWidget);
+    expect(find.text('القيم متاحة لبعض الأشهر فقط'), findsNothing);
+  });
+
+  testWidgets('partial monthly Kc lists only known months and says so', (tester) async {
+    await pumpApp(tester, snap: snapshot(lemonKcMonths: [5, 6]), locale: 'en');
+    await tester.tap(find.text('Omani lime'));
+    await tester.pumpAndSettle();
+    expect(find.text('Monthly crop coefficient'), findsOneWidget);
+    expect(find.text('May'), findsOneWidget);
+    expect(find.text('June'), findsOneWidget);
+    expect(find.text('July'), findsNothing);
+    expect(find.text('Values are available for some months only'), findsOneWidget);
+  });
+
+  testWidgets('crop without monthly Kc has no monthly section', (tester) async {
+    await pumpApp(tester, snap: snapshot());
+    await tester.tap(find.text('طماطم'));
+    await tester.pumpAndSettle();
+    expect(find.text('معامل المحصول الشهري'), findsNothing);
   });
 }

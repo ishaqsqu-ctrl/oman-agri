@@ -118,8 +118,46 @@ class _Body extends StatelessWidget {
         Text(l10n.growthStages, style: theme.textTheme.titleLarge),
         const SizedBox(height: 8),
         _stages(context, l10n),
+        if (crop.kcMonthly.isNotEmpty) ...[
+          const SizedBox(height: 24),
+          Text(l10n.monthlyKc, style: theme.textTheme.titleLarge),
+          const SizedBox(height: 8),
+          _monthlyKc(context, l10n),
+        ],
       ],
     );
+  }
+
+  Widget _monthlyKc(BuildContext context, AppLocalizations l10n) {
+    final head = Theme.of(context).textTheme.labelLarge;
+    final partial = crop.kcMonthly.length < 12;
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Table(
+        columnWidths: const {
+          0: FlexColumnWidth(3),
+          1: FlexColumnWidth(2),
+          2: FixedColumnWidth(48),
+        },
+        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        children: [
+          TableRow(children: [
+            Text(l10n.monthColumn, style: head),
+            Text(l10n.stageKc, style: head),
+            const SizedBox.shrink(),
+          ]),
+          for (final m in crop.kcMonthly)
+            TableRow(children: [
+              Text(l10n.monthName('m${m.month}')),
+              Text(_n(m.kc)),
+              SourceButton(
+                  key: ValueKey('kc-month-${m.month}-source'),
+                  sourceId: m.meta.sourceId,
+                  page: m.meta.sourcePage),
+            ]),
+        ],
+      ),
+      if (partial) _NoData(l10n.kcMonthlyPartial),
+    ]);
   }
 
   List<Widget> _requirementRows(

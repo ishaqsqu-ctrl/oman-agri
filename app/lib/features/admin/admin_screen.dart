@@ -230,6 +230,7 @@ class _AdminScreenState extends ConsumerState<AdminScreen> {
         'crops' => l10n.tableCrops,
         'crop_requirements' => l10n.tableCropRequirements,
         'crop_stages' => l10n.tableCropStages,
+        'crop_kc_monthly' => l10n.tableCropKcMonthly,
         _ => t,
       };
 

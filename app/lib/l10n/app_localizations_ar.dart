@@ -258,4 +258,36 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get tableLabel => 'الجدول';
+
+  @override
+  String get monthlyKc => 'معامل المحصول الشهري';
+
+  @override
+  String monthName(String month) {
+    String _temp0 = intl.Intl.selectLogic(month, {
+      'm1': 'يناير',
+      'm2': 'فبراير',
+      'm3': 'مارس',
+      'm4': 'أبريل',
+      'm5': 'مايو',
+      'm6': 'يونيو',
+      'm7': 'يوليو',
+      'm8': 'أغسطس',
+      'm9': 'سبتمبر',
+      'm10': 'أكتوبر',
+      'm11': 'نوفمبر',
+      'm12': 'ديسمبر',
+      'other': '',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String get monthColumn => 'الشهر';
+
+  @override
+  String get kcMonthlyPartial => 'القيم متاحة لبعض الأشهر فقط';
+
+  @override
+  String get tableCropKcMonthly => 'معامل المحصول الشهري';
 }
