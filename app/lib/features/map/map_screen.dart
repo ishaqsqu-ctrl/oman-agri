@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -34,14 +33,13 @@ class MapData {
 
   EnvCell? at(int col, int row) => _byPos[row * 100000 + col];
 
-  static MapData parse(Map<String, dynamic> header, ByteData bin, List<dynamic> outline) {
-    const fields = 39;
-    final n = bin.lengthInBytes ~/ (fields * 2);
+  static MapData parse(Map<String, dynamic> header, List<dynamic> outline) {
     final cells = <EnvCell>[];
-    for (var i = 0; i < n; i++) {
-      int v(int k) => bin.getInt16((i * fields + k) * 2, Endian.little);
-      List<double> month(int from) => [for (var m = 0; m < 12; m++) v(from + m) / 10];
-      cells.add(EnvCell(col: v(0), row: v(1), elev: v(2), tavg: month(3), tmin: month(15), tmax: month(27)));
+    for (final r in header['cells'] as List) {
+      final v = r as List;
+      List<double> month(int from) => [for (var m = 0; m < 12; m++) (v[from + m] as num) / 10];
+      cells.add(EnvCell(
+          col: v[0] as int, row: v[1] as int, elev: v[2] as int, tavg: month(3), tmin: month(15), tmax: month(27)));
     }
     return MapData(
       originLon: (header['origin_lon'] as num).toDouble(),
@@ -60,9 +58,8 @@ class MapData {
 
 final mapDataProvider = FutureProvider<MapData>((ref) async {
   final header = jsonDecode(await rootBundle.loadString('assets/map/oman_env.json')) as Map<String, dynamic>;
-  final bin = await rootBundle.load('assets/map/oman_env.bin');
   final outline = jsonDecode(await rootBundle.loadString('assets/map/oman_outline.json')) as List<dynamic>;
-  return MapData.parse(header, bin, outline);
+  return MapData.parse(header, outline);
 });
 
 Color suitColor(int score, {required bool dark}) {

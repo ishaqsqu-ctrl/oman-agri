@@ -9,15 +9,12 @@ Inputs (downloaded separately, see pipeline/README.md):
   * Oman outline: geoBoundaries gbOpen OMN ADM0 (OpenStreetMap, ODbL 1.0)
 
 Outputs (in --out):
-  * oman_env.bin  little-endian, one record per land cell inside Oman:
-        int16 col, int16 row, int16 elev_m,
-        int16 tavg[12], int16 tmin[12], int16 tmax[12]   (°C × 10)
-  * oman_env.json grid header (origin, cell size, size, record layout, sources)
+  * oman_env.json grid header (origin, cell size, size, sources) and "cells": one array per
+        land cell inside Oman: [col, row, elev_m, tavg×12, tmin×12, tmax×12] (°C × 10, integers)
   * oman_outline.json simplified outline polygons [[[lon, lat], ...], ...]
 """
 import argparse
 import json
-import struct
 from pathlib import Path
 
 import numpy as np
@@ -61,13 +58,11 @@ def build(worldclim: Path, outline_path: Path, out: Path) -> dict:
         valid &= np.all(np.isfinite(v), axis=0)
 
     out.mkdir(parents=True, exist_ok=True)
-    rec = struct.Struct("<3h36h")
-    n = 0
-    with (out / "oman_env.bin").open("wb") as f:
-        for r, c in zip(*np.nonzero(valid)):
-            temps = [int(round(layers[v][m, r, c] * 10)) for v in ("tavg", "tmin", "tmax") for m in range(12)]
-            f.write(rec.pack(int(c), int(r), int(round(elev[r, c])), *temps))
-            n += 1
+    cells = []
+    for r, c in zip(*np.nonzero(valid)):
+        temps = [int(round(layers[v][m, r, c] * 10)) for v in ("tavg", "tmin", "tmax") for m in range(12)]
+        cells.append([int(c), int(r), int(round(elev[r, c])), *temps])
+    n = len(cells)
 
     header = {
         "origin_lon": transform.c,
@@ -76,14 +71,14 @@ def build(worldclim: Path, outline_path: Path, out: Path) -> dict:
         "cols": cols,
         "rows": rows,
         "cells": n,
-        "record": "int16 col,row,elev_m; int16 tavg[12],tmin[12],tmax[12] (degC x10); little-endian",
+        "record": "[col, row, elev_m, tavg x12, tmin x12, tmax x12] (temperatures in degC x10)",
         "sources": {
             "climate": "WorldClim 2.1, 1970-2000 monthly normals, 2.5 arc-min (Fick & Hijmans 2017), CC BY 4.0",
             "elevation": "WorldClim 2.1 elevation (from SRTM), 2.5 arc-min, CC BY 4.0",
             "outline": "geoBoundaries OMN ADM0 (OpenStreetMap contributors), ODbL 1.0",
         },
     }
-    (out / "oman_env.json").write_text(json.dumps(header, indent=2) + "\n")
+    (out / "oman_env.json").write_text(json.dumps({**header, "cells": cells}, separators=(",", ":")) + "\n")
 
     simple = outline.simplify(0.01, preserve_topology=True)
     polys = [simple] if simple.geom_type == "Polygon" else list(simple.geoms)

@@ -18,8 +18,8 @@ pip install rasterio shapely numpy
 python -m pipeline.build_map --worldclim ~/data/worldclim --outline geoBoundaries-OMN-ADM0.geojson
 ```
 
-It writes `app/assets/map/oman_env.bin` (one record per ~4.5 km land cell: elevation and monthly
-mean, minimum and maximum temperature), `oman_env.json` (grid header and sources) and
+It writes `app/assets/map/oman_env.json` (grid header, sources, and one record per ~4.5 km land
+cell: elevation and monthly mean, minimum and maximum temperature) and
 `oman_outline.json` (simplified outline). The app computes suitability on the device from these
 and each crop's requirements (`app/lib/features/map/suitability.dart`).
 
