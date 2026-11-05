@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:oman_agri/core/config.dart';
 import 'package:oman_agri/features/admin/admin_repository.dart';
+import 'package:oman_agri/features/calendar/omani_hijri.dart';
+import 'package:oman_agri/features/crops/ui/labels.dart';
 import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
 import 'package:oman_agri/features/crops/data/models.dart';
 import 'package:oman_agri/l10n/app_localizations.dart';
@@ -224,6 +226,79 @@ class _AdminScreenState extends ConsumerState<AdminScreen> {
         ),
       );
 
+  Future<void> _addHijriStart(AppLocalizations l10n) async {
+    final lang = Localizations.localeOf(context).languageCode;
+    final now = DateTime.now();
+    final guess = omaniHijri(now, const []);
+    final year = TextEditingController(text: '${guess.year}');
+    final source = TextEditingController();
+    var month = guess.month;
+    var date = DateTime(now.year, now.month, now.day);
+    final saved = await showDialog<HijriStart>(
+      context: context,
+      builder: (c) => StatefulBuilder(
+        builder: (c, set) => AlertDialog(
+          title: Text(l10n.hijriAdminTitle),
+          content: SingleChildScrollView(
+            child: Column(mainAxisSize: MainAxisSize.min, children: [
+              TextField(
+                controller: year,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(labelText: l10n.hijriYear),
+              ),
+              const SizedBox(height: 8),
+              DropdownButtonFormField<int>(
+                initialValue: month,
+                decoration: InputDecoration(labelText: l10n.hijriMonth),
+                items: [
+                  for (var m = 1; m <= 12; m++)
+                    DropdownMenuItem(value: m, child: Text(hijriMonthName(m, lang))),
+                ],
+                onChanged: (v) => set(() => month = v ?? month),
+              ),
+              const SizedBox(height: 8),
+              ListTile(
+                contentPadding: EdgeInsets.zero,
+                title: Text(l10n.hijriStartsOn),
+                subtitle: Text(date.toIso8601String().substring(0, 10)),
+                trailing: const Icon(Icons.event),
+                onTap: () async {
+                  final d = await showDatePicker(
+                      context: c, initialDate: date, firstDate: DateTime(2020), lastDate: DateTime(2040));
+                  if (d != null) set(() => date = d);
+                },
+              ),
+              TextField(controller: source, decoration: InputDecoration(labelText: l10n.hijriSource)),
+            ]),
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(c), child: Text(l10n.cancel)),
+            FilledButton(
+              key: const ValueKey('hijri-save'),
+              onPressed: () {
+                final y = int.tryParse(year.text.trim());
+                if (y == null || source.text.trim().length < 3) return;
+                Navigator.pop(c, HijriStart(year: y, month: month, startsOn: date, source: source.text.trim()));
+              },
+              child: Text(l10n.save),
+            ),
+          ],
+        ),
+      ),
+    );
+    if (saved == null) return;
+    setState(() => _busy = true);
+    try {
+      await _repo.saveHijriStart(saved);
+      ref.invalidate(hijriStartsProvider);
+      _snack(l10n.hijriSaved(hijriMonthName(saved.month, lang), saved.year));
+    } catch (_) {
+      _snack(l10n.operationFailed);
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
   String _tableLabel(AppLocalizations l10n, String t) => switch (t) {
         'governorates' => l10n.tableGovernorates,
         'wilayats' => l10n.tableWilayats,
@@ -291,6 +366,31 @@ class _AdminScreenState extends ConsumerState<AdminScreen> {
               ),
             ),
           ),
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(l10n.hijriAdminTitle, style: theme.textTheme.titleMedium),
+              const SizedBox(height: 4),
+              Text(l10n.hijriAdminHelp, style: theme.textTheme.bodySmall),
+              for (final h in (ref.watch(hijriStartsProvider).asData?.value ?? const <HijriStart>[])
+                  .reversed
+                  .take(3))
+                Text('${hijriMonthName(h.month, Localizations.localeOf(context).languageCode)} ${h.year}: '
+                    '${h.startsOn.toIso8601String().substring(0, 10)}',
+                    style: theme.textTheme.bodyMedium),
+              const SizedBox(height: 8),
+              Align(
+                alignment: AlignmentDirectional.centerEnd,
+                child: FilledButton.tonal(
+                  key: const ValueKey('hijri-add'),
+                  onPressed: _busy ? null : () => _addHijriStart(l10n),
+                  child: Text(l10n.hijriAdminAdd),
+                ),
+              ),
+            ]),
+          ),
+        ),
       ],
     );
   }

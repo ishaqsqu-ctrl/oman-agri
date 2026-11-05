@@ -462,7 +462,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get calendarHijriNote =>
-      'Umm al-Qura calendar; may differ by a day from moon sighting in Oman.';
+      'Umm al-Qura calendar; may differ by a day from moon sighting in Oman until the admin enters the officially announced month start.';
 
   @override
   String get calendarHijriSuffix => 'AH';
@@ -519,4 +519,38 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get nextMonth => 'Next month';
+
+  @override
+  String get calendarHijriOfficial =>
+      'As officially announced in Oman for this month.';
+
+  @override
+  String get hijriAdminTitle => 'Hijri month start in Oman';
+
+  @override
+  String get hijriAdminHelp =>
+      'Enter each month\'s start as officially announced in Oman, so the calendar shows the right Hijri date.';
+
+  @override
+  String get hijriAdminAdd => 'Enter a month start';
+
+  @override
+  String get hijriYear => 'Hijri year';
+
+  @override
+  String get hijriMonth => 'Hijri month';
+
+  @override
+  String get hijriStartsOn => 'First day (Gregorian)';
+
+  @override
+  String get hijriSource => 'Announcement source';
+
+  @override
+  String hijriSaved(String month, int year) {
+    return 'Saved the start of $month $year';
+  }
+
+  @override
+  String get save => 'Save';
 }

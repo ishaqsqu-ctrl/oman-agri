@@ -143,7 +143,7 @@
   "farmNoStageData": "No growth-stage data for this crop yet",
   "undo": "Undo",
   "calendarTitle": "Calendar",
-  "calendarHijriNote": "Umm al-Qura calendar; may differ by a day from moon sighting in Oman.",
+  "calendarHijriNote": "Umm al-Qura calendar; may differ by a day from moon sighting in Oman until the admin enters the officially announced month start.",
   "calendarHijriSuffix": "AH",
   "calendarUpcoming": "Coming up on my farm",
   "calendarDayEvents": "On this day",
@@ -156,5 +156,15 @@
   "eventHarvest": "{crop}: harvest",
   "inDays": "{n, plural, =0{Today} =1{Tomorrow} other{In {n} days}}",
   "previousMonth": "Previous month",
-  "nextMonth": "Next month"
+  "nextMonth": "Next month",
+  "calendarHijriOfficial": "As officially announced in Oman for this month.",
+  "hijriAdminTitle": "Hijri month start in Oman",
+  "hijriAdminHelp": "Enter each month's start as officially announced in Oman, so the calendar shows the right Hijri date.",
+  "hijriAdminAdd": "Enter a month start",
+  "hijriYear": "Hijri year",
+  "hijriMonth": "Hijri month",
+  "hijriStartsOn": "First day (Gregorian)",
+  "hijriSource": "Announcement source",
+  "hijriSaved": "Saved the start of {month} {year}",
+  "save": "Save"
 }

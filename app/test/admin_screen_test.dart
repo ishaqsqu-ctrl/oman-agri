@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:oman_agri/features/admin/admin_repository.dart';
+import 'package:oman_agri/features/calendar/omani_hijri.dart';
 import 'package:oman_agri/features/admin/admin_screen.dart';
 import 'package:oman_agri/core/config.dart';
 import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
@@ -12,6 +13,10 @@ import 'package:oman_agri/features/crops/data/models.dart';
 import 'package:oman_agri/l10n/app_localizations.dart';
 
 class FakeAdminRepository implements AdminRepository {
+  final savedHijri = <HijriStart>[];
+  @override
+  Future<void> saveHijriStart(HijriStart start) async => savedHijri.add(start);
+
   FakeAdminRepository({this.admin = true, this.signInOk = true, this.publishError});
   bool admin;
   bool signInOk;

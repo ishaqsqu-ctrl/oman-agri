@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:oman_agri/features/calendar/omani_hijri.dart';
 import 'package:oman_agri/features/crops/data/models.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -25,6 +26,9 @@ abstract class AdminRepository {
   Future<void> signOut();
   Future<List<StatusCount>> counts();
   Future<int> publishReviewed(String table);
+
+  /// Saves (or corrects) the officially announced start of a Hijri month.
+  Future<void> saveHijriStart(HijriStart start);
 }
 
 class SupabaseAdminRepository implements AdminRepository {
@@ -55,6 +59,10 @@ class SupabaseAdminRepository implements AdminRepository {
         ),
     ];
   }
+
+  @override
+  Future<void> saveHijriStart(HijriStart start) =>
+      _c.from('hijri_month_starts').upsert(start.toJson(), onConflict: 'hijri_year,hijri_month');
 
   @override
   Future<int> publishReviewed(String table) async =>

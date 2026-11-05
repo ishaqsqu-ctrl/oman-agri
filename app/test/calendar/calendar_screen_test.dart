@@ -6,6 +6,7 @@ import 'package:hijri/hijri_calendar.dart';
 import 'package:oman_agri/core/locale_controller.dart';
 import 'package:oman_agri/core/theme.dart';
 import 'package:oman_agri/features/calendar/calendar_screen.dart';
+import 'package:oman_agri/features/calendar/omani_hijri.dart';
 import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
 import 'package:oman_agri/features/crops/data/models.dart';
 import 'package:oman_agri/features/crops/ui/labels.dart';
@@ -28,7 +29,7 @@ final _snap = KnowledgeSnapshot(
   ],
 );
 
-Future<void> _pump(WidgetTester tester, {String? farm}) async {
+Future<void> _pump(WidgetTester tester, {String? farm, List<HijriStart> starts = const []}) async {
   tester.view.physicalSize = const Size(420, 1600);
   tester.view.devicePixelRatio = 1;
   addTearDown(tester.view.reset);
@@ -39,6 +40,7 @@ Future<void> _pump(WidgetTester tester, {String? farm}) async {
       sharedPreferencesProvider.overrideWithValue(sp),
       knowledgeProvider.overrideWith((ref) async => _snap),
       todayProvider.overrideWithValue(DateTime(2026, 11, 5)),
+      hijriStartsProvider.overrideWith((ref) async => starts),
     ],
     child: MaterialApp(
       theme: buildTheme(),
@@ -63,6 +65,7 @@ void main() {
     expect(find.text('${h.hDay} ${hijriMonthName(h.hMonth, 'ar')} ${h.hYear} هـ'), findsOneWidget);
     expect(find.text('5 نوفمبر 2026'), findsOneWidget); // 0–9 digits, as in the rest of the app
     expect(find.textContaining('أم القرى'), findsOneWidget);
+    expect(find.textContaining('الإعلان الرسمي'), findsNothing);
     expect(find.text('أضف محاصيلك في «مزرعتي» لترى هنا مواعيد مراحل نموها وحصادها.'), findsOneWidget);
   });
 
@@ -77,5 +80,13 @@ void main() {
     await tester.tap(find.text('31').first);
     await tester.pumpAndSettle();
     expect(find.text('طماطم: تبدأ مرحلة نمو خضري'), findsOneWidget);
+  });
+
+  testWidgets('an announced Omani month start overrides Umm al-Qura and says so', (tester) async {
+    await _pump(tester, starts: [
+      HijriStart(year: 1448, month: 5, startsOn: DateTime(2026, 10, 13), source: 'test'),
+    ]);
+    expect(find.text('24 جمادى الأولى 1448 هـ'), findsOneWidget);
+    expect(find.text('حسب الإعلان الرسمي لبداية الشهر في سلطنة عُمان.'), findsOneWidget);
   });
 }

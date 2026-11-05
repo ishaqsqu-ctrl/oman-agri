@@ -210,7 +210,7 @@
     }
   },
   "calendarTitle": "التقويم",
-  "calendarHijriNote": "حسب تقويم أم القرى، وقد يختلف يوماً عن رؤية الهلال في عُمان.",
+  "calendarHijriNote": "حسب تقويم أم القرى، وقد يختلف يوماً عن رؤية الهلال في عُمان، إلى أن يُدخل المدير بداية الشهر المعلنة رسمياً.",
   "calendarHijriSuffix": "هـ",
   "calendarUpcoming": "القادم في مزرعتي",
   "calendarDayEvents": "في هذا اليوم",
@@ -251,6 +251,26 @@
   "@inDays": {
     "placeholders": {
       "n": {
+        "type": "int"
+      }
+    }
+  },
+  "calendarHijriOfficial": "حسب الإعلان الرسمي لبداية الشهر في سلطنة عُمان.",
+  "hijriAdminTitle": "بداية الشهر الهجري في عُمان",
+  "hijriAdminHelp": "أدخل بداية كل شهر كما أُعلنت رسمياً في عُمان، ليظهر التاريخ الهجري الصحيح في التقويم.",
+  "hijriAdminAdd": "أدخل بداية شهر",
+  "hijriYear": "السنة الهجرية",
+  "hijriMonth": "الشهر الهجري",
+  "hijriStartsOn": "أول أيامه (ميلادي)",
+  "hijriSource": "مصدر الإعلان",
+  "hijriSaved": "حُفظت بداية {month} {year}",
+  "save": "احفظ",
+  "@hijriSaved": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      },
+      "year": {
         "type": "int"
       }
     }

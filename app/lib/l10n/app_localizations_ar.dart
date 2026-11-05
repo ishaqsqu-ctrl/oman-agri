@@ -457,7 +457,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get calendarHijriNote =>
-      'حسب تقويم أم القرى، وقد يختلف يوماً عن رؤية الهلال في عُمان.';
+      'حسب تقويم أم القرى، وقد يختلف يوماً عن رؤية الهلال في عُمان، إلى أن يُدخل المدير بداية الشهر المعلنة رسمياً.';
 
   @override
   String get calendarHijriSuffix => 'هـ';
@@ -517,4 +517,38 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get nextMonth => 'الشهر التالي';
+
+  @override
+  String get calendarHijriOfficial =>
+      'حسب الإعلان الرسمي لبداية الشهر في سلطنة عُمان.';
+
+  @override
+  String get hijriAdminTitle => 'بداية الشهر الهجري في عُمان';
+
+  @override
+  String get hijriAdminHelp =>
+      'أدخل بداية كل شهر كما أُعلنت رسمياً في عُمان، ليظهر التاريخ الهجري الصحيح في التقويم.';
+
+  @override
+  String get hijriAdminAdd => 'أدخل بداية شهر';
+
+  @override
+  String get hijriYear => 'السنة الهجرية';
+
+  @override
+  String get hijriMonth => 'الشهر الهجري';
+
+  @override
+  String get hijriStartsOn => 'أول أيامه (ميلادي)';
+
+  @override
+  String get hijriSource => 'مصدر الإعلان';
+
+  @override
+  String hijriSaved(String month, int year) {
+    return 'حُفظت بداية $month $year';
+  }
+
+  @override
+  String get save => 'احفظ';
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/intl.dart' show DateFormat;
 import 'package:oman_agri/core/theme.dart';
 import 'package:oman_agri/features/calendar/farm_events.dart';
+import 'package:oman_agri/features/calendar/omani_hijri.dart';
 import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
 import 'package:oman_agri/features/crops/data/models.dart';
 import 'package:oman_agri/features/crops/ui/crop_art.dart';
@@ -16,9 +16,11 @@ import 'package:oman_agri/l10n/app_localizations.dart';
 DateTime _day(DateTime x) => DateTime(x.year, x.month, x.day);
 
 /// Umm al-Qura date: day, month name (in [lang]) and year.
-({int day, String month, int year}) hijriOf(DateTime date, String lang) {
-  final h = HijriCalendar.fromDate(date);
-  return (day: h.hDay, month: hijriMonthName(h.hMonth, lang), year: h.hYear);
+/// Omani Hijri date (official announcements, else Umm al-Qura) with month name.
+({int day, String month, int year, bool official}) hijriOf(
+    DateTime date, String lang, List<HijriStart> starts) {
+  final h = omaniHijri(date, starts);
+  return (day: h.day, month: hijriMonthName(h.month, lang), year: h.year, official: h.official);
 }
 
 class CalendarScreen extends ConsumerStatefulWidget {
@@ -50,6 +52,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
       for (final c in ref.watch(knowledgeProvider).asData?.value.crops ?? const <Crop>[]) c.id: c
     };
     final plantings = ref.watch(farmProvider);
+    final starts = ref.watch(hijriStartsProvider).asData?.value ?? const <HijriStart>[];
     final events = farmEvents(plantings, crops);
     final byDay = <DateTime, List<FarmEvent>>{};
     for (final e in events) {
@@ -66,7 +69,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
           child: Text(l10n.calendarTitle,
               style: theme.textTheme.displaySmall?.copyWith(color: theme.colorScheme.primary)),
         ),
-        _TodayCard(today: today, lang: lang),
+        _TodayCard(today: today, lang: lang, starts: starts),
         const SizedBox(height: 16),
         _MonthGrid(
           month: _month,
@@ -74,6 +77,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
           selected: _selected,
           marked: byDay.keys.toSet(),
           lang: lang,
+          starts: starts,
           onMonth: (m) => setState(() => _month = m),
           onSelect: (d) => setState(() => _selected = d),
         ),
@@ -112,7 +116,8 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
 }
 
 class _TodayCard extends StatelessWidget {
-  const _TodayCard({required this.today, required this.lang});
+  const _TodayCard({required this.today, required this.lang, required this.starts});
+  final List<HijriStart> starts;
   final DateTime today;
   final String lang;
 
@@ -120,7 +125,7 @@ class _TodayCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
-    final h = hijriOf(today, lang);
+    final h = hijriOf(today, lang, starts);
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
@@ -135,7 +140,7 @@ class _TodayCard extends StatelessWidget {
         Text('${h.day} ${h.month} ${h.year} ${l10n.calendarHijriSuffix}',
             style: theme.textTheme.titleLarge?.copyWith(color: theme.colorScheme.primary)),
         const SizedBox(height: 8),
-        Text(l10n.calendarHijriNote,
+        Text(h.official ? l10n.calendarHijriOfficial : l10n.calendarHijriNote,
             style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurface.withValues(alpha: 0.65))),
       ]),
     );
@@ -149,12 +154,14 @@ class _MonthGrid extends StatelessWidget {
     required this.selected,
     required this.marked,
     required this.lang,
+    required this.starts,
     required this.onMonth,
     required this.onSelect,
   });
   final DateTime month, today, selected;
   final Set<DateTime> marked;
   final String lang;
+  final List<HijriStart> starts;
   final ValueChanged<DateTime> onMonth, onSelect;
 
   @override
@@ -165,7 +172,8 @@ class _MonthGrid extends StatelessWidget {
     final first = ml.firstDayOfWeekIndex; // 0 = Sunday
     final days = DateUtils.getDaysInMonth(month.year, month.month);
     final lead = (DateTime(month.year, month.month).weekday % 7 - first + 7) % 7;
-    final hStart = hijriOf(month, lang), hEnd = hijriOf(DateTime(month.year, month.month, days), lang);
+    final hStart = hijriOf(month, lang, starts),
+        hEnd = hijriOf(DateTime(month.year, month.month, days), lang, starts);
     final hRange = hStart.month == hEnd.month
         ? '${hStart.month} ${hStart.year}'
         : '${hStart.month} – ${hEnd.month} ${hEnd.year}';
@@ -216,7 +224,7 @@ class _MonthGrid extends StatelessWidget {
             for (var d = 1; d <= days; d++)
               _DayCell(
                 date: DateTime(month.year, month.month, d),
-                hijriDay: HijriCalendar.fromDate(DateTime(month.year, month.month, d)).hDay,
+                hijriDay: omaniHijri(DateTime(month.year, month.month, d), starts).day,
                 isToday: DateUtils.isSameDay(DateTime(month.year, month.month, d), today),
                 isSelected: DateUtils.isSameDay(DateTime(month.year, month.month, d), selected),
                 marked: marked.contains(DateTime(month.year, month.month, d)),

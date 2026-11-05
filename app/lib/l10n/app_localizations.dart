@@ -875,7 +875,7 @@ abstract class AppLocalizations {
   /// No description provided for @calendarHijriNote.
   ///
   /// In ar, this message translates to:
-  /// **'حسب تقويم أم القرى، وقد يختلف يوماً عن رؤية الهلال في عُمان.'**
+  /// **'حسب تقويم أم القرى، وقد يختلف يوماً عن رؤية الهلال في عُمان، إلى أن يُدخل المدير بداية الشهر المعلنة رسمياً.'**
   String get calendarHijriNote;
 
   /// No description provided for @calendarHijriSuffix.
@@ -955,6 +955,66 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'الشهر التالي'**
   String get nextMonth;
+
+  /// No description provided for @calendarHijriOfficial.
+  ///
+  /// In ar, this message translates to:
+  /// **'حسب الإعلان الرسمي لبداية الشهر في سلطنة عُمان.'**
+  String get calendarHijriOfficial;
+
+  /// No description provided for @hijriAdminTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'بداية الشهر الهجري في عُمان'**
+  String get hijriAdminTitle;
+
+  /// No description provided for @hijriAdminHelp.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل بداية كل شهر كما أُعلنت رسمياً في عُمان، ليظهر التاريخ الهجري الصحيح في التقويم.'**
+  String get hijriAdminHelp;
+
+  /// No description provided for @hijriAdminAdd.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل بداية شهر'**
+  String get hijriAdminAdd;
+
+  /// No description provided for @hijriYear.
+  ///
+  /// In ar, this message translates to:
+  /// **'السنة الهجرية'**
+  String get hijriYear;
+
+  /// No description provided for @hijriMonth.
+  ///
+  /// In ar, this message translates to:
+  /// **'الشهر الهجري'**
+  String get hijriMonth;
+
+  /// No description provided for @hijriStartsOn.
+  ///
+  /// In ar, this message translates to:
+  /// **'أول أيامه (ميلادي)'**
+  String get hijriStartsOn;
+
+  /// No description provided for @hijriSource.
+  ///
+  /// In ar, this message translates to:
+  /// **'مصدر الإعلان'**
+  String get hijriSource;
+
+  /// No description provided for @hijriSaved.
+  ///
+  /// In ar, this message translates to:
+  /// **'حُفظت بداية {month} {year}'**
+  String hijriSaved(String month, int year);
+
+  /// No description provided for @save.
+  ///
+  /// In ar, this message translates to:
+  /// **'احفظ'**
+  String get save;
 }
 
 class _AppLocalizationsDelegate
