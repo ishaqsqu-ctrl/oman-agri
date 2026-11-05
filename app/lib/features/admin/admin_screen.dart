@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:oman_agri/core/config.dart';
 import 'package:oman_agri/features/admin/admin_repository.dart';
 import 'package:oman_agri/features/calendar/omani_hijri.dart';
+import 'package:oman_agri/features/store/store_repository.dart';
 import 'package:oman_agri/features/crops/ui/labels.dart';
 import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
 import 'package:oman_agri/features/crops/data/models.dart';
@@ -226,6 +227,20 @@ class _AdminScreenState extends ConsumerState<AdminScreen> {
         ),
       );
 
+  Future<void> _setShop(Shop shop, ShopStatus status, AppLocalizations l10n) async {
+    setState(() => _busy = true);
+    try {
+      await ref.read(storeRepositoryProvider).setShopStatus(shop.id, status);
+      ref.invalidate(pendingShopsProvider);
+      ref.invalidate(approvedShopsProvider);
+      _snack(l10n.saved);
+    } catch (_) {
+      _snack(l10n.operationFailed);
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
   Future<void> _addHijriStart(AppLocalizations l10n) async {
     final lang = Localizations.localeOf(context).languageCode;
     final now = DateTime.now();
@@ -388,6 +403,40 @@ class _AdminScreenState extends ConsumerState<AdminScreen> {
                   child: Text(l10n.hijriAdminAdd),
                 ),
               ),
+            ]),
+          ),
+        ),
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(l10n.pendingShops, style: theme.textTheme.titleMedium),
+              const SizedBox(height: 8),
+              ...ref.watch(pendingShopsProvider).when(
+                    loading: () => [const LinearProgressIndicator()],
+                    error: (_, _) => [Text(l10n.loadError)],
+                    data: (list) => list.isEmpty
+                        ? [Text(l10n.noPendingShops, style: theme.textTheme.bodySmall)]
+                        : [
+                            for (final shop in list)
+                              ListTile(
+                                key: ValueKey('pending-${shop.id}'),
+                                contentPadding: EdgeInsets.zero,
+                                title: Text(shop.name),
+                                subtitle: Text(shop.phone, textDirection: TextDirection.ltr),
+                                trailing: Wrap(spacing: 4, children: [
+                                  TextButton(
+                                    onPressed: _busy ? null : () => _setShop(shop, ShopStatus.suspended, l10n),
+                                    child: Text(l10n.suspendShop),
+                                  ),
+                                  FilledButton(
+                                    onPressed: _busy ? null : () => _setShop(shop, ShopStatus.approved, l10n),
+                                    child: Text(l10n.approveShop),
+                                  ),
+                                ]),
+                              ),
+                          ],
+                  ),
             ]),
           ),
         ),

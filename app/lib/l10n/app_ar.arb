@@ -274,5 +274,63 @@
         "type": "int"
       }
     }
+  },
+  "storeTitle": "المتجر",
+  "storeNeedsInternet": "المتجر يحتاج اتصالاً بالإنترنت لعرض المحلات وأسعارها.",
+  "storeEmpty": "لا توجد محلات معتمدة بعد",
+  "storeEmptyBody": "عندما تسجّل المحلات ويعتمدها المدير ستظهر هنا مع منتجاتها وأسعارها.",
+  "storeOwnerCta": "هل لديك محل مستلزمات زراعية؟",
+  "storeRegisterButton": "سجّل محلك",
+  "storeMyShopButton": "محلي",
+  "shopCall": "اتصل",
+  "shopWhatsapp": "واتساب",
+  "shopNoProducts": "لم يضف المحل منتجات بعد",
+  "productUnavailable": "غير متوفر حالياً",
+  "priceOmr": "{price} ر.ع.",
+  "priceOnRequest": "السعر عند الاتصال",
+  "catSeeds": "بذور",
+  "catSeedlings": "شتلات",
+  "catFertilizer": "أسمدة",
+  "catPesticide": "مبيدات",
+  "catIrrigation": "ري",
+  "catTools": "أدوات",
+  "catOther": "أخرى",
+  "myShopTitle": "محلي",
+  "signInToRegister": "سجّل الدخول أو أنشئ حساباً لتسجيل محلك.",
+  "createAccount": "أنشئ حساباً",
+  "haveAccount": "لدي حساب",
+  "confirmEmailSent": "أرسلنا رسالة إلى بريدك. افتحها لتأكيد الحساب، ثم سجّل الدخول.",
+  "shopName": "اسم المحل",
+  "shopWilayat": "الولاية",
+  "shopPhone": "رقم الهاتف",
+  "shopWhatsappField": "رقم الواتساب (اختياري)",
+  "shopAddress": "العنوان (اختياري)",
+  "registerShop": "أرسل للاعتماد",
+  "saveShop": "احفظ التعديلات",
+  "shopPendingNote": "محلك بانتظار اعتماد المدير. أضف منتجاتك الآن، وستظهر للمزارعين بعد الاعتماد.",
+  "shopApprovedNote": "محلك معتمد وظاهر للمزارعين.",
+  "shopSuspendedNote": "أوقف المدير ظهور محلك. تواصل معه لمعرفة السبب.",
+  "productsTitle": "المنتجات",
+  "addProduct": "أضف منتجاً",
+  "productName": "اسم المنتج",
+  "productCategory": "النوع",
+  "productPrice": "السعر (ر.ع.)",
+  "productUnit": "الوحدة، مثل: كيس 50 كغ",
+  "productAvailable": "متوفر",
+  "delete": "احذف",
+  "fieldRequired": "هذا الحقل مطلوب",
+  "invalidPhone": "اكتب رقماً صحيحاً، مثل 9123 4567",
+  "invalidPrice": "اكتب سعراً صحيحاً",
+  "pendingShops": "محلات بانتظار الاعتماد",
+  "approveShop": "اعتمد",
+  "suspendShop": "أوقف",
+  "noPendingShops": "لا محلات بانتظار الاعتماد",
+  "saved": "حُفظ",
+  "@priceOmr": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
   }
 }

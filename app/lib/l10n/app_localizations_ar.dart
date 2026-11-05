@@ -551,4 +551,164 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get save => 'احفظ';
+
+  @override
+  String get storeTitle => 'المتجر';
+
+  @override
+  String get storeNeedsInternet =>
+      'المتجر يحتاج اتصالاً بالإنترنت لعرض المحلات وأسعارها.';
+
+  @override
+  String get storeEmpty => 'لا توجد محلات معتمدة بعد';
+
+  @override
+  String get storeEmptyBody =>
+      'عندما تسجّل المحلات ويعتمدها المدير ستظهر هنا مع منتجاتها وأسعارها.';
+
+  @override
+  String get storeOwnerCta => 'هل لديك محل مستلزمات زراعية؟';
+
+  @override
+  String get storeRegisterButton => 'سجّل محلك';
+
+  @override
+  String get storeMyShopButton => 'محلي';
+
+  @override
+  String get shopCall => 'اتصل';
+
+  @override
+  String get shopWhatsapp => 'واتساب';
+
+  @override
+  String get shopNoProducts => 'لم يضف المحل منتجات بعد';
+
+  @override
+  String get productUnavailable => 'غير متوفر حالياً';
+
+  @override
+  String priceOmr(String price) {
+    return '$price ر.ع.';
+  }
+
+  @override
+  String get priceOnRequest => 'السعر عند الاتصال';
+
+  @override
+  String get catSeeds => 'بذور';
+
+  @override
+  String get catSeedlings => 'شتلات';
+
+  @override
+  String get catFertilizer => 'أسمدة';
+
+  @override
+  String get catPesticide => 'مبيدات';
+
+  @override
+  String get catIrrigation => 'ري';
+
+  @override
+  String get catTools => 'أدوات';
+
+  @override
+  String get catOther => 'أخرى';
+
+  @override
+  String get myShopTitle => 'محلي';
+
+  @override
+  String get signInToRegister => 'سجّل الدخول أو أنشئ حساباً لتسجيل محلك.';
+
+  @override
+  String get createAccount => 'أنشئ حساباً';
+
+  @override
+  String get haveAccount => 'لدي حساب';
+
+  @override
+  String get confirmEmailSent =>
+      'أرسلنا رسالة إلى بريدك. افتحها لتأكيد الحساب، ثم سجّل الدخول.';
+
+  @override
+  String get shopName => 'اسم المحل';
+
+  @override
+  String get shopWilayat => 'الولاية';
+
+  @override
+  String get shopPhone => 'رقم الهاتف';
+
+  @override
+  String get shopWhatsappField => 'رقم الواتساب (اختياري)';
+
+  @override
+  String get shopAddress => 'العنوان (اختياري)';
+
+  @override
+  String get registerShop => 'أرسل للاعتماد';
+
+  @override
+  String get saveShop => 'احفظ التعديلات';
+
+  @override
+  String get shopPendingNote =>
+      'محلك بانتظار اعتماد المدير. أضف منتجاتك الآن، وستظهر للمزارعين بعد الاعتماد.';
+
+  @override
+  String get shopApprovedNote => 'محلك معتمد وظاهر للمزارعين.';
+
+  @override
+  String get shopSuspendedNote =>
+      'أوقف المدير ظهور محلك. تواصل معه لمعرفة السبب.';
+
+  @override
+  String get productsTitle => 'المنتجات';
+
+  @override
+  String get addProduct => 'أضف منتجاً';
+
+  @override
+  String get productName => 'اسم المنتج';
+
+  @override
+  String get productCategory => 'النوع';
+
+  @override
+  String get productPrice => 'السعر (ر.ع.)';
+
+  @override
+  String get productUnit => 'الوحدة، مثل: كيس 50 كغ';
+
+  @override
+  String get productAvailable => 'متوفر';
+
+  @override
+  String get delete => 'احذف';
+
+  @override
+  String get fieldRequired => 'هذا الحقل مطلوب';
+
+  @override
+  String get invalidPhone => 'اكتب رقماً صحيحاً، مثل 9123 4567';
+
+  @override
+  String get invalidPrice => 'اكتب سعراً صحيحاً';
+
+  @override
+  String get pendingShops => 'محلات بانتظار الاعتماد';
+
+  @override
+  String get approveShop => 'اعتمد';
+
+  @override
+  String get suspendShop => 'أوقف';
+
+  @override
+  String get noPendingShops => 'لا محلات بانتظار الاعتماد';
+
+  @override
+  String get saved => 'حُفظ';
 }

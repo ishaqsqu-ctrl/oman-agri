@@ -553,4 +553,166 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get save => 'Save';
+
+  @override
+  String get storeTitle => 'Store';
+
+  @override
+  String get storeNeedsInternet =>
+      'The store needs an internet connection to show shops and prices.';
+
+  @override
+  String get storeEmpty => 'No approved shops yet';
+
+  @override
+  String get storeEmptyBody =>
+      'Once shops register and the admin approves them, they appear here with their products and prices.';
+
+  @override
+  String get storeOwnerCta => 'Do you run a farm-supply shop?';
+
+  @override
+  String get storeRegisterButton => 'Register your shop';
+
+  @override
+  String get storeMyShopButton => 'My shop';
+
+  @override
+  String get shopCall => 'Call';
+
+  @override
+  String get shopWhatsapp => 'WhatsApp';
+
+  @override
+  String get shopNoProducts => 'This shop has not added products yet';
+
+  @override
+  String get productUnavailable => 'Not available now';
+
+  @override
+  String priceOmr(String price) {
+    return 'OMR $price';
+  }
+
+  @override
+  String get priceOnRequest => 'Price on request';
+
+  @override
+  String get catSeeds => 'Seeds';
+
+  @override
+  String get catSeedlings => 'Seedlings';
+
+  @override
+  String get catFertilizer => 'Fertiliser';
+
+  @override
+  String get catPesticide => 'Pesticides';
+
+  @override
+  String get catIrrigation => 'Irrigation';
+
+  @override
+  String get catTools => 'Tools';
+
+  @override
+  String get catOther => 'Other';
+
+  @override
+  String get myShopTitle => 'My shop';
+
+  @override
+  String get signInToRegister =>
+      'Sign in or create an account to register your shop.';
+
+  @override
+  String get createAccount => 'Create account';
+
+  @override
+  String get haveAccount => 'I have an account';
+
+  @override
+  String get confirmEmailSent =>
+      'We sent you an email. Open it to confirm your account, then sign in.';
+
+  @override
+  String get shopName => 'Shop name';
+
+  @override
+  String get shopWilayat => 'Wilayat';
+
+  @override
+  String get shopPhone => 'Phone number';
+
+  @override
+  String get shopWhatsappField => 'WhatsApp number (optional)';
+
+  @override
+  String get shopAddress => 'Address (optional)';
+
+  @override
+  String get registerShop => 'Send for approval';
+
+  @override
+  String get saveShop => 'Save changes';
+
+  @override
+  String get shopPendingNote =>
+      'Your shop is waiting for the admin\'s approval. Add your products now; farmers see them once approved.';
+
+  @override
+  String get shopApprovedNote =>
+      'Your shop is approved and visible to farmers.';
+
+  @override
+  String get shopSuspendedNote =>
+      'The admin has hidden your shop. Contact them to find out why.';
+
+  @override
+  String get productsTitle => 'Products';
+
+  @override
+  String get addProduct => 'Add a product';
+
+  @override
+  String get productName => 'Product name';
+
+  @override
+  String get productCategory => 'Type';
+
+  @override
+  String get productPrice => 'Price (OMR)';
+
+  @override
+  String get productUnit => 'Unit, e.g. 50 kg bag';
+
+  @override
+  String get productAvailable => 'Available';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get fieldRequired => 'This field is required';
+
+  @override
+  String get invalidPhone => 'Enter a valid number, e.g. 9123 4567';
+
+  @override
+  String get invalidPrice => 'Enter a valid price';
+
+  @override
+  String get pendingShops => 'Shops waiting for approval';
+
+  @override
+  String get approveShop => 'Approve';
+
+  @override
+  String get suspendShop => 'Suspend';
+
+  @override
+  String get noPendingShops => 'No shops waiting for approval';
+
+  @override
+  String get saved => 'Saved';
 }

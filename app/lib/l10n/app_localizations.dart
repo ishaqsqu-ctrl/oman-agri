@@ -1015,6 +1015,312 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'احفظ'**
   String get save;
+
+  /// No description provided for @storeTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'المتجر'**
+  String get storeTitle;
+
+  /// No description provided for @storeNeedsInternet.
+  ///
+  /// In ar, this message translates to:
+  /// **'المتجر يحتاج اتصالاً بالإنترنت لعرض المحلات وأسعارها.'**
+  String get storeNeedsInternet;
+
+  /// No description provided for @storeEmpty.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد محلات معتمدة بعد'**
+  String get storeEmpty;
+
+  /// No description provided for @storeEmptyBody.
+  ///
+  /// In ar, this message translates to:
+  /// **'عندما تسجّل المحلات ويعتمدها المدير ستظهر هنا مع منتجاتها وأسعارها.'**
+  String get storeEmptyBody;
+
+  /// No description provided for @storeOwnerCta.
+  ///
+  /// In ar, this message translates to:
+  /// **'هل لديك محل مستلزمات زراعية؟'**
+  String get storeOwnerCta;
+
+  /// No description provided for @storeRegisterButton.
+  ///
+  /// In ar, this message translates to:
+  /// **'سجّل محلك'**
+  String get storeRegisterButton;
+
+  /// No description provided for @storeMyShopButton.
+  ///
+  /// In ar, this message translates to:
+  /// **'محلي'**
+  String get storeMyShopButton;
+
+  /// No description provided for @shopCall.
+  ///
+  /// In ar, this message translates to:
+  /// **'اتصل'**
+  String get shopCall;
+
+  /// No description provided for @shopWhatsapp.
+  ///
+  /// In ar, this message translates to:
+  /// **'واتساب'**
+  String get shopWhatsapp;
+
+  /// No description provided for @shopNoProducts.
+  ///
+  /// In ar, this message translates to:
+  /// **'لم يضف المحل منتجات بعد'**
+  String get shopNoProducts;
+
+  /// No description provided for @productUnavailable.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير متوفر حالياً'**
+  String get productUnavailable;
+
+  /// No description provided for @priceOmr.
+  ///
+  /// In ar, this message translates to:
+  /// **'{price} ر.ع.'**
+  String priceOmr(String price);
+
+  /// No description provided for @priceOnRequest.
+  ///
+  /// In ar, this message translates to:
+  /// **'السعر عند الاتصال'**
+  String get priceOnRequest;
+
+  /// No description provided for @catSeeds.
+  ///
+  /// In ar, this message translates to:
+  /// **'بذور'**
+  String get catSeeds;
+
+  /// No description provided for @catSeedlings.
+  ///
+  /// In ar, this message translates to:
+  /// **'شتلات'**
+  String get catSeedlings;
+
+  /// No description provided for @catFertilizer.
+  ///
+  /// In ar, this message translates to:
+  /// **'أسمدة'**
+  String get catFertilizer;
+
+  /// No description provided for @catPesticide.
+  ///
+  /// In ar, this message translates to:
+  /// **'مبيدات'**
+  String get catPesticide;
+
+  /// No description provided for @catIrrigation.
+  ///
+  /// In ar, this message translates to:
+  /// **'ري'**
+  String get catIrrigation;
+
+  /// No description provided for @catTools.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدوات'**
+  String get catTools;
+
+  /// No description provided for @catOther.
+  ///
+  /// In ar, this message translates to:
+  /// **'أخرى'**
+  String get catOther;
+
+  /// No description provided for @myShopTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'محلي'**
+  String get myShopTitle;
+
+  /// No description provided for @signInToRegister.
+  ///
+  /// In ar, this message translates to:
+  /// **'سجّل الدخول أو أنشئ حساباً لتسجيل محلك.'**
+  String get signInToRegister;
+
+  /// No description provided for @createAccount.
+  ///
+  /// In ar, this message translates to:
+  /// **'أنشئ حساباً'**
+  String get createAccount;
+
+  /// No description provided for @haveAccount.
+  ///
+  /// In ar, this message translates to:
+  /// **'لدي حساب'**
+  String get haveAccount;
+
+  /// No description provided for @confirmEmailSent.
+  ///
+  /// In ar, this message translates to:
+  /// **'أرسلنا رسالة إلى بريدك. افتحها لتأكيد الحساب، ثم سجّل الدخول.'**
+  String get confirmEmailSent;
+
+  /// No description provided for @shopName.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم المحل'**
+  String get shopName;
+
+  /// No description provided for @shopWilayat.
+  ///
+  /// In ar, this message translates to:
+  /// **'الولاية'**
+  String get shopWilayat;
+
+  /// No description provided for @shopPhone.
+  ///
+  /// In ar, this message translates to:
+  /// **'رقم الهاتف'**
+  String get shopPhone;
+
+  /// No description provided for @shopWhatsappField.
+  ///
+  /// In ar, this message translates to:
+  /// **'رقم الواتساب (اختياري)'**
+  String get shopWhatsappField;
+
+  /// No description provided for @shopAddress.
+  ///
+  /// In ar, this message translates to:
+  /// **'العنوان (اختياري)'**
+  String get shopAddress;
+
+  /// No description provided for @registerShop.
+  ///
+  /// In ar, this message translates to:
+  /// **'أرسل للاعتماد'**
+  String get registerShop;
+
+  /// No description provided for @saveShop.
+  ///
+  /// In ar, this message translates to:
+  /// **'احفظ التعديلات'**
+  String get saveShop;
+
+  /// No description provided for @shopPendingNote.
+  ///
+  /// In ar, this message translates to:
+  /// **'محلك بانتظار اعتماد المدير. أضف منتجاتك الآن، وستظهر للمزارعين بعد الاعتماد.'**
+  String get shopPendingNote;
+
+  /// No description provided for @shopApprovedNote.
+  ///
+  /// In ar, this message translates to:
+  /// **'محلك معتمد وظاهر للمزارعين.'**
+  String get shopApprovedNote;
+
+  /// No description provided for @shopSuspendedNote.
+  ///
+  /// In ar, this message translates to:
+  /// **'أوقف المدير ظهور محلك. تواصل معه لمعرفة السبب.'**
+  String get shopSuspendedNote;
+
+  /// No description provided for @productsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'المنتجات'**
+  String get productsTitle;
+
+  /// No description provided for @addProduct.
+  ///
+  /// In ar, this message translates to:
+  /// **'أضف منتجاً'**
+  String get addProduct;
+
+  /// No description provided for @productName.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم المنتج'**
+  String get productName;
+
+  /// No description provided for @productCategory.
+  ///
+  /// In ar, this message translates to:
+  /// **'النوع'**
+  String get productCategory;
+
+  /// No description provided for @productPrice.
+  ///
+  /// In ar, this message translates to:
+  /// **'السعر (ر.ع.)'**
+  String get productPrice;
+
+  /// No description provided for @productUnit.
+  ///
+  /// In ar, this message translates to:
+  /// **'الوحدة، مثل: كيس 50 كغ'**
+  String get productUnit;
+
+  /// No description provided for @productAvailable.
+  ///
+  /// In ar, this message translates to:
+  /// **'متوفر'**
+  String get productAvailable;
+
+  /// No description provided for @delete.
+  ///
+  /// In ar, this message translates to:
+  /// **'احذف'**
+  String get delete;
+
+  /// No description provided for @fieldRequired.
+  ///
+  /// In ar, this message translates to:
+  /// **'هذا الحقل مطلوب'**
+  String get fieldRequired;
+
+  /// No description provided for @invalidPhone.
+  ///
+  /// In ar, this message translates to:
+  /// **'اكتب رقماً صحيحاً، مثل 9123 4567'**
+  String get invalidPhone;
+
+  /// No description provided for @invalidPrice.
+  ///
+  /// In ar, this message translates to:
+  /// **'اكتب سعراً صحيحاً'**
+  String get invalidPrice;
+
+  /// No description provided for @pendingShops.
+  ///
+  /// In ar, this message translates to:
+  /// **'محلات بانتظار الاعتماد'**
+  String get pendingShops;
+
+  /// No description provided for @approveShop.
+  ///
+  /// In ar, this message translates to:
+  /// **'اعتمد'**
+  String get approveShop;
+
+  /// No description provided for @suspendShop.
+  ///
+  /// In ar, this message translates to:
+  /// **'أوقف'**
+  String get suspendShop;
+
+  /// No description provided for @noPendingShops.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا محلات بانتظار الاعتماد'**
+  String get noPendingShops;
+
+  /// No description provided for @saved.
+  ///
+  /// In ar, this message translates to:
+  /// **'حُفظ'**
+  String get saved;
 }
 
 class _AppLocalizationsDelegate

@@ -7,6 +7,8 @@ import 'package:oman_agri/features/crops/ui/crop_detail_screen.dart';
 import 'package:oman_agri/features/crops/ui/crops_list_screen.dart';
 import 'package:oman_agri/features/farm/farm_screen.dart';
 import 'package:oman_agri/features/settings/settings_screen.dart';
+import 'package:oman_agri/features/store/store_repository.dart';
+import 'package:oman_agri/features/store/store_screens.dart';
 import 'package:oman_agri/features/shell/coming_soon_screen.dart';
 import 'package:oman_agri/features/shell/app_shell.dart';
 
@@ -40,7 +42,7 @@ GoRouter buildRouter() => GoRouter(
             StatefulShellBranch(routes: [
               GoRoute(
                   path: '/store',
-                  builder: (c, s) => const ComingSoonScreen('store')),
+                  builder: (c, s) => const StoreScreen()),
             ]),
           ],
         ),
@@ -54,6 +56,20 @@ GoRouter buildRouter() => GoRouter(
           parentNavigatorKey: _rootKey,
           pageBuilder: (c, s) =>
               fadeScalePage(s, CropDetailScreen(cropId: s.pathParameters['id']!)),
+        ),
+        GoRoute(
+          path: '/store/mine',
+          parentNavigatorKey: _rootKey,
+          builder: (c, s) => const MyShopScreen(),
+        ),
+        GoRoute(
+          path: '/store/shop/:id',
+          parentNavigatorKey: _rootKey,
+          pageBuilder: (c, s) => fadeScalePage(
+              s,
+              s.extra is Shop
+                  ? ShopScreen(shop: s.extra! as Shop)
+                  : const Scaffold(body: Center(child: CircularProgressIndicator()))),
         ),
         GoRoute(
           path: '/admin',
