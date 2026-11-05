@@ -866,4 +866,156 @@ class AppLocalizationsAr extends AppLocalizations {
   String condSalinity(String value, String limit) {
     return 'ملوحة التربة $value أعلى من حد تحمّل المحصول $limit، فيُتوقع نقص في الإنتاج';
   }
+
+  @override
+  String get waterTitle => 'ماء الري';
+
+  @override
+  String get waterEmptyBody =>
+      'أدخل نتيجة فحص المختبر لماء البئر أو الفلج، وسيخبرك التطبيق بجودته وأثره على محاصيلك.';
+
+  @override
+  String get waterAddTest => 'أدخل نتيجة فحص الماء';
+
+  @override
+  String get waterNewTest => 'فحص جديد';
+
+  @override
+  String get waterSheetTitle => 'نتيجة فحص الماء';
+
+  @override
+  String get waterSourceLabel => 'مصدر الماء';
+
+  @override
+  String get waterSourceWell => 'بئر';
+
+  @override
+  String get waterSourceFalaj => 'فلج';
+
+  @override
+  String get waterSourceDesal => 'مياه محلاة';
+
+  @override
+  String get waterSourceOther => 'أخرى';
+
+  @override
+  String get waterDate => 'تاريخ الفحص';
+
+  @override
+  String get waterEcLabel => 'الملوحة (أهم قيمة في الفحص)';
+
+  @override
+  String get waterEcField => 'EC أو TDS كما في ورقة المختبر';
+
+  @override
+  String get waterEcRequired => 'أدخل الملوحة بالوحدة المكتوبة في ورقة الفحص';
+
+  @override
+  String get waterOptional => 'قيم إضافية إن وُجدت في الفحص';
+
+  @override
+  String get waterInvalid => 'قيمة غير صحيحة';
+
+  @override
+  String get waterSprinkler => 'أروي بالرش';
+
+  @override
+  String get waterSprinklerHint => 'الرش يبلل الأوراق، فتنخفض حدود الكلوريد';
+
+  @override
+  String get waterSave => 'احفظ الفحص';
+
+  @override
+  String get waterVerdictNone => 'صالح للري دون قيود';
+
+  @override
+  String get waterVerdictSlight => 'صالح للري مع الحذر';
+
+  @override
+  String get waterVerdictSevere => 'قيود شديدة على استخدامه للري';
+
+  @override
+  String get paramSalinity => 'الملوحة';
+
+  @override
+  String get paramInfiltration => 'نفاذية التربة';
+
+  @override
+  String get paramSodium => 'الصوديوم';
+
+  @override
+  String get paramChloride => 'الكلوريد';
+
+  @override
+  String get paramBoron => 'البورون';
+
+  @override
+  String get sevNone => 'لا قيود';
+
+  @override
+  String get sevSlight => 'قيود خفيفة إلى متوسطة';
+
+  @override
+  String get sevSevere => 'قيود شديدة';
+
+  @override
+  String get adviceSalinity =>
+      'أعطِ ماءً زائدًا لغسل الأملاح من منطقة الجذور، واختر محاصيل تتحمل الملوحة.';
+
+  @override
+  String get adviceInfiltration =>
+      'قد تتكوّن قشرة على سطح التربة تمنع تسرب الماء؛ الجبس الزراعي يحسّن النفاذية.';
+
+  @override
+  String get adviceSodium => 'خطر تسمم الجذور بالصوديوم، خاصة في الأشجار.';
+
+  @override
+  String get adviceChloride =>
+      'قد يحرق أطراف الأوراق، خاصة في الحمضيات والعنب.';
+
+  @override
+  String get adviceBoron =>
+      'البورون الزائد يضر المحاصيل الحساسة كالحمضيات والبقوليات.';
+
+  @override
+  String get advicePh =>
+      'خارج المدى الطبيعي (6.5–8.4)؛ اطلب من المختبر فحص البيكربونات.';
+
+  @override
+  String get waterOnCrops => 'أثره على محاصيلك';
+
+  @override
+  String waterYield(String pct) {
+    return 'الإنتاج المتوقع نحو $pct';
+  }
+
+  @override
+  String get waterWithinTolerance => 'ضمن تحمّله';
+
+  @override
+  String get waterAboveTolerance => 'فوق تحمّله: يُتوقع نقص في الإنتاج';
+
+  @override
+  String get waterNoThreshold => 'لا يوجد حد ملوحة موثّق';
+
+  @override
+  String waterCropMax(String ec) {
+    return 'يتحمّل حتى $ec في ماء الري';
+  }
+
+  @override
+  String get waterAddCropsHint => 'أضف محاصيلك لترى أثر هذا الماء عليها.';
+
+  @override
+  String get waterHistory => 'الفحوصات السابقة';
+
+  @override
+  String get waterDelete => 'احذف الفحص';
+
+  @override
+  String get waterDeleteConfirm => 'هل تريد حذف هذا الفحص؟';
+
+  @override
+  String get waterNote =>
+      'المعايير: نشرة الفاو للري والصرف رقم 29 (أيرز وويستكوت، 1985). يُقدَّر الإنتاج بمعادلة ماس وهوفمان على افتراض أن ملوحة التربة تبلغ مرة ونصف ملوحة الماء (غسيل 15–20%). يبقى الفحص على جهازك فقط.';
 }

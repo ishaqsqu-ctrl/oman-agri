@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -6,6 +8,7 @@ import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
 import 'package:oman_agri/features/crops/data/models.dart';
 import 'package:oman_agri/features/farm/farm_screen.dart';
 import 'package:oman_agri/features/farm/farm_store.dart';
+import 'package:oman_agri/features/farm/water_quality.dart';
 import 'package:oman_agri/core/theme.dart';
 import 'package:oman_agri/l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -23,6 +26,7 @@ final _snap = KnowledgeSnapshot(
       nameAr: 'طماطم',
       nameEn: 'Tomato',
       categories: const [CropCategory.vegetable],
+      requirements: const CropRequirements(eceThreshold: 2.5, eceSlope: 9.9, meta: _m),
       stages: [
         CropStage(seq: 1, stage: 'initial', durationDays: 30, kc: 0.6, meta: _m),
         CropStage(seq: 2, stage: 'development', durationDays: 40, kc: 1.15, meta: _m),
@@ -35,8 +39,8 @@ final _snap = KnowledgeSnapshot(
   ],
 );
 
-Future<SharedPreferences> _pump(WidgetTester tester, {Map<String, Object> prefs = const {}}) async {
-  tester.view.physicalSize = const Size(420, 900);
+Future<SharedPreferences> _pump(WidgetTester tester, {Map<String, Object> prefs = const {}, double width = 420}) async {
+  tester.view.physicalSize = Size(width, 900);
   tester.view.devicePixelRatio = 1;
   addTearDown(tester.view.reset);
   SharedPreferences.setMockInitialValues({localePrefKey: 'ar', ...prefs});
@@ -117,5 +121,60 @@ void main() {
   testWidgets('a corrupt saved farm does not crash', (tester) async {
     await _pump(tester, prefs: {farmPrefKey: '{not json'});
     expect(find.text('لم تضف محاصيل بعد'), findsOneWidget);
+  });
+
+  testWidgets('a water test in µS/cm shows its quality and the yield effect on tomato', (tester) async {
+    final sp = await _pump(tester, prefs: {
+      farmPrefKey: '[{"id":"a","crop_id":"tomato","planted_on":"2026-11-01"},{"id":"b","crop_id":"henna","planted_on":"2026-11-01"}]',
+    });
+    await tester.scrollUntilVisible(find.byKey(const ValueKey('water-add')), 200);
+    await tester.tap(find.byKey(const ValueKey('water-add')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('water-save')));
+    await tester.pumpAndSettle();
+    expect(find.text('أدخل الملوحة بالوحدة المكتوبة في ورقة الفحص'), findsOneWidget);
+    await tester.tap(find.text('µS/cm'));
+    await tester.enterText(find.byKey(const ValueKey('water-ec')), '٣٠٠٠'); // Arabic digits
+    await tester.ensureVisible(find.byKey(const ValueKey('water-b')));
+    await tester.enterText(find.byKey(const ValueKey('water-b')), '0.5');
+    await tester.pump();
+    expect(find.text('0.5'), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('water-save')));
+    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(find.text('الإنتاج المتوقع نحو \u206680%\u2069'), 200);
+    expect(find.text('صالح للري مع الحذر'), findsOneWidget);
+    expect(find.text('\u20663\u00A0dS/m\u2069'), findsOneWidget);
+    expect(find.text('الإنتاج المتوقع نحو \u206680%\u2069'), findsOneWidget);
+    expect(find.text('لا يوجد حد ملوحة موثّق'), findsOneWidget); // henna
+    final saved = WaterTest.tryParse((jsonDecode(sp.getString(waterPrefKey)!) as List).single)!;
+    expect(saved.ec, 3.0);
+    expect(saved.boron, 0.5);
+  });
+
+  testWidgets('an out-of-range pH is refused', (tester) async {
+    await _pump(tester);
+    await tester.scrollUntilVisible(find.byKey(const ValueKey('water-add')), 200);
+    await tester.tap(find.byKey(const ValueKey('water-add')));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byKey(const ValueKey('water-ec')), '1.2');
+    await tester.ensureVisible(find.byKey(const ValueKey('water-ph')));
+    await tester.enterText(find.byKey(const ValueKey('water-ph')), '19');
+    await tester.pump();
+    expect(find.text('19'), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('water-save')));
+    await tester.pumpAndSettle();
+    expect(find.text('قيمة غير صحيحة'), findsOneWidget);
+  });
+
+  testWidgets('water card fits 320 px at double text size', (tester) async {
+    tester.platformDispatcher.textScaleFactorTestValue = 2;
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+    await _pump(tester, width: 320, prefs: {
+      farmPrefKey: '[{"id":"a","crop_id":"tomato","planted_on":"2026-11-01"}]',
+      waterPrefKey: '[{"id":"w","date":"2026-11-02","source":"desalinated","ec":3.2,"ph":9,"sar":25,"cl":12,"b":4,"sprinkler":true},'
+          '{"id":"v","date":"2025-01-02","source":"falaj","ec":0.4}]',
+    });
+    await tester.scrollUntilVisible(find.text('الفحوصات السابقة'), 300);
+    expect(tester.takeException(), isNull);
   });
 }

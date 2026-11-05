@@ -870,4 +870,160 @@ class AppLocalizationsEn extends AppLocalizations {
   String condSalinity(String value, String limit) {
     return 'Soil salinity $value is above the crop\'s tolerance of $limit, so yield loss is expected';
   }
+
+  @override
+  String get waterTitle => 'Irrigation water';
+
+  @override
+  String get waterEmptyBody =>
+      'Enter the lab result for your well or falaj water, and the app will tell you its quality and its effect on your crops.';
+
+  @override
+  String get waterAddTest => 'Enter a water test';
+
+  @override
+  String get waterNewTest => 'New test';
+
+  @override
+  String get waterSheetTitle => 'Water test result';
+
+  @override
+  String get waterSourceLabel => 'Water source';
+
+  @override
+  String get waterSourceWell => 'Well';
+
+  @override
+  String get waterSourceFalaj => 'Falaj';
+
+  @override
+  String get waterSourceDesal => 'Desalinated';
+
+  @override
+  String get waterSourceOther => 'Other';
+
+  @override
+  String get waterDate => 'Test date';
+
+  @override
+  String get waterEcLabel => 'Salinity (the key value)';
+
+  @override
+  String get waterEcField => 'EC or TDS as on the lab sheet';
+
+  @override
+  String get waterEcRequired =>
+      'Enter the salinity in the unit on your lab sheet';
+
+  @override
+  String get waterOptional => 'More values, if the test has them';
+
+  @override
+  String get waterInvalid => 'Invalid value';
+
+  @override
+  String get waterSprinkler => 'I irrigate by sprinkler';
+
+  @override
+  String get waterSprinklerHint =>
+      'Sprinklers wet the leaves, so chloride limits are lower';
+
+  @override
+  String get waterSave => 'Save test';
+
+  @override
+  String get waterVerdictNone => 'Fit for irrigation, no restriction';
+
+  @override
+  String get waterVerdictSlight => 'Fit for irrigation with care';
+
+  @override
+  String get waterVerdictSevere => 'Severe restriction for irrigation';
+
+  @override
+  String get paramSalinity => 'Salinity';
+
+  @override
+  String get paramInfiltration => 'Infiltration';
+
+  @override
+  String get paramSodium => 'Sodium';
+
+  @override
+  String get paramChloride => 'Chloride';
+
+  @override
+  String get paramBoron => 'Boron';
+
+  @override
+  String get sevNone => 'No restriction';
+
+  @override
+  String get sevSlight => 'Slight to moderate';
+
+  @override
+  String get sevSevere => 'Severe';
+
+  @override
+  String get adviceSalinity =>
+      'Apply extra water to leach salts below the roots, and choose salt-tolerant crops.';
+
+  @override
+  String get adviceInfiltration =>
+      'A crust may form and stop water soaking in; gypsum improves infiltration.';
+
+  @override
+  String get adviceSodium =>
+      'Risk of sodium toxicity to roots, especially in trees.';
+
+  @override
+  String get adviceChloride =>
+      'May burn leaf tips, especially in citrus and grapes.';
+
+  @override
+  String get adviceBoron =>
+      'Excess boron harms sensitive crops such as citrus and legumes.';
+
+  @override
+  String get advicePh =>
+      'Outside the normal range (6.5–8.4); ask the lab for bicarbonate.';
+
+  @override
+  String get waterOnCrops => 'Effect on your crops';
+
+  @override
+  String waterYield(String pct) {
+    return 'Expected yield about $pct';
+  }
+
+  @override
+  String get waterWithinTolerance => 'Within tolerance';
+
+  @override
+  String get waterAboveTolerance => 'Above tolerance: yield loss expected';
+
+  @override
+  String get waterNoThreshold => 'No documented salinity limit';
+
+  @override
+  String waterCropMax(String ec) {
+    return 'Tolerates up to $ec in irrigation water';
+  }
+
+  @override
+  String get waterAddCropsHint =>
+      'Add your crops to see this water\'s effect on them.';
+
+  @override
+  String get waterHistory => 'Earlier tests';
+
+  @override
+  String get waterDelete => 'Delete test';
+
+  @override
+  String get waterDeleteConfirm => 'Delete this test?';
+
+  @override
+  String get waterNote =>
+      'Guidelines: FAO Irrigation and Drainage Paper 29 (Ayers & Westcot 1985). Yield follows Maas & Hoffman, assuming soil salinity reaches 1.5 × water salinity (15–20% leaching). The test stays on your device only.';
 }

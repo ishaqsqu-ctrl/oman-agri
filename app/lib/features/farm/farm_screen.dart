@@ -11,6 +11,7 @@ import 'package:oman_agri/features/crops/ui/crop_art.dart';
 import 'package:oman_agri/features/crops/ui/labels.dart';
 import 'package:oman_agri/features/farm/farm_store.dart';
 import 'package:oman_agri/features/farm/season.dart';
+import 'package:oman_agri/features/farm/water_ui.dart';
 import 'package:oman_agri/l10n/app_localizations.dart';
 
 /// Today's date; tests override it.
@@ -37,23 +38,29 @@ class FarmScreen extends ConsumerWidget {
               icon: const Icon(Icons.add),
               label: Text(l10n.farmAdd),
             ),
-      body: shown.isEmpty
-          ? _Empty(onAdd: () => showAddPlanting(context))
-          : ListView(
-              padding: const EdgeInsets.fromLTRB(16, 4, 16, 96),
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 0, 4, 12),
-                  child: Text(l10n.farmTitle,
-                      style: theme.textTheme.displaySmall?.copyWith(color: theme.colorScheme.primary)),
-                ),
-                for (final p in shown)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
-                    child: PlantingCard(planting: p, crop: crops[p.cropId]!),
-                  ),
-              ],
+      body: ListView(
+        padding: const EdgeInsets.fromLTRB(16, 4, 16, 96),
+        children: [
+          if (shown.isEmpty)
+            _Empty(onAdd: () => showAddPlanting(context))
+          else ...[
+            Padding(
+              padding: const EdgeInsets.fromLTRB(4, 0, 4, 12),
+              child: Text(l10n.farmTitle,
+                  style: theme.textTheme.displaySmall?.copyWith(color: theme.colorScheme.primary)),
             ),
+            for (final p in shown)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: PlantingCard(planting: p, crop: crops[p.cropId]!),
+              ),
+          ],
+          const SizedBox(height: 8),
+          WaterCard(crops: [
+            for (final id in {for (final p in shown) p.cropId}) crops[id]!,
+          ]),
+        ],
+      ),
     );
   }
 }

@@ -1591,6 +1591,288 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'ملوحة التربة {value} أعلى من حد تحمّل المحصول {limit}، فيُتوقع نقص في الإنتاج'**
   String condSalinity(String value, String limit);
+
+  /// No description provided for @waterTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'ماء الري'**
+  String get waterTitle;
+
+  /// No description provided for @waterEmptyBody.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل نتيجة فحص المختبر لماء البئر أو الفلج، وسيخبرك التطبيق بجودته وأثره على محاصيلك.'**
+  String get waterEmptyBody;
+
+  /// No description provided for @waterAddTest.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل نتيجة فحص الماء'**
+  String get waterAddTest;
+
+  /// No description provided for @waterNewTest.
+  ///
+  /// In ar, this message translates to:
+  /// **'فحص جديد'**
+  String get waterNewTest;
+
+  /// No description provided for @waterSheetTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'نتيجة فحص الماء'**
+  String get waterSheetTitle;
+
+  /// No description provided for @waterSourceLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'مصدر الماء'**
+  String get waterSourceLabel;
+
+  /// No description provided for @waterSourceWell.
+  ///
+  /// In ar, this message translates to:
+  /// **'بئر'**
+  String get waterSourceWell;
+
+  /// No description provided for @waterSourceFalaj.
+  ///
+  /// In ar, this message translates to:
+  /// **'فلج'**
+  String get waterSourceFalaj;
+
+  /// No description provided for @waterSourceDesal.
+  ///
+  /// In ar, this message translates to:
+  /// **'مياه محلاة'**
+  String get waterSourceDesal;
+
+  /// No description provided for @waterSourceOther.
+  ///
+  /// In ar, this message translates to:
+  /// **'أخرى'**
+  String get waterSourceOther;
+
+  /// No description provided for @waterDate.
+  ///
+  /// In ar, this message translates to:
+  /// **'تاريخ الفحص'**
+  String get waterDate;
+
+  /// No description provided for @waterEcLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملوحة (أهم قيمة في الفحص)'**
+  String get waterEcLabel;
+
+  /// No description provided for @waterEcField.
+  ///
+  /// In ar, this message translates to:
+  /// **'EC أو TDS كما في ورقة المختبر'**
+  String get waterEcField;
+
+  /// No description provided for @waterEcRequired.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل الملوحة بالوحدة المكتوبة في ورقة الفحص'**
+  String get waterEcRequired;
+
+  /// No description provided for @waterOptional.
+  ///
+  /// In ar, this message translates to:
+  /// **'قيم إضافية إن وُجدت في الفحص'**
+  String get waterOptional;
+
+  /// No description provided for @waterInvalid.
+  ///
+  /// In ar, this message translates to:
+  /// **'قيمة غير صحيحة'**
+  String get waterInvalid;
+
+  /// No description provided for @waterSprinkler.
+  ///
+  /// In ar, this message translates to:
+  /// **'أروي بالرش'**
+  String get waterSprinkler;
+
+  /// No description provided for @waterSprinklerHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرش يبلل الأوراق، فتنخفض حدود الكلوريد'**
+  String get waterSprinklerHint;
+
+  /// No description provided for @waterSave.
+  ///
+  /// In ar, this message translates to:
+  /// **'احفظ الفحص'**
+  String get waterSave;
+
+  /// No description provided for @waterVerdictNone.
+  ///
+  /// In ar, this message translates to:
+  /// **'صالح للري دون قيود'**
+  String get waterVerdictNone;
+
+  /// No description provided for @waterVerdictSlight.
+  ///
+  /// In ar, this message translates to:
+  /// **'صالح للري مع الحذر'**
+  String get waterVerdictSlight;
+
+  /// No description provided for @waterVerdictSevere.
+  ///
+  /// In ar, this message translates to:
+  /// **'قيود شديدة على استخدامه للري'**
+  String get waterVerdictSevere;
+
+  /// No description provided for @paramSalinity.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملوحة'**
+  String get paramSalinity;
+
+  /// No description provided for @paramInfiltration.
+  ///
+  /// In ar, this message translates to:
+  /// **'نفاذية التربة'**
+  String get paramInfiltration;
+
+  /// No description provided for @paramSodium.
+  ///
+  /// In ar, this message translates to:
+  /// **'الصوديوم'**
+  String get paramSodium;
+
+  /// No description provided for @paramChloride.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكلوريد'**
+  String get paramChloride;
+
+  /// No description provided for @paramBoron.
+  ///
+  /// In ar, this message translates to:
+  /// **'البورون'**
+  String get paramBoron;
+
+  /// No description provided for @sevNone.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا قيود'**
+  String get sevNone;
+
+  /// No description provided for @sevSlight.
+  ///
+  /// In ar, this message translates to:
+  /// **'قيود خفيفة إلى متوسطة'**
+  String get sevSlight;
+
+  /// No description provided for @sevSevere.
+  ///
+  /// In ar, this message translates to:
+  /// **'قيود شديدة'**
+  String get sevSevere;
+
+  /// No description provided for @adviceSalinity.
+  ///
+  /// In ar, this message translates to:
+  /// **'أعطِ ماءً زائدًا لغسل الأملاح من منطقة الجذور، واختر محاصيل تتحمل الملوحة.'**
+  String get adviceSalinity;
+
+  /// No description provided for @adviceInfiltration.
+  ///
+  /// In ar, this message translates to:
+  /// **'قد تتكوّن قشرة على سطح التربة تمنع تسرب الماء؛ الجبس الزراعي يحسّن النفاذية.'**
+  String get adviceInfiltration;
+
+  /// No description provided for @adviceSodium.
+  ///
+  /// In ar, this message translates to:
+  /// **'خطر تسمم الجذور بالصوديوم، خاصة في الأشجار.'**
+  String get adviceSodium;
+
+  /// No description provided for @adviceChloride.
+  ///
+  /// In ar, this message translates to:
+  /// **'قد يحرق أطراف الأوراق، خاصة في الحمضيات والعنب.'**
+  String get adviceChloride;
+
+  /// No description provided for @adviceBoron.
+  ///
+  /// In ar, this message translates to:
+  /// **'البورون الزائد يضر المحاصيل الحساسة كالحمضيات والبقوليات.'**
+  String get adviceBoron;
+
+  /// No description provided for @advicePh.
+  ///
+  /// In ar, this message translates to:
+  /// **'خارج المدى الطبيعي (6.5–8.4)؛ اطلب من المختبر فحص البيكربونات.'**
+  String get advicePh;
+
+  /// No description provided for @waterOnCrops.
+  ///
+  /// In ar, this message translates to:
+  /// **'أثره على محاصيلك'**
+  String get waterOnCrops;
+
+  /// No description provided for @waterYield.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإنتاج المتوقع نحو {pct}'**
+  String waterYield(String pct);
+
+  /// No description provided for @waterWithinTolerance.
+  ///
+  /// In ar, this message translates to:
+  /// **'ضمن تحمّله'**
+  String get waterWithinTolerance;
+
+  /// No description provided for @waterAboveTolerance.
+  ///
+  /// In ar, this message translates to:
+  /// **'فوق تحمّله: يُتوقع نقص في الإنتاج'**
+  String get waterAboveTolerance;
+
+  /// No description provided for @waterNoThreshold.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا يوجد حد ملوحة موثّق'**
+  String get waterNoThreshold;
+
+  /// No description provided for @waterCropMax.
+  ///
+  /// In ar, this message translates to:
+  /// **'يتحمّل حتى {ec} في ماء الري'**
+  String waterCropMax(String ec);
+
+  /// No description provided for @waterAddCropsHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'أضف محاصيلك لترى أثر هذا الماء عليها.'**
+  String get waterAddCropsHint;
+
+  /// No description provided for @waterHistory.
+  ///
+  /// In ar, this message translates to:
+  /// **'الفحوصات السابقة'**
+  String get waterHistory;
+
+  /// No description provided for @waterDelete.
+  ///
+  /// In ar, this message translates to:
+  /// **'احذف الفحص'**
+  String get waterDelete;
+
+  /// No description provided for @waterDeleteConfirm.
+  ///
+  /// In ar, this message translates to:
+  /// **'هل تريد حذف هذا الفحص؟'**
+  String get waterDeleteConfirm;
+
+  /// No description provided for @waterNote.
+  ///
+  /// In ar, this message translates to:
+  /// **'المعايير: نشرة الفاو للري والصرف رقم 29 (أيرز وويستكوت، 1985). يُقدَّر الإنتاج بمعادلة ماس وهوفمان على افتراض أن ملوحة التربة تبلغ مرة ونصف ملوحة الماء (غسيل 15–20%). يبقى الفحص على جهازك فقط.'**
+  String get waterNote;
 }
 
 class _AppLocalizationsDelegate
