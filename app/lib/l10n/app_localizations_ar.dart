@@ -451,4 +451,70 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get undo => 'تراجع';
+
+  @override
+  String get calendarTitle => 'التقويم';
+
+  @override
+  String get calendarHijriNote =>
+      'حسب تقويم أم القرى، وقد يختلف يوماً عن رؤية الهلال في عُمان.';
+
+  @override
+  String get calendarHijriSuffix => 'هـ';
+
+  @override
+  String get calendarUpcoming => 'القادم في مزرعتي';
+
+  @override
+  String get calendarDayEvents => 'في هذا اليوم';
+
+  @override
+  String get calendarNoEventsDay => 'لا مواعيد في هذا اليوم';
+
+  @override
+  String get calendarEmptyFarm =>
+      'أضف محاصيلك في «مزرعتي» لترى هنا مواعيد مراحل نموها وحصادها.';
+
+  @override
+  String get calendarGoToFarm => 'اذهب إلى مزرعتي';
+
+  @override
+  String get calendarPlantNowLater =>
+      '«ماذا أزرع هذا الشهر في منطقتي» يُضاف عند اعتماد مصدر موثّق لمواعيد الزراعة في كل منطقة.';
+
+  @override
+  String eventPlanted(String crop) {
+    return 'زراعة $crop';
+  }
+
+  @override
+  String eventStageStarts(String crop, String stage) {
+    return '$crop: تبدأ مرحلة $stage';
+  }
+
+  @override
+  String eventHarvest(String crop) {
+    return '$crop: موعد الحصاد';
+  }
+
+  @override
+  String inDays(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'بعد $n يوم',
+      many: 'بعد $n يومًا',
+      few: 'بعد $n أيام',
+      two: 'بعد يومين',
+      one: 'غداً',
+      zero: 'اليوم',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get previousMonth => 'الشهر السابق';
+
+  @override
+  String get nextMonth => 'الشهر التالي';
 }

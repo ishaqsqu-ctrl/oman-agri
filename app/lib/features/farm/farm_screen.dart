@@ -111,7 +111,7 @@ class PlantingCard extends ConsumerWidget {
     final today = ref.watch(todayProvider);
     final day = dayOfSeason(planting.plantedOn, today);
     final pos = SeasonPosition.of(crop.stages, day: day);
-    final date = DateFormat.yMMMd(locale.toLanguageTag()).format(planting.plantedOn);
+    final date = latinDigits(DateFormat.yMMMd(locale.toLanguageTag()).format(planting.plantedOn));
     final monthKc = crop.kcMonthly.where((m) => m.month == today.month).firstOrNull;
 
     String headline;

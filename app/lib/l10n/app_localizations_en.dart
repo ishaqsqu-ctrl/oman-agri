@@ -456,4 +456,67 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get undo => 'Undo';
+
+  @override
+  String get calendarTitle => 'Calendar';
+
+  @override
+  String get calendarHijriNote =>
+      'Umm al-Qura calendar; may differ by a day from moon sighting in Oman.';
+
+  @override
+  String get calendarHijriSuffix => 'AH';
+
+  @override
+  String get calendarUpcoming => 'Coming up on my farm';
+
+  @override
+  String get calendarDayEvents => 'On this day';
+
+  @override
+  String get calendarNoEventsDay => 'Nothing on this day';
+
+  @override
+  String get calendarEmptyFarm =>
+      'Add your crops in My farm to see their stage and harvest dates here.';
+
+  @override
+  String get calendarGoToFarm => 'Go to My farm';
+
+  @override
+  String get calendarPlantNowLater =>
+      '\"What to plant this month in my area\" arrives once a documented source for planting dates by region is approved.';
+
+  @override
+  String eventPlanted(String crop) {
+    return '$crop planted';
+  }
+
+  @override
+  String eventStageStarts(String crop, String stage) {
+    return '$crop: $stage begins';
+  }
+
+  @override
+  String eventHarvest(String crop) {
+    return '$crop: harvest';
+  }
+
+  @override
+  String inDays(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'In $n days',
+      one: 'Tomorrow',
+      zero: 'Today',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get previousMonth => 'Previous month';
+
+  @override
+  String get nextMonth => 'Next month';
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:oman_agri/core/motion.dart';
 import 'package:oman_agri/features/admin/admin_screen.dart';
+import 'package:oman_agri/features/calendar/calendar_screen.dart';
 import 'package:oman_agri/features/crops/ui/crop_detail_screen.dart';
 import 'package:oman_agri/features/crops/ui/crops_list_screen.dart';
 import 'package:oman_agri/features/farm/farm_screen.dart';
@@ -29,7 +30,7 @@ GoRouter buildRouter() => GoRouter(
             StatefulShellBranch(routes: [
               GoRoute(
                   path: '/calendar',
-                  builder: (c, s) => const ComingSoonScreen('calendar')),
+                  builder: (c, s) => const CalendarScreen()),
             ]),
             StatefulShellBranch(routes: [
               GoRoute(

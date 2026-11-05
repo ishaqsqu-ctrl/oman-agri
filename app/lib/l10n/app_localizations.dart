@@ -865,6 +865,96 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'تراجع'**
   String get undo;
+
+  /// No description provided for @calendarTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'التقويم'**
+  String get calendarTitle;
+
+  /// No description provided for @calendarHijriNote.
+  ///
+  /// In ar, this message translates to:
+  /// **'حسب تقويم أم القرى، وقد يختلف يوماً عن رؤية الهلال في عُمان.'**
+  String get calendarHijriNote;
+
+  /// No description provided for @calendarHijriSuffix.
+  ///
+  /// In ar, this message translates to:
+  /// **'هـ'**
+  String get calendarHijriSuffix;
+
+  /// No description provided for @calendarUpcoming.
+  ///
+  /// In ar, this message translates to:
+  /// **'القادم في مزرعتي'**
+  String get calendarUpcoming;
+
+  /// No description provided for @calendarDayEvents.
+  ///
+  /// In ar, this message translates to:
+  /// **'في هذا اليوم'**
+  String get calendarDayEvents;
+
+  /// No description provided for @calendarNoEventsDay.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا مواعيد في هذا اليوم'**
+  String get calendarNoEventsDay;
+
+  /// No description provided for @calendarEmptyFarm.
+  ///
+  /// In ar, this message translates to:
+  /// **'أضف محاصيلك في «مزرعتي» لترى هنا مواعيد مراحل نموها وحصادها.'**
+  String get calendarEmptyFarm;
+
+  /// No description provided for @calendarGoToFarm.
+  ///
+  /// In ar, this message translates to:
+  /// **'اذهب إلى مزرعتي'**
+  String get calendarGoToFarm;
+
+  /// No description provided for @calendarPlantNowLater.
+  ///
+  /// In ar, this message translates to:
+  /// **'«ماذا أزرع هذا الشهر في منطقتي» يُضاف عند اعتماد مصدر موثّق لمواعيد الزراعة في كل منطقة.'**
+  String get calendarPlantNowLater;
+
+  /// No description provided for @eventPlanted.
+  ///
+  /// In ar, this message translates to:
+  /// **'زراعة {crop}'**
+  String eventPlanted(String crop);
+
+  /// No description provided for @eventStageStarts.
+  ///
+  /// In ar, this message translates to:
+  /// **'{crop}: تبدأ مرحلة {stage}'**
+  String eventStageStarts(String crop, String stage);
+
+  /// No description provided for @eventHarvest.
+  ///
+  /// In ar, this message translates to:
+  /// **'{crop}: موعد الحصاد'**
+  String eventHarvest(String crop);
+
+  /// No description provided for @inDays.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n, plural, =0{اليوم} =1{غداً} =2{بعد يومين} few{بعد {n} أيام} many{بعد {n} يومًا} other{بعد {n} يوم}}'**
+  String inDays(int n);
+
+  /// No description provided for @previousMonth.
+  ///
+  /// In ar, this message translates to:
+  /// **'الشهر السابق'**
+  String get previousMonth;
+
+  /// No description provided for @nextMonth.
+  ///
+  /// In ar, this message translates to:
+  /// **'الشهر التالي'**
+  String get nextMonth;
 }
 
 class _AppLocalizationsDelegate

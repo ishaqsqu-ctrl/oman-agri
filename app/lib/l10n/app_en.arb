@@ -141,5 +141,20 @@
   "farmKcMonth": "Water need this month",
   "farmDaysSince": "{n, plural, =0{Planted today} =1{1 day ago} other{{n} days ago}}",
   "farmNoStageData": "No growth-stage data for this crop yet",
-  "undo": "Undo"
+  "undo": "Undo",
+  "calendarTitle": "Calendar",
+  "calendarHijriNote": "Umm al-Qura calendar; may differ by a day from moon sighting in Oman.",
+  "calendarHijriSuffix": "AH",
+  "calendarUpcoming": "Coming up on my farm",
+  "calendarDayEvents": "On this day",
+  "calendarNoEventsDay": "Nothing on this day",
+  "calendarEmptyFarm": "Add your crops in My farm to see their stage and harvest dates here.",
+  "calendarGoToFarm": "Go to My farm",
+  "calendarPlantNowLater": "\"What to plant this month in my area\" arrives once a documented source for planting dates by region is approved.",
+  "eventPlanted": "{crop} planted",
+  "eventStageStarts": "{crop}: {stage} begins",
+  "eventHarvest": "{crop}: harvest",
+  "inDays": "{n, plural, =0{Today} =1{Tomorrow} other{In {n} days}}",
+  "previousMonth": "Previous month",
+  "nextMonth": "Next month"
 }

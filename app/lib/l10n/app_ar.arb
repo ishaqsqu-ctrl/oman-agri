@@ -208,5 +208,51 @@
         "type": "int"
       }
     }
+  },
+  "calendarTitle": "التقويم",
+  "calendarHijriNote": "حسب تقويم أم القرى، وقد يختلف يوماً عن رؤية الهلال في عُمان.",
+  "calendarHijriSuffix": "هـ",
+  "calendarUpcoming": "القادم في مزرعتي",
+  "calendarDayEvents": "في هذا اليوم",
+  "calendarNoEventsDay": "لا مواعيد في هذا اليوم",
+  "calendarEmptyFarm": "أضف محاصيلك في «مزرعتي» لترى هنا مواعيد مراحل نموها وحصادها.",
+  "calendarGoToFarm": "اذهب إلى مزرعتي",
+  "calendarPlantNowLater": "«ماذا أزرع هذا الشهر في منطقتي» يُضاف عند اعتماد مصدر موثّق لمواعيد الزراعة في كل منطقة.",
+  "eventPlanted": "زراعة {crop}",
+  "eventStageStarts": "{crop}: تبدأ مرحلة {stage}",
+  "eventHarvest": "{crop}: موعد الحصاد",
+  "inDays": "{n, plural, =0{اليوم} =1{غداً} =2{بعد يومين} few{بعد {n} أيام} many{بعد {n} يومًا} other{بعد {n} يوم}}",
+  "previousMonth": "الشهر السابق",
+  "nextMonth": "الشهر التالي",
+  "@eventPlanted": {
+    "placeholders": {
+      "crop": {
+        "type": "String"
+      }
+    }
+  },
+  "@eventStageStarts": {
+    "placeholders": {
+      "crop": {
+        "type": "String"
+      },
+      "stage": {
+        "type": "String"
+      }
+    }
+  },
+  "@eventHarvest": {
+    "placeholders": {
+      "crop": {
+        "type": "String"
+      }
+    }
+  },
+  "@inDays": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
   }
 }

@@ -52,3 +52,28 @@ String? fmtRange(num? a, num? b) {
   if (a == null || b == null || a == b) return fmtNum(a ?? b);
   return '${fmtNum(a)} – ${fmtNum(b)}';
 }
+
+const _arabicIndic = '٠١٢٣٤٥٦٧٨٩';
+
+/// The app writes numbers with 0–9 everywhere; date formatting for Arabic would
+/// otherwise switch to Arabic-Indic digits in a few places only.
+String latinDigits(String s) {
+  final b = StringBuffer();
+  for (final r in s.runes) {
+    final i = _arabicIndic.indexOf(String.fromCharCode(r));
+    b.write(i >= 0 ? '$i' : String.fromCharCode(r));
+  }
+  return b.toString();
+}
+
+const _hijriMonthsAr = [
+  'محرم', 'صفر', 'ربيع الأول', 'ربيع الآخر', 'جمادى الأولى', 'جمادى الآخرة',
+  'رجب', 'شعبان', 'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة',
+];
+const _hijriMonthsEn = [
+  'Muharram', 'Safar', 'Rabi al-Awwal', 'Rabi al-Akhir', 'Jumada al-Ula', 'Jumada al-Akhirah',
+  'Rajab', 'Shaban', 'Ramadan', 'Shawwal', 'Dhu al-Qadah', 'Dhu al-Hijjah',
+];
+
+String hijriMonthName(int month, String lang) =>
+    (lang == 'ar' ? _hijriMonthsAr : _hijriMonthsEn)[(month - 1).clamp(0, 11)];
