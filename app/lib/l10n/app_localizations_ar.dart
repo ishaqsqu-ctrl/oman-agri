@@ -779,7 +779,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get mapSources =>
-      'المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). التربة: SoilGrids 2.0 (Poggio وآخرون 2021، ISRIC). حدود عُمان: © مساهمو OpenStreetMap.';
+      'المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). القوام والحموضة: SoilGrids 2.0 (Poggio وآخرون 2021، ISRIC). الملوحة: HWSD v2.0 (FAO و IIASA 2023، CC BY-NC-SA 3.0 IGO). حدود عُمان: © مساهمو OpenStreetMap.';
 
   @override
   String get mapLoading => 'جارٍ تحميل الخريطة…';
@@ -788,10 +788,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get mapLayerSuit => 'الملاءمة';
 
   @override
-  String get mapLayerTexture => 'قوام التربة';
+  String get mapLayerTexture => 'القوام';
 
   @override
-  String get mapLayerPh => 'حموضة التربة';
+  String get mapLayerPh => 'الحموضة';
 
   @override
   String get soilUnknown => 'لا بيانات';
@@ -839,5 +839,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get soilNote =>
-      'التربة من SoilGrids: تقدير عالمي بدقة 5 كم، وقد لا يمثّل تربة مزرعتك. افحص تربتك قبل الزراعة.';
+      'القوام والحموضة من SoilGrids (تقدير عالمي بدقة 5 كم)، والملوحة من قاعدة HWSD v2.0 (خرائط أقدم وأخشن، والملوحة تتغير بالري ومياه الآبار). قد لا تمثّل تربة مزرعتك؛ افحص التربة والماء قبل الزراعة.';
+
+  @override
+  String get mapLayerSalinity => 'الملوحة';
+
+  @override
+  String get soilSalinity => 'الملوحة';
+
+  @override
+  String get salNone => 'غير مالحة (أقل من 2)';
+
+  @override
+  String get salSlight => 'خفيفة (2–4)';
+
+  @override
+  String get salModerate => 'متوسطة (4–8)';
+
+  @override
+  String get salStrong => 'شديدة (8–16)';
+
+  @override
+  String get salVeryStrong => 'شديدة جدًا (أكثر من 16)';
+
+  @override
+  String condSalinity(String value, String limit) {
+    return 'ملوحة التربة $value أعلى من حد تحمّل المحصول $limit، فيُتوقع نقص في الإنتاج';
+  }
 }

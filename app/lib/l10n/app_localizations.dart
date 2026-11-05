@@ -1439,7 +1439,7 @@ abstract class AppLocalizations {
   /// No description provided for @mapSources.
   ///
   /// In ar, this message translates to:
-  /// **'المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). التربة: SoilGrids 2.0 (Poggio وآخرون 2021، ISRIC). حدود عُمان: © مساهمو OpenStreetMap.'**
+  /// **'المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). القوام والحموضة: SoilGrids 2.0 (Poggio وآخرون 2021، ISRIC). الملوحة: HWSD v2.0 (FAO و IIASA 2023، CC BY-NC-SA 3.0 IGO). حدود عُمان: © مساهمو OpenStreetMap.'**
   String get mapSources;
 
   /// No description provided for @mapLoading.
@@ -1457,13 +1457,13 @@ abstract class AppLocalizations {
   /// No description provided for @mapLayerTexture.
   ///
   /// In ar, this message translates to:
-  /// **'قوام التربة'**
+  /// **'القوام'**
   String get mapLayerTexture;
 
   /// No description provided for @mapLayerPh.
   ///
   /// In ar, this message translates to:
-  /// **'حموضة التربة'**
+  /// **'الحموضة'**
   String get mapLayerPh;
 
   /// No description provided for @soilUnknown.
@@ -1541,8 +1541,56 @@ abstract class AppLocalizations {
   /// No description provided for @soilNote.
   ///
   /// In ar, this message translates to:
-  /// **'التربة من SoilGrids: تقدير عالمي بدقة 5 كم، وقد لا يمثّل تربة مزرعتك. افحص تربتك قبل الزراعة.'**
+  /// **'القوام والحموضة من SoilGrids (تقدير عالمي بدقة 5 كم)، والملوحة من قاعدة HWSD v2.0 (خرائط أقدم وأخشن، والملوحة تتغير بالري ومياه الآبار). قد لا تمثّل تربة مزرعتك؛ افحص التربة والماء قبل الزراعة.'**
   String get soilNote;
+
+  /// No description provided for @mapLayerSalinity.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملوحة'**
+  String get mapLayerSalinity;
+
+  /// No description provided for @soilSalinity.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملوحة'**
+  String get soilSalinity;
+
+  /// No description provided for @salNone.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير مالحة (أقل من 2)'**
+  String get salNone;
+
+  /// No description provided for @salSlight.
+  ///
+  /// In ar, this message translates to:
+  /// **'خفيفة (2–4)'**
+  String get salSlight;
+
+  /// No description provided for @salModerate.
+  ///
+  /// In ar, this message translates to:
+  /// **'متوسطة (4–8)'**
+  String get salModerate;
+
+  /// No description provided for @salStrong.
+  ///
+  /// In ar, this message translates to:
+  /// **'شديدة (8–16)'**
+  String get salStrong;
+
+  /// No description provided for @salVeryStrong.
+  ///
+  /// In ar, this message translates to:
+  /// **'شديدة جدًا (أكثر من 16)'**
+  String get salVeryStrong;
+
+  /// No description provided for @condSalinity.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملوحة التربة {value} أعلى من حد تحمّل المحصول {limit}، فيُتوقع نقص في الإنتاج'**
+  String condSalinity(String value, String limit);
 }
 
 class _AppLocalizationsDelegate

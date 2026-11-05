@@ -43,7 +43,7 @@ class MapData {
       double? soil(int k, double scale) => v.length > k && (v[k] as num) >= 0 ? (v[k] as num) / scale : null;
       cells.add(EnvCell(
           col: v[0] as int, row: v[1] as int, elev: v[2] as int, tavg: month(3), tmin: month(15), tmax: month(27),
-          sand: soil(39, 10), silt: soil(40, 10), clay: soil(41, 10), ph: soil(42, 10)));
+          sand: soil(39, 10), silt: soil(40, 10), clay: soil(41, 10), ph: soil(42, 10), ec: soil(43, 10)));
     }
     return MapData(
       originLon: (header['origin_lon'] as num).toDouble(),
@@ -73,7 +73,7 @@ Color suitColor(int score, {required bool dark}) {
   return dark ? const Color(0xFF39433D) : const Color(0xFFE2E5E0);
 }
 
-enum MapLayer { suitability, texture, ph }
+enum MapLayer { suitability, texture, ph, salinity }
 
 Color textureColor(String? t, {required bool dark}) => switch (t) {
       'sand' => const Color(0xFFE9D29A),
@@ -89,6 +89,16 @@ Color phColor(double? ph, {required bool dark}) {
   if (ph <= 8.0) return const Color(0xFFE6C36A);
   return const Color(0xFFD9893D);
 }
+
+/// FAO salinity classes, light to dark.
+Color salinityColor(double? ec, {required bool dark}) => switch (salinityClass(ec)) {
+      0 => const Color(0xFFCFE8C9),
+      1 => const Color(0xFFF2DC8B),
+      2 => const Color(0xFFE9A55B),
+      3 => const Color(0xFFC9583F),
+      4 => const Color(0xFF7E2B3A),
+      _ => dark ? const Color(0xFF39433D) : const Color(0xFFE2E5E0),
+    };
 
 String suitLabel(AppLocalizations l, int score) => score >= 80
     ? l.suitHigh
@@ -218,6 +228,7 @@ class _MapScreenState extends ConsumerState<MapScreen> {
           ButtonSegment(value: MapLayer.suitability, label: Text(l10n.mapLayerSuit)),
           ButtonSegment(value: MapLayer.texture, label: Text(l10n.mapLayerTexture)),
           ButtonSegment(value: MapLayer.ph, label: Text(l10n.mapLayerPh)),
+          ButtonSegment(value: MapLayer.salinity, label: Text(l10n.mapLayerSalinity)),
         ],
         selected: {_layer},
         onSelectionChanged: (v) => setState(() => _layer = v.first),
@@ -282,6 +293,7 @@ class _MapCanvas extends StatelessWidget {
               req == null ? 0 : (suitabilityOf(req!, c, plantMonth: month)?.score ?? 0), dark: dark),
           MapLayer.texture => textureColor(textureClass(c.sand, c.clay), dark: dark),
           MapLayer.ph => phColor(c.ph, dark: dark),
+          MapLayer.salinity => salinityColor(c.ec, dark: dark),
         },
     };
     // Geography never mirrors: keep north up and east on the right in Arabic too.
@@ -413,6 +425,14 @@ class _Legend extends StatelessWidget {
           item(phColor(7.9, dark: dark), l10n.ph75to8),
           item(phColor(8.2, dark: dark), l10n.phAbove8),
         ],
+      MapLayer.salinity => [
+          item(salinityColor(1, dark: dark), l10n.salNone),
+          item(salinityColor(3, dark: dark), l10n.salSlight),
+          item(salinityColor(6, dark: dark), l10n.salModerate),
+          item(salinityColor(12, dark: dark), l10n.salStrong),
+          item(salinityColor(20, dark: dark), l10n.salVeryStrong),
+          item(salinityColor(null, dark: dark), l10n.soilUnknown),
+        ],
     });
   }
 }
@@ -471,7 +491,7 @@ class _PlaceCard extends StatelessWidget {
         const Divider(height: 24),
         Text(l10n.soilTitle, style: theme.textTheme.titleSmall),
         const SizedBox(height: 6),
-        if (cell.ph == null && cell.sand == null)
+        if (cell.ph == null && cell.sand == null && cell.ec == null)
           Text(l10n.soilUnknown, style: theme.textTheme.bodyMedium)
         else ...[
           Row(children: [
@@ -480,6 +500,7 @@ class _PlaceCard extends StatelessWidget {
               return t == null ? '—' : textureLabel(l10n, t);
             }()),
             fact('pH', cell.ph == null ? '—' : cell.ph!.toStringAsFixed(1)),
+            fact(l10n.soilSalinity, cell.ec == null ? '—' : '${cell.ec!.toStringAsFixed(1)} dS/m'),
           ]),
           if (cell.sand != null && cell.clay != null)
             Padding(
@@ -495,6 +516,9 @@ class _PlaceCard extends StatelessWidget {
       ]),
     );
   }
+
+  /// A dS/m value kept left-to-right inside Arabic text.
+  static String _ds(String v) => '\u2066$v dS/m\u2069';
 
   List<Widget> _conditions(AppLocalizations l10n, ThemeData theme) {
     final cs = soilConditions(req!, cell);
@@ -513,6 +537,7 @@ class _PlaceCard extends StatelessWidget {
                   SoilIssue.texture => l10n.condTexture(textureLabel(l10n, textureClass(cell.sand, cell.clay)!)),
                   SoilIssue.phHigh => l10n.condPhHigh(c.value!.toStringAsFixed(1), fmtNum(c.limit)),
                   SoilIssue.phLow => l10n.condPhLow(c.value!.toStringAsFixed(1), fmtNum(c.limit)),
+                  SoilIssue.salinity => l10n.condSalinity(_ds(c.value!.toStringAsFixed(1)), _ds(fmtNum(c.limit))),
                 },
                 style: theme.textTheme.bodySmall,
               ),

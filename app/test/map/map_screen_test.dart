@@ -16,7 +16,7 @@ const _m = KnowledgeMeta(status: KnowledgeStatus.published, sourceId: 's', revie
 
 EnvCell _cell(int col, {double t = 24, int elev = 50}) => EnvCell(
     col: col, row: 0, elev: elev, tavg: List.filled(12, t), tmin: List.filled(12, t - 6), tmax: List.filled(12, t + 6),
-    sand: 52, silt: 28, clay: 20, ph: 8.2);
+    sand: 52, silt: 28, clay: 20, ph: 8.2, ec: 3.4);
 
 final _map = MapData(
   originLon: 56, originLat: 24, cellDeg: 1, cols: 3, rows: 1,
@@ -47,7 +47,7 @@ Future<void> _pump(WidgetTester tester, {List<Crop>? crops}) async {
                     categories: const [CropCategory.vegetable],
                     requirements: const CropRequirements(
                         tMin: 7, tOptLow: 20, tOptHigh: 27, tMax: 35, altMax: 2400, seasonDaysMin: 70,
-                        phMin: 5, phMax: 7.5, textures: ['sand', 'loam', 'clay'], meta: _m),
+                        phMin: 5, phMax: 7.5, eceThreshold: 2.5, textures: ['sand', 'loam', 'clay'], meta: _m),
                     meta: _m,
                   ),
                 ],
@@ -106,16 +106,22 @@ void main() {
     expect(find.text('8.2'), findsOneWidget);
     expect(find.text('رمل 52% · طين 20%'), findsOneWidget);
     expect(find.text('التربة قلوية: pH 8.2 أعلى من حد المحصول 7.5'), findsOneWidget);
+    expect(find.text('3.4 dS/m'), findsOneWidget);
+    expect(find.text('ملوحة التربة \u20663.4 dS/m\u2069 أعلى من حد تحمّل المحصول \u20662.5 dS/m\u2069، فيُتوقع نقص في الإنتاج'), findsOneWidget);
   });
 
   testWidgets('soil layers switch the legend', (tester) async {
     await _pump(tester);
-    await tester.tap(find.text('قوام التربة'));
+    await tester.tap(find.text('القوام'));
     await tester.pumpAndSettle();
     expect(find.text('رملية'), findsOneWidget);
     expect(find.text('طينية'), findsOneWidget);
-    await tester.tap(find.text('حموضة التربة'));
+    await tester.tap(find.text('الحموضة'));
     await tester.pumpAndSettle();
     expect(find.text('أعلى من 8.0'), findsOneWidget);
+    await tester.tap(find.text('الملوحة'));
+    await tester.pumpAndSettle();
+    expect(find.text('خفيفة (2–4)'), findsOneWidget);
+    expect(find.text('شديدة جدًا (أكثر من 16)'), findsOneWidget);
   });
 }

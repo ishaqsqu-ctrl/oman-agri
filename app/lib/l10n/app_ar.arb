@@ -352,7 +352,7 @@
   "envTmin": "متوسط الصغرى",
   "envTmax": "متوسط العظمى",
   "mapScore": "درجة الملاءمة",
-  "mapSources": "المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). التربة: SoilGrids 2.0 (Poggio وآخرون 2021، ISRIC). حدود عُمان: © مساهمو OpenStreetMap.",
+  "mapSources": "المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). القوام والحموضة: SoilGrids 2.0 (Poggio وآخرون 2021، ISRIC). الملوحة: HWSD v2.0 (FAO و IIASA 2023، CC BY-NC-SA 3.0 IGO). حدود عُمان: © مساهمو OpenStreetMap.",
   "mapLoading": "جارٍ تحميل الخريطة…",
   "@limitCold": {
     "placeholders": {
@@ -382,8 +382,8 @@
     }
   },
   "mapLayerSuit": "الملاءمة",
-  "mapLayerTexture": "قوام التربة",
-  "mapLayerPh": "حموضة التربة",
+  "mapLayerTexture": "القوام",
+  "mapLayerPh": "الحموضة",
   "soilUnknown": "لا بيانات",
   "phUpTo7": "7.0 أو أقل",
   "ph7to75": "7.0 – 7.5",
@@ -396,7 +396,7 @@
   "condPhHigh": "التربة قلوية: pH {value} أعلى من حد المحصول {limit}",
   "condPhLow": "التربة حمضية: pH {value} أقل من حد المحصول {limit}",
   "soilNoConditions": "لا شروط تربة لهذا المحصول هنا",
-  "soilNote": "التربة من SoilGrids: تقدير عالمي بدقة 5 كم، وقد لا يمثّل تربة مزرعتك. افحص تربتك قبل الزراعة.",
+  "soilNote": "القوام والحموضة من SoilGrids (تقدير عالمي بدقة 5 كم)، والملوحة من قاعدة HWSD v2.0 (خرائط أقدم وأخشن، والملوحة تتغير بالري ومياه الآبار). قد لا تمثّل تربة مزرعتك؛ افحص التربة والماء قبل الزراعة.",
   "@soilSandClay": {
     "placeholders": {
       "sand": {
@@ -425,6 +425,24 @@
     }
   },
   "@condPhLow": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "mapLayerSalinity": "الملوحة",
+  "soilSalinity": "الملوحة",
+  "salNone": "غير مالحة (أقل من 2)",
+  "salSlight": "خفيفة (2–4)",
+  "salModerate": "متوسطة (4–8)",
+  "salStrong": "شديدة (8–16)",
+  "salVeryStrong": "شديدة جدًا (أكثر من 16)",
+  "condSalinity": "ملوحة التربة {value} أعلى من حد تحمّل المحصول {limit}، فيُتوقع نقص في الإنتاج",
+  "@condSalinity": {
     "placeholders": {
       "value": {
         "type": "String"

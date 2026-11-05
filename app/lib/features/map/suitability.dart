@@ -15,12 +15,17 @@ class EnvCell {
     this.silt,
     this.clay,
     this.ph,
+    this.ec,
   });
   final int col, row, elev;
   final List<double> tavg, tmin, tmax; // index 0 = January
 
   /// Top 30 cm (SoilGrids): sand, silt, clay in percent and pH; null if unknown.
   final double? sand, silt, clay, ph;
+
+  /// Top 30 cm (HWSD v2.0): electrical conductivity of the saturation extract,
+  /// dS/m; null if unknown.
+  final double? ec;
 }
 
 enum Limit { none, cold, heat, altitude }

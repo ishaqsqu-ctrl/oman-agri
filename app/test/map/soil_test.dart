@@ -5,10 +5,10 @@ import 'package:oman_agri/features/map/suitability.dart';
 
 const _m = KnowledgeMeta(status: KnowledgeStatus.published, sourceId: 's');
 
-EnvCell cell({double? sand, double? clay, double? ph}) => EnvCell(
+EnvCell cell({double? sand, double? clay, double? ph, double? ec}) => EnvCell(
     col: 0, row: 0, elev: 0,
     tavg: List.filled(12, 24), tmin: List.filled(12, 18), tmax: List.filled(12, 30),
-    sand: sand, clay: clay, silt: sand == null || clay == null ? null : 100 - sand - clay, ph: ph);
+    sand: sand, clay: clay, silt: sand == null || clay == null ? null : 100 - sand - clay, ph: ph, ec: ec);
 
 void main() {
   test('FAO three texture classes from sand and clay percent', () {
@@ -38,5 +38,17 @@ void main() {
   test('suitable soil, or no soil data, gives no conditions', () {
     expect(soilConditions(tomato, cell(sand: 52, clay: 20, ph: 7)), isEmpty);
     expect(soilConditions(tomato, cell()), isEmpty);
+  });
+
+  test('FAO salinity classes', () {
+    expect([1.9, 2.0, 4.0, 8.0, 16.0].map(salinityClass), [0, 1, 2, 3, 4]);
+    expect(salinityClass(null), isNull);
+  });
+
+  test('salinity above the crop ECe threshold is a condition', () {
+    const beans = CropRequirements(eceThreshold: 1.0, meta: _m);
+    expect(soilConditions(beans, cell(ec: 2.3)), [const SoilCondition(SoilIssue.salinity, 2.3, 1.0)]);
+    expect(soilConditions(beans, cell(ec: 0.8)), isEmpty);
+    expect(soilConditions(const CropRequirements(meta: _m), cell(ec: 9)), isEmpty);
   });
 }

@@ -783,7 +783,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get mapSources =>
-      'Climate and elevation: WorldClim 2.1 (Fick & Hijmans 2017). Soil: SoilGrids 2.0 (Poggio et al. 2021, ISRIC). Oman outline: © OpenStreetMap contributors.';
+      'Climate and elevation: WorldClim 2.1 (Fick & Hijmans 2017). Texture and pH: SoilGrids 2.0 (Poggio et al. 2021, ISRIC). Salinity: HWSD v2.0 (FAO & IIASA 2023, CC BY-NC-SA 3.0 IGO). Oman outline: © OpenStreetMap contributors.';
 
   @override
   String get mapLoading => 'Loading the map…';
@@ -792,10 +792,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get mapLayerSuit => 'Suitability';
 
   @override
-  String get mapLayerTexture => 'Soil texture';
+  String get mapLayerTexture => 'Texture';
 
   @override
-  String get mapLayerPh => 'Soil pH';
+  String get mapLayerPh => 'pH';
 
   @override
   String get soilUnknown => 'No data';
@@ -843,5 +843,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get soilNote =>
-      'Soil is from SoilGrids: a global estimate at 5 km that may not match your farm. Test your soil before planting.';
+      'Texture and pH are from SoilGrids (a global estimate at 5 km); salinity is from HWSD v2.0 (older, coarser maps, and salinity changes with irrigation and well water). They may not match your farm; test your soil and water before planting.';
+
+  @override
+  String get mapLayerSalinity => 'Salinity';
+
+  @override
+  String get soilSalinity => 'Salinity';
+
+  @override
+  String get salNone => 'Non-saline (below 2)';
+
+  @override
+  String get salSlight => 'Slight (2–4)';
+
+  @override
+  String get salModerate => 'Moderate (4–8)';
+
+  @override
+  String get salStrong => 'Strong (8–16)';
+
+  @override
+  String get salVeryStrong => 'Very strong (above 16)';
+
+  @override
+  String condSalinity(String value, String limit) {
+    return 'Soil salinity $value is above the crop\'s tolerance of $limit, so yield loss is expected';
+  }
 }
