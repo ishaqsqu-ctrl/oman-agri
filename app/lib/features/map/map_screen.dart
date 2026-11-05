@@ -10,6 +10,7 @@ import 'package:oman_agri/features/crops/data/models.dart';
 import 'package:oman_agri/features/crops/ui/crop_art.dart';
 import 'package:oman_agri/features/crops/ui/labels.dart';
 import 'package:oman_agri/features/farm/farm_screen.dart' show todayProvider;
+import 'package:oman_agri/features/map/soil.dart';
 import 'package:oman_agri/features/map/suitability.dart';
 import 'package:oman_agri/l10n/app_localizations.dart';
 
@@ -38,8 +39,11 @@ class MapData {
     for (final r in header['cells'] as List) {
       final v = r as List;
       List<double> month(int from) => [for (var m = 0; m < 12; m++) (v[from + m] as num) / 10];
+      // Soil (optional fields): g/kg -> percent, pH x10 -> pH; -1 = no value.
+      double? soil(int k, double scale) => v.length > k && (v[k] as num) >= 0 ? (v[k] as num) / scale : null;
       cells.add(EnvCell(
-          col: v[0] as int, row: v[1] as int, elev: v[2] as int, tavg: month(3), tmin: month(15), tmax: month(27)));
+          col: v[0] as int, row: v[1] as int, elev: v[2] as int, tavg: month(3), tmin: month(15), tmax: month(27),
+          sand: soil(39, 10), silt: soil(40, 10), clay: soil(41, 10), ph: soil(42, 10)));
     }
     return MapData(
       originLon: (header['origin_lon'] as num).toDouble(),
@@ -67,6 +71,23 @@ Color suitColor(int score, {required bool dark}) {
   if (score >= 50) return dark ? const Color(0xFF9BD8A9) : const Color(0xFF6DB37E);
   if (score > 0) return dark ? const Color(0xFFE0C27A) : const Color(0xFFE6C36A);
   return dark ? const Color(0xFF39433D) : const Color(0xFFE2E5E0);
+}
+
+enum MapLayer { suitability, texture, ph }
+
+Color textureColor(String? t, {required bool dark}) => switch (t) {
+      'sand' => const Color(0xFFE9D29A),
+      'loam' => const Color(0xFFB88A5A),
+      'clay' => const Color(0xFF7B4F2E),
+      _ => dark ? const Color(0xFF39433D) : const Color(0xFFE2E5E0),
+    };
+
+Color phColor(double? ph, {required bool dark}) {
+  if (ph == null) return dark ? const Color(0xFF39433D) : const Color(0xFFE2E5E0);
+  if (ph <= 7.0) return const Color(0xFF6FA8DC);
+  if (ph <= 7.5) return const Color(0xFF93C47D);
+  if (ph <= 8.0) return const Color(0xFFE6C36A);
+  return const Color(0xFFD9893D);
 }
 
 String suitLabel(AppLocalizations l, int score) => score >= 80
@@ -97,6 +118,7 @@ class _MapScreenState extends ConsumerState<MapScreen> {
   String _cropId = 'tomato';
   late int _month = ref.read(todayProvider).month;
   EnvCell? _picked;
+  MapLayer _layer = MapLayer.suitability;
 
   @override
   Widget build(BuildContext context) {
@@ -189,7 +211,19 @@ class _MapScreenState extends ConsumerState<MapScreen> {
         ],
       ),
       const SizedBox(height: 12),
-      if (!usable)
+      SegmentedButton<MapLayer>(
+        key: const ValueKey('map-layer'),
+        showSelectedIcon: false,
+        segments: [
+          ButtonSegment(value: MapLayer.suitability, label: Text(l10n.mapLayerSuit)),
+          ButtonSegment(value: MapLayer.texture, label: Text(l10n.mapLayerTexture)),
+          ButtonSegment(value: MapLayer.ph, label: Text(l10n.mapLayerPh)),
+        ],
+        selected: {_layer},
+        onSelectionChanged: (v) => setState(() => _layer = v.first),
+      ),
+      const SizedBox(height: 12),
+      if (!usable && _layer == MapLayer.suitability)
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 24),
           child: Text(l10n.mapNoRequirements, textAlign: TextAlign.center, style: theme.textTheme.bodyLarge),
@@ -203,21 +237,24 @@ class _MapScreenState extends ConsumerState<MapScreen> {
           error: (_, _) => Text(l10n.loadError),
           data: (d) => _MapCanvas(
             data: d,
-            req: req,
+            layer: _layer,
+            req: usable ? req : null,
             month: _month,
             picked: picked,
             onPick: (c) => setState(() => _picked = c),
           ),
         ),
       const SizedBox(height: 8),
-      if (usable) const _Legend(),
+      if (usable || _layer != MapLayer.suitability) _Legend(layer: _layer),
       const SizedBox(height: 12),
-      if (picked != null && pickedSuit != null)
-        _PlaceCard(cell: picked, suit: pickedSuit, month: _month, lang: lang)
-      else if (usable)
+      if (picked != null)
+        _PlaceCard(cell: picked, suit: pickedSuit, req: req, month: _month, lang: lang)
+      else if (usable || _layer != MapLayer.suitability)
         Text(l10n.mapTapHint, style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.outline)),
       const SizedBox(height: 12),
       Text(l10n.mapModelNote, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.outline)),
+      const SizedBox(height: 4),
+      Text(l10n.soilNote, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.outline)),
       const SizedBox(height: 4),
       Text(l10n.mapSources, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.outline)),
     ]);
@@ -225,9 +262,11 @@ class _MapScreenState extends ConsumerState<MapScreen> {
 }
 
 class _MapCanvas extends StatelessWidget {
-  const _MapCanvas({required this.data, required this.req, required this.month, required this.picked, required this.onPick});
+  const _MapCanvas(
+      {required this.data, required this.layer, required this.req, required this.month, required this.picked, required this.onPick});
   final MapData data;
-  final CropRequirements req;
+  final MapLayer layer;
+  final CropRequirements? req;
   final int month;
   final EnvCell? picked;
   final ValueChanged<EnvCell?> onPick;
@@ -236,8 +275,14 @@ class _MapCanvas extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final dark = theme.brightness == Brightness.dark;
-    final scores = <EnvCell, int>{
-      for (final c in data.cells) c: suitabilityOf(req, c, plantMonth: month)?.score ?? 0,
+    final colors = <EnvCell, Color>{
+      for (final c in data.cells)
+        c: switch (layer) {
+          MapLayer.suitability => suitColor(
+              req == null ? 0 : (suitabilityOf(req!, c, plantMonth: month)?.score ?? 0), dark: dark),
+          MapLayer.texture => textureColor(textureClass(c.sand, c.clay), dark: dark),
+          MapLayer.ph => phColor(c.ph, dark: dark),
+        },
     };
     // Geography never mirrors: keep north up and east on the right in Arabic too.
     return Directionality(
@@ -261,7 +306,7 @@ class _MapCanvas extends StatelessWidget {
                   size: Size(box.maxWidth, box.maxHeight),
                   painter: _MapPainter(
                     data: data,
-                    scores: scores,
+                    colors: colors,
                     picked: picked,
                     dark: dark,
                     outlineColor: theme.colorScheme.onSurface.withValues(alpha: 0.5),
@@ -280,14 +325,14 @@ class _MapCanvas extends StatelessWidget {
 class _MapPainter extends CustomPainter {
   _MapPainter({
     required this.data,
-    required this.scores,
+    required this.colors,
     required this.picked,
     required this.dark,
     required this.outlineColor,
     required this.pickColor,
   });
   final MapData data;
-  final Map<EnvCell, int> scores;
+  final Map<EnvCell, Color> colors;
   final EnvCell? picked;
   final bool dark;
   final Color outlineColor, pickColor;
@@ -296,8 +341,8 @@ class _MapPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final cw = size.width / data.cols, ch = size.height / data.rows;
     final paint = Paint()..isAntiAlias = false;
-    scores.forEach((c, s) {
-      paint.color = suitColor(s, dark: dark);
+    colors.forEach((c, color) {
+      paint.color = color;
       canvas.drawRect(Rect.fromLTWH(c.col * cw, c.row * ch, cw + 0.5, ch + 0.5), paint);
     });
     Offset toPx(Offset p) =>
@@ -328,39 +373,55 @@ class _MapPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _MapPainter old) =>
-      old.scores != scores || old.picked != picked || old.dark != dark;
+      old.colors != colors || old.picked != picked || old.dark != dark;
 }
 
 class _Legend extends StatelessWidget {
-  const _Legend();
+  const _Legend({required this.layer});
+  final MapLayer layer;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final dark = theme.brightness == Brightness.dark;
-    Widget item(int score, String label) => Row(mainAxisSize: MainAxisSize.min, children: [
+    Widget item(Color color, String label) => Row(mainAxisSize: MainAxisSize.min, children: [
           Container(
             width: 14,
             height: 14,
-            decoration: BoxDecoration(color: suitColor(score, dark: dark), borderRadius: BorderRadius.circular(4)),
+            decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(4)),
           ),
           const SizedBox(width: 6),
           Text(label, style: theme.textTheme.bodySmall),
         ]);
-    return Wrap(spacing: 14, runSpacing: 6, children: [
-      item(100, l10n.suitHigh),
-      item(60, l10n.suitMedium),
-      item(20, l10n.suitLow),
-      item(0, l10n.suitNone),
-    ]);
+    return Wrap(spacing: 14, runSpacing: 6, children: switch (layer) {
+      MapLayer.suitability => [
+          item(suitColor(100, dark: dark), l10n.suitHigh),
+          item(suitColor(60, dark: dark), l10n.suitMedium),
+          item(suitColor(20, dark: dark), l10n.suitLow),
+          item(suitColor(0, dark: dark), l10n.suitNone),
+        ],
+      MapLayer.texture => [
+          item(textureColor('sand', dark: dark), l10n.textureSand),
+          item(textureColor('loam', dark: dark), l10n.textureLoam),
+          item(textureColor('clay', dark: dark), l10n.textureClay),
+          item(textureColor(null, dark: dark), l10n.soilUnknown),
+        ],
+      MapLayer.ph => [
+          item(phColor(7.0, dark: dark), l10n.phUpTo7),
+          item(phColor(7.4, dark: dark), l10n.ph7to75),
+          item(phColor(7.9, dark: dark), l10n.ph75to8),
+          item(phColor(8.2, dark: dark), l10n.phAbove8),
+        ],
+    });
   }
 }
 
 class _PlaceCard extends StatelessWidget {
-  const _PlaceCard({required this.cell, required this.suit, required this.month, required this.lang});
+  const _PlaceCard({required this.cell, required this.suit, required this.req, required this.month, required this.lang});
   final EnvCell cell;
-  final Suitability suit;
+  final Suitability? suit;
+  final CropRequirements? req;
   final int month;
   final String lang;
 
@@ -385,27 +446,79 @@ class _PlaceCard extends StatelessWidget {
         boxShadow: softShadow(context),
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Row(children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(color: suitColor(suit.score, dark: dark), borderRadius: BorderRadius.circular(12)),
-            child: Text('${suit.score}',
-                style: theme.textTheme.titleMedium?.copyWith(
-                    color: suit.score >= 50 ? Colors.white : theme.colorScheme.onSurface)),
-          ),
-          const SizedBox(width: 10),
-          Expanded(child: Text(suitLabel(l10n, suit.score), style: theme.textTheme.titleLarge)),
-        ]),
-        const SizedBox(height: 8),
-        Text(limitText(l10n, suit, lang), style: theme.textTheme.bodyMedium),
-        const SizedBox(height: 12),
+        if (suit != null) ...[
+          Row(children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(color: suitColor(suit!.score, dark: dark), borderRadius: BorderRadius.circular(12)),
+              child: Text('${suit!.score}',
+                  style: theme.textTheme.titleMedium?.copyWith(
+                      color: suit!.score >= 50 ? Colors.white : theme.colorScheme.onSurface)),
+            ),
+            const SizedBox(width: 10),
+            Expanded(child: Text(suitLabel(l10n, suit!.score), style: theme.textTheme.titleLarge)),
+          ]),
+          const SizedBox(height: 8),
+          Text(limitText(l10n, suit!, lang), style: theme.textTheme.bodyMedium),
+          const SizedBox(height: 12),
+        ],
         Row(children: [
           fact(l10n.envElevation, '${cell.elev} m'),
           fact('${l10n.envTavg} (${_monthName(month, lang)})', '${fmtNum(cell.tavg[i])}°'),
           fact(l10n.envTmin, '${fmtNum(cell.tmin[i])}°'),
           fact(l10n.envTmax, '${fmtNum(cell.tmax[i])}°'),
         ]),
+        const Divider(height: 24),
+        Text(l10n.soilTitle, style: theme.textTheme.titleSmall),
+        const SizedBox(height: 6),
+        if (cell.ph == null && cell.sand == null)
+          Text(l10n.soilUnknown, style: theme.textTheme.bodyMedium)
+        else ...[
+          Row(children: [
+            fact(l10n.soilTexture, () {
+              final t = textureClass(cell.sand, cell.clay);
+              return t == null ? '—' : textureLabel(l10n, t);
+            }()),
+            fact('pH', cell.ph == null ? '—' : cell.ph!.toStringAsFixed(1)),
+          ]),
+          if (cell.sand != null && cell.clay != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Text(l10n.soilSandClay(cell.sand!.round().toString(), cell.clay!.round().toString()),
+                  style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.outline)),
+            ),
+          if (req != null) ...[
+            const SizedBox(height: 8),
+            ..._conditions(l10n, theme),
+          ],
+        ],
       ]),
     );
+  }
+
+  List<Widget> _conditions(AppLocalizations l10n, ThemeData theme) {
+    final cs = soilConditions(req!, cell);
+    if (cs.isEmpty) return [Text(l10n.soilNoConditions, style: theme.textTheme.bodySmall)];
+    return [
+      Text(l10n.soilConditionsTitle, style: theme.textTheme.labelLarge),
+      for (final c in cs)
+        Padding(
+          padding: const EdgeInsets.only(top: 4),
+          child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Icon(Icons.info_outline, size: 16, color: theme.colorScheme.tertiary),
+            const SizedBox(width: 6),
+            Expanded(
+              child: Text(
+                switch (c.issue) {
+                  SoilIssue.texture => l10n.condTexture(textureLabel(l10n, textureClass(cell.sand, cell.clay)!)),
+                  SoilIssue.phHigh => l10n.condPhHigh(c.value!.toStringAsFixed(1), fmtNum(c.limit)),
+                  SoilIssue.phLow => l10n.condPhLow(c.value!.toStringAsFixed(1), fmtNum(c.limit)),
+                },
+                style: theme.textTheme.bodySmall,
+              ),
+            ),
+          ]),
+        ),
+    ];
   }
 }

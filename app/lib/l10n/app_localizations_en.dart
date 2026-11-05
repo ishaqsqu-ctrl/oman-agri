@@ -783,8 +783,65 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get mapSources =>
-      'Climate and elevation: WorldClim 2.1 (Fick & Hijmans 2017). Oman outline: © OpenStreetMap contributors.';
+      'Climate and elevation: WorldClim 2.1 (Fick & Hijmans 2017). Soil: SoilGrids 2.0 (Poggio et al. 2021, ISRIC). Oman outline: © OpenStreetMap contributors.';
 
   @override
   String get mapLoading => 'Loading the map…';
+
+  @override
+  String get mapLayerSuit => 'Suitability';
+
+  @override
+  String get mapLayerTexture => 'Soil texture';
+
+  @override
+  String get mapLayerPh => 'Soil pH';
+
+  @override
+  String get soilUnknown => 'No data';
+
+  @override
+  String get phUpTo7 => '7.0 or less';
+
+  @override
+  String get ph7to75 => '7.0 – 7.5';
+
+  @override
+  String get ph75to8 => '7.5 – 8.0';
+
+  @override
+  String get phAbove8 => 'Above 8.0';
+
+  @override
+  String get soilTitle => 'Soil (top 30 cm)';
+
+  @override
+  String soilSandClay(String sand, String clay) {
+    return 'Sand $sand% · Clay $clay%';
+  }
+
+  @override
+  String get soilConditionsTitle => 'Soil conditions for this crop';
+
+  @override
+  String condTexture(String texture) {
+    return 'The soil here ($texture) is not among the crop\'s suitable textures';
+  }
+
+  @override
+  String condPhHigh(String value, String limit) {
+    return 'Alkaline soil: pH $value is above the crop\'s limit of $limit';
+  }
+
+  @override
+  String condPhLow(String value, String limit) {
+    return 'Acid soil: pH $value is below the crop\'s limit of $limit';
+  }
+
+  @override
+  String get soilNoConditions => 'No soil conditions for this crop here';
+
+  @override
+  String get soilNote =>
+      'Soil is from SoilGrids: a global estimate at 5 km that may not match your farm. Test your soil before planting.';
 }

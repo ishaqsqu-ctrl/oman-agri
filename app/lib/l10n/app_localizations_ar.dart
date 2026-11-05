@@ -779,8 +779,65 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get mapSources =>
-      'المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). حدود عُمان: © مساهمو OpenStreetMap.';
+      'المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). التربة: SoilGrids 2.0 (Poggio وآخرون 2021، ISRIC). حدود عُمان: © مساهمو OpenStreetMap.';
 
   @override
   String get mapLoading => 'جارٍ تحميل الخريطة…';
+
+  @override
+  String get mapLayerSuit => 'الملاءمة';
+
+  @override
+  String get mapLayerTexture => 'قوام التربة';
+
+  @override
+  String get mapLayerPh => 'حموضة التربة';
+
+  @override
+  String get soilUnknown => 'لا بيانات';
+
+  @override
+  String get phUpTo7 => '7.0 أو أقل';
+
+  @override
+  String get ph7to75 => '7.0 – 7.5';
+
+  @override
+  String get ph75to8 => '7.5 – 8.0';
+
+  @override
+  String get phAbove8 => 'أعلى من 8.0';
+
+  @override
+  String get soilTitle => 'التربة (أعلى 30 سم)';
+
+  @override
+  String soilSandClay(String sand, String clay) {
+    return 'رمل $sand% · طين $clay%';
+  }
+
+  @override
+  String get soilConditionsTitle => 'شروط التربة لهذا المحصول';
+
+  @override
+  String condTexture(String texture) {
+    return 'قوام التربة هنا ($texture) ليس من الأنواع المناسبة للمحصول';
+  }
+
+  @override
+  String condPhHigh(String value, String limit) {
+    return 'التربة قلوية: pH $value أعلى من حد المحصول $limit';
+  }
+
+  @override
+  String condPhLow(String value, String limit) {
+    return 'التربة حمضية: pH $value أقل من حد المحصول $limit';
+  }
+
+  @override
+  String get soilNoConditions => 'لا شروط تربة لهذا المحصول هنا';
+
+  @override
+  String get soilNote =>
+      'التربة من SoilGrids: تقدير عالمي بدقة 5 كم، وقد لا يمثّل تربة مزرعتك. افحص تربتك قبل الزراعة.';
 }

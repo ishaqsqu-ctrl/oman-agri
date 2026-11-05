@@ -11,9 +11,16 @@ class EnvCell {
     required this.tavg,
     required this.tmin,
     required this.tmax,
+    this.sand,
+    this.silt,
+    this.clay,
+    this.ph,
   });
   final int col, row, elev;
   final List<double> tavg, tmin, tmax; // index 0 = January
+
+  /// Top 30 cm (SoilGrids): sand, silt, clay in percent and pH; null if unknown.
+  final double? sand, silt, clay, ph;
 }
 
 enum Limit { none, cold, heat, altitude }

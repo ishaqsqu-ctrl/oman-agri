@@ -15,7 +15,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 const _m = KnowledgeMeta(status: KnowledgeStatus.published, sourceId: 's', reviewedBy: 'r', reviewedAt: '2026-11-04');
 
 EnvCell _cell(int col, {double t = 24, int elev = 50}) => EnvCell(
-    col: col, row: 0, elev: elev, tavg: List.filled(12, t), tmin: List.filled(12, t - 6), tmax: List.filled(12, t + 6));
+    col: col, row: 0, elev: elev, tavg: List.filled(12, t), tmin: List.filled(12, t - 6), tmax: List.filled(12, t + 6),
+    sand: 52, silt: 28, clay: 20, ph: 8.2);
 
 final _map = MapData(
   originLon: 56, originLat: 24, cellDeg: 1, cols: 3, rows: 1,
@@ -45,7 +46,8 @@ Future<void> _pump(WidgetTester tester, {List<Crop>? crops}) async {
                     nameEn: 'Tomato',
                     categories: const [CropCategory.vegetable],
                     requirements: const CropRequirements(
-                        tMin: 7, tOptLow: 20, tOptHigh: 27, tMax: 35, altMax: 2400, seasonDaysMin: 70, meta: _m),
+                        tMin: 7, tOptLow: 20, tOptHigh: 27, tMax: 35, altMax: 2400, seasonDaysMin: 70,
+                        phMin: 5, phMax: 7.5, textures: ['sand', 'loam', 'clay'], meta: _m),
                     meta: _m,
                   ),
                 ],
@@ -92,5 +94,28 @@ void main() {
       const Crop(id: 'tomato', nameAr: 'ورد', nameEn: 'Rose', requirements: CropRequirements(meta: _m), meta: _m),
     ]);
     expect(find.text('لا توجد بعد متطلبات حرارة موثّقة لهذا المحصول، فلا يمكن حساب ملاءمته.'), findsOneWidget);
+  });
+
+  testWidgets('place card shows the soil and its conditions for the crop', (tester) async {
+    await _pump(tester);
+    final map = tester.getRect(find.byType(CustomPaint).last);
+    await tester.tapAt(Offset(map.left + map.width / 6, map.center.dy));
+    await tester.pumpAndSettle();
+    expect(find.text('التربة (أعلى 30 سم)'), findsOneWidget);
+    expect(find.text('طميية'), findsOneWidget);
+    expect(find.text('8.2'), findsOneWidget);
+    expect(find.text('رمل 52% · طين 20%'), findsOneWidget);
+    expect(find.text('التربة قلوية: pH 8.2 أعلى من حد المحصول 7.5'), findsOneWidget);
+  });
+
+  testWidgets('soil layers switch the legend', (tester) async {
+    await _pump(tester);
+    await tester.tap(find.text('قوام التربة'));
+    await tester.pumpAndSettle();
+    expect(find.text('رملية'), findsOneWidget);
+    expect(find.text('طينية'), findsOneWidget);
+    await tester.tap(find.text('حموضة التربة'));
+    await tester.pumpAndSettle();
+    expect(find.text('أعلى من 8.0'), findsOneWidget);
   });
 }

@@ -1439,7 +1439,7 @@ abstract class AppLocalizations {
   /// No description provided for @mapSources.
   ///
   /// In ar, this message translates to:
-  /// **'المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). حدود عُمان: © مساهمو OpenStreetMap.'**
+  /// **'المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). التربة: SoilGrids 2.0 (Poggio وآخرون 2021، ISRIC). حدود عُمان: © مساهمو OpenStreetMap.'**
   String get mapSources;
 
   /// No description provided for @mapLoading.
@@ -1447,6 +1447,102 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'جارٍ تحميل الخريطة…'**
   String get mapLoading;
+
+  /// No description provided for @mapLayerSuit.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملاءمة'**
+  String get mapLayerSuit;
+
+  /// No description provided for @mapLayerTexture.
+  ///
+  /// In ar, this message translates to:
+  /// **'قوام التربة'**
+  String get mapLayerTexture;
+
+  /// No description provided for @mapLayerPh.
+  ///
+  /// In ar, this message translates to:
+  /// **'حموضة التربة'**
+  String get mapLayerPh;
+
+  /// No description provided for @soilUnknown.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا بيانات'**
+  String get soilUnknown;
+
+  /// No description provided for @phUpTo7.
+  ///
+  /// In ar, this message translates to:
+  /// **'7.0 أو أقل'**
+  String get phUpTo7;
+
+  /// No description provided for @ph7to75.
+  ///
+  /// In ar, this message translates to:
+  /// **'7.0 – 7.5'**
+  String get ph7to75;
+
+  /// No description provided for @ph75to8.
+  ///
+  /// In ar, this message translates to:
+  /// **'7.5 – 8.0'**
+  String get ph75to8;
+
+  /// No description provided for @phAbove8.
+  ///
+  /// In ar, this message translates to:
+  /// **'أعلى من 8.0'**
+  String get phAbove8;
+
+  /// No description provided for @soilTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'التربة (أعلى 30 سم)'**
+  String get soilTitle;
+
+  /// No description provided for @soilSandClay.
+  ///
+  /// In ar, this message translates to:
+  /// **'رمل {sand}% · طين {clay}%'**
+  String soilSandClay(String sand, String clay);
+
+  /// No description provided for @soilConditionsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'شروط التربة لهذا المحصول'**
+  String get soilConditionsTitle;
+
+  /// No description provided for @condTexture.
+  ///
+  /// In ar, this message translates to:
+  /// **'قوام التربة هنا ({texture}) ليس من الأنواع المناسبة للمحصول'**
+  String condTexture(String texture);
+
+  /// No description provided for @condPhHigh.
+  ///
+  /// In ar, this message translates to:
+  /// **'التربة قلوية: pH {value} أعلى من حد المحصول {limit}'**
+  String condPhHigh(String value, String limit);
+
+  /// No description provided for @condPhLow.
+  ///
+  /// In ar, this message translates to:
+  /// **'التربة حمضية: pH {value} أقل من حد المحصول {limit}'**
+  String condPhLow(String value, String limit);
+
+  /// No description provided for @soilNoConditions.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا شروط تربة لهذا المحصول هنا'**
+  String get soilNoConditions;
+
+  /// No description provided for @soilNote.
+  ///
+  /// In ar, this message translates to:
+  /// **'التربة من SoilGrids: تقدير عالمي بدقة 5 كم، وقد لا يمثّل تربة مزرعتك. افحص تربتك قبل الزراعة.'**
+  String get soilNote;
 }
 
 class _AppLocalizationsDelegate

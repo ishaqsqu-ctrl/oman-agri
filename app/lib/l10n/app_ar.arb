@@ -352,7 +352,7 @@
   "envTmin": "متوسط الصغرى",
   "envTmax": "متوسط العظمى",
   "mapScore": "درجة الملاءمة",
-  "mapSources": "المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). حدود عُمان: © مساهمو OpenStreetMap.",
+  "mapSources": "المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). التربة: SoilGrids 2.0 (Poggio وآخرون 2021، ISRIC). حدود عُمان: © مساهمو OpenStreetMap.",
   "mapLoading": "جارٍ تحميل الخريطة…",
   "@limitCold": {
     "placeholders": {
@@ -377,6 +377,59 @@
   "@limitAltitude": {
     "placeholders": {
       "value": {
+        "type": "String"
+      }
+    }
+  },
+  "mapLayerSuit": "الملاءمة",
+  "mapLayerTexture": "قوام التربة",
+  "mapLayerPh": "حموضة التربة",
+  "soilUnknown": "لا بيانات",
+  "phUpTo7": "7.0 أو أقل",
+  "ph7to75": "7.0 – 7.5",
+  "ph75to8": "7.5 – 8.0",
+  "phAbove8": "أعلى من 8.0",
+  "soilTitle": "التربة (أعلى 30 سم)",
+  "soilSandClay": "رمل {sand}% · طين {clay}%",
+  "soilConditionsTitle": "شروط التربة لهذا المحصول",
+  "condTexture": "قوام التربة هنا ({texture}) ليس من الأنواع المناسبة للمحصول",
+  "condPhHigh": "التربة قلوية: pH {value} أعلى من حد المحصول {limit}",
+  "condPhLow": "التربة حمضية: pH {value} أقل من حد المحصول {limit}",
+  "soilNoConditions": "لا شروط تربة لهذا المحصول هنا",
+  "soilNote": "التربة من SoilGrids: تقدير عالمي بدقة 5 كم، وقد لا يمثّل تربة مزرعتك. افحص تربتك قبل الزراعة.",
+  "@soilSandClay": {
+    "placeholders": {
+      "sand": {
+        "type": "String"
+      },
+      "clay": {
+        "type": "String"
+      }
+    }
+  },
+  "@condTexture": {
+    "placeholders": {
+      "texture": {
+        "type": "String"
+      }
+    }
+  },
+  "@condPhHigh": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "@condPhLow": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "limit": {
         "type": "String"
       }
     }
