@@ -133,5 +133,8 @@
       }
     }
   },
-  "salinityShort": "ملوحة"
+  "salinityShort": "ملوحة",
+  "greetingMorning": "صباح الخير",
+  "greetingEvening": "مساء الخير",
+  "homeHeadline": "ماذا ستزرع اليوم؟"
 }

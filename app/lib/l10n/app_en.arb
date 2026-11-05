@@ -118,5 +118,8 @@
   "comingCalendar": "Planting and watering dates for each crop through the year.",
   "comingFarm": "Record your crops and get reminders when they need care.",
   "comingStore": "Seed, fertiliser and supply shops near you.",
-  "salinityShort": "Salinity"
+  "salinityShort": "Salinity",
+  "greetingMorning": "Good morning",
+  "greetingEvening": "Good evening",
+  "homeHeadline": "What will you grow today?"
 }

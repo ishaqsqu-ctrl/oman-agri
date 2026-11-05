@@ -6,6 +6,7 @@ import 'package:oman_agri/core/locale_controller.dart';
 import 'package:oman_agri/core/router.dart';
 import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
 import 'package:oman_agri/features/crops/data/models.dart';
+import 'package:oman_agri/features/crops/ui/crops_list_screen.dart';
 import 'package:oman_agri/features/crops/ui/draft_banner.dart';
 import 'package:oman_agri/features/crops/ui/source_button.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
@@ -163,16 +164,16 @@ void main() {
     await pumpApp(tester, snap: snapshot());
     await tester.enterText(find.byType(TextField), 'طماطم');
     await tester.pumpAndSettle();
-    expect(find.widgetWithText(ListTile, 'طماطم'), findsOneWidget);
-    expect(find.widgetWithText(ListTile, 'عدس'), findsNothing);
-    expect(find.widgetWithText(ListTile, 'ليمون عُماني'), findsNothing);
+    expect(find.widgetWithText(CropTile, 'طماطم'), findsOneWidget);
+    expect(find.widgetWithText(CropTile, 'عدس'), findsNothing);
+    expect(find.widgetWithText(CropTile, 'ليمون عُماني'), findsNothing);
     await tester.enterText(find.byType(TextField), 'ليمون');
     await tester.pumpAndSettle();
-    expect(find.widgetWithText(ListTile, 'ليمون عُماني'), findsOneWidget);
+    expect(find.widgetWithText(CropTile, 'ليمون عُماني'), findsOneWidget);
     await tester.enterText(find.byType(TextField), 'الطماطم');
     await tester.pumpAndSettle();
-    expect(find.widgetWithText(ListTile, 'طماطم'), findsOneWidget);
-    expect(find.widgetWithText(ListTile, 'ليمون عُماني'), findsNothing);
+    expect(find.widgetWithText(CropTile, 'طماطم'), findsOneWidget);
+    expect(find.widgetWithText(CropTile, 'ليمون عُماني'), findsNothing);
   });
 
   testWidgets('category chip filters; no results shows empty text', (tester) async {
@@ -295,15 +296,16 @@ void main() {
     expect(find.textContaining('Crop page 7'), findsOneWidget);
   });
 
-  testWidgets('English name sits on the start (right) side in Arabic', (tester) async {
+  testWidgets('crop names are centred together under the picture', (tester) async {
     await pumpApp(tester, snap: snapshot());
     await tester.tap(find.text('طماطم'));
     await tester.pumpAndSettle();
     final ar = tester.getRect(find.descendant(
         of: find.byType(ListView), matching: find.text('طماطم')));
     final en = tester.getRect(find.text('Tomato'));
-    expect(en.right, moreOrLessEquals(ar.right, epsilon: 1));
-    expect(en.left, greaterThan(400));
+    expect(en.center.dx, moreOrLessEquals(400, epsilon: 2));
+    expect(ar.center.dx, moreOrLessEquals(400, epsilon: 2));
+    expect(en.top, greaterThan(ar.bottom - 1));
   });
 
   testWidgets('long scientific name wraps at 320 px without overflow', (tester) async {

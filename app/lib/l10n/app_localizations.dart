@@ -727,6 +727,24 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'ملوحة'**
   String get salinityShort;
+
+  /// No description provided for @greetingMorning.
+  ///
+  /// In ar, this message translates to:
+  /// **'صباح الخير'**
+  String get greetingMorning;
+
+  /// No description provided for @greetingEvening.
+  ///
+  /// In ar, this message translates to:
+  /// **'مساء الخير'**
+  String get greetingEvening;
+
+  /// No description provided for @homeHeadline.
+  ///
+  /// In ar, this message translates to:
+  /// **'ماذا ستزرع اليوم؟'**
+  String get homeHeadline;
 }
 
 class _AppLocalizationsDelegate

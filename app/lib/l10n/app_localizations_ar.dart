@@ -347,4 +347,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get salinityShort => 'ملوحة';
+
+  @override
+  String get greetingMorning => 'صباح الخير';
+
+  @override
+  String get greetingEvening => 'مساء الخير';
+
+  @override
+  String get homeHeadline => 'ماذا ستزرع اليوم؟';
 }

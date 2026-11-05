@@ -358,4 +358,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get salinityShort => 'Salinity';
+
+  @override
+  String get greetingMorning => 'Good morning';
+
+  @override
+  String get greetingEvening => 'Good evening';
+
+  @override
+  String get homeHeadline => 'What will you grow today?';
 }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-/// Omani-farm palette: palm green for structure, falaj blue reserved for water
-/// data, date amber for heat. The background is a cool limestone, not cream.
+/// Bright, friendly palette: deep palm green for structure on a light leaf-white
+/// background; each crop brings its own pastel (see crop_art.dart). Falaj blue
+/// stays reserved for water data, date amber for heat.
 abstract final class Palette {
-  static const limestone = Color(0xFFF1F3EE);
-  static const palm = Color(0xFF1D5A39);
-  static const palmSoft = Color(0xFFDDE9E0);
+  static const limestone = Color(0xFFF7F9F4);
+  static const palm = Color(0xFF14361F);
+  static const palmSoft = Color(0xFFDDEBDF);
   static const falaj = Color(0xFF0B6E7F);
   static const falajSoft = Color(0xFFD5ECEF);
   static const dates = Color(0xFFA8711A);
@@ -133,11 +134,11 @@ ThemeData buildTheme({Brightness brightness = Brightness.light}) {
               water: Palette.falaj, waterSoft: Palette.falajSoft, heat: Palette.dates),
     ],
     appBarTheme: AppBarTheme(
-      backgroundColor: dark ? Palette.darkSurface : Palette.palm,
-      foregroundColor: dark ? scheme.onSurface : Colors.white,
+      backgroundColor: bg,
+      foregroundColor: ink,
       elevation: 0,
       scrolledUnderElevation: 0,
-      titleTextStyle: _k(18, 650).copyWith(color: dark ? scheme.onSurface : Colors.white),
+      titleTextStyle: _k(18, 650).copyWith(color: ink),
     ),
     navigationBarTheme: NavigationBarThemeData(
       backgroundColor: dark ? Palette.darkSurface : Colors.white,
@@ -146,24 +147,25 @@ ThemeData buildTheme({Brightness brightness = Brightness.light}) {
       labelTextStyle: WidgetStatePropertyAll(_k(12, 550).copyWith(color: ink)),
     ),
     chipTheme: ChipThemeData(
-      labelStyle: _k(13, 550),
-      side: BorderSide(color: scheme.outlineVariant),
+      labelStyle: _k(13.5, 550).copyWith(color: ink),
+      secondaryLabelStyle: _k(13.5, 600).copyWith(color: scheme.onPrimary),
+      side: BorderSide.none,
       shape: const StadiumBorder(),
       backgroundColor: dark ? Palette.darkSurface : Colors.white,
-      selectedColor: scheme.primaryContainer,
+      selectedColor: scheme.primary,
       showCheckmark: false,
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: dark ? Palette.darkSurface : Colors.white,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
       border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14), borderSide: BorderSide.none),
+          borderRadius: BorderRadius.circular(18), borderSide: BorderSide.none),
       enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14), borderSide: BorderSide.none),
+          borderRadius: BorderRadius.circular(18), borderSide: BorderSide.none),
       focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(18),
           borderSide: BorderSide(color: scheme.secondary, width: 2)),
       hintStyle: _n(15.5, 400).copyWith(color: scheme.outline),
     ),
@@ -175,3 +177,9 @@ ThemeData buildTheme({Brightness brightness = Brightness.light}) {
     ),
   );
 }
+
+/// Soft card shadow used by tiles and sections.
+List<BoxShadow> softShadow(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark
+        ? const []
+        : [BoxShadow(color: Palette.palm.withValues(alpha: 0.07), blurRadius: 16, offset: const Offset(0, 4))];

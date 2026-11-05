@@ -5,6 +5,7 @@ import 'package:oman_agri/core/arabic_normalize.dart';
 import 'package:oman_agri/core/theme.dart';
 import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
 import 'package:oman_agri/features/crops/data/models.dart';
+import 'package:oman_agri/features/crops/ui/crop_art.dart';
 import 'package:oman_agri/features/crops/ui/draft_banner.dart';
 import 'package:oman_agri/features/crops/ui/labels.dart';
 import 'package:oman_agri/l10n/app_localizations.dart';
@@ -30,21 +31,27 @@ class _CropsListScreenState extends ConsumerState<CropsListScreen> {
         Expanded(
           child: snap.when(
             loading: () => Center(
-              child: Column(mainAxisSize: MainAxisSize.min, children: [
-                const CircularProgressIndicator(),
-                const SizedBox(height: 12),
-                Text(l10n.loading),
-              ]),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const CircularProgressIndicator(),
+                  const SizedBox(height: 12),
+                  Text(l10n.loading),
+                ],
+              ),
             ),
             error: (e, _) => Center(
-              child: Column(mainAxisSize: MainAxisSize.min, children: [
-                Text(l10n.loadError),
-                IconButton(
-                  iconSize: 32,
-                  icon: const Icon(Icons.refresh),
-                  onPressed: () => ref.invalidate(knowledgeProvider),
-                ),
-              ]),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(l10n.loadError),
+                  IconButton(
+                    iconSize: 32,
+                    icon: const Icon(Icons.refresh),
+                    onPressed: () => ref.invalidate(knowledgeProvider),
+                  ),
+                ],
+              ),
             ),
             data: (s) => _body(context, l10n, s.crops),
           ),
@@ -58,146 +65,215 @@ class _CropsListScreenState extends ConsumerState<CropsListScreen> {
       return Center(
         child: Padding(
           padding: const EdgeInsets.all(24),
-          child: Text(l10n.emptyCrops,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.titleMedium),
+          child: Text(
+            l10n.emptyCrops,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
         ),
       );
     }
     final locale = Localizations.localeOf(context);
     final theme = Theme.of(context);
-    final dark = theme.brightness == Brightness.dark;
     final shown = [
       for (final c in all)
         if ((_category == null || c.categories.contains(_category)) &&
             cropMatches(c, _query))
-          c
+          c,
     ];
-    return Column(
-      children: [
-        // Continues the app bar's green: one header holding the tagline and search.
-        Container(
-          width: double.infinity,
-          color: theme.appBarTheme.backgroundColor,
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(l10n.homeTagline,
-                style: theme.textTheme.bodyMedium?.copyWith(
-                    color: dark ? theme.colorScheme.onSurface : Colors.white.withValues(alpha: 0.88))),
-            const SizedBox(height: 12),
-            TextField(
-              decoration: InputDecoration(
-                hintText: l10n.searchCrops,
-                prefixIcon: const Icon(Icons.search),
-              ),
-              onChanged: (v) => setState(() => _query = v),
+    final hour = DateTime.now().hour;
+    return CustomScrollView(
+      slivers: [
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(20, 4, 20, 8),
+          sliver: SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  hour < 12 ? l10n.greetingMorning : l10n.greetingEvening,
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    color: theme.colorScheme.outline,
+                  ),
+                ),
+                Text(
+                  l10n.homeHeadline,
+                  style: theme.textTheme.displaySmall?.copyWith(
+                    color: theme.colorScheme.primary,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(18),
+                    boxShadow: softShadow(context),
+                  ),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: l10n.searchCrops,
+                      prefixIcon: const Icon(Icons.search),
+                    ),
+                    onChanged: (v) => setState(() => _query = v),
+                  ),
+                ),
+              ],
             ),
-          ]),
-        ),
-        SizedBox(
-          height: 60,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-            children: [
-              _chip(l10n.allCategories, null, _category == null,
-                  () => setState(() => _category = null)),
-              for (final c in CropCategory.values)
-                _chip(categoryLabel(l10n, c), categoryIcon(c), _category == c,
-                    () => setState(() => _category = _category == c ? null : c)),
-            ],
           ),
         ),
-        Expanded(
-          child: shown.isEmpty
-              ? Center(
-                  child: Column(mainAxisSize: MainAxisSize.min, children: [
-                    Icon(Icons.search_off, size: 40, color: theme.colorScheme.outline),
-                    const SizedBox(height: 8),
-                    Text(l10n.noMatches, style: theme.textTheme.titleMedium),
-                  ]))
-              : ListView.separated(
-                  padding: const EdgeInsets.only(bottom: 16),
-                  itemCount: shown.length,
-                  separatorBuilder: (_, _) =>
-                      const Divider(height: 1, indent: 76, endIndent: 16),
-                  itemBuilder: (context, i) => _CropRow(crop: shown[i], locale: locale),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 64,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              children: [
+                _chip(
+                  l10n.allCategories,
+                  null,
+                  _category == null,
+                  () => setState(() => _category = null),
                 ),
+                for (final c in CropCategory.values)
+                  _chip(
+                    categoryLabel(l10n, c),
+                    categoryArtAsset(c),
+                    _category == c,
+                    () => setState(() => _category = _category == c ? null : c),
+                  ),
+              ],
+            ),
+          ),
         ),
+        if (shown.isEmpty)
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.search_off,
+                    size: 40,
+                    color: theme.colorScheme.outline,
+                  ),
+                  const SizedBox(height: 8),
+                  Text(l10n.noMatches, style: theme.textTheme.titleMedium),
+                ],
+              ),
+            ),
+          )
+        else
+          SliverPadding(
+            padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
+            sliver: SliverGrid(
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 220,
+                mainAxisSpacing: 12,
+                crossAxisSpacing: 12,
+                mainAxisExtent: 172,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (context, i) => CropTile(crop: shown[i], locale: locale),
+                childCount: shown.length,
+              ),
+            ),
+          ),
       ],
     );
   }
 
-  Widget _chip(String label, IconData? icon, bool selected, VoidCallback onTap) => Padding(
+  Widget _chip(String label, String? art, bool selected, VoidCallback onTap) =>
+      Padding(
         padding: const EdgeInsetsDirectional.only(end: 8),
         child: FilterChip(
-          avatar: icon == null ? null : Icon(icon, size: 18),
-          label: Text(label),
+          avatar: art == null ? null : CropArt(art, size: 20),
+          label: Text(label,
+              style: selected
+                  ? TextStyle(color: Theme.of(context).colorScheme.onPrimary)
+                  : null),
           selected: selected,
           onSelected: (_) => onTap(),
         ),
       );
 }
 
-/// One crop: category glyph, both names, and the two facts a farmer weighs
-/// first (best temperature, salinity tolerance) when the source gives them.
-class _CropRow extends StatelessWidget {
-  const _CropRow({required this.crop, required this.locale});
+/// A crop as a pastel tile: picture, both names, and its best temperature.
+class CropTile extends StatelessWidget {
+  const CropTile({super.key, required this.crop, required this.locale});
   final Crop crop;
   final Locale locale;
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
-    final data = DataColors.of(context);
+    final tint = cropTint(crop, dark: theme.brightness == Brightness.dark);
     final isAr = locale.languageCode == 'ar';
     final r = crop.requirements;
     final temp = fmtRange(r?.tOptLow, r?.tOptHigh);
-    final ece = r?.eceThreshold;
-    Widget fact(IconData icon, Color color, String text) => Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 15, color: color),
-            const SizedBox(width: 4),
-            Text(text, style: theme.textTheme.labelMedium),
-          ],
-        );
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-      minVerticalPadding: 10,
-      leading: Container(
-        width: 44,
-        height: 44,
-        decoration:
-            BoxDecoration(color: theme.colorScheme.primaryContainer, shape: BoxShape.circle),
-        child: Icon(
-            crop.categories.isEmpty ? Icons.eco_outlined : categoryIcon(crop.categories.first),
-            color: theme.colorScheme.primary,
-            size: 22),
-      ),
-      title: Text(crop.localizedName(locale), style: theme.textTheme.titleMedium),
-      subtitle: Directionality(
-        textDirection: isAr ? TextDirection.ltr : TextDirection.rtl,
-        child: Align(
-          alignment: AlignmentDirectional.centerStart,
-          child: Text(isAr ? crop.nameEn : crop.nameAr,
-              style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.outline)),
+    return Material(
+      color: tint.soft,
+      borderRadius: BorderRadius.circular(24),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: () => context.push('/crops/${crop.id}'),
+        child: Padding(
+          padding: const EdgeInsets.all(14),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CropArt(cropArtAsset(crop), size: 56),
+                  const SizedBox(width: 6),
+                  if (temp != null)
+                    Flexible(
+                      child: Align(
+                        alignment: AlignmentDirectional.topEnd,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 3,
+                            ),
+                            decoration: BoxDecoration(
+                              color: theme.colorScheme.surface.withValues(
+                                alpha: 0.75,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text(
+                              '$temp°',
+                              textDirection: TextDirection.ltr,
+                              style: theme.textTheme.labelMedium,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+              const Spacer(),
+              Text(
+                crop.localizedName(locale),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.titleMedium?.copyWith(height: 1.3),
+              ),
+              Text(
+                isAr ? crop.nameEn : crop.nameAr,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textDirection: isAr ? TextDirection.ltr : TextDirection.rtl,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
-      trailing: (temp == null && ece == null)
-          ? Icon(isAr ? Icons.chevron_left : Icons.chevron_right, color: theme.colorScheme.outline)
-          : Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                if (temp != null)
-                  fact(Icons.thermostat, data.heat, '$temp°'),
-                if (temp != null && ece != null) const SizedBox(height: 4),
-                if (ece != null) fact(Icons.water_drop_outlined, data.water, '${l10n.salinityShort} ${fmtNum(ece)}'),
-              ],
-            ),
-      onTap: () => context.push('/crops/${crop.id}'),
     );
   }
 }

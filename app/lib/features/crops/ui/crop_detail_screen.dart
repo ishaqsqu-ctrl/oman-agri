@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:oman_agri/core/theme.dart';
 import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
 import 'package:oman_agri/features/crops/data/models.dart';
+import 'package:oman_agri/features/crops/ui/crop_art.dart';
 import 'package:oman_agri/features/crops/ui/draft_banner.dart';
 import 'package:oman_agri/features/crops/ui/labels.dart';
 import 'package:oman_agri/features/crops/ui/source_button.dart';
@@ -21,7 +22,11 @@ class CropDetailScreen extends ConsumerWidget {
     final snap = ref.watch(knowledgeProvider);
     final crop = snap.asData?.value.crops.where((c) => c.id == cropId).firstOrNull;
     return Scaffold(
-      appBar: AppBar(),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: const _BackCircle(),
+      ),
       body: Column(children: [
         const DraftBanner(),
         Expanded(
@@ -54,11 +59,15 @@ class _Body extends StatelessWidget {
     final theme = Theme.of(context);
     final isAr = Localizations.localeOf(context).languageCode == 'ar';
     final notes = isAr ? crop.notesAr : crop.notesEn;
+    final tint = cropTint(crop, dark: theme.brightness == Brightness.dark);
     return ListView(
       padding: const EdgeInsets.only(bottom: 32),
       children: [
-        _Header(crop: crop),
-        if (crop.requirements != null) _Glance(r: crop.requirements!),
+        _Header(crop: crop, tint: tint),
+        if (crop.requirements != null)
+          Transform.translate(offset: const Offset(0, -32), child: _Glance(r: crop.requirements!))
+        else
+          const SizedBox(height: 16),
         if (notes != null && notes.isNotEmpty)
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
@@ -66,16 +75,25 @@ class _Body extends StatelessWidget {
           ),
         _Section(
           title: l10n.waterNeedTitle,
+          icon: Icons.water_drop_outlined,
+          accent: tint.deep,
           child: crop.stages.isNotEmpty
-              ? _StagesBlock(stages: crop.stages)
+              ? _StagesBlock(stages: crop.stages, tint: tint)
               : crop.kcMonthly.isNotEmpty
-                  ? _MonthlyBlock(months: crop.kcMonthly)
+                  ? _MonthlyBlock(months: crop.kcMonthly, tint: tint)
                   : _NoData(l10n.noData),
         ),
         if (crop.stages.isNotEmpty && crop.kcMonthly.isNotEmpty)
-          _Section(title: l10n.monthlyKc, child: _MonthlyBlock(months: crop.kcMonthly)),
+          _Section(
+              title: l10n.monthlyKc,
+              icon: Icons.bar_chart,
+              accent: tint.deep,
+              child: _MonthlyBlock(months: crop.kcMonthly, tint: tint)),
         _Section(
           title: l10n.requirements,
+          icon: Icons.checklist,
+          accent: tint.deep,
+          plain: true,
           child: _Requirements(r: crop.requirements, isAr: isAr),
         ),
       ],
@@ -83,76 +101,92 @@ class _Body extends StatelessWidget {
   }
 }
 
-/// Names, scientific name and categories on the app bar's green.
+class _BackCircle extends StatelessWidget {
+  const _BackCircle();
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(8),
+        child: Material(
+          color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.8),
+          shape: const CircleBorder(),
+          child: const BackButton(),
+        ),
+      );
+}
+
+/// The crop's face: its picture on its own pastel, names centred beneath.
 class _Header extends StatelessWidget {
-  const _Header({required this.crop});
+  const _Header({required this.crop, required this.tint});
   final Crop crop;
+  final CropTint tint;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
-    final dark = theme.brightness == Brightness.dark;
-    final fg = dark ? theme.colorScheme.onSurface : Colors.white;
-    final soft = fg.withValues(alpha: 0.82);
+    final ink = theme.colorScheme.onSurface;
+    final top = MediaQuery.paddingOf(context).top + kToolbarHeight;
     return Container(
-      color: theme.appBarTheme.backgroundColor,
-      padding: const EdgeInsets.fromLTRB(20, 4, 8, 20),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      decoration: BoxDecoration(
+        color: tint.soft,
+        borderRadius: const BorderRadius.vertical(bottom: Radius.circular(36)),
+      ),
+      padding: EdgeInsets.fromLTRB(20, top - 24, 20, 56),
+      child: Column(children: [
+        CropArt(cropArtAsset(crop), size: 112),
+        const SizedBox(height: 8),
         // Crop-level facts (names, categories, notes) cite the crop row's source.
-        Row(children: [
-          Expanded(
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          const SizedBox(width: 40),
+          Flexible(
             child: Text(crop.nameAr,
-                style: theme.textTheme.headlineMedium?.copyWith(color: fg)),
+                textAlign: TextAlign.center,
+                style: theme.textTheme.headlineMedium?.copyWith(color: ink)),
           ),
-          SourceButton(
-              key: const ValueKey('crop-source'),
-              sourceId: crop.meta.sourceId,
-              page: crop.meta.sourcePage,
-              color: soft),
+          SizedBox(
+            width: 40,
+            child: SourceButton(
+                key: const ValueKey('crop-source'),
+                sourceId: crop.meta.sourceId,
+                page: crop.meta.sourcePage),
+          ),
         ]),
-        // Start-aligned like the rest of the screen, but laid out LTR.
-        Align(
-          alignment: AlignmentDirectional.centerStart,
-          child: Directionality(
-            textDirection: TextDirection.ltr,
-            child: Text(crop.nameEn, style: theme.textTheme.titleMedium?.copyWith(color: soft)),
-          ),
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: Text(crop.nameEn,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.titleMedium?.copyWith(color: ink.withValues(alpha: 0.7))),
         ),
         if (crop.scientificName != null && crop.scientificName!.isNotEmpty) ...[
-          const SizedBox(height: 6),
-          Padding(
-            padding: const EdgeInsetsDirectional.only(end: 12),
-            child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text('${l10n.scientificName}: ',
-                  style: theme.textTheme.bodyMedium?.copyWith(color: soft)),
-              Flexible(
-                child: Directionality(
-                  textDirection: TextDirection.ltr,
-                  child: Text(crop.scientificName!,
-                      style: theme.textTheme.bodyMedium
-                          ?.copyWith(color: fg, fontStyle: FontStyle.italic)),
-                ),
+          const SizedBox(height: 2),
+          Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text('${l10n.scientificName}: ',
+                style: theme.textTheme.bodySmall?.copyWith(color: ink.withValues(alpha: 0.6))),
+            Flexible(
+              child: Directionality(
+                textDirection: TextDirection.ltr,
+                child: Text(crop.scientificName!,
+                    style: theme.textTheme.bodyMedium
+                        ?.copyWith(color: ink.withValues(alpha: 0.75), fontStyle: FontStyle.italic)),
               ),
-            ]),
-          ),
+            ),
+          ]),
         ],
         if (crop.categories.isNotEmpty) ...[
           const SizedBox(height: 12),
-          Wrap(spacing: 8, runSpacing: 8, children: [
+          Wrap(alignment: WrapAlignment.center, spacing: 8, runSpacing: 8, children: [
             for (final c in crop.categories)
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
                 decoration: BoxDecoration(
-                  color: fg.withValues(alpha: 0.12),
+                  color: theme.colorScheme.surface.withValues(alpha: 0.7),
                   borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: fg.withValues(alpha: 0.28)),
                 ),
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
-                  Icon(categoryIcon(c), size: 16, color: fg),
+                  CropArt(categoryArtAsset(c), size: 16),
                   const SizedBox(width: 6),
                   Text(categoryLabel(l10n, c),
-                      style: theme.textTheme.labelMedium?.copyWith(color: fg)),
+                      style: theme.textTheme.labelMedium?.copyWith(color: tint.deep)),
                 ]),
               ),
           ]),
@@ -177,8 +211,13 @@ class _Glance extends StatelessWidget {
     final ece = r.eceThreshold == null ? null : fmtNum(r.eceThreshold);
     Widget tile(IconData icon, Color color, String? value, String unit, String label) =>
         Expanded(
-          child: Padding(
+          child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 14),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surface,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: softShadow(context),
+            ),
             child: Column(children: [
               Icon(icon, color: color, size: 22),
               const SizedBox(height: 6),
@@ -195,20 +234,15 @@ class _Glance extends StatelessWidget {
             ]),
           ),
         );
-    return Container(
-      margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: theme.colorScheme.outlineVariant),
-      ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: IntrinsicHeight(
-        child: Row(children: [
+        child: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           tile(Icons.thermostat, data.heat, temp, l10n.unitCelsius, l10n.glanceOptTemp),
-          VerticalDivider(width: 1, color: theme.colorScheme.outlineVariant),
+          const SizedBox(width: 10),
           tile(Icons.event_outlined, theme.colorScheme.primary, season, l10n.unitDays,
               l10n.glanceSeason),
-          VerticalDivider(width: 1, color: theme.colorScheme.outlineVariant),
+          const SizedBox(width: 10),
           tile(Icons.water_drop_outlined, data.water, ece, l10n.unitSalinity,
               l10n.glanceSalinity),
         ]),
@@ -217,38 +251,69 @@ class _Glance extends StatelessWidget {
   }
 }
 
+/// A white card with a titled block; [plain] drops the card for content that
+/// brings its own cards (the requirement groups).
 class _Section extends StatelessWidget {
-  const _Section({required this.title, required this.child});
+  const _Section(
+      {required this.title,
+      required this.icon,
+      required this.accent,
+      required this.child,
+      this.plain = false});
   final String title;
+  final IconData icon;
+  final Color accent;
   final Widget child;
+  final bool plain;
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.fromLTRB(20, 28, 20, 0),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(title, style: Theme.of(context).textTheme.titleLarge),
-          const SizedBox(height: 12),
-          child,
-        ]),
-      );
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final head = Row(children: [
+      Icon(icon, color: accent, size: 22),
+      const SizedBox(width: 8),
+      Expanded(child: Text(title, style: theme.textTheme.titleLarge)),
+    ]);
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+      child: plain
+          ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Padding(padding: const EdgeInsets.fromLTRB(4, 8, 4, 12), child: head),
+              child,
+            ])
+          : Container(
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 12),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surface,
+                borderRadius: BorderRadius.circular(24),
+                boxShadow: softShadow(context),
+              ),
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                head,
+                const SizedBox(height: 12),
+                child,
+              ]),
+            ),
+    );
+  }
 }
 
 /// The crop's water curve (FAO-56 Fig. 25 shape) and its stage rows.
 class _StagesBlock extends StatelessWidget {
-  const _StagesBlock({required this.stages});
+  const _StagesBlock({required this.stages, required this.tint});
   final List<CropStage> stages;
+  final CropTint tint;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
-    final data = DataColors.of(context);
     final total = stages.fold<int>(0, (a, s) => a + s.durationDays);
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Container(
         padding: const EdgeInsets.fromLTRB(12, 16, 12, 8),
         decoration: BoxDecoration(
-          color: data.waterSoft,
+          color: tint.soft,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -258,16 +323,16 @@ class _StagesBlock extends StatelessWidget {
             child: CustomPaint(
               painter: _KcCurvePainter(
                 stages: stages,
-                line: data.water,
-                grid: data.water.withValues(alpha: 0.18),
-                labelStyle: theme.textTheme.labelSmall!.copyWith(color: data.water),
+                line: tint.deep,
+                grid: tint.deep.withValues(alpha: 0.18),
+                labelStyle: theme.textTheme.labelSmall!.copyWith(color: tint.deep),
                 rtl: Directionality.of(context) == TextDirection.rtl,
               ),
             ),
           ),
           const SizedBox(height: 6),
           Text(l10n.seasonTotal(total),
-              style: theme.textTheme.labelMedium?.copyWith(color: data.water)),
+              style: theme.textTheme.labelMedium?.copyWith(color: tint.deep)),
         ]),
       ),
       const SizedBox(height: 8),
@@ -294,7 +359,7 @@ class _StagesBlock extends StatelessWidget {
               Text(stageLabel(l10n, s.stage), style: theme.textTheme.bodyMedium),
               Text('${s.durationDays}', style: theme.textTheme.titleSmall),
               Text(fmtNum(s.kc),
-                  style: theme.textTheme.titleSmall?.copyWith(color: data.water)),
+                  style: theme.textTheme.titleSmall?.copyWith(color: tint.deep)),
               SourceButton(sourceId: s.meta.sourceId, page: s.meta.sourcePage),
             ]),
         ],
@@ -434,20 +499,20 @@ class _KcCurvePainter extends CustomPainter {
 
 /// Twelve month slots as bars (empty where the source has no value), then rows.
 class _MonthlyBlock extends StatelessWidget {
-  const _MonthlyBlock({required this.months});
+  const _MonthlyBlock({required this.months, required this.tint});
   final List<CropKcMonth> months;
+  final CropTint tint;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
-    final data = DataColors.of(context);
     final byMonth = {for (final m in months) m.month: m};
     final maxKc = math.max(1.2, months.map((m) => m.kc).reduce(math.max));
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Container(
         padding: const EdgeInsets.fromLTRB(8, 14, 8, 10),
-        decoration: BoxDecoration(color: data.waterSoft, borderRadius: BorderRadius.circular(16)),
+        decoration: BoxDecoration(color: tint.soft, borderRadius: BorderRadius.circular(16)),
         child: SizedBox(
           height: 120,
           child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
@@ -461,13 +526,13 @@ class _MonthlyBlock extends StatelessWidget {
                           ? Container(
                               height: 3,
                               margin: const EdgeInsets.symmetric(horizontal: 4),
-                              color: data.water.withValues(alpha: 0.2))
+                              color: tint.deep.withValues(alpha: 0.2))
                           : FractionallySizedBox(
                               heightFactor: byMonth[mo]!.kc / maxKc,
                               child: Container(
                                 margin: const EdgeInsets.symmetric(horizontal: 3),
                                 decoration: BoxDecoration(
-                                  color: data.water,
+                                  color: tint.deep,
                                   borderRadius:
                                       const BorderRadius.vertical(top: Radius.circular(4)),
                                 ),
@@ -477,7 +542,7 @@ class _MonthlyBlock extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text('$mo',
-                      style: theme.textTheme.labelSmall?.copyWith(color: data.water)),
+                      style: theme.textTheme.labelSmall?.copyWith(color: tint.deep)),
                 ]),
               ),
           ]),
@@ -501,7 +566,7 @@ class _MonthlyBlock extends StatelessWidget {
             TableRow(children: [
               Text(l10n.monthName('m${m.month}'), style: theme.textTheme.bodyMedium),
               Text(fmtNum(m.kc),
-                  style: theme.textTheme.titleSmall?.copyWith(color: data.water)),
+                  style: theme.textTheme.titleSmall?.copyWith(color: tint.deep)),
               SourceButton(
                   key: ValueKey('kc-month-${m.month}-source'),
                   sourceId: m.meta.sourceId,
