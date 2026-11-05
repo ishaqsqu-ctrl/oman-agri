@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:oman_agri/features/map/map_screen.dart';
 import 'package:oman_agri/app.dart';
 import 'package:oman_agri/core/locale_controller.dart';
 import 'package:oman_agri/core/router.dart';
@@ -65,6 +66,6 @@ void main() {
     }
     await tester.tap(find.text('الخريطة'));
     await tester.pumpAndSettle();
-    expect(find.text('قريباً'), findsOneWidget);
+    expect(find.byType(MapScreen), findsOneWidget);
   });
 }

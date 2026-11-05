@@ -1,0 +1,14 @@
+{
+  "origin_lon": 51.875,
+  "origin_lat": 26.5,
+  "cell_deg": 0.041666666666666664,
+  "cols": 193,
+  "rows": 239,
+  "cells": 15393,
+  "record": "int16 col,row,elev_m; int16 tavg[12],tmin[12],tmax[12] (degC x10); little-endian",
+  "sources": {
+    "climate": "WorldClim 2.1, 1970-2000 monthly normals, 2.5 arc-min (Fick & Hijmans 2017), CC BY 4.0",
+    "elevation": "WorldClim 2.1 elevation (from SRTM), 2.5 arc-min, CC BY 4.0",
+    "outline": "geoBoundaries OMN ADM0 (OpenStreetMap contributors), ODbL 1.0"
+  }
+}

@@ -6,10 +6,10 @@ import 'package:oman_agri/features/calendar/calendar_screen.dart';
 import 'package:oman_agri/features/crops/ui/crop_detail_screen.dart';
 import 'package:oman_agri/features/crops/ui/crops_list_screen.dart';
 import 'package:oman_agri/features/farm/farm_screen.dart';
+import 'package:oman_agri/features/map/map_screen.dart';
 import 'package:oman_agri/features/settings/settings_screen.dart';
 import 'package:oman_agri/features/store/store_repository.dart';
 import 'package:oman_agri/features/store/store_screens.dart';
-import 'package:oman_agri/features/shell/coming_soon_screen.dart';
 import 'package:oman_agri/features/shell/app_shell.dart';
 
 final _rootKey = GlobalKey<NavigatorState>();
@@ -27,7 +27,7 @@ GoRouter buildRouter() => GoRouter(
             StatefulShellBranch(routes: [
               GoRoute(
                   path: '/map',
-                  builder: (c, s) => const ComingSoonScreen('map')),
+                  builder: (c, s) => const MapScreen()),
             ]),
             StatefulShellBranch(routes: [
               GoRoute(

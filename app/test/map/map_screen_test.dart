@@ -1,0 +1,96 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:oman_agri/core/locale_controller.dart';
+import 'package:oman_agri/core/theme.dart';
+import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
+import 'package:oman_agri/features/crops/data/models.dart';
+import 'package:oman_agri/features/farm/farm_screen.dart' show todayProvider;
+import 'package:oman_agri/features/map/map_screen.dart';
+import 'package:oman_agri/features/map/suitability.dart';
+import 'package:oman_agri/l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+const _m = KnowledgeMeta(status: KnowledgeStatus.published, sourceId: 's', reviewedBy: 'r', reviewedAt: '2026-11-04');
+
+EnvCell _cell(int col, {double t = 24, int elev = 50}) => EnvCell(
+    col: col, row: 0, elev: elev, tavg: List.filled(12, t), tmin: List.filled(12, t - 6), tmax: List.filled(12, t + 6));
+
+final _map = MapData(
+  originLon: 56, originLat: 24, cellDeg: 1, cols: 3, rows: 1,
+  cells: [_cell(0), _cell(1, t: 33), _cell(2, elev: 3000)],
+  outline: const [],
+);
+
+Future<void> _pump(WidgetTester tester, {List<Crop>? crops}) async {
+  tester.view.physicalSize = const Size(600, 1400);
+  tester.view.devicePixelRatio = 1;
+  addTearDown(tester.view.reset);
+  SharedPreferences.setMockInitialValues({localePrefKey: 'ar'});
+  final sp = await SharedPreferences.getInstance();
+  await tester.pumpWidget(ProviderScope(
+    overrides: [
+      sharedPreferencesProvider.overrideWithValue(sp),
+      todayProvider.overrideWithValue(DateTime(2026, 11, 5)),
+      mapDataProvider.overrideWith((ref) async => _map),
+      knowledgeProvider.overrideWith((ref) async => KnowledgeSnapshot(
+            generatedAt: DateTime.utc(2026),
+            sources: const {},
+            crops: crops ??
+                [
+                  Crop(
+                    id: 'tomato',
+                    nameAr: 'طماطم',
+                    nameEn: 'Tomato',
+                    categories: const [CropCategory.vegetable],
+                    requirements: const CropRequirements(
+                        tMin: 7, tOptLow: 20, tOptHigh: 27, tMax: 35, altMax: 2400, seasonDaysMin: 70, meta: _m),
+                    meta: _m,
+                  ),
+                ],
+          )),
+    ],
+    child: MaterialApp(
+      theme: buildTheme(),
+      locale: const Locale('ar'),
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      home: const Scaffold(body: MapScreen()),
+    ),
+  ));
+  await tester.pumpAndSettle();
+}
+
+void main() {
+  testWidgets('tapping a place shows its score, reason and environment', (tester) async {
+    await _pump(tester);
+    final map = tester.getRect(find.byType(CustomPaint).last);
+    // Left cell (ideal), middle cell (too hot in Nov: tmax 39 > 35), right cell (3000 m).
+    await tester.tapAt(Offset(map.left + map.width / 6, map.center.dy));
+    await tester.pumpAndSettle();
+    expect(find.text('مناسب'), findsWidgets);
+    expect(find.text('الحرارة مناسبة طوال الموسم'), findsOneWidget);
+
+    await tester.tapAt(Offset(map.center.dx, map.center.dy));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('حار جداً في نوفمبر'), findsOneWidget);
+
+    await tester.tapAt(Offset(map.right - map.width / 6, map.center.dy));
+    await tester.pumpAndSettle();
+    expect(find.text('الارتفاع 3000 م أعلى من حد المحصول'), findsOneWidget);
+    expect(find.textContaining('تقدير بالنموذج'), findsOneWidget);
+  });
+
+  testWidgets('a crop without temperature requirements says the estimate is impossible', (tester) async {
+    await _pump(tester, crops: [
+      const Crop(id: 'tomato', nameAr: 'ورد', nameEn: 'Rose', requirements: CropRequirements(meta: _m), meta: _m),
+    ]);
+    expect(find.text('لا توجد بعد متطلبات حرارة موثّقة لهذا المحصول، فلا يمكن حساب ملاءمته.'), findsOneWidget);
+  });
+}

@@ -332,5 +332,53 @@
         "type": "String"
       }
     }
+  },
+  "mapTitle": "الخريطة",
+  "mapPickCrop": "اختر محصولاً",
+  "mapPlantIn": "الزراعة في",
+  "mapTapHint": "اضغط على أي مكان في الخريطة لترى التفاصيل.",
+  "mapModelNote": "تقدير بالنموذج من الحرارة الشهرية والارتفاع فقط، ولا يشمل التربة والملوحة والمياه بعد.",
+  "mapNoRequirements": "لا توجد بعد متطلبات حرارة موثّقة لهذا المحصول، فلا يمكن حساب ملاءمته.",
+  "suitHigh": "مناسب",
+  "suitMedium": "مناسب بدرجة متوسطة",
+  "suitLow": "ضعيف الملاءمة",
+  "suitNone": "غير مناسب",
+  "limitCold": "بارد جداً في {month}: {value}° أقل من حاجة المحصول",
+  "limitHeat": "حار جداً في {month}: {value}° أعلى من حد المحصول",
+  "limitAltitude": "الارتفاع {value} م أعلى من حد المحصول",
+  "limitNone": "الحرارة مناسبة طوال الموسم",
+  "envElevation": "الارتفاع",
+  "envTavg": "متوسط الحرارة",
+  "envTmin": "متوسط الصغرى",
+  "envTmax": "متوسط العظمى",
+  "mapScore": "درجة الملاءمة",
+  "mapSources": "المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). حدود عُمان: © مساهمو OpenStreetMap.",
+  "mapLoading": "جارٍ تحميل الخريطة…",
+  "@limitCold": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "@limitHeat": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "@limitAltitude": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
   }
 }

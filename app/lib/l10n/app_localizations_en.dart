@@ -715,4 +715,76 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get saved => 'Saved';
+
+  @override
+  String get mapTitle => 'Map';
+
+  @override
+  String get mapPickCrop => 'Pick a crop';
+
+  @override
+  String get mapPlantIn => 'Planting in';
+
+  @override
+  String get mapTapHint => 'Tap anywhere on the map to see details.';
+
+  @override
+  String get mapModelNote =>
+      'Model estimate from monthly temperature and altitude only; soil, salinity and water are not included yet.';
+
+  @override
+  String get mapNoRequirements =>
+      'This crop has no documented temperature requirements yet, so its suitability cannot be computed.';
+
+  @override
+  String get suitHigh => 'Suitable';
+
+  @override
+  String get suitMedium => 'Moderately suitable';
+
+  @override
+  String get suitLow => 'Marginal';
+
+  @override
+  String get suitNone => 'Unsuitable';
+
+  @override
+  String limitCold(String month, String value) {
+    return 'Too cold in $month: $value° is below what the crop needs';
+  }
+
+  @override
+  String limitHeat(String month, String value) {
+    return 'Too hot in $month: $value° is above the crop\'s limit';
+  }
+
+  @override
+  String limitAltitude(String value) {
+    return 'Altitude $value m is above the crop\'s limit';
+  }
+
+  @override
+  String get limitNone => 'Temperature suits the whole season';
+
+  @override
+  String get envElevation => 'Elevation';
+
+  @override
+  String get envTavg => 'Mean temperature';
+
+  @override
+  String get envTmin => 'Mean minimum';
+
+  @override
+  String get envTmax => 'Mean maximum';
+
+  @override
+  String get mapScore => 'Suitability';
+
+  @override
+  String get mapSources =>
+      'Climate and elevation: WorldClim 2.1 (Fick & Hijmans 2017). Oman outline: © OpenStreetMap contributors.';
+
+  @override
+  String get mapLoading => 'Loading the map…';
 }

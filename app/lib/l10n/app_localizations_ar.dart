@@ -711,4 +711,76 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get saved => 'حُفظ';
+
+  @override
+  String get mapTitle => 'الخريطة';
+
+  @override
+  String get mapPickCrop => 'اختر محصولاً';
+
+  @override
+  String get mapPlantIn => 'الزراعة في';
+
+  @override
+  String get mapTapHint => 'اضغط على أي مكان في الخريطة لترى التفاصيل.';
+
+  @override
+  String get mapModelNote =>
+      'تقدير بالنموذج من الحرارة الشهرية والارتفاع فقط، ولا يشمل التربة والملوحة والمياه بعد.';
+
+  @override
+  String get mapNoRequirements =>
+      'لا توجد بعد متطلبات حرارة موثّقة لهذا المحصول، فلا يمكن حساب ملاءمته.';
+
+  @override
+  String get suitHigh => 'مناسب';
+
+  @override
+  String get suitMedium => 'مناسب بدرجة متوسطة';
+
+  @override
+  String get suitLow => 'ضعيف الملاءمة';
+
+  @override
+  String get suitNone => 'غير مناسب';
+
+  @override
+  String limitCold(String month, String value) {
+    return 'بارد جداً في $month: $value° أقل من حاجة المحصول';
+  }
+
+  @override
+  String limitHeat(String month, String value) {
+    return 'حار جداً في $month: $value° أعلى من حد المحصول';
+  }
+
+  @override
+  String limitAltitude(String value) {
+    return 'الارتفاع $value م أعلى من حد المحصول';
+  }
+
+  @override
+  String get limitNone => 'الحرارة مناسبة طوال الموسم';
+
+  @override
+  String get envElevation => 'الارتفاع';
+
+  @override
+  String get envTavg => 'متوسط الحرارة';
+
+  @override
+  String get envTmin => 'متوسط الصغرى';
+
+  @override
+  String get envTmax => 'متوسط العظمى';
+
+  @override
+  String get mapScore => 'درجة الملاءمة';
+
+  @override
+  String get mapSources =>
+      'المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). حدود عُمان: © مساهمو OpenStreetMap.';
+
+  @override
+  String get mapLoading => 'جارٍ تحميل الخريطة…';
 }

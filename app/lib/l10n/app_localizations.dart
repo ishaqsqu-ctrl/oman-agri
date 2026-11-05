@@ -1321,6 +1321,132 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'حُفظ'**
   String get saved;
+
+  /// No description provided for @mapTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخريطة'**
+  String get mapTitle;
+
+  /// No description provided for @mapPickCrop.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر محصولاً'**
+  String get mapPickCrop;
+
+  /// No description provided for @mapPlantIn.
+  ///
+  /// In ar, this message translates to:
+  /// **'الزراعة في'**
+  String get mapPlantIn;
+
+  /// No description provided for @mapTapHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'اضغط على أي مكان في الخريطة لترى التفاصيل.'**
+  String get mapTapHint;
+
+  /// No description provided for @mapModelNote.
+  ///
+  /// In ar, this message translates to:
+  /// **'تقدير بالنموذج من الحرارة الشهرية والارتفاع فقط، ولا يشمل التربة والملوحة والمياه بعد.'**
+  String get mapModelNote;
+
+  /// No description provided for @mapNoRequirements.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد بعد متطلبات حرارة موثّقة لهذا المحصول، فلا يمكن حساب ملاءمته.'**
+  String get mapNoRequirements;
+
+  /// No description provided for @suitHigh.
+  ///
+  /// In ar, this message translates to:
+  /// **'مناسب'**
+  String get suitHigh;
+
+  /// No description provided for @suitMedium.
+  ///
+  /// In ar, this message translates to:
+  /// **'مناسب بدرجة متوسطة'**
+  String get suitMedium;
+
+  /// No description provided for @suitLow.
+  ///
+  /// In ar, this message translates to:
+  /// **'ضعيف الملاءمة'**
+  String get suitLow;
+
+  /// No description provided for @suitNone.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير مناسب'**
+  String get suitNone;
+
+  /// No description provided for @limitCold.
+  ///
+  /// In ar, this message translates to:
+  /// **'بارد جداً في {month}: {value}° أقل من حاجة المحصول'**
+  String limitCold(String month, String value);
+
+  /// No description provided for @limitHeat.
+  ///
+  /// In ar, this message translates to:
+  /// **'حار جداً في {month}: {value}° أعلى من حد المحصول'**
+  String limitHeat(String month, String value);
+
+  /// No description provided for @limitAltitude.
+  ///
+  /// In ar, this message translates to:
+  /// **'الارتفاع {value} م أعلى من حد المحصول'**
+  String limitAltitude(String value);
+
+  /// No description provided for @limitNone.
+  ///
+  /// In ar, this message translates to:
+  /// **'الحرارة مناسبة طوال الموسم'**
+  String get limitNone;
+
+  /// No description provided for @envElevation.
+  ///
+  /// In ar, this message translates to:
+  /// **'الارتفاع'**
+  String get envElevation;
+
+  /// No description provided for @envTavg.
+  ///
+  /// In ar, this message translates to:
+  /// **'متوسط الحرارة'**
+  String get envTavg;
+
+  /// No description provided for @envTmin.
+  ///
+  /// In ar, this message translates to:
+  /// **'متوسط الصغرى'**
+  String get envTmin;
+
+  /// No description provided for @envTmax.
+  ///
+  /// In ar, this message translates to:
+  /// **'متوسط العظمى'**
+  String get envTmax;
+
+  /// No description provided for @mapScore.
+  ///
+  /// In ar, this message translates to:
+  /// **'درجة الملاءمة'**
+  String get mapScore;
+
+  /// No description provided for @mapSources.
+  ///
+  /// In ar, this message translates to:
+  /// **'المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). حدود عُمان: © مساهمو OpenStreetMap.'**
+  String get mapSources;
+
+  /// No description provided for @mapLoading.
+  ///
+  /// In ar, this message translates to:
+  /// **'جارٍ تحميل الخريطة…'**
+  String get mapLoading;
 }
 
 class _AppLocalizationsDelegate
