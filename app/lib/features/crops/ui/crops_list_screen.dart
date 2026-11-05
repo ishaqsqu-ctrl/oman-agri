@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:oman_agri/core/arabic_normalize.dart';
+import 'package:oman_agri/core/motion.dart';
 import 'package:oman_agri/core/theme.dart';
 import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
 import 'package:oman_agri/features/crops/data/models.dart';
@@ -210,11 +211,13 @@ class CropTile extends StatelessWidget {
     final isAr = locale.languageCode == 'ar';
     final r = crop.requirements;
     final temp = fmtRange(r?.tOptLow, r?.tOptHigh);
-    return Material(
+    return Pressable(
+      child: Material(
       color: tint.soft,
       borderRadius: BorderRadius.circular(24),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
+        splashFactory: NoSplash.splashFactory,
         onTap: () => context.push('/crops/${crop.id}'),
         child: Padding(
           padding: const EdgeInsets.all(14),
@@ -273,6 +276,7 @@ class CropTile extends StatelessWidget {
             ],
           ),
         ),
+      ),
       ),
     );
   }

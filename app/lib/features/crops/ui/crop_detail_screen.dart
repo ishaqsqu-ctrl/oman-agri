@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:oman_agri/core/motion.dart';
 import 'package:oman_agri/core/theme.dart';
 import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
 import 'package:oman_agri/features/crops/data/models.dart';
@@ -320,14 +321,17 @@ class _StagesBlock extends StatelessWidget {
           SizedBox(
             height: 150,
             width: double.infinity,
-            child: CustomPaint(
+            child: _Reveal(
+              builder: (t) => CustomPaint(
               painter: _KcCurvePainter(
+                progress: t,
                 stages: stages,
                 line: tint.deep,
                 grid: tint.deep.withValues(alpha: 0.18),
                 labelStyle: theme.textTheme.labelSmall!.copyWith(color: tint.deep),
                 rtl: Directionality.of(context) == TextDirection.rtl,
               ),
+            ),
             ),
           ),
           const SizedBox(height: 6),
@@ -387,6 +391,7 @@ class _Head extends StatelessWidget {
 /// Time runs in reading direction (right to left in Arabic).
 class _KcCurvePainter extends CustomPainter {
   _KcCurvePainter({
+    required this.progress,
     required this.stages,
     required this.line,
     required this.grid,
@@ -394,6 +399,8 @@ class _KcCurvePainter extends CustomPainter {
     required this.rtl,
   });
 
+  /// 0..1: how much of the season is drawn, from planting onward.
+  final double progress;
   final List<CropStage> stages;
   final Color line, grid;
   final TextStyle labelStyle;
@@ -423,6 +430,12 @@ class _KcCurvePainter extends CustomPainter {
     }
 
     // Starts at the first stage's kc, so the first stage is flat.
+    // Draw the season from planting onward (right to left in Arabic).
+    canvas.save();
+    final w = size.width * progress.clamp(0.0, 1.0);
+    canvas.clipRect(rtl
+        ? Rect.fromLTWH(size.width - w, 0, w, size.height)
+        : Rect.fromLTWH(0, 0, w, size.height));
     final pts = <Offset>[Offset(x(0), y(stages.first.kc))];
     var day = 0.0;
     for (final s in stages) {
@@ -468,6 +481,7 @@ class _KcCurvePainter extends CustomPainter {
         _text(canvas, fmtNum(stages[i].kc), Offset(px, py - 18), center: true);
       }
     }
+    canvas.restore();
   }
 
   void _dashed(Canvas canvas, Offset a, Offset b) {
@@ -494,7 +508,7 @@ class _KcCurvePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _KcCurvePainter old) =>
-      old.stages != stages || old.line != line || old.rtl != rtl;
+      old.progress != progress || old.stages != stages || old.line != line || old.rtl != rtl;
 }
 
 /// Twelve month slots as bars (empty where the source has no value), then rows.
@@ -527,8 +541,10 @@ class _MonthlyBlock extends StatelessWidget {
                               height: 3,
                               margin: const EdgeInsets.symmetric(horizontal: 4),
                               color: tint.deep.withValues(alpha: 0.2))
-                          : FractionallySizedBox(
-                              heightFactor: byMonth[mo]!.kc / maxKc,
+                          : _Reveal(
+                              delay: Duration(milliseconds: 25 * mo),
+                              builder: (t) => FractionallySizedBox(
+                              heightFactor: byMonth[mo]!.kc / maxKc * t,
                               child: Container(
                                 margin: const EdgeInsets.symmetric(horizontal: 3),
                                 decoration: BoxDecoration(
@@ -537,6 +553,7 @@ class _MonthlyBlock extends StatelessWidget {
                                       const BorderRadius.vertical(top: Radius.circular(4)),
                                 ),
                               ),
+                            ),
                             ),
                     ),
                   ),
@@ -693,4 +710,44 @@ class _FactRow extends StatelessWidget {
       ]),
     );
   }
+}
+
+/// Runs 0→1 once when first shown (explanatory motion); instant under reduced motion.
+class _Reveal extends StatefulWidget {
+  const _Reveal({required this.builder, this.delay = Duration.zero});
+  final Widget Function(double t) builder;
+  final Duration delay;
+
+  @override
+  State<_Reveal> createState() => _RevealState();
+}
+
+class _RevealState extends State<_Reveal> with SingleTickerProviderStateMixin {
+  late final AnimationController _c = AnimationController(vsync: this, duration: Motion.explain);
+  late final Animation<double> _a = CurvedAnimation(parent: _c, curve: Motion.easeOut);
+  bool _started = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_started) return;
+    _started = true;
+    if (Motion.reduced(context)) {
+      _c.value = 1;
+    } else {
+      Future.delayed(widget.delay, () {
+        if (mounted) _c.forward();
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _c.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) =>
+      AnimatedBuilder(animation: _a, builder: (_, _) => widget.builder(_a.value));
 }

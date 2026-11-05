@@ -126,6 +126,7 @@ ThemeData buildTheme({Brightness brightness = Brightness.light}) {
     fontFamily: bodyFont,
     textTheme: text,
     scaffoldBackgroundColor: bg,
+    splashFactory: InkRipple.splashFactory,
     extensions: [
       dark
           ? const DataColors(
