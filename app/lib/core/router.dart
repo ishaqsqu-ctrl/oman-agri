@@ -4,6 +4,7 @@ import 'package:oman_agri/core/motion.dart';
 import 'package:oman_agri/features/admin/admin_screen.dart';
 import 'package:oman_agri/features/crops/ui/crop_detail_screen.dart';
 import 'package:oman_agri/features/crops/ui/crops_list_screen.dart';
+import 'package:oman_agri/features/farm/farm_screen.dart';
 import 'package:oman_agri/features/settings/settings_screen.dart';
 import 'package:oman_agri/features/shell/coming_soon_screen.dart';
 import 'package:oman_agri/features/shell/app_shell.dart';
@@ -33,7 +34,7 @@ GoRouter buildRouter() => GoRouter(
             StatefulShellBranch(routes: [
               GoRoute(
                   path: '/farm',
-                  builder: (c, s) => const ComingSoonScreen('farm')),
+                  builder: (c, s) => const FarmScreen()),
             ]),
             StatefulShellBranch(routes: [
               GoRoute(

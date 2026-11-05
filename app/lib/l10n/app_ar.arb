@@ -136,5 +136,77 @@
   "salinityShort": "ملوحة",
   "greetingMorning": "صباح الخير",
   "greetingEvening": "مساء الخير",
-  "homeHeadline": "ماذا ستزرع اليوم؟"
+  "homeHeadline": "ماذا ستزرع اليوم؟",
+  "farmTitle": "مزرعتي",
+  "farmEmptyTitle": "لم تضف محاصيل بعد",
+  "farmEmptyBody": "أضف ما زرعته وتاريخ زراعته، وسيخبرك التطبيق بمرحلته واحتياجه من الماء وموعد حصاده.",
+  "farmAdd": "أضف محصولاً",
+  "farmPickCrop": "ماذا زرعت؟",
+  "farmPickDate": "متى زرعته؟",
+  "farmSave": "أضف إلى مزرعتي",
+  "farmRemove": "احذف من مزرعتي",
+  "farmRemoveConfirm": "هل تريد حذف {crop} من مزرعتي؟",
+  "farmRemoved": "حُذف {crop}",
+  "farmPlantedOn": "زُرع في {date}",
+  "farmDayOf": "اليوم {day} من {total}",
+  "farmNotStarted": "يبدأ موسمه في {date}",
+  "farmFinished": "انتهى الموسم: وقت الحصاد",
+  "farmDaysToHarvest": "{n, plural, =0{الحصاد اليوم} =1{الحصاد بعد يوم واحد} =2{الحصاد بعد يومين} few{الحصاد بعد {n} أيام} many{الحصاد بعد {n} يومًا} other{الحصاد بعد {n} يوم}}",
+  "farmKcToday": "حاجة الماء اليوم",
+  "farmKcMonth": "حاجة الماء هذا الشهر",
+  "farmDaysSince": "{n, plural, =0{زُرع اليوم} =1{منذ يوم واحد} =2{منذ يومين} few{منذ {n} أيام} many{منذ {n} يومًا} other{منذ {n} يوم}}",
+  "farmNoStageData": "لا توجد بعد بيانات مراحل نمو لهذا المحصول",
+  "undo": "تراجع",
+  "@farmRemoveConfirm": {
+    "placeholders": {
+      "crop": {
+        "type": "String"
+      }
+    }
+  },
+  "@farmRemoved": {
+    "placeholders": {
+      "crop": {
+        "type": "String"
+      }
+    }
+  },
+  "@farmPlantedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@farmDayOf": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@farmNotStarted": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@farmDaysToHarvest": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "@farmDaysSince": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  }
 }

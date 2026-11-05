@@ -367,4 +367,93 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeHeadline => 'What will you grow today?';
+
+  @override
+  String get farmTitle => 'My farm';
+
+  @override
+  String get farmEmptyTitle => 'No crops yet';
+
+  @override
+  String get farmEmptyBody =>
+      'Add what you planted and when, and the app tells you its stage, its water need and when to harvest.';
+
+  @override
+  String get farmAdd => 'Add a crop';
+
+  @override
+  String get farmPickCrop => 'What did you plant?';
+
+  @override
+  String get farmPickDate => 'When did you plant it?';
+
+  @override
+  String get farmSave => 'Add to my farm';
+
+  @override
+  String get farmRemove => 'Remove from my farm';
+
+  @override
+  String farmRemoveConfirm(String crop) {
+    return 'Remove $crop from your farm?';
+  }
+
+  @override
+  String farmRemoved(String crop) {
+    return '$crop removed';
+  }
+
+  @override
+  String farmPlantedOn(String date) {
+    return 'Planted on $date';
+  }
+
+  @override
+  String farmDayOf(int day, int total) {
+    return 'Day $day of $total';
+  }
+
+  @override
+  String farmNotStarted(String date) {
+    return 'Season starts on $date';
+  }
+
+  @override
+  String get farmFinished => 'Season over: time to harvest';
+
+  @override
+  String farmDaysToHarvest(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'Harvest in $n days',
+      one: 'Harvest in 1 day',
+      zero: 'Harvest today',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get farmKcToday => 'Water need today';
+
+  @override
+  String get farmKcMonth => 'Water need this month';
+
+  @override
+  String farmDaysSince(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n days ago',
+      one: '1 day ago',
+      zero: 'Planted today',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get farmNoStageData => 'No growth-stage data for this crop yet';
+
+  @override
+  String get undo => 'Undo';
 }

@@ -167,11 +167,13 @@ class _CropsListScreenState extends ConsumerState<CropsListScreen> {
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
             sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              // Picture and padding are fixed; the two name lines grow with the
+              // phone's text size, so the tile does too.
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: 220,
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
-                mainAxisExtent: 172,
+                mainAxisExtent: 98 + MediaQuery.textScalerOf(context).scale(74),
               ),
               delegate: SliverChildBuilderDelegate(
                 (context, i) => CropTile(crop: shown[i], locale: locale),

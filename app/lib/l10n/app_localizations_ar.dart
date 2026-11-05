@@ -356,4 +356,99 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get homeHeadline => 'ماذا ستزرع اليوم؟';
+
+  @override
+  String get farmTitle => 'مزرعتي';
+
+  @override
+  String get farmEmptyTitle => 'لم تضف محاصيل بعد';
+
+  @override
+  String get farmEmptyBody =>
+      'أضف ما زرعته وتاريخ زراعته، وسيخبرك التطبيق بمرحلته واحتياجه من الماء وموعد حصاده.';
+
+  @override
+  String get farmAdd => 'أضف محصولاً';
+
+  @override
+  String get farmPickCrop => 'ماذا زرعت؟';
+
+  @override
+  String get farmPickDate => 'متى زرعته؟';
+
+  @override
+  String get farmSave => 'أضف إلى مزرعتي';
+
+  @override
+  String get farmRemove => 'احذف من مزرعتي';
+
+  @override
+  String farmRemoveConfirm(String crop) {
+    return 'هل تريد حذف $crop من مزرعتي؟';
+  }
+
+  @override
+  String farmRemoved(String crop) {
+    return 'حُذف $crop';
+  }
+
+  @override
+  String farmPlantedOn(String date) {
+    return 'زُرع في $date';
+  }
+
+  @override
+  String farmDayOf(int day, int total) {
+    return 'اليوم $day من $total';
+  }
+
+  @override
+  String farmNotStarted(String date) {
+    return 'يبدأ موسمه في $date';
+  }
+
+  @override
+  String get farmFinished => 'انتهى الموسم: وقت الحصاد';
+
+  @override
+  String farmDaysToHarvest(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'الحصاد بعد $n يوم',
+      many: 'الحصاد بعد $n يومًا',
+      few: 'الحصاد بعد $n أيام',
+      two: 'الحصاد بعد يومين',
+      one: 'الحصاد بعد يوم واحد',
+      zero: 'الحصاد اليوم',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get farmKcToday => 'حاجة الماء اليوم';
+
+  @override
+  String get farmKcMonth => 'حاجة الماء هذا الشهر';
+
+  @override
+  String farmDaysSince(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'منذ $n يوم',
+      many: 'منذ $n يومًا',
+      few: 'منذ $n أيام',
+      two: 'منذ يومين',
+      one: 'منذ يوم واحد',
+      zero: 'زُرع اليوم',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get farmNoStageData => 'لا توجد بعد بيانات مراحل نمو لهذا المحصول';
+
+  @override
+  String get undo => 'تراجع';
 }

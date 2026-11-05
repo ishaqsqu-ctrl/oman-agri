@@ -745,6 +745,126 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'ماذا ستزرع اليوم؟'**
   String get homeHeadline;
+
+  /// No description provided for @farmTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'مزرعتي'**
+  String get farmTitle;
+
+  /// No description provided for @farmEmptyTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'لم تضف محاصيل بعد'**
+  String get farmEmptyTitle;
+
+  /// No description provided for @farmEmptyBody.
+  ///
+  /// In ar, this message translates to:
+  /// **'أضف ما زرعته وتاريخ زراعته، وسيخبرك التطبيق بمرحلته واحتياجه من الماء وموعد حصاده.'**
+  String get farmEmptyBody;
+
+  /// No description provided for @farmAdd.
+  ///
+  /// In ar, this message translates to:
+  /// **'أضف محصولاً'**
+  String get farmAdd;
+
+  /// No description provided for @farmPickCrop.
+  ///
+  /// In ar, this message translates to:
+  /// **'ماذا زرعت؟'**
+  String get farmPickCrop;
+
+  /// No description provided for @farmPickDate.
+  ///
+  /// In ar, this message translates to:
+  /// **'متى زرعته؟'**
+  String get farmPickDate;
+
+  /// No description provided for @farmSave.
+  ///
+  /// In ar, this message translates to:
+  /// **'أضف إلى مزرعتي'**
+  String get farmSave;
+
+  /// No description provided for @farmRemove.
+  ///
+  /// In ar, this message translates to:
+  /// **'احذف من مزرعتي'**
+  String get farmRemove;
+
+  /// No description provided for @farmRemoveConfirm.
+  ///
+  /// In ar, this message translates to:
+  /// **'هل تريد حذف {crop} من مزرعتي؟'**
+  String farmRemoveConfirm(String crop);
+
+  /// No description provided for @farmRemoved.
+  ///
+  /// In ar, this message translates to:
+  /// **'حُذف {crop}'**
+  String farmRemoved(String crop);
+
+  /// No description provided for @farmPlantedOn.
+  ///
+  /// In ar, this message translates to:
+  /// **'زُرع في {date}'**
+  String farmPlantedOn(String date);
+
+  /// No description provided for @farmDayOf.
+  ///
+  /// In ar, this message translates to:
+  /// **'اليوم {day} من {total}'**
+  String farmDayOf(int day, int total);
+
+  /// No description provided for @farmNotStarted.
+  ///
+  /// In ar, this message translates to:
+  /// **'يبدأ موسمه في {date}'**
+  String farmNotStarted(String date);
+
+  /// No description provided for @farmFinished.
+  ///
+  /// In ar, this message translates to:
+  /// **'انتهى الموسم: وقت الحصاد'**
+  String get farmFinished;
+
+  /// No description provided for @farmDaysToHarvest.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n, plural, =0{الحصاد اليوم} =1{الحصاد بعد يوم واحد} =2{الحصاد بعد يومين} few{الحصاد بعد {n} أيام} many{الحصاد بعد {n} يومًا} other{الحصاد بعد {n} يوم}}'**
+  String farmDaysToHarvest(int n);
+
+  /// No description provided for @farmKcToday.
+  ///
+  /// In ar, this message translates to:
+  /// **'حاجة الماء اليوم'**
+  String get farmKcToday;
+
+  /// No description provided for @farmKcMonth.
+  ///
+  /// In ar, this message translates to:
+  /// **'حاجة الماء هذا الشهر'**
+  String get farmKcMonth;
+
+  /// No description provided for @farmDaysSince.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n, plural, =0{زُرع اليوم} =1{منذ يوم واحد} =2{منذ يومين} few{منذ {n} أيام} many{منذ {n} يومًا} other{منذ {n} يوم}}'**
+  String farmDaysSince(int n);
+
+  /// No description provided for @farmNoStageData.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد بعد بيانات مراحل نمو لهذا المحصول'**
+  String get farmNoStageData;
+
+  /// No description provided for @undo.
+  ///
+  /// In ar, this message translates to:
+  /// **'تراجع'**
+  String get undo;
 }
 
 class _AppLocalizationsDelegate

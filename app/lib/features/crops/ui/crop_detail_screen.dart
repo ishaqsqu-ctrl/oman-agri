@@ -160,18 +160,22 @@ class _Header extends StatelessWidget {
         ),
         if (crop.scientificName != null && crop.scientificName!.isNotEmpty) ...[
           const SizedBox(height: 2),
-          Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('${l10n.scientificName}: ',
-                style: theme.textTheme.bodySmall?.copyWith(color: ink.withValues(alpha: 0.6))),
-            Flexible(
-              child: Directionality(
+          // Label and name wrap onto two lines rather than push off-screen.
+          Wrap(
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              Text('${l10n.scientificName}: ',
+                  style: theme.textTheme.bodySmall?.copyWith(color: ink.withValues(alpha: 0.6))),
+              Directionality(
                 textDirection: TextDirection.ltr,
                 child: Text(crop.scientificName!,
+                    textAlign: TextAlign.center,
                     style: theme.textTheme.bodyMedium
                         ?.copyWith(color: ink.withValues(alpha: 0.75), fontStyle: FontStyle.italic)),
               ),
-            ),
-          ]),
+            ],
+          ),
         ],
         if (crop.categories.isNotEmpty) ...[
           const SizedBox(height: 12),
@@ -186,8 +190,10 @@ class _Header extends StatelessWidget {
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
                   CropArt(categoryArtAsset(c), size: 16),
                   const SizedBox(width: 6),
-                  Text(categoryLabel(l10n, c),
-                      style: theme.textTheme.labelMedium?.copyWith(color: tint.deep)),
+                  Flexible(
+                    child: Text(categoryLabel(l10n, c),
+                        style: theme.textTheme.labelMedium?.copyWith(color: tint.deep)),
+                  ),
                 ]),
               ),
           ]),
@@ -657,8 +663,10 @@ class _Group extends StatelessWidget {
         Row(children: [
           Icon(icon, size: 18, color: theme.colorScheme.primary),
           const SizedBox(width: 6),
-          Text(title,
-              style: theme.textTheme.titleSmall?.copyWith(color: theme.colorScheme.primary)),
+          Expanded(
+            child: Text(title,
+                style: theme.textTheme.titleSmall?.copyWith(color: theme.colorScheme.primary)),
+          ),
         ]),
         ...children,
       ]),
