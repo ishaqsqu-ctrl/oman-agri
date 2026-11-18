@@ -1439,7 +1439,7 @@ abstract class AppLocalizations {
   /// No description provided for @mapSources.
   ///
   /// In ar, this message translates to:
-  /// **'المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). القوام والحموضة: SoilGrids 2.0 (Poggio وآخرون 2021، ISRIC). الملوحة: HWSD v2.0 (FAO و IIASA 2023، CC BY-NC-SA 3.0 IGO). حدود عُمان: © مساهمو OpenStreetMap.'**
+  /// **'المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). القوام والحموضة: SoilGrids 2.0 (Poggio وآخرون 2021، ISRIC). الملوحة: HWSD v2.0 (FAO و IIASA 2023، CC BY-NC-SA 3.0 IGO). قطاعات التربة الموثّقة: الخريطة العامة للتربة في سلطنة عُمان (وزارة الزراعة والثروة السمكية والفاو، 1990). حدود عُمان: © مساهمو OpenStreetMap.'**
   String get mapSources;
 
   /// No description provided for @mapLoading.
@@ -1873,6 +1873,66 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'المعايير: نشرة الفاو للري والصرف رقم 29 (أيرز وويستكوت، 1985). يُقدَّر الإنتاج بمعادلة ماس وهوفمان على افتراض أن ملوحة التربة تبلغ مرة ونصف ملوحة الماء (غسيل 15–20%). يبقى الفحص على جهازك فقط.'**
   String get waterNote;
+
+  /// No description provided for @pedonTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'قطاع تربة موثّق رقم {n}'**
+  String pedonTitle(int n);
+
+  /// No description provided for @pedonMeasured.
+  ///
+  /// In ar, this message translates to:
+  /// **'حُفر ووُصف وحُلّل في المختبر لأطلس التربة 1990'**
+  String get pedonMeasured;
+
+  /// No description provided for @pedonLandSlope.
+  ///
+  /// In ar, this message translates to:
+  /// **'{land}، انحدار {slope}'**
+  String pedonLandSlope(String land, String slope);
+
+  /// No description provided for @pedonSaline.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملحية'**
+  String get pedonSaline;
+
+  /// No description provided for @pedonSodic.
+  ///
+  /// In ar, this message translates to:
+  /// **'صودية'**
+  String get pedonSodic;
+
+  /// No description provided for @pedonShallow.
+  ///
+  /// In ar, this message translates to:
+  /// **'صخر قريب من السطح'**
+  String get pedonShallow;
+
+  /// No description provided for @pedonGravelly.
+  ///
+  /// In ar, this message translates to:
+  /// **'كثيرة الحصى'**
+  String get pedonGravelly;
+
+  /// No description provided for @pedonGypsumPan.
+  ///
+  /// In ar, this message translates to:
+  /// **'طبقة جبس متصلّبة'**
+  String get pedonGypsumPan;
+
+  /// No description provided for @pedonLegend.
+  ///
+  /// In ar, this message translates to:
+  /// **'قطاع تربة موثّق (1990)'**
+  String get pedonLegend;
+
+  /// No description provided for @pedonSource.
+  ///
+  /// In ar, this message translates to:
+  /// **'المصدر: الخريطة العامة للتربة في سلطنة عُمان، وزارة الزراعة والثروة السمكية بالتعاون مع الفاو، 1990.'**
+  String get pedonSource;
 }
 
 class _AppLocalizationsDelegate

@@ -31,6 +31,11 @@ the app needs the Ministry's written permission.
 | `land_suitability_criteria.csv` | Transcribed 2026-11-18 from the photo of p. 19. Awaiting owner review. |
 | `map_unit_classes.csv` | Transcribed from Table 4. Checked: units 1–61 each appear exactly once, plus R and W. Awaiting owner review. |
 | `suitability_area.csv` | Transcribed from Table 5. Checked: S1 + S2 = 2,223,057 ha; suitable + N = 31,426,466 ha. Awaiting owner review. |
+| `map_units.csv` | Map unit descriptions 1–61, R and W (pp. 7–18): dominant soils, description, slope range, land class. Awaiting owner review. |
+| `pedons.csv` | Pedons 1–20: location, USDA and FAO classification, physiography, slope, parent material, field id, land use. Transcribed 2026-11-18. |
+| `pedons_checked.csv` | Output of `check_pedons.py`: each location tested against the 1:250 000 sheet named in its field id and against the land grid. 14 verified; 4, 8 and 14 have no readable sheet code; 10, 15 and 17 disagree with their sheet. Those six need the printed page. |
+| Pedon laboratory tables | **Not transcribed.** In the photos each digit is a few pixels high; guessing them would put wrong numbers in the app. Needs close, flat photos of each table. |
+| Table 1 (area per map unit) | Not transcribed: low value without the map itself, and the photo's rows are hard to align. |
 
 Suitable land (S1 + S2) is 7.07 % of Oman; 2.52 % is S1 (highly to moderately suitable).
 

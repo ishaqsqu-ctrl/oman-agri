@@ -10,6 +10,7 @@ import 'package:oman_agri/features/crops/data/models.dart';
 import 'package:oman_agri/features/crops/ui/crop_art.dart';
 import 'package:oman_agri/features/crops/ui/labels.dart';
 import 'package:oman_agri/features/farm/farm_screen.dart' show todayProvider;
+import 'package:oman_agri/features/map/pedons.dart';
 import 'package:oman_agri/features/map/soil.dart';
 import 'package:oman_agri/features/map/suitability.dart';
 import 'package:oman_agri/l10n/app_localizations.dart';
@@ -33,6 +34,26 @@ class MapData {
   final Map<int, EnvCell> _byPos;
 
   EnvCell? at(int col, int row) => _byPos[row * 100000 + col];
+
+  /// The land cell at [col], [row], or the closest one within two cells
+  /// (a coastal point can fall just outside the coarse coastline).
+  EnvCell? nearestLand(int col, int row) {
+    final c = at(col, row);
+    if (c != null) return c;
+    EnvCell? best;
+    var bd = 1 << 30;
+    for (var dr = -2; dr <= 2; dr++) {
+      for (var dc = -2; dc <= 2; dc++) {
+        final n = at(col + dc, row + dr);
+        final d = dc * dc + dr * dr;
+        if (n != null && d < bd) (best, bd) = (n, d);
+      }
+    }
+    return best;
+  }
+
+  Offset lonLatToPx(double lon, double lat, double cw, double ch) =>
+      Offset((lon - originLon) / cellDeg * cw, (originLat - lat) / cellDeg * ch);
 
   static MapData parse(Map<String, dynamic> header, List<dynamic> outline) {
     final cells = <EnvCell>[];
@@ -128,6 +149,7 @@ class _MapScreenState extends ConsumerState<MapScreen> {
   String _cropId = 'tomato';
   late int _month = ref.read(todayProvider).month;
   EnvCell? _picked;
+  Pedon? _pedon;
   MapLayer _layer = MapLayer.suitability;
 
   @override
@@ -142,6 +164,9 @@ class _MapScreenState extends ConsumerState<MapScreen> {
     final req = crop?.requirements;
     final usable = req != null && req.tMin != null && req.tOptLow != null && req.tOptHigh != null && req.tMax != null;
     final picked = _picked;
+    final soilLayer = _layer != MapLayer.suitability;
+    final pedons = soilLayer ? (ref.watch(pedonsProvider).asData?.value ?? const <Pedon>[]) : const <Pedon>[];
+    final pedon = soilLayer ? _pedon : null;
     final pickedSuit = (picked != null && usable) ? suitabilityOf(req, picked, plantMonth: _month) : null;
 
     return ListView(padding: const EdgeInsets.fromLTRB(16, 4, 16, 32), children: [
@@ -252,12 +277,21 @@ class _MapScreenState extends ConsumerState<MapScreen> {
             req: usable ? req : null,
             month: _month,
             picked: picked,
-            onPick: (c) => setState(() => _picked = c),
+            pedons: pedons,
+            pedon: pedon,
+            onPick: (c, p) => setState(() {
+              _picked = c;
+              _pedon = p;
+            }),
           ),
         ),
       const SizedBox(height: 8),
-      if (usable || _layer != MapLayer.suitability) _Legend(layer: _layer),
+      if (usable || _layer != MapLayer.suitability) _Legend(layer: _layer, pedons: pedons.isNotEmpty),
       const SizedBox(height: 12),
+      if (pedon != null) ...[
+        PedonCard(pedon: pedon),
+        const SizedBox(height: 12),
+      ],
       if (picked != null)
         _PlaceCard(cell: picked, suit: pickedSuit, req: req, month: _month, lang: lang)
       else if (usable || _layer != MapLayer.suitability)
@@ -274,13 +308,22 @@ class _MapScreenState extends ConsumerState<MapScreen> {
 
 class _MapCanvas extends StatelessWidget {
   const _MapCanvas(
-      {required this.data, required this.layer, required this.req, required this.month, required this.picked, required this.onPick});
+      {required this.data,
+      required this.layer,
+      required this.req,
+      required this.month,
+      required this.picked,
+      required this.pedons,
+      required this.pedon,
+      required this.onPick});
   final MapData data;
   final MapLayer layer;
   final CropRequirements? req;
   final int month;
   final EnvCell? picked;
-  final ValueChanged<EnvCell?> onPick;
+  final List<Pedon> pedons;
+  final Pedon? pedon;
+  final void Function(EnvCell? cell, Pedon? pedon) onPick;
 
   @override
   Widget build(BuildContext context) {
@@ -313,13 +356,26 @@ class _MapCanvas extends StatelessWidget {
             return InteractiveViewer(
               maxScale: 8,
               child: GestureDetector(
-                onTapUp: (e) => onPick(data.at((e.localPosition.dx / cw).floor(), (e.localPosition.dy / ch).floor())),
+                onTapUp: (e) {
+                  final at = e.localPosition;
+                  // A documented pedon wins when the tap lands on its marker.
+                  Pedon? hit;
+                  var best = double.infinity;
+                  for (final p in pedons) {
+                    final d = (data.lonLatToPx(p.lon, p.lat, cw, ch) - at).distance;
+                    if (d < 14 && d < best) (hit, best) = (p, d);
+                  }
+                  final px = hit == null ? at : data.lonLatToPx(hit.lon, hit.lat, cw, ch);
+                  onPick(data.nearestLand((px.dx / cw).floor(), (px.dy / ch).floor()), hit);
+                },
                 child: CustomPaint(
                   size: Size(box.maxWidth, box.maxHeight),
                   painter: _MapPainter(
                     data: data,
                     colors: colors,
                     picked: picked,
+                    pedons: pedons,
+                    pedon: pedon,
                     dark: dark,
                     outlineColor: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                     pickColor: theme.colorScheme.onSurface,
@@ -339,6 +395,8 @@ class _MapPainter extends CustomPainter {
     required this.data,
     required this.colors,
     required this.picked,
+    required this.pedons,
+    required this.pedon,
     required this.dark,
     required this.outlineColor,
     required this.pickColor,
@@ -346,6 +404,8 @@ class _MapPainter extends CustomPainter {
   final MapData data;
   final Map<EnvCell, Color> colors;
   final EnvCell? picked;
+  final List<Pedon> pedons;
+  final Pedon? pedon;
   final bool dark;
   final Color outlineColor, pickColor;
 
@@ -372,7 +432,13 @@ class _MapPainter extends CustomPainter {
       }
       canvas.drawPath(path..close(), stroke);
     }
-    final p = picked;
+    for (final pd in pedons) {
+      final c = data.lonLatToPx(pd.lon, pd.lat, cw, ch);
+      final r = pd == pedon ? 6.5 : 4.5;
+      canvas.drawCircle(c, r + 1.5, Paint()..color = Colors.white);
+      canvas.drawCircle(c, r, Paint()..color = pedonColor);
+    }
+    final p = pedon == null ? picked : null;
     if (p != null) {
       final center = Offset((p.col + 0.5) * cw, (p.row + 0.5) * ch);
       canvas.drawCircle(center, 7, Paint()..color = Colors.white);
@@ -385,12 +451,13 @@ class _MapPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _MapPainter old) =>
-      old.colors != colors || old.picked != picked || old.dark != dark;
+      old.colors != colors || old.picked != picked || old.dark != dark || old.pedons != pedons || old.pedon != pedon;
 }
 
 class _Legend extends StatelessWidget {
-  const _Legend({required this.layer});
+  const _Legend({required this.layer, this.pedons = false});
   final MapLayer layer;
+  final bool pedons;
 
   @override
   Widget build(BuildContext context) {
@@ -406,7 +473,8 @@ class _Legend extends StatelessWidget {
           const SizedBox(width: 6),
           Text(label, style: theme.textTheme.bodySmall),
         ]);
-    return Wrap(spacing: 14, runSpacing: 6, children: switch (layer) {
+    return Wrap(spacing: 14, runSpacing: 6, children: [
+      ...switch (layer) {
       MapLayer.suitability => [
           item(suitColor(100, dark: dark), l10n.suitHigh),
           item(suitColor(60, dark: dark), l10n.suitMedium),
@@ -433,7 +501,19 @@ class _Legend extends StatelessWidget {
           item(salinityColor(20, dark: dark), l10n.salVeryStrong),
           item(salinityColor(null, dark: dark), l10n.soilUnknown),
         ],
-    });
+      },
+      if (pedons)
+        Row(mainAxisSize: MainAxisSize.min, children: [
+          Container(
+            width: 12,
+            height: 12,
+            decoration: BoxDecoration(
+                color: pedonColor, shape: BoxShape.circle, border: Border.all(color: Colors.white, width: 1.5)),
+          ),
+          const SizedBox(width: 6),
+          Text(l10n.pedonLegend, style: theme.textTheme.bodySmall),
+        ]),
+    ]);
   }
 }
 

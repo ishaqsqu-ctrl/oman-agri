@@ -779,7 +779,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get mapSources =>
-      'المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). القوام والحموضة: SoilGrids 2.0 (Poggio وآخرون 2021، ISRIC). الملوحة: HWSD v2.0 (FAO و IIASA 2023، CC BY-NC-SA 3.0 IGO). حدود عُمان: © مساهمو OpenStreetMap.';
+      'المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). القوام والحموضة: SoilGrids 2.0 (Poggio وآخرون 2021، ISRIC). الملوحة: HWSD v2.0 (FAO و IIASA 2023، CC BY-NC-SA 3.0 IGO). قطاعات التربة الموثّقة: الخريطة العامة للتربة في سلطنة عُمان (وزارة الزراعة والثروة السمكية والفاو، 1990). حدود عُمان: © مساهمو OpenStreetMap.';
 
   @override
   String get mapLoading => 'جارٍ تحميل الخريطة…';
@@ -1018,4 +1018,39 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get waterNote =>
       'المعايير: نشرة الفاو للري والصرف رقم 29 (أيرز وويستكوت، 1985). يُقدَّر الإنتاج بمعادلة ماس وهوفمان على افتراض أن ملوحة التربة تبلغ مرة ونصف ملوحة الماء (غسيل 15–20%). يبقى الفحص على جهازك فقط.';
+
+  @override
+  String pedonTitle(int n) {
+    return 'قطاع تربة موثّق رقم $n';
+  }
+
+  @override
+  String get pedonMeasured => 'حُفر ووُصف وحُلّل في المختبر لأطلس التربة 1990';
+
+  @override
+  String pedonLandSlope(String land, String slope) {
+    return '$land، انحدار $slope';
+  }
+
+  @override
+  String get pedonSaline => 'ملحية';
+
+  @override
+  String get pedonSodic => 'صودية';
+
+  @override
+  String get pedonShallow => 'صخر قريب من السطح';
+
+  @override
+  String get pedonGravelly => 'كثيرة الحصى';
+
+  @override
+  String get pedonGypsumPan => 'طبقة جبس متصلّبة';
+
+  @override
+  String get pedonLegend => 'قطاع تربة موثّق (1990)';
+
+  @override
+  String get pedonSource =>
+      'المصدر: الخريطة العامة للتربة في سلطنة عُمان، وزارة الزراعة والثروة السمكية بالتعاون مع الفاو، 1990.';
 }

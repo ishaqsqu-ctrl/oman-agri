@@ -237,7 +237,7 @@
   "envTmin": "Mean minimum",
   "envTmax": "Mean maximum",
   "mapScore": "Suitability",
-  "mapSources": "Climate and elevation: WorldClim 2.1 (Fick & Hijmans 2017). Texture and pH: SoilGrids 2.0 (Poggio et al. 2021, ISRIC). Salinity: HWSD v2.0 (FAO & IIASA 2023, CC BY-NC-SA 3.0 IGO). Oman outline: © OpenStreetMap contributors.",
+  "mapSources": "Climate and elevation: WorldClim 2.1 (Fick & Hijmans 2017). Texture and pH: SoilGrids 2.0 (Poggio et al. 2021, ISRIC). Salinity: HWSD v2.0 (FAO & IIASA 2023, CC BY-NC-SA 3.0 IGO). Documented soil profiles: General Soil Map of the Sultanate of Oman (Ministry of Agriculture and Fisheries and FAO, 1990). Oman outline: © OpenStreetMap contributors.",
   "mapLoading": "Loading the map…",
   "mapLayerSuit": "Suitability",
   "mapLayerTexture": "Texture",
@@ -309,5 +309,15 @@
   "waterHistory": "Earlier tests",
   "waterDelete": "Delete test",
   "waterDeleteConfirm": "Delete this test?",
-  "waterNote": "Guidelines: FAO Irrigation and Drainage Paper 29 (Ayers & Westcot 1985). Yield follows Maas & Hoffman, assuming soil salinity reaches 1.5 × water salinity (15–20% leaching). The test stays on your device only."
+  "waterNote": "Guidelines: FAO Irrigation and Drainage Paper 29 (Ayers & Westcot 1985). Yield follows Maas & Hoffman, assuming soil salinity reaches 1.5 × water salinity (15–20% leaching). The test stays on your device only.",
+  "pedonTitle": "Documented soil profile no. {n}",
+  "pedonMeasured": "Dug, described and lab-analysed for the 1990 soil atlas",
+  "pedonLandSlope": "{land}, slope {slope}",
+  "pedonSaline": "Saline",
+  "pedonSodic": "Sodic",
+  "pedonShallow": "Rock near the surface",
+  "pedonGravelly": "Gravelly",
+  "pedonGypsumPan": "Hardened gypsum layer",
+  "pedonLegend": "Documented soil profile (1990)",
+  "pedonSource": "Source: General Soil Map of the Sultanate of Oman, Ministry of Agriculture and Fisheries with FAO, 1990."
 }

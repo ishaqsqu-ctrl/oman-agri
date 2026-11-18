@@ -8,6 +8,7 @@ import 'package:oman_agri/features/crops/data/knowledge_repository.dart';
 import 'package:oman_agri/features/crops/data/models.dart';
 import 'package:oman_agri/features/farm/farm_screen.dart' show todayProvider;
 import 'package:oman_agri/features/map/map_screen.dart';
+import 'package:oman_agri/features/map/pedons.dart';
 import 'package:oman_agri/features/map/suitability.dart';
 import 'package:oman_agri/l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -35,6 +36,12 @@ Future<void> _pump(WidgetTester tester, {List<Crop>? crops}) async {
       sharedPreferencesProvider.overrideWithValue(sp),
       todayProvider.overrideWithValue(DateTime(2026, 11, 5)),
       mapDataProvider.overrideWith((ref) async => _map),
+      pedonsProvider.overrideWith((ref) async => const [
+            Pedon(
+                n: 9, lat: 23.5, lon: 56.5, soilAr: 'تربة ملحية (سبخة)', soilEn: 'Salt soil (sabkha)',
+                landAr: 'سبخة', landEn: 'sabkha', slope: '0-1', usda: 'Sandy, mixed, hyperthermic Typic Salorthids',
+                fao: 'Sodic Solonchaks', traits: ['saline', 'sodic'], useAr: '', useEn: ''),
+          ]),
       knowledgeProvider.overrideWith((ref) async => KnowledgeSnapshot(
             generatedAt: DateTime.utc(2026),
             sources: const {},
@@ -123,5 +130,25 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('خفيفة (2–4)'), findsOneWidget);
     expect(find.text('شديدة جدًا (أكثر من 16)'), findsOneWidget);
+  });
+
+  testWidgets('a documented pedon shows on soil layers and opens its card', (tester) async {
+    await _pump(tester);
+    expect(find.text('قطاع تربة موثّق (1990)'), findsNothing); // not on the suitability layer
+    await tester.tap(find.text('الملوحة'));
+    await tester.pumpAndSettle();
+    expect(find.text('قطاع تربة موثّق (1990)'), findsOneWidget);
+    final map = tester.getRect(find.byType(CustomPaint).last);
+    await tester.tapAt(Offset(map.left + map.width / 6 + 3, map.center.dy));
+    await tester.pumpAndSettle();
+    expect(find.text('قطاع تربة موثّق رقم 9'), findsOneWidget);
+    expect(find.text('تربة ملحية (سبخة)'), findsOneWidget);
+    expect(find.text('ملحية'), findsOneWidget);
+    expect(find.text('صودية'), findsOneWidget);
+    expect(find.byKey(const ValueKey('map-place')), findsOneWidget); // the cell under it too
+    // Away from the marker: the pedon card goes.
+    await tester.tapAt(Offset(map.right - map.width / 6, map.center.dy));
+    await tester.pumpAndSettle();
+    expect(find.text('قطاع تربة موثّق رقم 9'), findsNothing);
   });
 }

@@ -783,7 +783,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get mapSources =>
-      'Climate and elevation: WorldClim 2.1 (Fick & Hijmans 2017). Texture and pH: SoilGrids 2.0 (Poggio et al. 2021, ISRIC). Salinity: HWSD v2.0 (FAO & IIASA 2023, CC BY-NC-SA 3.0 IGO). Oman outline: © OpenStreetMap contributors.';
+      'Climate and elevation: WorldClim 2.1 (Fick & Hijmans 2017). Texture and pH: SoilGrids 2.0 (Poggio et al. 2021, ISRIC). Salinity: HWSD v2.0 (FAO & IIASA 2023, CC BY-NC-SA 3.0 IGO). Documented soil profiles: General Soil Map of the Sultanate of Oman (Ministry of Agriculture and Fisheries and FAO, 1990). Oman outline: © OpenStreetMap contributors.';
 
   @override
   String get mapLoading => 'Loading the map…';
@@ -1026,4 +1026,40 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get waterNote =>
       'Guidelines: FAO Irrigation and Drainage Paper 29 (Ayers & Westcot 1985). Yield follows Maas & Hoffman, assuming soil salinity reaches 1.5 × water salinity (15–20% leaching). The test stays on your device only.';
+
+  @override
+  String pedonTitle(int n) {
+    return 'Documented soil profile no. $n';
+  }
+
+  @override
+  String get pedonMeasured =>
+      'Dug, described and lab-analysed for the 1990 soil atlas';
+
+  @override
+  String pedonLandSlope(String land, String slope) {
+    return '$land, slope $slope';
+  }
+
+  @override
+  String get pedonSaline => 'Saline';
+
+  @override
+  String get pedonSodic => 'Sodic';
+
+  @override
+  String get pedonShallow => 'Rock near the surface';
+
+  @override
+  String get pedonGravelly => 'Gravelly';
+
+  @override
+  String get pedonGypsumPan => 'Hardened gypsum layer';
+
+  @override
+  String get pedonLegend => 'Documented soil profile (1990)';
+
+  @override
+  String get pedonSource =>
+      'Source: General Soil Map of the Sultanate of Oman, Ministry of Agriculture and Fisheries with FAO, 1990.';
 }

@@ -1,0 +1,263 @@
+{
+ "source": "General Soil Map of the Sultanate of Oman, Ministry of Agriculture and Fisheries with FAO, 1990",
+ "pedons": [
+  {
+   "n": 1,
+   "lat": 21.85,
+   "lon": 56.45,
+   "group": "Calciorthids",
+   "soil_ar": "تربة صحراوية جيرية",
+   "soil_en": "Desert soil with lime",
+   "land_ar": "مصطبة رسوبية",
+   "land_en": "alluvial terrace",
+   "slope": "0-1",
+   "usda": "Loamy, mixed, hyperthermic Typic Calciorthids, strongly saline",
+   "fao": "Haplic Calcisols, yermic and salic phase",
+   "traits": [
+    "saline"
+   ],
+   "use_en": "",
+   "use_ar": ""
+  },
+  {
+   "n": 2,
+   "lat": 22.9,
+   "lon": 57.1667,
+   "group": "Calciorthids",
+   "soil_ar": "تربة صحراوية جيرية",
+   "soil_en": "Desert soil with lime",
+   "land_ar": "سهل رسوبي",
+   "land_en": "alluvial plain",
+   "slope": "0-1",
+   "usda": "Loamy-skeletal, mixed, hyperthermic Typic Calciorthids, strongly saline",
+   "fao": "Haplic Calcisols, yermic and salic phase",
+   "traits": [
+    "saline",
+    "gravelly"
+   ],
+   "use_en": "",
+   "use_ar": ""
+  },
+  {
+   "n": 3,
+   "lat": 16.9833,
+   "lon": 53.9833,
+   "group": "Calciorthids",
+   "soil_ar": "تربة صحراوية جيرية",
+   "soil_en": "Desert soil with lime",
+   "land_ar": "سهل رسوبي",
+   "land_en": "alluvial plain",
+   "slope": "0-1",
+   "usda": "Loamy-skeletal, carbonatic, hyperthermic Typic Calciorthids",
+   "fao": "Haplic Calcisols, yermic and salic phase",
+   "traits": [
+    "saline",
+    "gravelly"
+   ],
+   "use_en": "",
+   "use_ar": ""
+  },
+  {
+   "n": 5,
+   "lat": 21.5667,
+   "lon": 56.55,
+   "group": "Calciorthids",
+   "soil_ar": "تربة صحراوية جيرية",
+   "soil_en": "Desert soil with lime",
+   "land_ar": "سهل رسوبي",
+   "land_en": "alluvial plain",
+   "slope": "1-3",
+   "usda": "Loamy-skeletal, mixed, hyperthermic Lithic Calciorthids, strongly saline",
+   "fao": "Haplic Calcisols, yermic, lithic and salic phase",
+   "traits": [
+    "saline",
+    "shallow",
+    "gravelly"
+   ],
+   "use_en": "",
+   "use_ar": ""
+  },
+  {
+   "n": 6,
+   "lat": 19.7833,
+   "lon": 55.1333,
+   "group": "Gypsiorthids",
+   "soil_ar": "تربة صحراوية جبسية",
+   "soil_en": "Desert soil with gypsum",
+   "land_ar": "سهل حتّي",
+   "land_en": "pediplain",
+   "slope": "1-3",
+   "usda": "Loamy, gypsic, hyperthermic Petrogypsic Gypsiorthids",
+   "fao": "Petric Gypsisols, yermic and salic phase",
+   "traits": [
+    "saline",
+    "gypsum_pan"
+   ],
+   "use_en": "",
+   "use_ar": ""
+  },
+  {
+   "n": 7,
+   "lat": 21.9667,
+   "lon": 56.3667,
+   "group": "Gypsiorthids",
+   "soil_ar": "تربة صحراوية جبسية",
+   "soil_en": "Desert soil with gypsum",
+   "land_ar": "مصطبة رسوبية",
+   "land_en": "alluvial terrace",
+   "slope": "3-5",
+   "usda": "Loamy-skeletal, gypsic, hyperthermic Typic Gypsiorthids",
+   "fao": "Haplic Gypsisols, yermic phase",
+   "traits": [
+    "gravelly"
+   ],
+   "use_en": "",
+   "use_ar": ""
+  },
+  {
+   "n": 9,
+   "lat": 21.7667,
+   "lon": 55.8167,
+   "group": "Salorthids",
+   "soil_ar": "تربة ملحية (سبخة)",
+   "soil_en": "Salt soil (sabkha)",
+   "land_ar": "سبخة",
+   "land_en": "sabkha",
+   "slope": "0-1",
+   "usda": "Sandy, mixed, hyperthermic Typic Salorthids",
+   "fao": "Sodic Solonchaks",
+   "traits": [
+    "saline",
+    "sodic"
+   ],
+   "use_en": "",
+   "use_ar": ""
+  },
+  {
+   "n": 11,
+   "lat": 17.1833,
+   "lon": 54.1667,
+   "group": "Ustropepts",
+   "soil_ar": "تربة طينية في منطقة الخريف",
+   "soil_en": "Clay soil of the monsoon zone",
+   "land_ar": "هضبة",
+   "land_en": "plateau",
+   "slope": "0-30",
+   "usda": "Clayey, mixed, isohyperthermic Ruptic-Lithic Ustropepts",
+   "fao": "Chromic Cambisols",
+   "traits": [
+    "shallow"
+   ],
+   "use_en": "",
+   "use_ar": ""
+  },
+  {
+   "n": 12,
+   "lat": 19.3,
+   "lon": 54.4167,
+   "group": "Torripsamments",
+   "soil_ar": "تربة رملية",
+   "soil_en": "Sandy soil",
+   "land_ar": "سهل رملي",
+   "land_en": "sand plain",
+   "slope": "1-3",
+   "usda": "Mixed, hyperthermic Typic Torripsamments",
+   "fao": "Calcaric Arenosols, yermic phase",
+   "traits": [],
+   "use_en": "",
+   "use_ar": ""
+  },
+  {
+   "n": 13,
+   "lat": 17.0,
+   "lon": 54.15,
+   "group": "Torrifluvents",
+   "soil_ar": "تربة رسوبية من فيضانات الأودية",
+   "soil_en": "Flood-deposited (alluvial) soil",
+   "land_ar": "سهل رسوبي",
+   "land_en": "alluvial plain",
+   "slope": "0-1",
+   "usda": "Loamy, carbonatic, hyperthermic Typic Torrifluvents, strongly saline",
+   "fao": "Calcaric Fluvisols, yermic and salic phase",
+   "traits": [
+    "saline"
+   ],
+   "use_en": "Cultivated: banana, alfalfa and Rhodes grass under surface irrigation",
+   "use_ar": "أرض مزروعة: موز وبرسيم وحشيشة رودس بالري السطحي"
+  },
+  {
+   "n": 16,
+   "lat": 22.6833,
+   "lon": 56.5333,
+   "group": "Torriorthents",
+   "soil_ar": "تربة حديثة قليلة التطور",
+   "soil_en": "Young, little-developed soil",
+   "land_ar": "سهل رسوبي",
+   "land_en": "alluvial plain",
+   "slope": "0-1",
+   "usda": "Sandy, carbonatic, hyperthermic Typic Torriorthents",
+   "fao": "Calcaric Arenosols, yermic and salic phase",
+   "traits": [
+    "saline"
+   ],
+   "use_en": "Farm: date palm, alfalfa and sorghum under surface irrigation",
+   "use_ar": "مزرعة: نخيل وبرسيم وذرة رفيعة بالري السطحي"
+  },
+  {
+   "n": 18,
+   "lat": 22.1,
+   "lon": 57.2833,
+   "group": "Torriorthents",
+   "soil_ar": "تربة حديثة قليلة التطور",
+   "soil_en": "Young, little-developed soil",
+   "land_ar": "سهل رسوبي",
+   "land_en": "alluvial plain",
+   "slope": "0-1",
+   "usda": "Sandy-skeletal, mixed, hyperthermic Typic Torriorthents",
+   "fao": "Calcaric Regosols, yermic phase",
+   "traits": [
+    "gravelly"
+   ],
+   "use_en": "",
+   "use_ar": ""
+  },
+  {
+   "n": 19,
+   "lat": 22.15,
+   "lon": 57.55,
+   "group": "Torriorthents",
+   "soil_ar": "تربة حديثة قليلة التطور",
+   "soil_en": "Young, little-developed soil",
+   "land_ar": "سهل حتّي",
+   "land_en": "pediplain",
+   "slope": "1-3",
+   "usda": "Sandy-skeletal, mixed, hyperthermic Lithic Torriorthents",
+   "fao": "Gypsic Regosols, yermic, lithic and salic phase",
+   "traits": [
+    "saline",
+    "shallow",
+    "gravelly"
+   ],
+   "use_en": "",
+   "use_ar": ""
+  },
+  {
+   "n": 20,
+   "lat": 18.1,
+   "lon": 55.1167,
+   "group": "Torriorthents",
+   "soil_ar": "تربة حديثة قليلة التطور",
+   "soil_en": "Young, little-developed soil",
+   "land_ar": "سهل رسوبي",
+   "land_en": "alluvial plain",
+   "slope": "0-1",
+   "usda": "Sandy-skeletal over fine-loamy, carbonatic, hyperthermic Calciorthidic Torriorthents",
+   "fao": "Calcaric Regosols over Haplic Calcisols, yermic phase",
+   "traits": [
+    "gravelly"
+   ],
+   "use_en": "",
+   "use_ar": ""
+  }
+ ]
+}

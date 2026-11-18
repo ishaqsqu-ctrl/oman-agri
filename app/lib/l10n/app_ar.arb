@@ -352,7 +352,7 @@
   "envTmin": "متوسط الصغرى",
   "envTmax": "متوسط العظمى",
   "mapScore": "درجة الملاءمة",
-  "mapSources": "المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). القوام والحموضة: SoilGrids 2.0 (Poggio وآخرون 2021، ISRIC). الملوحة: HWSD v2.0 (FAO و IIASA 2023، CC BY-NC-SA 3.0 IGO). حدود عُمان: © مساهمو OpenStreetMap.",
+  "mapSources": "المناخ والارتفاع: WorldClim 2.1 (Fick & Hijmans 2017). القوام والحموضة: SoilGrids 2.0 (Poggio وآخرون 2021، ISRIC). الملوحة: HWSD v2.0 (FAO و IIASA 2023، CC BY-NC-SA 3.0 IGO). قطاعات التربة الموثّقة: الخريطة العامة للتربة في سلطنة عُمان (وزارة الزراعة والثروة السمكية والفاو، 1990). حدود عُمان: © مساهمو OpenStreetMap.",
   "mapLoading": "جارٍ تحميل الخريطة…",
   "@limitCold": {
     "placeholders": {
@@ -509,6 +509,33 @@
   "@waterCropMax": {
     "placeholders": {
       "ec": {
+        "type": "String"
+      }
+    }
+  },
+  "pedonTitle": "قطاع تربة موثّق رقم {n}",
+  "pedonMeasured": "حُفر ووُصف وحُلّل في المختبر لأطلس التربة 1990",
+  "pedonLandSlope": "{land}، انحدار {slope}",
+  "pedonSaline": "ملحية",
+  "pedonSodic": "صودية",
+  "pedonShallow": "صخر قريب من السطح",
+  "pedonGravelly": "كثيرة الحصى",
+  "pedonGypsumPan": "طبقة جبس متصلّبة",
+  "pedonLegend": "قطاع تربة موثّق (1990)",
+  "pedonSource": "المصدر: الخريطة العامة للتربة في سلطنة عُمان، وزارة الزراعة والثروة السمكية بالتعاون مع الفاو، 1990.",
+  "@pedonTitle": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "@pedonLandSlope": {
+    "placeholders": {
+      "land": {
+        "type": "String"
+      },
+      "slope": {
         "type": "String"
       }
     }

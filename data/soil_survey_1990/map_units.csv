@@ -1,0 +1,64 @@
+unit,soils,description,slope_min_pct,slope_max_pct,land_class,page
+1,Calciorthids,"loamy, deep soils, 0 to 3 percent slopes",0,3,S1,7
+2,Calciorthids,"loamy-skeletal, deep soils, slightly to moderately dissected, 0 to 3 percent slopes",0,3,S2,7
+3,Calciorthids,"plains of deep, loamy-skeletal soils, 0 to 5 percent slopes",0,5,S2,7
+4,Calciorthids,"loamy, moderately deep soils, 0 to 5 percent slopes",0,5,S2,7
+5,Calciorthids,"loamy-skeletal, deep to moderately deep, strongly dissected, 0 to 15 percent slopes",0,15,N,7
+6,Calciorthids-Gypsiorthids,"loamy-skeletal, moderately deep to deep soils on alluvial fans and terraces, 0 to 5 percent slopes",0,5,S2,7
+7,Calciorthids-Gypsiorthids,"loamy to loamy-skeletal, deep and moderately deep soils, 0 to 5 percent slopes",0,5,S2,10
+8,Calciorthids-Gypsiorthids,"loamy-skeletal, moderately deep soils, poorly drained, 0 to 5 percent slopes",0,5,N,10
+9,Calciorthids-Gypsiorthids-Salorthids,"loamy to loamy-skeletal, moderately deep to deep, strongly saline, 0 to 3 percent slopes",0,3,N,10
+10,Calciorthids-Torripsamments,"loamy and loamy-skeletal soils, high dunes and sand sheets, 0 to 30 percent slopes",0,30,N,10
+11,Calciorthids-Torrifluvents-Torriorthents,"plains of loamy and sandy deep soils, moderately flooded, 0 to 3 percent slopes",0,3,S1,10
+12,Calciorthids-Torriorthents,"loamy and sandy-skeletal, deep soils, moderately flooded, 0 to 3 percent slopes",0,3,S2,11
+13,Calciorthids-Torriorthents-Rock outcrop,"shallow and very shallow soils on pediplains, 0 to 3 percent slopes",0,3,N,11
+14,Calciorthids-Rock outcrop,"loamy to loamy-skeletal, shallow soils, and rock outcrop, 0 to 15 percent slopes",0,15,N,11
+15,Gypsiorthids,"loamy and sandy deep soils, gypsum pan, 0 to 15 percent slopes",0,15,N,11
+16,Gypsiorthids,"loamy, strongly deep saline soils, with gypsum pan on slightly dissected, alluvial terraces, 0 to 3 percent slopes",0,3,N,11
+17,Gypsiorthids,"loamy-skeletal to loamy soils, gypsum pan, on strongly dissected high alluvial terraces and fans, 0 to 15 percent slopes",0,15,N,11
+18,Gypsiorthids,"loamy-skeletal to loamy, strongly saline soils, gypsum pan, on strongly dissected high alluvial terraces, 0 to 15 percent slopes",0,15,N,11
+19,Gypsiorthids,"loamy-skeletal and sandy-skeletal soils, gypsum pan, on moderately dissected, high alluvial terraces and fans, 0 to 15 percent slopes",0,15,N,12
+20,Gypsiorthids,"loamy-skeletal to loamy, strongly saline soils, gypsum pan, on moderately dissected high alluvial terraces and fans, 0 to 15 percent slopes",0,15,N,12
+21,Gypsiorthids,"sandy to loamy-skeletal soils, on moderately dissected high alluvial terraces and fans, 0 to 8 percent slopes",0,8,N,12
+22,Gypsiorthids-Calciorthids,"plains of loamy soils with gypsum pan, and loamy to loamy-skeletal, deep and moderately deep soils, 0 to 15 percent slopes",0,15,N,12
+23,Gypsiorthids-Torriorthents,"loamy and sandy-skeletal, moderately deep to deep, strongly saline soils, moderately flooded, 0 to 5 percent slopes",0,5,N,12
+24,Gypsiorthids and Torriorthents-Torripsamments,"loamy, shallow soils, gypsum pan and dunes, 0 to 15 percent slopes",0,15,N,12
+25,Gypsiorthids-Torripsamments-Rock outcrop,"loamy to clayey, moderately deep to deep, strongly saline soils, slopes, dunes and rock outcrop, 0 to 25 percent slopes",0,25,N,13
+26,Gypsiorthids-Rock outcrop,"loamy skeletal, moderately deep to deep soils and rock outcrop on strongly dissected, high alluvial terraces and fans, 0 to 35 percent slopes",0,35,N,13
+27,Gypsiorthids-Rock outcrop,"loamy soils with gypsum pan and hills of rock outcrop, 0 to 35 percent slopes",0,35,N,13
+28,Gypsiorthids,"loamy and loamy-skeletal, moderately deep and shallow soils, gypsum pan, 0 to 15 percent slopes",0,15,N,13
+29,Torripsamments,"sandy, deep soils on sand sheets, 0 to 10 percent slopes",0,10,N,13
+30,Torripsamments,"dunes more than 10 metres high and plains of sandy, deep soils, 0 to 30 percent slopes",0,30,N,13
+31,Torripsamments-Gypsiorthids,"dunes and loamy shallow soils, gypsum pan, 0 to 30 percent slopes",0,30,N,14
+32,Torripsamments-Gypsiorthids,"sandy and loamy soils with gypsum pan, 0 to 3 percent slopes",0,3,S2,14
+33,Torripsamments-Salorthids,"dunes and basins, 0 to 30 percent slopes",0,30,N,14
+34,Torripsamments-Salorthids-Rock outcrop,0 to 30 percent slopes,0,30,N,14
+35,Torripsamments-Rock outcrop,"dunes and rock outcrop, 0 to 30 percent slopes",0,30,N,14
+36,Torrifluvents,"plains of loamy, deep soils, moderately flooded, 0 to 2 percent slopes",0,2,S1,14
+37,Torriorthents-Torrifluvents,"sandy and loamy deep soils, slightly to moderately flooded, 0 to 3 percent slopes",0,3,S1,15
+38,Torrifluvents/Torriorthents-Torripsamments,"sandy, deep soils on plains, 0 to 3 percent slopes",0,3,S1,15
+39,Torrifluvents-Torriorthents-Torripsamments,"loamy and sandy-skeletal, deep soils and dunes, flooded, 0 to 15 percent slopes",0,15,N,15
+40,Torrifluvents-Torriorthents-Salorthids,"loamy, deep, strongly saline soils, on alluvial plains, 0 to 2 percent slopes",0,2,S2,15
+41,Torrifluvents-Salorthids,"loamy, deep, strongly saline soils, in coastal plains, 0 to 2 percent slopes",0,2,S2,15
+42,Torriorthents,"very gravelly sandy, deep soils, moderately flooded, 0 to 3 percent slopes",0,3,S2,16
+43,Torriorthents,"extremely gravelly sandy, deep soils on young flooded alluvial terraces and fans, 0 to 5 percent slopes",0,5,N,16
+44,Torriorthents,"loamy-skeletal, deep soils, moderately flooded, 0 to 3 percent slopes",0,3,S2,16
+45,Torriorthents-Calciorthids,"loamy-skeletal, moderately deep soils, 0 to 15 percent slopes",0,15,N,16
+46,Torriorthents and Calciorthids-Rock outcrop,"loamy and loamy-skeletal, shallow and moderately deep soils and rock outcrop, 0 to 15 percent slopes",0,15,N,16
+47,Torriorthents-Calciorthids-Rock outcrop,"loamy-skeletal, shallow to moderately deep soils, saline, on coastal shelves, 0 to 15 percent slopes",0,15,N,16
+48,Torriorthents-Gypsiorthids,"sandy-skeletal on young alluvial fans and terraces, 0 to 5 percent slopes",0,5,N,16
+49,Torriorthents-Gypsiorthids,"sandy-skeletal, moderately deep soils, 0 to 5 percent slopes",0,5,N,16
+50,Torriorthents-Gypsiorthids,"sandy to sandy-skeletal moderately deep soils on young alluvial fans and terraces, moderately flooded, 0 to 5 percent slopes",0,5,N,17
+51,Torriorthents-Torripsamments,"sandy-skeletal soils, deep sand-over-blown soils, and dunes, 0 to 15 percent slopes",0,15,N,17
+52,Torriorthents-Torrifluvents-Rock outcrop,"sandy-skeletal, deep and moderately deep soils and rock outcrop, 0 to 15 percent slopes",0,15,S2,17
+53,Ustropepts,"clayey to loamy, deep soils, poorly drained, 0 to 3 percent slopes",0,3,S2,17
+54,Ustropepts-Ustorthents-Rock outcrop,"clayey to loamy, moderately deep soils on 0 to 50 percent wooded slopes",0,50,N,17
+55,Ustropepts-Ustorthents-Rock outcrop,"clayey to loamy, shallow to moderately deep soils, 0 to 15 percent slopes",0,15,N,17
+56,Coastal dunes and marine flats,"deep sandy soils and tidal flats, 0 to 10 percent slopes",0,10,N,17
+57,Playas-Salorthids,"playas and clayey to sandy, deep soils, strongly saline, 0 to 1 percent slopes",0,1,N,18
+58,Tidal flats and dunes,"tidal flats and sandy soils, 0 to 10 percent slopes",0,10,N,18
+59,Salorthids-Torripsamments,"loamy and sandy, deep soils and dunes, 0 to 30 percent slopes",0,30,N,18
+60,Rock outcrop-Gypsiorthids-Torriorthents,"rock outcrop and loamy-skeletal, shallow to moderately deep soils and rock outcrop, 0 to 55 percent slopes",0,55,N,18
+61,Rock outcrop-Ustropepts,"rock outcrop and shallow, loamy-skeletal soils, 0 to 50 percent slopes",0,50,N,18
+R,Rock outcrop-Torriorthents,"mountains and strongly dissected rocky plateaus, and loamy-skeletal to sandy skeletal, shallow soils, 0 to more than 100 percent slopes",0,100,N,18
+W,Wadi beds,"sandy-skeletal, shallow to deep soils, strongly flooded, 0 to 1 percent slopes",0,1,N,18
