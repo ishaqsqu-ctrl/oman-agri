@@ -2699,7 +2699,7 @@
       "status": "published"
     }
   ],
-  "generated_at": "2026-11-04T12:45:46+00:00",
+  "generated_at": "2026-11-18T04:34:44+00:00",
   "governorates": [
     {
       "id": "muscat",
@@ -2930,6 +2930,15 @@
       "type": "peer_reviewed",
       "url": "https://scielo.br/j/eagri/a/yRZcnMN5jtW7tWYTV9773kk/abstract/?lang=en",
       "year": 2008
+    },
+    {
+      "id": "maf1990_soilmap",
+      "publisher": "Ministry of Agriculture and Fisheries (Sultanate of Oman) / FAO",
+      "reliability": 3,
+      "title": "General Soil Map of the Sultanate of Oman (soil atlas, 56 map sheets, map unit descriptions, land suitability classification, 20 analysed soil pedons). Ministry of Agriculture and Fisheries with FAO",
+      "type": "ministry",
+      "url": null,
+      "year": 1990
     }
   ],
   "wilayats": [

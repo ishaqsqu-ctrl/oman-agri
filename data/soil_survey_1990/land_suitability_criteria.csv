@@ -1,0 +1,14 @@
+characteristic,unit,s1,s2,s3,n
+depth_to_restricting_layer,cm,>150,100-150,50-100,<50
+rock_fragments_25_100cm,% by volume (weighted),<15,15-35,35-65,>65
+water_retention_difference_150cm,cm,>15,8-15,6-8,<6
+max_salinity_0_100cm,dS/m (ECe paste extract),<8,8-16,>16 reclaimable,>16
+gypsum_0_50cm,% by volume,<10,10-25,10-25,>25
+gypsum_50_100cm,% by volume,<10,10-25,25-40,>40
+slope,%,<1,1-3,3-5,>5
+landform_dissection,class,nil,slight,moderate,strong
+vertical_hydraulic_conductivity_least_pervious_100cm,cm/h,0.5-15,<0.5 or >15,,
+depth_to_water_table,cm,>300,150-300,50-150,<50
+natural_drainage_under_irrigation,class,good,moderately good,poor,very poor
+erosion_hazard,class,slight,moderate,strong,very strong
+flooding_hazard,class,slight,moderate,strong,very strong
